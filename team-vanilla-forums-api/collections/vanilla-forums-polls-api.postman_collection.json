@@ -1,0 +1,793 @@
+{
+  "item": [
+    {
+      "id": "43c5eac9-bc0a-4eab-87bb-d988f9493d2c",
+      "name": "Polls",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f302bbd3-dea0-419e-9962-23bed77f8298",
+          "name": "List polls.",
+          "request": {
+            "name": "List polls.",
+            "description": {},
+            "url": {
+              "path": [
+                "polls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<integer>",
+                  "description": "Filter by author.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a80e954-faac-4231-a5f5-506b2f39224a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"pollID\": 9270,\n    \"name\": \"string\",\n    \"discussionID\": 5020,\n    \"countOptions\": 3777,\n    \"countVotes\": 5416,\n    \"insertUserID\": 8395,\n    \"dateInserted\": \"2001-05-07T09:27:35.678Z\",\n    \"updateUserID\": 1136,\n    \"dateUpdated\": \"1950-06-17T21:00:57.945Z\",\n    \"insertUser\": {\n      \"userID\": 9078,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://kmiieeQy.ducdlRl0ThujdG-3Fmg8NXFGNCvmFKgKyo\",\n      \"dateLastActive\": \"1956-05-16T12:29:38.765Z\",\n      \"url\": \"https://MAEimMlsPYpCorxEUFDZa.hczgFj5mcP5KuN+KRNH.n,U-DRLJx3v+-Fvk5Sx,IOxZWl\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"updateUser\": {\n      \"userID\": 7409,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://zYUcbt.mwbs4YNeCR1.PmiR34,vlIX\",\n      \"dateLastActive\": \"1973-12-03T06:26:37.834Z\",\n      \"url\": \"https://fHybVbANrpVFVececi.oevxB+voln\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    }\n  },\n  {\n    \"pollID\": 4755,\n    \"name\": \"stri\",\n    \"discussionID\": 8229,\n    \"countOptions\": 1247,\n    \"countVotes\": 1113,\n    \"insertUserID\": 3945,\n    \"dateInserted\": \"1955-04-26T23:40:02.775Z\",\n    \"updateUserID\": 1015,\n    \"dateUpdated\": \"1968-08-05T14:28:24.624Z\",\n    \"insertUser\": {\n      \"userID\": 5327,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://biRVoBkgYM.qvP6-jag\",\n      \"dateLastActive\": \"2021-02-06T10:55:18.949Z\",\n      \"url\": \"http://kKHYqduZoJg.nnbdwgf1BgPn-IvXPN2L9Z6G6nmOlcKO\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"updateUser\": {\n      \"userID\": 8791,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://RSrUQAMlZrEUudcaEZmzvfiWpDSXnifmi.vdizQNPVlt0F+K\",\n      \"dateLastActive\": \"1979-04-29T23:30:12.013Z\",\n      \"url\": \"https://KkwFKvTBNHrvGefxnjUHoeweRXxMd.dgutP\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de51dbaf-c78d-4c69-b1e5-a85b13395972",
+          "name": "Create a poll.",
+          "request": {
+            "name": "Create a poll.",
+            "description": {},
+            "url": {
+              "path": [
+                "polls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"discussionID\": \"<integer>\",\n  \"categoryID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"pollOption\": [\n    {\n      \"body\": \"<string>\",\n      \"pollOptionID\": \"<integer>\"\n    },\n    {\n      \"body\": \"<string>\",\n      \"pollOptionID\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e727aeb1-3b55-4249-84c8-c8fd26f6ab9b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"discussionID\": \"<integer>\",\n  \"categoryID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"pollOption\": [\n    {\n      \"body\": \"<string>\",\n      \"pollOptionID\": \"<integer>\"\n    },\n    {\n      \"body\": \"<string>\",\n      \"pollOptionID\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pollID\": 6407,\n  \"name\": \"string\",\n  \"discussionID\": 2339,\n  \"countOptions\": 8195,\n  \"countVotes\": 5911,\n  \"insertUserID\": 1828,\n  \"dateInserted\": \"2013-06-10T08:45:12.785Z\",\n  \"updateUserID\": 9068,\n  \"dateUpdated\": \"1964-02-16T23:49:59.249Z\",\n  \"insertUser\": {\n    \"userID\": 9498,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://YaabaHDhFkHVzydnmIaQh.mzmkmcehTCAb8H+aVc6esPfL2BSHz9PwRRdqKMF4G.1fkOwAP\",\n    \"dateLastActive\": \"1946-08-30T20:27:10.951Z\",\n    \"url\": \"https://JfmwWjYRpU.dtSP92.-uIiuCNHlvIVQMFcoojEhgbzDOCkOiT-2bmI,\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"updateUser\": {\n    \"userID\": 7732,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://PhRCTeIKsJUerSsXHRigHh.jckeOiVp80SAWZNecLnG09DT3KXIfKv\",\n    \"dateLastActive\": \"1965-02-09T15:10:00.924Z\",\n    \"url\": \"https://mvsNKRraDMHDP.fkbZG,hqA0mAd4f1JsEMY+cdpSN32WjsE0xQdX0S0zpMwJCr3Yl-CFGjYkbk.AVcq6\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb93b7bb-77bf-4fb8-8d6a-69ef14db7323",
+          "name": "Delete a poll.",
+          "request": {
+            "name": "Delete a poll.",
+            "description": {},
+            "url": {
+              "path": [
+                "polls",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The poll ID.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d398821-a0d0-4c43-9b22-581a97706a2c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "polls",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The poll ID.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9bc6361-abc6-4bdc-925f-24833f7b7ca9",
+          "name": "Get a poll.",
+          "request": {
+            "name": "Get a poll.",
+            "description": {},
+            "url": {
+              "path": [
+                "polls",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The poll ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75a5cfa1-dec8-4add-b335-ec29f2bcbd78",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "polls",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The poll ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pollID\": 6407,\n  \"name\": \"string\",\n  \"discussionID\": 2339,\n  \"countOptions\": 8195,\n  \"countVotes\": 5911,\n  \"insertUserID\": 1828,\n  \"dateInserted\": \"2013-06-10T08:45:12.785Z\",\n  \"updateUserID\": 9068,\n  \"dateUpdated\": \"1964-02-16T23:49:59.249Z\",\n  \"insertUser\": {\n    \"userID\": 9498,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://YaabaHDhFkHVzydnmIaQh.mzmkmcehTCAb8H+aVc6esPfL2BSHz9PwRRdqKMF4G.1fkOwAP\",\n    \"dateLastActive\": \"1946-08-30T20:27:10.951Z\",\n    \"url\": \"https://JfmwWjYRpU.dtSP92.-uIiuCNHlvIVQMFcoojEhgbzDOCkOiT-2bmI,\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"updateUser\": {\n    \"userID\": 7732,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://PhRCTeIKsJUerSsXHRigHh.jckeOiVp80SAWZNecLnG09DT3KXIfKv\",\n    \"dateLastActive\": \"1965-02-09T15:10:00.924Z\",\n    \"url\": \"https://mvsNKRraDMHDP.fkbZG,hqA0mAd4f1JsEMY+cdpSN32WjsE0xQdX0S0zpMwJCr3Yl-CFGjYkbk.AVcq6\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7a82d5e-7458-4c37-a019-b7735fb27d42",
+          "name": "Delete a poll vote.",
+          "request": {
+            "name": "Delete a poll vote.",
+            "description": {},
+            "url": {
+              "path": [
+                "polls",
+                ":id",
+                "vote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userID",
+                  "value": "<integer>",
+                  "description": "The user that voted. Defaults to the current user.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The poll ID.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4aa20e55-936b-4796-bb16-0afd23d08be0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "polls",
+                    ":id",
+                    "vote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userID",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The poll ID.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb06e995-8e3f-4594-95a6-74a0f32be890",
+          "name": "Vote for a poll option.",
+          "request": {
+            "name": "Vote for a poll option.",
+            "description": {},
+            "url": {
+              "path": [
+                "polls",
+                ":id",
+                "vote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pollOptionID\": \"<integer>\",\n  \"userID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b6a4656-1eb7-45d7-b054-69f5ad55ec90",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "polls",
+                    ":id",
+                    "vote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pollOptionID\": \"<integer>\",\n  \"userID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userID\": 1557,\n  \"pollOptionID\": 499,\n  \"dateInserted\": \"2004-05-03T06:27:06.280Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb7cce4d-c65c-43ad-8251-f849f081b877",
+          "name": "List polls' votes.",
+          "request": {
+            "name": "List polls' votes.",
+            "description": {},
+            "url": {
+              "path": [
+                "polls",
+                ":id",
+                "votes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "pollOptionID",
+                  "value": "<integer>",
+                  "description": "Filter by pollOptionID.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf989c06-2b2e-42fc-aefa-62e20cdd292f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "polls",
+                    ":id",
+                    "votes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pollOptionID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userID\": 2826,\n    \"pollOptionID\": 7046,\n    \"dateInserted\": \"1991-10-26T17:43:53.767Z\"\n  },\n  {\n    \"userID\": 3045,\n    \"pollOptionID\": 6157,\n    \"dateInserted\": \"1990-05-03T20:26:16.621Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7df40c31-b1c9-4169-b9a8-44a564ea1c9a",
+    "name": "Vanilla Addons Polls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

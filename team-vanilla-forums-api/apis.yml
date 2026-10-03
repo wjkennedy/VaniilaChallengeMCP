@@ -1,0 +1,863 @@
+aid: vanilla-forums
+name: Vanilla Forums
+description: >-
+  Vanilla Forums is the cloud community-forum platform now sold as Higher
+  Logic Vanilla, powering B2B/B2C customer communities and association member
+  communities. Every Vanilla community serves a REST API (API v2) at /api/v2
+  with a per-site OpenAPI 3 description, personal-access-token and JWT bearer
+  authentication, short-lived cacheable role tokens, webhooks with HMAC-signed
+  deliveries, CSV export, and an official MCP server (launched May 2026) that
+  connects AI tools like ChatGPT, Claude, and Cursor to live community data.
+  Originally a Techstars-backed open source project, Vanilla was acquired by
+  Higher Logic in 2021.
+url: https://raw.githubusercontent.com/api-evangelist/vanilla-forums/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  - rate-limits
+  - security
+  - {url: 'https://vanillaforums.com/', status: 301, note: 'declared website redirects to https://www.higherlogic.com/vanilla/ — a different registrable domain (vanillaforums.com -> higherlogic.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
+  generated: '2026-09-03'
+  method: derived
+image: https://github.com/vanilla.png
+x-type: company
+x-source: vc-portfolio
+x-backed-by:
+- techstars
+x-tier: stub
+x-tier-reason: portfolio-lead
+specificationVersion: '0.23'
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1
+created: '2026-07-17'
+modified: '2026-07-21'
+tags:
+- Community
+- Forums
+- Community Management
+- Webhook
+- Customer Experience
+- Knowledge Base
+- Software-as-a-Service
+tags_raw:
+- Community
+- Forums
+- Community Management
+- Webhooks
+- Customer Experience
+- Knowledge Base
+- SaaS
+apis:
+- aid: vanilla-forums:vanilla-forums-ai-processing-preferences-api
+  name: Vanilla Forums AI Processing Preferences API
+  description: >-
+    The AI Processing Preferences API from Vanilla Forums — 1 operation(s) for ai processing preferences.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - AI Processing Preferences
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-ai-processing-preferences-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-ai-settings-api
+  name: Vanilla Forums AI Settings API
+  description: The AI Settings API from Vanilla Forums — 3 operation(s) for ai settings.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - AI Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-ai-settings-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-analytics-api
+  name: Vanilla Forums Analytics API
+  description: The Analytics API from Vanilla Forums — 10 operation(s) for analytics.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-analytics-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-appeals-api
+  name: Vanilla Forums Appeals API
+  description: The Appeals API from Vanilla Forums — 2 operation(s) for appeals.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Appeals
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-appeals-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-assets-api
+  name: Vanilla Forums Assets API
+  description: The Assets API from Vanilla Forums — 1 operation(s) for assets.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-assets-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-audit-logs-api
+  name: Vanilla Forums Audit Logs API
+  description: The Audit Logs API from Vanilla Forums — 2 operation(s) for audit logs.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Audit Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-audit-logs-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-authenticators-api
+  name: Vanilla Forums Authenticators API
+  description: The Authenticators API from Vanilla Forums — 5 operation(s) for authenticators.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Authenticators
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-authenticators-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-automation-rules-api
+  name: Vanilla Forums Automation Rules API
+  description: The Automation Rules API from Vanilla Forums — 3 operation(s) for automation rules.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Automation Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-automation-rules-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-calls-api
+  name: Vanilla Forums Calls API
+  description: The Calls API from Vanilla Forums — 1 operation(s) for calls.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Calls
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-calls-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-categories-api
+  name: Vanilla Forums Categories API
+  description: The Categories API from Vanilla Forums — 6 operation(s) for categories.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-categories-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-collections-api
+  name: Vanilla Forums Collections API
+  description: The Collections API from Vanilla Forums — 5 operation(s) for collections.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Collection
+  tags_raw:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-collections-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-comments-api
+  name: Vanilla Forums Comments API
+  description: The Comments API from Vanilla Forums — 6 operation(s) for comments.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-comments-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-config-api
+  name: Vanilla Forums Config API
+  description: The Config API from Vanilla Forums — 1 operation(s) for config.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Config
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-config-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-conversations-api
+  name: Vanilla Forums Conversations API
+  description: The Conversations API from Vanilla Forums — 6 operation(s) for conversations.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Conversations
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-conversations-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-dashboard-api
+  name: Vanilla Forums Dashboard API
+  description: The Dashboard API from Vanilla Forums — 1 operation(s) for dashboard.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Dashboards
+  tags_raw:
+  - Dashboard
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-dashboard-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-discussion-statuses-api
+  name: Vanilla Forums Discussion Statuses API
+  description: >-
+    The Discussion Statuses API from Vanilla Forums — 3 operation(s) for discussion statuses.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Discussion Statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-discussion-statuses-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-discussions-api
+  name: Vanilla Forums Discussions API
+  description: The Discussions API from Vanilla Forums — 28 operation(s) for discussions.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Discussions
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-discussions-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-drafts-api
+  name: Vanilla Forums Drafts API
+  description: The Drafts API from Vanilla Forums — 3 operation(s) for drafts.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Drafts
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-drafts-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-email-templates-api
+  name: Vanilla Forums email-templates API
+  description: The email-templates API from Vanilla Forums — 1 operation(s) for email-templates.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Email Templates
+  tags_raw:
+  - email-templates
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-email-templates-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-emails-api
+  name: Vanilla Forums Emails API
+  description: The Emails API from Vanilla Forums — 3 operation(s) for emails.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Email
+  tags_raw:
+  - Emails
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-emails-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-exports-api
+  name: Vanilla Forums Exports API
+  description: The Exports API from Vanilla Forums — 3 operation(s) for exports.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Export
+  tags_raw:
+  - Exports
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-exports-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-features-api
+  name: Vanilla Forums Features API
+  description: The Features API from Vanilla Forums — 2 operation(s) for features.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Features
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-features-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-icons-api
+  name: Vanilla Forums Icons API
+  description: The Icons API from Vanilla Forums — 6 operation(s) for icons.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Icons
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-icons-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-job-queue-api
+  name: Vanilla Forums Job Queue API
+  description: The Job Queue API from Vanilla Forums — 2 operation(s) for job queue.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Job Queue
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-job-queue-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-locales-api
+  name: Vanilla Forums Locales API
+  description: The Locales API from Vanilla Forums — 2 operation(s) for locales.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Locales
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-locales-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-media-api
+  name: Vanilla Forums Media API
+  description: The Media API from Vanilla Forums — 11 operation(s) for media.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-media-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-moderation-messages-api
+  name: Vanilla Forums Moderation Messages API
+  description: >-
+    The Moderation Messages API from Vanilla Forums — 3 operation(s) for moderation messages.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Moderation Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-moderation-messages-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-notification-preferences-api
+  name: Vanilla Forums Notification Preferences API
+  description: >-
+    The Notification Preferences API from Vanilla Forums — 2 operation(s) for notification preferences.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Notification Preferences
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-notification-preferences-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-notifications-api
+  name: Vanilla Forums Notifications API
+  description: The Notifications API from Vanilla Forums — 3 operation(s) for notifications.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Notification
+  tags_raw:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-notifications-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-polls-api
+  name: Vanilla Forums Polls API
+  description: The Polls API from Vanilla Forums — 4 operation(s) for polls.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Polls
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-polls-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-posts-api
+  name: Vanilla Forums Posts API
+  description: The Posts API from Vanilla Forums — 1 operation(s) for posts.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Posts
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-posts-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-product-messages-api
+  name: Vanilla Forums Product Messages API
+  description: The Product Messages API from Vanilla Forums — 4 operation(s) for product messages.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Product Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-product-messages-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-profile-fields-api
+  name: Vanilla Forums Profile Fields API
+  description: The Profile Fields API from Vanilla Forums — 3 operation(s) for profile fields.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Profile Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-profile-fields-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-ranks-api
+  name: Vanilla Forums Ranks API
+  description: The Ranks API from Vanilla Forums — 3 operation(s) for ranks.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Ranks
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-ranks-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-reactions-api
+  name: Vanilla Forums Reactions API
+  description: The Reactions API from Vanilla Forums — 3 operation(s) for reactions.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Reactions
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-reactions-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-reports-escalations-api
+  name: Vanilla Forums Reports & Escalations API
+  description: >-
+    The Reports & Escalations API from Vanilla Forums — 14 operation(s) for reports & escalations.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Reports & Escalations
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-reports-escalations-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-resources-api
+  name: Vanilla Forums Resources API
+  description: The Resources API from Vanilla Forums — 3 operation(s) for resources.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Resources
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-resources-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-rich-api
+  name: Vanilla Forums Rich API
+  description: The Rich API from Vanilla Forums — 1 operation(s) for rich.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Rich
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-rich-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-role-requests-api
+  name: Vanilla Forums Role Requests API
+  description: The Role Requests API from Vanilla Forums — 4 operation(s) for role requests.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Role Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-role-requests-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-roles-api
+  name: Vanilla Forums Roles API
+  description: The Roles API from Vanilla Forums — 4 operation(s) for roles.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-roles-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-rules-api
+  name: Vanilla Forums Rules API
+  description: The Rules API from Vanilla Forums — 2 operation(s) for rules.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-rules-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-search-api
+  name: Vanilla Forums Search API
+  description: The Search API from Vanilla Forums — 1 operation(s) for search.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-search-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-sessions-api
+  name: Vanilla Forums Sessions API
+  description: The Sessions API from Vanilla Forums — 1 operation(s) for sessions.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-site-totals-api
+  name: Vanilla Forums Site Totals API
+  description: The Site Totals API from Vanilla Forums — 1 operation(s) for site totals.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Site Totals
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-site-totals-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-statistics-api
+  name: Vanilla Forums Statistics API
+  description: The Statistics API from Vanilla Forums — 1 operation(s) for statistics.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-statistics-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-statuses-deprecated-api
+  name: Vanilla Forums Statuses (Deprecated) API
+  description: >-
+    The Statuses (Deprecated) API from Vanilla Forums — 3 operation(s) for statuses (deprecated).
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Statuses (Deprecated)
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-statuses-deprecated-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-tags-api
+  name: Vanilla Forums Tags API
+  description: The Tags API from Vanilla Forums — 4 operation(s) for tags.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-tags-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-theme-assets-api
+  name: Vanilla Forums Theme Assets API
+  description: The Theme Assets API from Vanilla Forums — 12 operation(s) for theme assets.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Theme Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-theme-assets-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-themes-api
+  name: Vanilla Forums Themes API
+  description: The Themes API from Vanilla Forums — 5 operation(s) for themes.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Themes
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-themes-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-tokens-api
+  name: Vanilla Forums Tokens API
+  description: The Tokens API from Vanilla Forums — 4 operation(s) for tokens.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-translations-api
+  name: Vanilla Forums Translations API
+  description: The Translations API from Vanilla Forums — 4 operation(s) for translations.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Translation
+  tags_raw:
+  - Translations
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-translations-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-user-mentions-api
+  name: Vanilla Forums User Mentions API
+  description: The User Mentions API from Vanilla Forums — 2 operation(s) for user mentions.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - User Mentions
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-user-mentions-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-user-notes-api
+  name: Vanilla Forums User Notes API
+  description: The User Notes API from Vanilla Forums — 7 operation(s) for user notes.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - User Notes
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-user-notes-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-users-api
+  name: Vanilla Forums Users API
+  description: The Users API from Vanilla Forums — 16 operation(s) for users.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - User
+  tags_raw:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-users-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-widgets-api
+  name: Vanilla Forums Widgets API
+  description: The Widgets API from Vanilla Forums — 2 operation(s) for widgets.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Widgets
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-widgets-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-add-ons-api
+  name: Vanilla Forums Add Ons API
+  description: The Add Ons API from Vanilla Forums — 2 operation(s) for add ons.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - Addons
+  tags_raw:
+  - Add Ons
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-add-ons-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- aid: vanilla-forums:vanilla-forums-data-source-api
+  name: Vanilla Forums Data Source API
+  description: The Data Source API from Vanilla Forums — 3 operation(s) for data source.
+  humanURL: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+  baseURL: https://open.vanillaforums.com/api/v2
+  tags:
+  - DataSource
+  tags_raw:
+  - Data Source
+  properties:
+  - type: OpenAPI
+    url: openapi/vanilla-forums-data-source-api-openapi.yml
+  - type: Documentation
+    url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+- FN: APIs.json
+  email: info@apis.io
+common:
+
+- type: Plans
+  url: plans/vanilla-forums-plans-pricing.yml
+- type: ParentCompany
+
+  url: https://higherlogic.com/
+
+  name: Higher Logic
+
+  x-relationship: acquired
+
+  x-evidence: description names the acquirer and https://vanillaforums.com/ now redirects to higherlogic.com (roadmap#390, corroborate-dead.py)
+- type: CapabilityMap
+  url: capabilities/vanilla-forums-capability-edges.yml
+  name: Vanilla Forums Business Capability Map
+- type: Overlay
+  url: overlays/vanilla-forums-vanilla-api-overlay.yaml
+- type: Website
+  url: https://vanillaforums.com/
+- type: DeveloperPortal
+  url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+- type: Documentation
+  url: https://success.vanillaforums.com/kb
+- type: APIReference
+  url: https://success.vanillaforums.com/kb/articles/1842-api-v2-endpoints
+- type: GettingStarted
+  url: https://success.vanillaforums.com/kb/articles/40-api-v2-overview
+- type: Support
+  url: https://success.vanillaforums.com/
+- type: Blog
+  url: https://www.higherlogic.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/vanilla
+- type: StatusPage
+  url: https://status.vanillaforums.com/
+- type: Pricing
+  url: https://www.higherlogic.com/vanilla-packages/
+- type: PrivacyPolicy
+  url: https://www.higherlogic.com/legal/privacy/
+- type: TermsOfService
+  url: https://www.higherlogic.com/legal/
+- type: Login
+  url: https://success.vanillaforums.com/entry/signin
+- type: ChangeLog
+  url: changelog/vanilla-forums-changelog.yml
+- type: Packages
+  url: packages/vanilla-forums-packages.yml
+- type: SDKs
+  url: packages/vanilla-forums-packages.yml
+- type: WellKnown
+  url: well-known/vanilla-forums-well-known.yml
+- type: MCPServer
+  url: mcp/vanilla-forums-mcp.yml
+- type: LLMsTxt
+  url: llms/vanilla-forums-llms.txt
+- type: Conformance
+  url: conformance/vanilla-forums-conformance.yml
+- type: ErrorCatalog
+  url: errors/vanilla-forums-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/vanilla-forums-lifecycle.yml
+- type: Authentication
+  url: authentication/vanilla-forums-authentication.yml
+- type: DomainSecurity
+  url: security/vanilla-forums-domain-security.yml
+- type: Conventions
+  url: conventions/vanilla-forums-conventions.yml
+- type: RateLimits
+  url: rate-limits/vanilla-forums-rate-limits.yml
+- type: Webhooks
+  url: asyncapi/vanilla-forums-webhooks.yml
+- type: DataModel
+  url: data-model/vanilla-forums-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml

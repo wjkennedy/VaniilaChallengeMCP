@@ -1,0 +1,319 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons User Notes API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of user notes and warnings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes",
+            "params": [
+              {
+                "name": "userNoteID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by note type."
+              },
+              {
+                "name": "userID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "insertUserID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of user notes and warnings."
+        },
+        {
+          "info": {
+            "name": "Get a list of user notes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/notes",
+            "params": [
+              {
+                "name": "userNoteID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "insertUserID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of user notes."
+        },
+        {
+          "info": {
+            "name": "Post a user note.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/notes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a user note."
+        },
+        {
+          "info": {
+            "name": "Get a single user note by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a single user note by ID"
+        },
+        {
+          "info": {
+            "name": "Patch a user note.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch a user note."
+        },
+        {
+          "info": {
+            "name": "Delete a user note.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a user note."
+        },
+        {
+          "info": {
+            "name": "Get the warning form Schema.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/warningform",
+            "params": [
+              {
+                "name": "recordType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "recordID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get the warning form Schema."
+        },
+        {
+          "info": {
+            "name": "Get a list of warnings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/warnings",
+            "params": [
+              {
+                "name": "userNoteID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "insertUserID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of warnings."
+        },
+        {
+          "info": {
+            "name": "Warn a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/warnings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Warn a user."
+        },
+        {
+          "info": {
+            "name": "Get a single warning by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/warnings/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a single warning by ID"
+        },
+        {
+          "info": {
+            "name": "Reverse a warning.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/warnings/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reverse a warning."
+        },
+        {
+          "info": {
+            "name": "Get a single user note or warning by ID,",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/user-notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a single user note or warning by ID,"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

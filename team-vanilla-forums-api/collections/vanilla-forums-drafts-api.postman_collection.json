@@ -1,0 +1,704 @@
+{
+  "item": [
+    {
+      "id": "94691cf0-febb-42ce-8b7c-a24624db4d7b",
+      "name": "Drafts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e74b198f-4923-4df3-b0bd-558bfef9bb21",
+          "name": "List drafts created by the current user.",
+          "request": {
+            "name": "List drafts created by the current user.",
+            "description": {},
+            "url": {
+              "path": [
+                "drafts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "recordType",
+                  "value": "<string>",
+                  "description": "Filter drafts by record type.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "parentRecordType",
+                  "value": "<string>",
+                  "description": "Filter drafts by parent record type.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "parentRecordID",
+                  "value": "<integer>",
+                  "description": "Filter by the unique ID of the parent for a draft. Used with recordType.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "draftStatus",
+                  "value": "draft",
+                  "description": "Filter by draft status\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateUpdated",
+                  "value": "<date-filter>",
+                  "description": "Filter by update date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateScheduled",
+                  "value": "<date-filter>",
+                  "description": "Filter by date scheduled\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "-dateUpdated",
+                  "description": "Sort the response by a specific field.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<boolean>",
+                  "description": "Expand the response with additional data.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09884751-66d4-4208-8207-30bed1f4f3af",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "recordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentRecordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentRecordID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "draftStatus",
+                      "value": "draft"
+                    },
+                    {
+                      "key": "dateUpdated",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateScheduled",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateUpdated"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"draftID\": 365,\n    \"recordType\": \"comment\",\n    \"parentRecordID\": 6221,\n    \"attributes\": {},\n    \"insertUserID\": 2045,\n    \"dateInserted\": \"1969-09-19T13:50:59.004Z\",\n    \"updateUserID\": 4541,\n    \"dateUpdated\": \"1990-09-21T05:43:29.593Z\",\n    \"editUrl\": \"string\",\n    \"breadcrumbs\": [\n      {\n        \"label\": \"string\",\n        \"url\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"permaLink\": \"string\",\n    \"dateScheduled\": \"2023-03-20T13:57:54.776Z\",\n    \"draftStatus\": \"draft\",\n    \"failedReason\": \"string\"\n  },\n  {\n    \"draftID\": 9142,\n    \"recordType\": \"discussion\",\n    \"parentRecordID\": 5332,\n    \"attributes\": {},\n    \"insertUserID\": 9272,\n    \"dateInserted\": \"2008-12-18T06:48:48.694Z\",\n    \"updateUserID\": 3612,\n    \"dateUpdated\": \"2022-08-27T00:27:25.108Z\",\n    \"editUrl\": \"string\",\n    \"breadcrumbs\": [\n      {\n        \"label\": \"string\",\n        \"url\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"permaLink\": \"string\",\n    \"dateScheduled\": \"2014-05-27T06:34:45.888Z\",\n    \"draftStatus\": \"draft\",\n    \"failedReason\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25a2e025-8032-4a86-9f0e-26fedce62ca5",
+          "name": "Create a draft.",
+          "request": {
+            "name": "Create a draft.",
+            "description": {},
+            "url": {
+              "path": [
+                "drafts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recordType\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"dateScheduled\": \"<dateTime>\",\n  \"draftStatus\": \"draft\",\n  \"parentRecordType\": \"<string>\",\n  \"parentRecordID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "825c0231-cf1e-430c-9be8-75757a1b8d84",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recordType\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"dateScheduled\": \"<dateTime>\",\n  \"draftStatus\": \"draft\",\n  \"parentRecordType\": \"<string>\",\n  \"parentRecordID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"draftID\": 4412,\n  \"recordType\": \"comment\",\n  \"parentRecordID\": 3449,\n  \"attributes\": {},\n  \"insertUserID\": 4059,\n  \"dateInserted\": \"2008-03-27T21:51:24.048Z\",\n  \"updateUserID\": 8498,\n  \"dateUpdated\": \"2021-12-04T00:09:04.211Z\",\n  \"draftStatus\": \"draft\",\n  \"dateScheduled\": \"1953-02-11T22:21:24.734Z\",\n  \"recordID\": 6078\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40c5aea1-612d-490f-bd6f-04109e95d982",
+          "name": "Delete a draft.",
+          "request": {
+            "name": "Delete a draft.",
+            "description": {},
+            "url": {
+              "path": [
+                "drafts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The draft ID.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3fe9ddf-6ebd-4567-a4de-f76ff7dfc672",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drafts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The draft ID.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e203014-e33e-4c81-bc58-7ab9acc94bd0",
+          "name": "Get a draft.",
+          "request": {
+            "name": "Get a draft.",
+            "description": {},
+            "url": {
+              "path": [
+                "drafts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The draft ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4888e947-3708-4967-b32d-951209480d8d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drafts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The draft ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"draftID\": 4412,\n  \"recordType\": \"comment\",\n  \"parentRecordID\": 3449,\n  \"attributes\": {},\n  \"insertUserID\": 4059,\n  \"dateInserted\": \"2008-03-27T21:51:24.048Z\",\n  \"updateUserID\": 8498,\n  \"dateUpdated\": \"2021-12-04T00:09:04.211Z\",\n  \"draftStatus\": \"draft\",\n  \"dateScheduled\": \"1953-02-11T22:21:24.734Z\",\n  \"recordID\": 6078\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da6cd824-f41b-43e0-b1b8-e03922de908f",
+          "name": "Update a draft.",
+          "request": {
+            "name": "Update a draft.",
+            "description": {},
+            "url": {
+              "path": [
+                "drafts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The draft ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recordType\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"dateScheduled\": \"<dateTime>\",\n  \"draftStatus\": \"draft\",\n  \"parentRecordType\": \"<string>\",\n  \"parentRecordID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff8ba466-d41c-45ca-8215-54528ab463a0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drafts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The draft ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recordType\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"dateScheduled\": \"<dateTime>\",\n  \"draftStatus\": \"draft\",\n  \"parentRecordType\": \"<string>\",\n  \"parentRecordID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"draftID\": 8693,\n  \"parentRecordID\": 1989,\n  \"attributes\": {},\n  \"draftStatus\": \"draft\",\n  \"dateScheduled\": \"1994-07-10T03:57:51.423Z\",\n  \"recordID\": 7754\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1aee86ea-1b36-47de-9522-9f2e12487f62",
+          "name": "Get a draft for editing.",
+          "request": {
+            "name": "Get a draft for editing.",
+            "description": {},
+            "url": {
+              "path": [
+                "drafts",
+                ":id",
+                "edit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The draft ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d86b4e24-ec70-4dcb-a0d6-fa661f78bbb1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drafts",
+                    ":id",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The draft ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"draftID\": 3600,\n  \"parentRecordID\": 4859,\n  \"attributes\": {},\n  \"draftStatus\": \"draft\",\n  \"dateScheduled\": \"1990-08-03T02:57:21.565Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "22cb65fa-9f1b-4153-aaf8-7bb9b30d7101",
+    "name": "Vanilla Addons Drafts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

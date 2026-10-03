@@ -1,0 +1,248 @@
+{
+  "item": [
+    {
+      "id": "0eb77b9b-c359-4616-bd45-9ae5c08812d0",
+      "name": "User Mentions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b8ae3da2-ff62-48d1-835c-980ac654f952",
+          "name": "List the user mentions of a user.",
+          "request": {
+            "name": "List the user mentions of a user.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-mentions",
+                "users",
+                ":userID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination). This parameter is incompatible with a tree structure."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Desired number of items per page. This parameter is incompatible with a tree structure."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "userID",
+                  "description": "(Required) The user ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "514a6637-a31f-4467-aa85-7d514f57c0b2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-mentions",
+                    "users",
+                    ":userID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "userID",
+                      "description": "(Required) The user ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userID\": 6839,\n    \"recordType\": \"string\",\n    \"recordID\": 4003,\n    \"mentionedName\": \"string\",\n    \"parentRecordType\": \"string\",\n    \"ParentRecordID\": 7596,\n    \"dateInserted\": \"1995-02-08T01:13:01.545Z\",\n    \"status\": \"string\"\n  },\n  {\n    \"userID\": 2567,\n    \"recordType\": \"string\",\n    \"recordID\": 6472,\n    \"mentionedName\": \"string\",\n    \"parentRecordType\": \"string\",\n    \"ParentRecordID\": 5779,\n    \"dateInserted\": \"2003-02-25T11:43:39.388Z\",\n    \"status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d030f429-65fb-4895-b7b3-2ade53a2c40e",
+          "name": "Anonymize a user's mentions.",
+          "request": {
+            "name": "Anonymize a user's mentions.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-mentions",
+                ":id",
+                "anonymize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The userID of the user to anonymize."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6719b839-bad7-42f5-ab79-aac54bcd81c0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-mentions",
+                    ":id",
+                    "anonymize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The userID of the user to anonymize."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"progress\": {}\n  },\n  {\n    \"progress\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "349dbdaf-79c0-4f4e-ba6c-84b2d923a842",
+    "name": "Vanilla Addons User Mentions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

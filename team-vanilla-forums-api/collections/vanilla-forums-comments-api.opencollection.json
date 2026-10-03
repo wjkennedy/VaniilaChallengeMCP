@@ -1,0 +1,346 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Comments API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List comments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/comments",
+            "params": [
+              {
+                "name": "commentID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of comment IDs."
+              },
+              {
+                "name": "dateInserted",
+                "value": "",
+                "type": "query",
+                "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "dateUpdated",
+                "value": "",
+                "type": "query",
+                "description": "Filter by update date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "discussionID",
+                "value": "",
+                "type": "query",
+                "description": "The discussion ID."
+              },
+              {
+                "name": "parentRecordType",
+                "value": "",
+                "type": "query",
+                "description": "The type of the parent record. Must be used with parentRecordID."
+              },
+              {
+                "name": "parentRecordID",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the parent record. Must be used with parentRecordType."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort the results."
+              },
+              {
+                "name": "insertUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by author.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "qna",
+                "value": "",
+                "type": "query",
+                "description": "Filter comment by answer status."
+              },
+              {
+                "name": "quoteParent",
+                "value": "",
+                "type": "query",
+                "description": "Quote the parent comment as part of the body."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List comments."
+        },
+        {
+          "info": {
+            "name": "Add a comment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/comments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a comment."
+        },
+        {
+          "info": {
+            "name": "Search comments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/comments/search",
+            "params": [
+              {
+                "name": "categoryID",
+                "value": "",
+                "type": "query",
+                "description": "The numeric ID of a category.\n"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search terms.\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Search comments."
+        },
+        {
+          "info": {
+            "name": "Get a comment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The comment ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "quoteParent",
+                "value": "",
+                "type": "query",
+                "description": "Quote the parent comment as part of the body."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a comment."
+        },
+        {
+          "info": {
+            "name": "Update a comment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The comment ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a comment."
+        },
+        {
+          "info": {
+            "name": "Delete a comment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The comment ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              }
+            ]
+          },
+          "docs": "Delete a comment."
+        },
+        {
+          "info": {
+            "name": "PATCH /comments/{id}/answer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/comments/:id/answer",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Get a comment for editing.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/comments/:id/edit",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The comment ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a comment for editing."
+        },
+        {
+          "info": {
+            "name": "GET /comments/{id}/quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/comments/:id/quote",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The comment ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

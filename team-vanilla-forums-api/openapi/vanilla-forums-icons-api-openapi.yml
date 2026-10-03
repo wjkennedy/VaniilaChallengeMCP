@@ -1,0 +1,662 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Icons API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Icons
+paths:
+  /icons/:iconUUID:
+    delete:
+      summary: Delete an icon variant
+      tags:
+      - Icons
+      parameters:
+      - name: iconUUID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          description: The unique identifier of the icon variant to delete.
+      responses:
+        '204':
+          description: Success
+      x-addon: dashboard
+      operationId: deleteIcons:iconUUID
+      x-operation-id-source: derived
+  /icons/active:
+    get:
+      summary: List the active version of each icon
+      tags:
+      - Icons
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Icon'
+      x-addon: dashboard
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getIconsActive
+      x-operation-id-source: derived
+  /icons/by-name:
+    get:
+      summary: List icon variants by name
+      tags:
+      - Icons
+      parameters:
+      - in: query
+        name: iconName
+        required: true
+        schema:
+          type: string
+          description: The name of the icon to list.
+      - $ref: '#/components/parameters/Page'
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          description: The maximum number of icons to return per page.
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Icon'
+      x-addon: dashboard
+      operationId: getIconsByName
+      x-operation-id-source: derived
+  /icons/override:
+    post:
+      summary: Override icons
+      description: Create one or more new icon variants and mark them as active.
+      tags:
+      - Icons
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                overrides:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      iconName:
+                        type: string
+                        description: The name of the icon to override.
+                      svgRaw:
+                        type: string
+                        description: The raw SVG of the icon.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Icon'
+      x-addon: dashboard
+      operationId: postIconsOverride
+      x-operation-id-source: derived
+  /icons/restore:
+    post:
+      summary: Restore existing icon revisions
+      description: Restore one or more existing icon variants to active status.
+      tags:
+      - Icons
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                restorations:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      iconName:
+                        type: string
+                        description: The name of the icon to restore.
+                      iconUUID:
+                        type: string
+                        format: uuid
+                        description: The unique identifier of the icon variant to restore.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Icon'
+      x-addon: dashboard
+      operationId: postIconsRestore
+      x-operation-id-source: derived
+  /icons/system:
+    get:
+      summary: List all system icons
+      tags:
+      - Icons
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Icon'
+      x-addon: dashboard
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getIconsSystem
+      x-operation-id-source: derived
+components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+  schemas:
+    Icon:
+      type: object
+      properties:
+        iconUUID:
+          type: string
+          format: uuid
+          description: The unique identifier of the icon.
+        iconName:
+          type: string
+          description: The name of the icon. There can be multiple icons with 1 one name, but only 1 active at a time.
+        isActive:
+          type: boolean
+          description: Whether or not the icon is the active variant for that icon name.
+        isCustom:
+          type: boolean
+          description: Whether or not the icon is a custom icon or a default vanilla icon..
+        svgRaw:
+          type: string
+          description: The raw SVG of the icon.
+        svgContents:
+          type: string
+          description: The inner contents of the SVG tag with final processing applied.
+        iconSvgViewBox:
+          type: string
+          description: The exracted `viewbox` property of the SVG.
+        dateInserted:
+          type: string
+          format: date-time
+          description: The date and time the icon was created.
+        insertUserID:
+          type: integer
+          description: The userID that uploaded the icon.
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

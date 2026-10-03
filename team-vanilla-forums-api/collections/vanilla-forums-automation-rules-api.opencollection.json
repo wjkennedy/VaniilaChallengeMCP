@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Automation Rules API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Automation Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get automation rule execution history.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/automation-rules/dispatches",
+            "params": [
+              {
+                "name": "automationRuleID",
+                "value": "",
+                "type": "query",
+                "description": "The automation Rule ID.\n"
+              },
+              {
+                "name": "automationRuleDispatchUUID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by automationRuleDispatchUUID."
+              },
+              {
+                "name": "actionType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by actionType"
+              },
+              {
+                "name": "dispatchStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by automation rule dispatch status."
+              },
+              {
+                "name": "dateUpdated",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dateUpdated. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+              },
+              {
+                "name": "dateLastRun",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dateLastRun. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+              },
+              {
+                "name": "dateFinished",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dateFinished. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand fields on the result."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The results' sort order."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get automation rule execution history."
+        },
+        {
+          "info": {
+            "name": "Get automation rule execution history.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/automation-rules/:automationRuleID/dispatches",
+            "params": [
+              {
+                "name": "automationRuleID",
+                "value": "",
+                "type": "path",
+                "description": "The automation Rule ID.\n"
+              },
+              {
+                "name": "automationRuleDispatchUUID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by automationRuleDispatchUUID"
+              },
+              {
+                "name": "actionType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by actionType"
+              },
+              {
+                "name": "dispatchStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by automation rule dispatch status."
+              },
+              {
+                "name": "dateUpdated",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dateUpdated. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+              },
+              {
+                "name": "dateLastRun",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dateLastRun. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand fields on the result."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The results' sort order."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get automation rule execution history."
+        },
+        {
+          "info": {
+            "name": "Get a specific dispatch execution record.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/automation-rules/:automationRuleID/dispatches/:ruleDispatchID",
+            "params": [
+              {
+                "name": "automationRuleID",
+                "value": "",
+                "type": "path",
+                "description": "The Automation Rule ID."
+              },
+              {
+                "name": "ruleDispatchID",
+                "value": "",
+                "type": "path",
+                "description": "Unique dispatch ID."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a specific dispatch execution record."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

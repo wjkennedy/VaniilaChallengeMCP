@@ -1,0 +1,2513 @@
+{
+  "item": [
+    {
+      "id": "173b643a-e89a-4822-aa0e-72149feca110",
+      "name": "User Notes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "edcaee60-0c5d-43f5-9435-47adb17b95eb",
+          "name": "Get a list of user notes and warnings.",
+          "request": {
+            "name": "Get a list of user notes and warnings.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userNoteID",
+                  "value": "<range-expression>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by note type."
+                },
+                {
+                  "disabled": false,
+                  "key": "userID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f459860d-f7ee-4dcd-bce7-c49a5709a1f2",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userNoteID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"dateInserted\": \"1949-01-26T01:37:13.447Z\",\n    \"insertUserID\": 8558,\n    \"insertIPAddress\": \"147.147.247.93\",\n    \"userNoteID\": 7750,\n    \"type\": \"string\",\n    \"userID\": 7954,\n    \"body\": \"string\",\n    \"format\": \"markdown\",\n    \"dateUpdated\": \"1996-04-02T06:30:10.870Z\",\n    \"updateUserID\": 6942,\n    \"updateIPAddress\": \"95.86.65.197\"\n  },\n  {\n    \"dateInserted\": \"1957-09-30T15:37:20.820Z\",\n    \"insertUserID\": 5977,\n    \"insertIPAddress\": \"34.111.180.192\",\n    \"userNoteID\": 5349,\n    \"type\": \"string\",\n    \"userID\": 7416,\n    \"body\": \"string\",\n    \"format\": \"markdown\",\n    \"dateUpdated\": \"2000-03-29T13:13:33.939Z\",\n    \"updateUserID\": 9597,\n    \"updateIPAddress\": \"106.162.244.101\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36f9d875-33f2-433d-82d0-f9cf1a90f16e",
+          "name": "Get a list of user notes.",
+          "request": {
+            "name": "Get a list of user notes.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                "notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userNoteID",
+                  "value": "<range-expression>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb20f9dd-5306-4afa-8104-7174ba661b80",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userNoteID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "userID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"dateInserted\": \"1949-01-26T01:37:13.447Z\",\n    \"insertUserID\": 8558,\n    \"insertIPAddress\": \"147.147.247.93\",\n    \"userNoteID\": 7750,\n    \"type\": \"string\",\n    \"userID\": 7954,\n    \"body\": \"string\",\n    \"format\": \"markdown\",\n    \"dateUpdated\": \"1996-04-02T06:30:10.870Z\",\n    \"updateUserID\": 6942,\n    \"updateIPAddress\": \"95.86.65.197\"\n  },\n  {\n    \"dateInserted\": \"1957-09-30T15:37:20.820Z\",\n    \"insertUserID\": 5977,\n    \"insertIPAddress\": \"34.111.180.192\",\n    \"userNoteID\": 5349,\n    \"type\": \"string\",\n    \"userID\": 7416,\n    \"body\": \"string\",\n    \"format\": \"markdown\",\n    \"dateUpdated\": \"2000-03-29T13:13:33.939Z\",\n    \"updateUserID\": 9597,\n    \"updateIPAddress\": \"106.162.244.101\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec5be11e-dfe5-4758-b159-8bd68e600fd3",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userNoteID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "userID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a365ec6-6082-40e2-95c1-a58d9a3ca42c",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userNoteID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "userID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45d8b316-3e6a-4a7a-8302-eec8681b8fb8",
+          "name": "Post a user note.",
+          "request": {
+            "name": "Post a user note.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                "notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7284dabd-e8a6-464f-932c-fe25dc300765",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dateInserted\": \"2010-04-24T13:29:40.560Z\",\n  \"insertUserID\": 8436,\n  \"insertIPAddress\": \"208.188.41.125\",\n  \"userNoteID\": 8035,\n  \"type\": \"string\",\n  \"userID\": 9146,\n  \"body\": \"string\",\n  \"format\": \"markdown\",\n  \"dateUpdated\": \"1995-08-10T11:35:01.455Z\",\n  \"updateUserID\": 9589,\n  \"updateIPAddress\": \"81.48.154.222\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9f6e22a-e7cd-494a-aad1-0e91c850358a",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4897bc65-8672-49f2-a0e5-fa8fc3c555b0",
+          "name": "Get a single user note by ID",
+          "request": {
+            "name": "Get a single user note by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                "notes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "671313e3-db11-454d-ab81-e4fa57d2cadc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dateInserted\": \"2010-04-24T13:29:40.560Z\",\n  \"insertUserID\": 8436,\n  \"insertIPAddress\": \"208.188.41.125\",\n  \"userNoteID\": 8035,\n  \"type\": \"string\",\n  \"userID\": 9146,\n  \"body\": \"string\",\n  \"format\": \"markdown\",\n  \"dateUpdated\": \"1995-08-10T11:35:01.455Z\",\n  \"updateUserID\": 9589,\n  \"updateIPAddress\": \"81.48.154.222\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00d7c579-a808-4a68-bf72-9d700ce1cf48",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4dcffad8-b8ea-4d15-9a55-507c97328365",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79b56b97-5c78-4028-9649-7a433b73edf5",
+              "name": "User note does not have a type of \"note\".",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 2034\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db1f9de3-4b68-4ac4-839a-c44231f51a37",
+          "name": "Patch a user note.",
+          "request": {
+            "name": "Patch a user note.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                "notes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ac3b43e-3b94-4588-90c0-6739b91fde48",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dateInserted\": \"2010-04-24T13:29:40.560Z\",\n  \"insertUserID\": 8436,\n  \"insertIPAddress\": \"208.188.41.125\",\n  \"userNoteID\": 8035,\n  \"type\": \"string\",\n  \"userID\": 9146,\n  \"body\": \"string\",\n  \"format\": \"markdown\",\n  \"dateUpdated\": \"1995-08-10T11:35:01.455Z\",\n  \"updateUserID\": 9589,\n  \"updateIPAddress\": \"81.48.154.222\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d87c28b-35fe-42f3-8eff-7a73aba953cf",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e20de1b-8866-4340-a0a4-1d4b15ccd3ad",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f89f6a13-802c-410c-b16f-77bef12c1328",
+              "name": "User note does not have a type of \"note\".",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 2034\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "454f5c48-a358-459a-b511-9101d06aaeb7",
+          "name": "Delete a user note.",
+          "request": {
+            "name": "Delete a user note.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                "notes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f256844f-bf09-4923-9352-422ede9cef85",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a55e83f0-f6c3-4534-b788-55793d998806",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f963390d-c457-4f2a-9bd7-0e427cb50b41",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06ac73aa-c8e1-46c1-b8bf-dd9b04f4f2f5",
+              "name": "User note does not have a type of \"note\".",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 2034\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffc8a4ee-4fca-45d5-a72c-7a23b8f3c898",
+          "name": "Get the warning form Schema.",
+          "request": {
+            "name": "Get the warning form Schema.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                "warningform"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "recordType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "602c3f61-53e3-409d-a107-e8182a759e8d",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warningform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "recordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recordID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "recordID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"warningTypeID\": 1055,\n  \"body\": \"string\",\n  \"moderatorNote\": \"string\",\n  \"attachRecord\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87a80d11-c36d-4a7e-8772-2968beef14f7",
+          "name": "Get a list of warnings.",
+          "request": {
+            "name": "Get a list of warnings.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                "warnings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userNoteID",
+                  "value": "<range-expression>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad2d45b1-bd82-460e-aa68-946c37863d20",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userNoteID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "userID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"dateInserted\": \"1949-01-26T01:37:13.447Z\",\n    \"insertUserID\": 8558,\n    \"insertIPAddress\": \"147.147.247.93\",\n    \"userNoteID\": 7750,\n    \"type\": \"string\",\n    \"userID\": 7954,\n    \"body\": \"string\",\n    \"format\": \"markdown\",\n    \"dateUpdated\": \"1996-04-02T06:30:10.870Z\",\n    \"updateUserID\": 6942,\n    \"updateIPAddress\": \"95.86.65.197\"\n  },\n  {\n    \"dateInserted\": \"1957-09-30T15:37:20.820Z\",\n    \"insertUserID\": 5977,\n    \"insertIPAddress\": \"34.111.180.192\",\n    \"userNoteID\": 5349,\n    \"type\": \"string\",\n    \"userID\": 7416,\n    \"body\": \"string\",\n    \"format\": \"markdown\",\n    \"dateUpdated\": \"2000-03-29T13:13:33.939Z\",\n    \"updateUserID\": 9597,\n    \"updateIPAddress\": \"106.162.244.101\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9507e56e-bbe8-4b62-9690-a507aeb87583",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userNoteID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "userID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93972591-ab6d-4eff-982d-4ab6e55853b2",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userNoteID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "userID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc997bf8-9b65-4c4c-bb93-a420ed114a71",
+          "name": "Warn a user.",
+          "request": {
+            "name": "Warn a user.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                "warnings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"<string>\",\n  \"format\": \"<string>\",\n  \"userID\": \"<integer>\",\n  \"warningTypeID\": \"<integer>\",\n  \"recordType\": \"<string>\",\n  \"recordID\": \"<integer>\",\n  \"recordIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"moderatorNote\": \"<string>\",\n  \"ruleID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "237a9fdd-250e-4b50-b708-673099f5f43b",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"<string>\",\n  \"format\": \"<string>\",\n  \"userID\": \"<integer>\",\n  \"warningTypeID\": \"<integer>\",\n  \"recordType\": \"<string>\",\n  \"recordID\": \"<integer>\",\n  \"recordIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"moderatorNote\": \"<string>\",\n  \"ruleID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"dateInserted\": \"1949-01-26T01:37:13.447Z\",\n    \"insertUserID\": 8558,\n    \"insertIPAddress\": \"147.147.247.93\",\n    \"userNoteID\": 7750,\n    \"type\": \"string\",\n    \"userID\": 7954,\n    \"body\": \"string\",\n    \"format\": \"markdown\",\n    \"dateUpdated\": \"1996-04-02T06:30:10.870Z\",\n    \"updateUserID\": 6942,\n    \"updateIPAddress\": \"95.86.65.197\"\n  },\n  {\n    \"dateInserted\": \"1957-09-30T15:37:20.820Z\",\n    \"insertUserID\": 5977,\n    \"insertIPAddress\": \"34.111.180.192\",\n    \"userNoteID\": 5349,\n    \"type\": \"string\",\n    \"userID\": 7416,\n    \"body\": \"string\",\n    \"format\": \"markdown\",\n    \"dateUpdated\": \"2000-03-29T13:13:33.939Z\",\n    \"updateUserID\": 9597,\n    \"updateIPAddress\": \"106.162.244.101\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "505908ae-176f-4b20-af8d-e339fb8b1e66",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"<string>\",\n  \"format\": \"<string>\",\n  \"userID\": \"<integer>\",\n  \"warningTypeID\": \"<integer>\",\n  \"recordType\": \"<string>\",\n  \"recordID\": \"<integer>\",\n  \"recordIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"moderatorNote\": \"<string>\",\n  \"ruleID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92c5f32e-7fc1-4688-b3e7-b13818312d98",
+          "name": "Get a single warning by ID",
+          "request": {
+            "name": "Get a single warning by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                "warnings",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43fbff54-b325-4826-a735-3998d610aa6d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dateInserted\": \"2010-04-24T13:29:40.560Z\",\n  \"insertUserID\": 8436,\n  \"insertIPAddress\": \"208.188.41.125\",\n  \"userNoteID\": 8035,\n  \"type\": \"string\",\n  \"userID\": 9146,\n  \"body\": \"string\",\n  \"format\": \"markdown\",\n  \"dateUpdated\": \"1995-08-10T11:35:01.455Z\",\n  \"updateUserID\": 9589,\n  \"updateIPAddress\": \"81.48.154.222\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56c49eaa-b08c-4ace-a059-60b59ea79a5c",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6d52e5a-b6fb-440b-8e4a-e4f9f50629f4",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdfea58e-ff5a-45e3-acb8-1c3bd440aad0",
+              "name": "User note does not have a type of \"warning\".",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 2034\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38166a1a-d078-439c-b059-1ea6753fc198",
+          "name": "Reverse a warning.",
+          "request": {
+            "name": "Reverse a warning.",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                "warnings",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reversed\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "682317e2-0fe0-446c-ac36-fc38fa53fa00",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reversed\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dateInserted\": \"2010-04-24T13:29:40.560Z\",\n  \"insertUserID\": 8436,\n  \"insertIPAddress\": \"208.188.41.125\",\n  \"userNoteID\": 8035,\n  \"type\": \"string\",\n  \"userID\": 9146,\n  \"body\": \"string\",\n  \"format\": \"markdown\",\n  \"dateUpdated\": \"1995-08-10T11:35:01.455Z\",\n  \"updateUserID\": 9589,\n  \"updateIPAddress\": \"81.48.154.222\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b009327-5850-4d03-9cc1-78f96a22a2f3",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reversed\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5d1d569-ff14-4916-9155-623fd4d25736",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reversed\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c98c66a-a940-4a14-a21b-ce2b00425f45",
+              "name": "User note does not have a type of \"warning\".",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    "warnings",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reversed\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 2034\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd63811d-c16d-45e3-b439-d5cc4d1c8894",
+          "name": "Get a single user note or warning by ID,",
+          "request": {
+            "name": "Get a single user note or warning by ID,",
+            "description": {},
+            "url": {
+              "path": [
+                "user-notes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecfad988-3c47-4791-b54a-de35d678ad93",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dateInserted\": \"2010-04-24T13:29:40.560Z\",\n  \"insertUserID\": 8436,\n  \"insertIPAddress\": \"208.188.41.125\",\n  \"userNoteID\": 8035,\n  \"type\": \"string\",\n  \"userID\": 9146,\n  \"body\": \"string\",\n  \"format\": \"markdown\",\n  \"dateUpdated\": \"1995-08-10T11:35:01.455Z\",\n  \"updateUserID\": 9589,\n  \"updateIPAddress\": \"81.48.154.222\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c52affd5-3324-41cc-984a-d64447b071bb",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7dccc1e-195d-444d-aab5-0f9711f0285c",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e0234c56-408f-46ff-8e42-e70b20c7e665",
+    "name": "Vanilla Addons User Notes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

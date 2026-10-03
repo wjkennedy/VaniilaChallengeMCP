@@ -1,0 +1,746 @@
+{
+  "item": [
+    {
+      "id": "5ac370ac-9b1e-4ddb-9966-13142617682d",
+      "name": "Tokens",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8da0b106-b862-4dfc-b054-c525cfc8587d",
+          "name": "Get a list of access token IDs for the current user.",
+          "request": {
+            "name": "Get a list of access token IDs for the current user.",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6435539-54e9-422f-a413-b53d8e332c01",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"accessTokenID\": 1407,\n    \"name\": \"string\",\n    \"accessToken\": \"string\",\n    \"dateInserted\": \"2020-12-04T05:00:25.599Z\",\n    \"dateLastUsed\": \"1997-09-23T21:59:08.091Z\"\n  },\n  {\n    \"accessTokenID\": 1566,\n    \"name\": \"string\",\n    \"accessToken\": \"s\",\n    \"dateInserted\": \"2002-11-30T17:17:06.347Z\",\n    \"dateLastUsed\": \"1987-02-18T19:47:01.752Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e52f4790-0c05-44fb-882a-c7b0a453c8e5",
+          "name": "Issue a new access token for the current user.",
+          "request": {
+            "name": "Issue a new access token for the current user.",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accessTokenID\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"accessToken\": \"<string>\",\n  \"dateInserted\": \"<dateTime>\",\n  \"dateLastUsed\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "10208290-cffa-444a-83e5-03d616ee4d8d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accessTokenID\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"accessToken\": \"<string>\",\n  \"dateInserted\": \"<dateTime>\",\n  \"dateLastUsed\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accessTokenID\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"accessToken\": \"<string>\",\n  \"dateInserted\": \"<dateTime>\",\n  \"dateLastUsed\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d67816c5-843c-4b0e-95b3-198b94992e56",
+          "name": "Exchange an OAuth access token for a Vanilla access token.",
+          "request": {
+            "name": "Exchange an OAuth access token for a Vanilla access token.",
+            "description": {
+              "content": "This endpoint takes an access token from your OAuth 2 provider and exchanges it for a Vanilla access token. If no matching user exists in Vanilla, one will be created and an access token will be issued for them.\n\nIn order to use this endpoint, the access token calls out to the API defined in the OAuth connection so it must have a scope that has access to the user's profile or else it will fail.\n\nThe access tokens provided by this endpoint are relatively short lived, so make sure you take note of the `dateExpires` in the response and have a strategy for refreshing the access token for long lived client sessions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                "oauth"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientID\": \"<string>\",\n  \"oauthAccessToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "454723fd-5ff9-434c-b1fd-888050089052",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "oauth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientID\": \"<string>\",\n  \"oauthAccessToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accessToken\": \"va.MtVMRtHgB5Hipdb3HI86VqrdBlI4qWMz.QCw5cA.WkNNEV_\",\n  \"dateExpires\": \"2019-08-30T14:37:52Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ae63016-8663-401f-93a8-96b6ccdd6ae2",
+              "name": "The user profile was successfully fetched, but was malformed in some way.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "oauth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientID\": \"<string>\",\n  \"oauthAccessToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8812323a-7ff7-46f0-a0e3-cff760545492",
+              "name": "Forbidden. The OAuth access token didn't have permission to access the user information or failed in some other way.\n\nIf you get this error then make sure that the profile endpoint on **your** site returns a profile the access tokens you are providing to this site.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "oauth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientID\": \"<string>\",\n  \"oauthAccessToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e7b16d6-aaa5-48ba-85e7-672147f9fadc",
+              "name": "The provided client ID did not match the client ID that was configured within Vanilla.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "oauth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientID\": \"<string>\",\n  \"oauthAccessToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21e0c66d-a5b3-461c-b5e0-59f0165293eb",
+              "name": "OAuth is either not enabled or is not configured on Vanilla.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "oauth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientID\": \"<string>\",\n  \"oauthAccessToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f81f0513-8859-4519-a3a0-23a74b74e1cb",
+          "name": "Issue a JWT that includes the current user's roles as its claims",
+          "request": {
+            "name": "Issue a JWT that includes the current user's roles as its claims",
+            "description": {
+              "content": "This is primarily intended for internal use on client-side code to authenticate to specific API endpoints where the response generated depends on the set of roles and associated permissions, but does not depend on the identity of the requesting user.\n\nAs many users may share a limited set of roles, this approach allows for caching responses to these endpoints for short periods, to improve overall page responsiveness while reducing server-side load.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24974ddb-d9f6-46d1-81b9-8e9278001a30",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roleToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\",\n  \"expires\": \"2024-11-19T19:17:45\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56a78792-d713-44e9-98aa-2504ab520795",
+              "name": "Forbidden. Role tokens cannot be issued to unauthenticated users.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f1e6455-f4a3-4d03-8e3e-ee80cc1c19c9",
+          "name": "Revoke an access token.",
+          "request": {
+            "name": "Revoke an access token.",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The numeric ID of a token.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8463ec2-a2a5-4b58-946d-09001eebfa48",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The numeric ID of a token.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf996941-f64a-43ca-ab72-bc9925ec3c95",
+          "name": "Reveal a usable access token.",
+          "request": {
+            "name": "Reveal a usable access token.",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "transientKey",
+                  "value": "<string>",
+                  "description": "(Required) A valid CSRF token for the current user.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The numeric ID of a token.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6f106bb-5936-4d56-a8dd-0d62a571412f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transientKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The numeric ID of a token.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accessTokenID\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"accessToken\": \"<string>\",\n  \"dateInserted\": \"<dateTime>\",\n  \"dateLastUsed\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0e115d28-6a96-46da-b76f-f28f39861848",
+    "name": "Vanilla Addons Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

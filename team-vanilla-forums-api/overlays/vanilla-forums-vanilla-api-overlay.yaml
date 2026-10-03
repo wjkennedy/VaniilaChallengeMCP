@@ -1,0 +1,53 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Vanilla API v2
+  version: 1.0.0
+extends: openapi/vanilla-api-openapi-original.json
+x-generated: '2026-07-21'
+x-method: generated
+x-source: API Evangelist enrichment pipeline (the original spec is never mutated)
+actions:
+  - target: $.info
+    update:
+      x-apievangelist:
+        provider: vanilla-forums
+        harvested: '2026-07-21'
+        harvested_from: https://open.vanillaforums.com/api/v2/open-api/v3
+        notes: >-
+          Platform-generated per-community spec. 371 operations across 242
+          paths; 362 operations carry summaries but only 6 carry operationIds,
+          and no securitySchemes are declared - see
+          authentication/vanilla-forums-authentication.yml for the documented
+          auth profile (personal access tokens, JWT, role tokens).
+      contact:
+        name: Vanilla Support (Higher Logic)
+        url: https://success.vanillaforums.com/
+  - target: $.info
+    update:
+      x-rate-limits:
+        get_per_minute_per_ip: 300
+        write_per_minute_per_ip: 120
+        throttle_status: 429
+        docs: https://success.vanillaforums.com/kb/articles/44-rate-limits
+  - target: $
+    update:
+      externalDocs:
+        description: API and Webhooks documentation on the Success Community
+        url: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+  - target: $.servers
+    description: >-
+      The harvested server URL is the open.vanillaforums.com community; every
+      Vanilla cloud community serves the same API at https://<community-domain>/api/v2.
+    update: []
+  - target: $.components
+    update:
+      securitySchemes:
+        personalAccessToken:
+          type: http
+          scheme: bearer
+          description: Personal access token from Edit Profile > Access Tokens (docs kb/articles/41).
+        jwtBearer:
+          type: http
+          scheme: bearer
+          bearerFormat: JWT
+          description: HS256 JWT via the JWT addon (docs kb/articles/122).

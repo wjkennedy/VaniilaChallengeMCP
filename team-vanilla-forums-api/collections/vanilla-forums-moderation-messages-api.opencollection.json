@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Moderation Messages API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Moderation Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of moderation messages.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/moderation-messages",
+            "params": [
+              {
+                "name": "isEnabled",
+                "value": "",
+                "type": "query",
+                "description": "Whether the message is enabled or not."
+              },
+              {
+                "name": "recordID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by recordID"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by message type."
+              },
+              {
+                "name": "layoutViewType",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages by the layoutViewType"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of moderation messages."
+        },
+        {
+          "info": {
+            "name": "Post a moderation message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/moderation-messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a moderation message."
+        },
+        {
+          "info": {
+            "name": "Get a moderation message by its ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/moderation-messages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a moderation message by its ID."
+        },
+        {
+          "info": {
+            "name": "Edit a moderation message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/moderation-messages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit a moderation message."
+        },
+        {
+          "info": {
+            "name": "Delete a moderation message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/moderation-messages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a moderation message."
+        },
+        {
+          "info": {
+            "name": "Dismiss a moderation message for the session user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/moderation-messages/:id/dismiss",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Dismiss a moderation message for the session user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

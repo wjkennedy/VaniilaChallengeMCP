@@ -1,0 +1,831 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Automation Rules API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Automation Rules
+paths:
+  /automation-rules/dispatches:
+    x-hidden: false
+    get:
+      summary: Get automation rule execution history
+      tags:
+      - Automation Rules
+      parameters:
+      - name: automationRuleID
+        description: 'The automation Rule ID.
+
+          '
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: automationRuleDispatchUUID
+        description: Filter by automationRuleDispatchUUID.
+        in: query
+        schema:
+          type: string
+      - name: actionType
+        description: Filter by actionType
+        in: query
+        schema:
+          type: string
+      - name: dispatchStatus
+        description: Filter by automation rule dispatch status.
+        in: query
+        schema:
+          items:
+            enum:
+            - queued
+            - running
+            - success
+            - warning
+            - failed
+            type: string
+          type: array
+        style: form
+      - name: dateUpdated
+        description: Filter by dateUpdated. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+        in: query
+        schema:
+          format: date-filter
+          type: string
+      - name: dateLastRun
+        description: Filter by dateLastRun. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+        in: query
+        schema:
+          format: date-filter
+          type: string
+      - name: dateFinished
+        description: Filter by dateFinished. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+        in: query
+        schema:
+          format: date-filter
+          type: string
+      - $ref: '#/components/parameters/Page'
+      - name: limit
+        in: query
+        description: Desired number of items per page.
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - name: expand
+        description: Expand fields on the result.
+        in: query
+        schema:
+          items:
+            enum:
+            - insertUser
+            - updateUser
+            - all
+            - insertUser.ssoID
+            - insertUser.roles
+            - insertUser.profileFields
+            - insertUser.extended
+            - updateUser.ssoID
+            - updateUser.roles
+            - updateUser.profileFields
+            - updateUser.extended
+            type: string
+          type: array
+        style: form
+      - name: sort
+        description: The results' sort order.
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            example: -dateDispatched
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AutomationDispatch'
+          description: Success
+        '403':
+          $ref: '#/components/responses/PermissionError'
+      x-addon: dashboard
+      operationId: getAutomationRulesDispatches
+      x-operation-id-source: derived
+  /automation-rules/{automationRuleID}/dispatches:
+    x-hidden: false
+    get:
+      summary: Get automation rule execution history
+      tags:
+      - Automation Rules
+      parameters:
+      - name: automationRuleID
+        description: 'The automation Rule ID.
+
+          '
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: automationRuleDispatchUUID
+        description: Filter by automationRuleDispatchUUID
+        in: query
+        schema:
+          type: string
+      - name: actionType
+        description: Filter by actionType
+        in: query
+        schema:
+          type: string
+      - name: dispatchStatus
+        description: Filter by automation rule dispatch status.
+        in: query
+        schema:
+          items:
+            enum:
+            - queued
+            - running
+            - success
+            - warning
+            - failed
+            type: string
+          type: array
+        style: form
+      - name: dateUpdated
+        description: Filter by dateUpdated. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+        in: query
+        schema:
+          format: date-filter
+          type: string
+      - name: dateLastRun
+        description: Filter by dateLastRun. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+        in: query
+        schema:
+          format: date-filter
+          type: string
+      - $ref: '#/components/parameters/Page'
+      - name: limit
+        in: query
+        description: Desired number of items per page.
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - name: expand
+        description: Expand fields on the result.
+        in: query
+        schema:
+          items:
+            enum:
+            - insertUser
+            - updateUser
+            - all
+            - insertUser.ssoID
+            - insertUser.roles
+            - insertUser.profileFields
+            - insertUser.extended
+            - updateUser.ssoID
+            - updateUser.roles
+            - updateUser.profileFields
+            - updateUser.extended
+            type: string
+          type: array
+        style: form
+      - name: sort
+        description: The results' sort order.
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            example: -dateDispatched
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AutomationDispatch'
+          description: Success
+        '403':
+          $ref: '#/components/responses/PermissionError'
+      x-addon: dashboard
+      operationId: getAutomationRulesByAutomationRuleIDDispatches
+      x-operation-id-source: derived
+  /automation-rules/{automationRuleID}/dispatches/{ruleDispatchID}:
+    get:
+      parameters:
+      - name: automationRuleID
+        in: path
+        description: The Automation Rule ID.
+        required: true
+        schema:
+          type: integer
+      - name: ruleDispatchID
+        in: path
+        description: Unique dispatch ID.
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDispatch'
+      summary: Get a specific dispatch execution record
+      tags:
+      - Automation Rules
+      x-addon: dashboard
+      operationId: getAutomationRulesByAutomationRuleIDDispatchesByRuleDispatchID
+      x-operation-id-source: derived
+components:
+  schemas:
+    AutomationDispatch:
+      description: 'provides the list of automation recipes that has been created by the user
+
+        '
+      type: object
+      properties:
+        automationRuleDispatchUUID:
+          type: string
+          description: The unique id of the automation rule run
+        automationRuleId:
+          type: integer
+          description: The id of the automation rule
+        automationRuleRevisionId:
+          type: integer
+          description: The id of the automation rule revision
+        name:
+          type: string
+          description: The automation rule's name
+        dateInserted:
+          type: string
+          format: date-time
+          description: The date the automation rule was created
+        dateUpdated:
+          type: string
+          format: date-time
+          description: The date the automation rule was updated
+        dateDispatched:
+          type: string
+          format: date-time
+          description: The date the automation rule ran
+        status:
+          type: string
+          description: The status of the automation rule run
+        queuedJobStatus:
+          type: string
+          description: The status of the queued Job run
+        trigger:
+          type: object
+          description: The trigger of the automation rule
+          items:
+            $ref: '#/components/schemas/TriggerAction'
+        action:
+          type: object
+          description: The actions of the automation rule
+          items:
+            $ref: '#/components/schemas/TriggerAction'
+      x-addon: dashboard
+    TriggerAction:
+      type: object
+      properties:
+        trigger:
+          type: object
+          description: The trigger for the automation rule
+          properties:
+            triggerType:
+              type: string
+              description: The name of the trigger type
+            triggerName:
+              type: string
+              description: The name/label of the trigger or action
+            triggerValue:
+              type: object
+              description: The value of the trigger
+        action:
+          type: object
+          description: The action for the automation rule
+          properties:
+            actionType:
+              type: string
+              description: The name of the action type
+            actionName:
+              type: string
+              description: The name/label of the trigger or action
+            actionValue:
+              type: object
+              description: The value of the action
+      x-addon: dashboard
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+  responses:
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

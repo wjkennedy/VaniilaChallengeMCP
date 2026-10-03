@@ -1,0 +1,151 @@
+{
+  "source": "challenges.html",
+  "challenges": [
+    {
+      "id": "career-connector",
+      "name": "Career Connector",
+      "description": "Share and like Jobs and Careers content.",
+      "points": 25,
+      "repeatable": true,
+      "cadence": "unspecified",
+      "mode": "browser",
+      "verification": ["share", "reaction", "target-content"]
+    },
+    {
+      "id": "save-me-a-seat",
+      "name": "Save Me A Seat",
+      "description": "RSVP for a community event.",
+      "points": 50,
+      "repeatable": true,
+      "cadence": "unspecified",
+      "mode": "hybrid",
+      "verification": ["event-rsvp"]
+    },
+    {
+      "id": "content-bounty",
+      "name": "Content Bounty",
+      "description": "Join the Contributors group and claim a community content bounty.",
+      "points": 750,
+      "repeatable": true,
+      "cadence": "unspecified",
+      "mode": "hybrid",
+      "verification": ["group-membership", "bounty-claim"]
+    },
+    {
+      "id": "make-it-appen",
+      "name": "Make It Appen",
+      "description": "Engage in the App Central group.",
+      "points": 150,
+      "repeatable": true,
+      "cadence": "unspecified",
+      "mode": "hybrid",
+      "verification": ["group-membership", "discussion-or-comment"]
+    },
+    {
+      "id": "sharing-is-caring",
+      "name": "Sharing Is Caring",
+      "description": "Share community content every day for a bonus.",
+      "points": 40,
+      "repeatable": true,
+      "cadence": "daily",
+      "mode": "browser",
+      "verification": ["share", "daily-window"]
+    },
+    {
+      "id": "standout-specialist",
+      "name": "Standout Specialist",
+      "description": "Answer questions in the Compass, Crowd, Fisheye/Crucible, or Sourcetree product collections.",
+      "points": 750,
+      "repeatable": true,
+      "cadence": "daily",
+      "limit": "3 per day",
+      "mode": "hybrid",
+      "verification": ["question-answer", "target-collection", "daily-window"]
+    },
+    {
+      "id": "thursday-thoughts",
+      "name": "Thursday Thoughts",
+      "description": "Participate in Throwback Thursday.",
+      "points": 50,
+      "repeatable": true,
+      "cadence": "event-based",
+      "mode": "hybrid",
+      "verification": ["target-discussion", "comment-or-reaction"]
+    },
+    {
+      "id": "ace-attendee",
+      "name": "ACE Attendee",
+      "description": "Attend an Atlassian Community Event.",
+      "points": 150,
+      "repeatable": true,
+      "cadence": "event-based",
+      "mode": "browser",
+      "verification": ["event-attendance"]
+    },
+    {
+      "id": "agile-adventurer",
+      "name": "Agile Adventurer",
+      "description": "Say hello in the Agile group.",
+      "points": 30,
+      "repeatable": false,
+      "mode": "hybrid",
+      "verification": ["group-membership", "intro-comment"]
+    },
+    {
+      "id": "agile-author",
+      "name": "Agile Author",
+      "description": "Receive ten likes on an article in the Agile group.",
+      "points": 400,
+      "repeatable": false,
+      "mode": "api",
+      "verification": ["article", "group-or-category", "reaction-count", "threshold:10"]
+    },
+    {
+      "id": "appy-answerer",
+      "name": "Appy Answerer",
+      "description": "Answer App Central questions for a daily bonus.",
+      "points": 50,
+      "repeatable": true,
+      "cadence": "daily",
+      "mode": "hybrid",
+      "verification": ["question-answer", "target-group", "daily-window"]
+    },
+    {
+      "id": "at-your-service",
+      "name": "At Your Service",
+      "description": "Participate in the New to Jira Service Management group.",
+      "points": 100,
+      "repeatable": false,
+      "mode": "hybrid",
+      "verification": ["group-membership", "group-participation"]
+    },
+    {
+      "id": "early-ai-dopter",
+      "name": "Early AI-dopter",
+      "description": "Keep up with Sherif-sclusives, the monthly AI round-up.",
+      "points": 25,
+      "repeatable": true,
+      "cadence": "monthly",
+      "mode": "browser",
+      "verification": ["target-content", "reaction-or-comment", "monthly-window"]
+    },
+    {
+      "id": "helping-hands",
+      "name": "Helping Hands",
+      "description": "Answer five questions for a High Five.",
+      "points": 50,
+      "repeatable": false,
+      "mode": "api",
+      "verification": ["accepted-or-published-answer", "threshold:5"]
+    },
+    {
+      "id": "jsm-helper",
+      "name": "JSM Helper",
+      "description": "Get one accepted answer for Jira Service Management questions.",
+      "points": 50,
+      "repeatable": false,
+      "mode": "api",
+      "verification": ["accepted-answer", "target-product:JSM"]
+    }
+  ]
+}

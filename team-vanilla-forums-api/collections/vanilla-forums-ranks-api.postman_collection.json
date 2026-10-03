@@ -1,0 +1,604 @@
+{
+  "item": [
+    {
+      "id": "9acd01ae-2194-4b03-afae-ce90b67e3b97",
+      "name": "Ranks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d9d2c1c8-d0e9-4e96-a877-7ffac9c5b9d6",
+          "name": "Get a list of all ranks.",
+          "request": {
+            "name": "Get a list of all ranks.",
+            "description": {},
+            "url": {
+              "path": [
+                "ranks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c33f2f4-a870-4503-9800-eedcfcdbecb2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ranks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"rankID\": {},\n    \"name\": \"string\",\n    \"userTitle\": \"string\",\n    \"level\": 6639,\n    \"notificationBody\": \"string\",\n    \"cssClass\": \"string\",\n    \"abilities\": {\n      \"avatar\": true,\n      \"commentsAdd\": false,\n      \"conversationsAdd\": false,\n      \"curation\": true,\n      \"discussionsAdd\": false,\n      \"editTimeout\": 9499,\n      \"format\": \"TextEx\",\n      \"linksActivity\": false,\n      \"linksConversations\": false,\n      \"linksPosts\": false,\n      \"location\": false,\n      \"meActions\": true,\n      \"polls\": true,\n      \"roleID\": 7905,\n      \"signature\": true,\n      \"signatureImages\": 9807,\n      \"signatureLength\": 3996,\n      \"title\": false,\n      \"verified\": false\n    },\n    \"criteria\": {\n      \"manual\": true,\n      \"permission\": \"community.moderate\",\n      \"points\": 8509,\n      \"posts\": 3625,\n      \"roleID\": 9543,\n      \"time\": \"string\"\n    }\n  },\n  {\n    \"rankID\": {},\n    \"name\": \"string\",\n    \"userTitle\": \"string\",\n    \"level\": 7696,\n    \"notificationBody\": \"string\",\n    \"cssClass\": \"string\",\n    \"abilities\": {\n      \"avatar\": true,\n      \"commentsAdd\": false,\n      \"conversationsAdd\": false,\n      \"curation\": false,\n      \"discussionsAdd\": false,\n      \"editTimeout\": 69,\n      \"format\": \"TextEx\",\n      \"linksActivity\": false,\n      \"linksConversations\": false,\n      \"linksPosts\": false,\n      \"location\": true,\n      \"meActions\": false,\n      \"polls\": false,\n      \"roleID\": 7040,\n      \"signature\": true,\n      \"signatureImages\": 5228,\n      \"signatureLength\": 5783,\n      \"title\": false,\n      \"verified\": false\n    },\n    \"criteria\": {\n      \"manual\": false,\n      \"permission\": \"community.moderate\",\n      \"points\": 9133,\n      \"posts\": 9731,\n      \"roleID\": 6225,\n      \"time\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "679caf7c-fec3-4b67-8f09-e8370ec7606d",
+          "name": "Add a new rank.",
+          "request": {
+            "name": "Add a new rank.",
+            "description": {},
+            "url": {
+              "path": [
+                "ranks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"userTitle\": \"<string>\",\n  \"level\": \"<integer>\",\n  \"abilities\": {\n    \"avatar\": \"<boolean>\",\n    \"commentsAdd\": \"<boolean>\",\n    \"conversationsAdd\": \"<boolean>\",\n    \"curation\": \"<boolean>\",\n    \"discussionsAdd\": \"<boolean>\",\n    \"editTimeout\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"linksActivity\": \"<boolean>\",\n    \"linksConversations\": \"<boolean>\",\n    \"linksPosts\": \"<boolean>\",\n    \"location\": \"<boolean>\",\n    \"meActions\": \"<boolean>\",\n    \"polls\": \"<boolean>\",\n    \"roleID\": \"<integer>\",\n    \"signature\": \"<boolean>\",\n    \"signatureImages\": \"<integer>\",\n    \"signatureLength\": \"<integer>\",\n    \"title\": \"<boolean>\",\n    \"verified\": \"<boolean>\"\n  },\n  \"criteria\": {\n    \"manual\": \"<boolean>\",\n    \"permission\": \"<string>\",\n    \"points\": \"<integer>\",\n    \"posts\": \"<integer>\",\n    \"roleID\": \"<integer>\",\n    \"time\": \"<string>\"\n  },\n  \"cssClass\": \"<string>\",\n  \"notificationBody\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2529cee9-bb8f-4cf0-ae53-4f63f155f348",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ranks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"userTitle\": \"<string>\",\n  \"level\": \"<integer>\",\n  \"abilities\": {\n    \"avatar\": \"<boolean>\",\n    \"commentsAdd\": \"<boolean>\",\n    \"conversationsAdd\": \"<boolean>\",\n    \"curation\": \"<boolean>\",\n    \"discussionsAdd\": \"<boolean>\",\n    \"editTimeout\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"linksActivity\": \"<boolean>\",\n    \"linksConversations\": \"<boolean>\",\n    \"linksPosts\": \"<boolean>\",\n    \"location\": \"<boolean>\",\n    \"meActions\": \"<boolean>\",\n    \"polls\": \"<boolean>\",\n    \"roleID\": \"<integer>\",\n    \"signature\": \"<boolean>\",\n    \"signatureImages\": \"<integer>\",\n    \"signatureLength\": \"<integer>\",\n    \"title\": \"<boolean>\",\n    \"verified\": \"<boolean>\"\n  },\n  \"criteria\": {\n    \"manual\": \"<boolean>\",\n    \"permission\": \"<string>\",\n    \"points\": \"<integer>\",\n    \"posts\": \"<integer>\",\n    \"roleID\": \"<integer>\",\n    \"time\": \"<string>\"\n  },\n  \"cssClass\": \"<string>\",\n  \"notificationBody\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rankID\": {},\n  \"name\": \"string\",\n  \"userTitle\": \"string\",\n  \"level\": 383,\n  \"notificationBody\": \"string\",\n  \"cssClass\": \"string\",\n  \"abilities\": {\n    \"avatar\": true,\n    \"commentsAdd\": false,\n    \"conversationsAdd\": false,\n    \"curation\": false,\n    \"discussionsAdd\": false,\n    \"editTimeout\": 7119,\n    \"format\": \"Text\",\n    \"linksActivity\": false,\n    \"linksConversations\": false,\n    \"linksPosts\": false,\n    \"location\": true,\n    \"meActions\": false,\n    \"polls\": false,\n    \"roleID\": 2438,\n    \"signature\": true,\n    \"signatureImages\": 3726,\n    \"signatureLength\": 1748,\n    \"title\": true,\n    \"verified\": false\n  },\n  \"criteria\": {\n    \"manual\": true,\n    \"permission\": \"site.manage\",\n    \"points\": 2230,\n    \"posts\": 6781,\n    \"roleID\": 9242,\n    \"time\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e61f9f2a-00f6-4e0a-ab9f-0bf4ebc8ac24",
+          "name": "Delete a rank.",
+          "request": {
+            "name": "Delete a rank.",
+            "description": {},
+            "url": {
+              "path": [
+                "ranks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The rank ID.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2dbae268-70af-4e24-9331-49466a3b8135",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ranks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The rank ID.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2251bb74-4f05-4139-831a-ee6ef5e65fa6",
+          "name": "Get a single rank.",
+          "request": {
+            "name": "Get a single rank.",
+            "description": {},
+            "url": {
+              "path": [
+                "ranks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The rank ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab45653e-3733-4007-9a0d-c0654ca051fc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ranks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The rank ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rankID\": {},\n  \"name\": \"string\",\n  \"userTitle\": \"string\",\n  \"level\": 383,\n  \"notificationBody\": \"string\",\n  \"cssClass\": \"string\",\n  \"abilities\": {\n    \"avatar\": true,\n    \"commentsAdd\": false,\n    \"conversationsAdd\": false,\n    \"curation\": false,\n    \"discussionsAdd\": false,\n    \"editTimeout\": 7119,\n    \"format\": \"Text\",\n    \"linksActivity\": false,\n    \"linksConversations\": false,\n    \"linksPosts\": false,\n    \"location\": true,\n    \"meActions\": false,\n    \"polls\": false,\n    \"roleID\": 2438,\n    \"signature\": true,\n    \"signatureImages\": 3726,\n    \"signatureLength\": 1748,\n    \"title\": true,\n    \"verified\": false\n  },\n  \"criteria\": {\n    \"manual\": true,\n    \"permission\": \"site.manage\",\n    \"points\": 2230,\n    \"posts\": 6781,\n    \"roleID\": 9242,\n    \"time\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "27854413-32f7-4415-8185-dbe13f578706",
+          "name": "Edit a rank.",
+          "request": {
+            "name": "Edit a rank.",
+            "description": {},
+            "url": {
+              "path": [
+                "ranks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"abilities\": {\n    \"avatar\": \"<boolean>\",\n    \"commentsAdd\": \"<boolean>\",\n    \"conversationsAdd\": \"<boolean>\",\n    \"curation\": \"<boolean>\",\n    \"discussionsAdd\": \"<boolean>\",\n    \"editTimeout\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"linksActivity\": \"<boolean>\",\n    \"linksConversations\": \"<boolean>\",\n    \"linksPosts\": \"<boolean>\",\n    \"location\": \"<boolean>\",\n    \"meActions\": \"<boolean>\",\n    \"polls\": \"<boolean>\",\n    \"roleID\": \"<integer>\",\n    \"signature\": \"<boolean>\",\n    \"signatureImages\": \"<integer>\",\n    \"signatureLength\": \"<integer>\",\n    \"title\": \"<boolean>\",\n    \"verified\": \"<boolean>\"\n  },\n  \"criteria\": {\n    \"manual\": \"<boolean>\",\n    \"permission\": \"<string>\",\n    \"points\": \"<integer>\",\n    \"posts\": \"<integer>\",\n    \"roleID\": \"<integer>\",\n    \"time\": \"<string>\"\n  },\n  \"cssClass\": \"<string>\",\n  \"level\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"notificationBody\": \"<string>\",\n  \"userTitle\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9bd087a0-f723-463e-9c02-d13f235bdb16",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ranks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"abilities\": {\n    \"avatar\": \"<boolean>\",\n    \"commentsAdd\": \"<boolean>\",\n    \"conversationsAdd\": \"<boolean>\",\n    \"curation\": \"<boolean>\",\n    \"discussionsAdd\": \"<boolean>\",\n    \"editTimeout\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"linksActivity\": \"<boolean>\",\n    \"linksConversations\": \"<boolean>\",\n    \"linksPosts\": \"<boolean>\",\n    \"location\": \"<boolean>\",\n    \"meActions\": \"<boolean>\",\n    \"polls\": \"<boolean>\",\n    \"roleID\": \"<integer>\",\n    \"signature\": \"<boolean>\",\n    \"signatureImages\": \"<integer>\",\n    \"signatureLength\": \"<integer>\",\n    \"title\": \"<boolean>\",\n    \"verified\": \"<boolean>\"\n  },\n  \"criteria\": {\n    \"manual\": \"<boolean>\",\n    \"permission\": \"<string>\",\n    \"points\": \"<integer>\",\n    \"posts\": \"<integer>\",\n    \"roleID\": \"<integer>\",\n    \"time\": \"<string>\"\n  },\n  \"cssClass\": \"<string>\",\n  \"level\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"notificationBody\": \"<string>\",\n  \"userTitle\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rankID\": {},\n  \"name\": \"string\",\n  \"userTitle\": \"string\",\n  \"level\": 383,\n  \"notificationBody\": \"string\",\n  \"cssClass\": \"string\",\n  \"abilities\": {\n    \"avatar\": true,\n    \"commentsAdd\": false,\n    \"conversationsAdd\": false,\n    \"curation\": false,\n    \"discussionsAdd\": false,\n    \"editTimeout\": 7119,\n    \"format\": \"Text\",\n    \"linksActivity\": false,\n    \"linksConversations\": false,\n    \"linksPosts\": false,\n    \"location\": true,\n    \"meActions\": false,\n    \"polls\": false,\n    \"roleID\": 2438,\n    \"signature\": true,\n    \"signatureImages\": 3726,\n    \"signatureLength\": 1748,\n    \"title\": true,\n    \"verified\": false\n  },\n  \"criteria\": {\n    \"manual\": true,\n    \"permission\": \"site.manage\",\n    \"points\": 2230,\n    \"posts\": 6781,\n    \"roleID\": 9242,\n    \"time\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7a7083f-1174-42db-88f7-91e21afc4036",
+          "name": "Get a rank for editing.",
+          "request": {
+            "name": "Get a rank for editing.",
+            "description": {},
+            "url": {
+              "path": [
+                "ranks",
+                ":id",
+                "edit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The rank ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5f7d0b7-329b-4cc7-b526-2f7105aae48f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ranks",
+                    ":id",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The rank ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rankID\": {},\n  \"name\": \"string\",\n  \"userTitle\": \"string\",\n  \"level\": 383,\n  \"notificationBody\": \"string\",\n  \"cssClass\": \"string\",\n  \"abilities\": {\n    \"avatar\": true,\n    \"commentsAdd\": false,\n    \"conversationsAdd\": false,\n    \"curation\": false,\n    \"discussionsAdd\": false,\n    \"editTimeout\": 7119,\n    \"format\": \"Text\",\n    \"linksActivity\": false,\n    \"linksConversations\": false,\n    \"linksPosts\": false,\n    \"location\": true,\n    \"meActions\": false,\n    \"polls\": false,\n    \"roleID\": 2438,\n    \"signature\": true,\n    \"signatureImages\": 3726,\n    \"signatureLength\": 1748,\n    \"title\": true,\n    \"verified\": false\n  },\n  \"criteria\": {\n    \"manual\": true,\n    \"permission\": \"site.manage\",\n    \"points\": 2230,\n    \"posts\": 6781,\n    \"roleID\": 9242,\n    \"time\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "73da0c09-81c4-4f5f-af2f-59615e7d8aed",
+    "name": "Vanilla Addons Ranks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

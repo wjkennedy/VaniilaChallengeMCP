@@ -1,0 +1,1334 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Media API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Media
+paths:
+  /media:
+    get:
+      summary: List media files
+      tags:
+      - Media
+      parameters:
+      - name: mediaID
+        description: Filter by a range or CSV of media IDs. Requires community.manage permission.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: foreignType
+        description: Filter for media attached to a specific record. Requires foreignID.
+        in: query
+        example: discussion
+        schema:
+          type: string
+      - name: foreignID
+        description: Filter for media attached to a specific record. Requires foreignType.
+        in: query
+        example: 5
+        schema:
+          type: number
+      - name: insertUserID
+        description: Filter for media uploaded by a specific user. Requires community.manage permission to check for other users. Smart expression $me supported to filter for current sessioned user.
+        in: query
+        example: $me
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: '30'
+          maximum: 100
+          minimum: 1
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MediaItem'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+      x-addon: dashboard
+      operationId: getMedia
+      x-operation-id-source: derived
+    post:
+      summary: Upload a media file
+      tags:
+      - Media
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  $ref: '#/components/schemas/UploadedFile'
+              required:
+              - file
+              type: object
+        required: true
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaItem'
+      x-addon: dashboard
+      operationId: postMedia
+      x-operation-id-source: derived
+  /media/by-url:
+    delete:
+      parameters:
+      - description: 'Full URL to the item.
+
+          '
+        in: query
+        name: url
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: 'Permanently delete the file from the CDN. This action is irreversible.
+
+          '
+        in: query
+        name: deleteFile
+        required: true
+        schema:
+          type: boolean
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Media
+      summary: Delete a media item, using its URL
+      x-addon: dashboard
+      operationId: deleteMediaByUrl
+      x-operation-id-source: derived
+    get:
+      parameters:
+      - description: 'Full URL to the item.
+
+          '
+        in: query
+        name: url
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaItem'
+          description: Success
+      tags:
+      - Media
+      summary: Get a media item, using its URL
+      x-addon: dashboard
+      operationId: getMediaByUrl
+      x-operation-id-source: derived
+  /media/list:
+    delete:
+      parameters:
+      - description: 'Permanently delete the file from the CDN. This action is irreversible.
+
+          '
+        in: query
+        name: deleteFile
+        required: true
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: An array of media IDs.
+              properties:
+                mediaIDs:
+                  type: array
+                  items:
+                    type: integer
+                  example:
+                  - 2452
+                  - 14253
+                  - 14124
+      responses:
+        '202':
+          $ref: '#/components/responses/TrackingSlipResponse'
+        '204':
+          description: Success
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '408':
+          $ref: '#/components/responses/LongRunnerResponse'
+      tags:
+      - Media
+      summary: Delete a list of media by their ID's
+      x-addon: dashboard
+      operationId: deleteMediaList
+      x-operation-id-source: derived
+  /media/list-by-url:
+    delete:
+      parameters:
+      - description: 'Permanently delete the file from the CDN. This action is irreversible.
+
+          '
+        in: query
+        name: deleteFile
+        required: true
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: An array of media URLs.
+              properties:
+                urls:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '202':
+          $ref: '#/components/responses/TrackingSlipResponse'
+        '204':
+          description: Success
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '408':
+          $ref: '#/components/responses/LongRunnerResponse'
+      tags:
+      - Media
+      summary: Delete a list of media by their URL's
+      x-addon: dashboard
+      operationId: deleteMediaListByUrl
+      x-operation-id-source: derived
+  /media/scrape:
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  attributes:
+                    description: Any additional attributes required by the the specific embed.
+                    type:
+                    - object
+                    - 'null'
+                  body:
+                    description: A paragraph summarizing the content, if any. This is not what is what gets rendered to the page.
+                    minLength: 1
+                    type:
+                    - string
+                    - 'null'
+                  height:
+                    description: The height of the image/video/etc. if applicable. This may be the photoUrl, but might exist even when there is no photoUrl in the case of a video without preview image.
+                    type:
+                    - integer
+                    - 'null'
+                  name:
+                    description: The title of the page/item/etc. if any.
+                    minLength: 1
+                    type:
+                    - string
+                    - 'null'
+                  photoUrl:
+                    description: A photo that goes with the content.
+                    minLength: 1
+                    type:
+                    - string
+                    - 'null'
+                  type:
+                    description: The type of site. This determines how the embed is rendered.
+                    enum:
+                    - quote
+                    - twitter
+                    - youtube
+                    - vimeo
+                    - instagram
+                    - soundcloud
+                    - imgur
+                    - twitch
+                    - getty
+                    - giphy
+                    - wistia
+                    - codepen
+                    - image
+                    - link
+                    minLength: 1
+                    type: string
+                  url:
+                    description: The URL that was scraped.
+                    minLength: 1
+                    type: string
+                  width:
+                    description: The width of the image/video/etc. if applicable.
+                    type:
+                    - integer
+                    - 'null'
+                required:
+                - url
+                - type
+                - name
+                - body
+                - photoUrl
+                - height
+                - width
+                - attributes
+                type: object
+          description: Success
+      tags:
+      - Media
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                force:
+                  default: false
+                  description: Force the scrape even if the result is cached.
+                  type: boolean
+                url:
+                  description: The URL to scrape.
+                  minLength: 1
+                  type: string
+              required:
+              - url
+              type: object
+        required: true
+      summary: Scrape information from a URL
+      x-addon: dashboard
+      operationId: postMediaScrape
+      x-operation-id-source: derived
+  /media/upload-session-complete/{uploadSessionID}:
+    post:
+      summary: Complete a chunked media upload session
+      tags:
+      - Media
+      parameters:
+      - name: uploadSessionID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - parts
+              properties:
+                parts:
+                  type: array
+                  items:
+                    type: object
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaItem'
+      x-addon: dashboard
+      operationId: postMediaUploadSessionCompleteByUploadSessionID
+      x-operation-id-source: derived
+  /media/upload-session-part/{uploadSessionID}/{partNumber}:
+    get:
+      summary: Get a presigned URL for a chunked upload part
+      description: Legacy presigned URL flow. Clients should prefer PUT on this path to avoid S3 CORS requirements.
+      tags:
+      - Media
+      parameters:
+      - name: uploadSessionID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: partNumber
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+      x-addon: dashboard
+      operationId: getMediaUploadSessionPartByUploadSessionIDByPartNumber
+      x-operation-id-source: derived
+    put:
+      summary: Upload a chunked media part through the API
+      description: Uploads part bytes server-side to S3. Same-origin; no browser S3 CORS configuration required.
+      tags:
+      - Media
+      parameters:
+      - name: uploadSessionID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: partNumber
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  partNumber:
+                    type: integer
+                  eTag:
+                    type: string
+      x-addon: dashboard
+      operationId: putMediaUploadSessionPartByUploadSessionIDByPartNumber
+      x-operation-id-source: derived
+  /media/upload-session/{uploadSessionID}:
+    delete:
+      summary: Abort a chunked media upload session
+      tags:
+      - Media
+      parameters:
+      - name: uploadSessionID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+      x-addon: dashboard
+      operationId: deleteMediaUploadSessionByUploadSessionID
+      x-operation-id-source: derived
+  /media/upload-sessions:
+    post:
+      summary: Start a chunked media upload session
+      tags:
+      - Media
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - size
+              - type
+              properties:
+                name:
+                  type: string
+                size:
+                  type: integer
+                type:
+                  type: string
+                foreignType:
+                  type: string
+                foreignID:
+                  type: integer
+      responses:
+        '200':
+          description: Success
+      x-addon: dashboard
+      operationId: postMediaUploadSessions
+      x-operation-id-source: derived
+  /media/{id}:
+    delete:
+      parameters:
+      - description: 'The media ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - description: 'Permanently delete the file from the CDN. This action is irreversible.
+
+          '
+        in: query
+        name: deleteFile
+        required: true
+        schema:
+          type: boolean
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Media
+      summary: Delete a media item
+      x-addon: dashboard
+      operationId: deleteMediaById
+      x-operation-id-source: derived
+    get:
+      parameters:
+      - description: 'The media ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaItem'
+      tags:
+      - Media
+      summary: Get a media item
+      x-addon: dashboard
+      operationId: getMediaById
+      x-operation-id-source: derived
+  /media/{id}/attachment:
+    patch:
+      parameters:
+      - description: The media ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  dateInserted:
+                    description: When the media item was created.
+                    format: date-time
+                    type: string
+                  foreignID:
+                    description: The ID of the table.
+                    type:
+                    - integer
+                    - 'null'
+                  foreignType:
+                    description: Table the media is linked to.
+                    minLength: 1
+                    type:
+                    - string
+                    - 'null'
+                  height:
+                    description: Image height
+                    type:
+                    - integer
+                    - 'null'
+                  insertUserID:
+                    description: The user that created the media item.
+                    type: integer
+                  mediaID:
+                    description: The ID of the record.
+                    type: integer
+                  name:
+                    description: The original filename of the upload.
+                    minLength: 1
+                    type: string
+                  size:
+                    description: File size in bytes
+                    type: integer
+                  type:
+                    description: MIME type
+                    minLength: 1
+                    type: string
+                  url:
+                    description: The URL of the file.
+                    minLength: 1
+                    type: string
+                  width:
+                    description: Image width
+                    type:
+                    - integer
+                    - 'null'
+                required:
+                - mediaID
+                - url
+                - name
+                - type
+                - size
+                - dateInserted
+                - insertUserID
+                - foreignType
+                - foreignID
+                type: object
+          description: Success
+      tags:
+      - Media
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MediaItemPatch'
+        required: true
+      summary: Update a media item's attachment to another record
+      x-addon: dashboard
+      operationId: patchMediaByIdAttachment
+      x-operation-id-source: derived
+components:
+  schemas:
+    MediaItem:
+      properties:
+        mediaID:
+          description: The incrementing ID of the record. Prefer using mediaUUID instead as the mediaID requires admin permissions to use.
+          type: integer
+        mediaUUID:
+          description: The unique identifier for the media item.
+          type: string
+        dateInserted:
+          description: When the media item was created.
+          format: date-time
+          type: string
+        foreignID:
+          description: The ID of the table.
+          type:
+          - integer
+          - 'null'
+        foreignType:
+          description: Table the media is linked to.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        insertUserID:
+          description: The user that created the media item.
+          type: integer
+        name:
+          description: The original filename of the upload.
+          minLength: 1
+          type: string
+        size:
+          description: File size in bytes
+          type: integer
+        type:
+          description: MIME type of the uploaded media.
+          minLength: 1
+          type: string
+        url:
+          description: The URL of the file.
+          minLength: 1
+          type: string
+        width:
+          description: Image width
+          type:
+          - integer
+          - 'null'
+        height:
+          description: Image height
+          type:
+          - integer
+          - 'null'
+        active:
+          description: Is the file visible.
+          type: boolean
+      required:
+      - mediaID
+      - mediaUUID
+      - url
+      - name
+      - type
+      - size
+      - dateInserted
+      - insertUserID
+      - foreignType
+      - foreignID
+      type: object
+      x-addon: dashboard
+    LongRunnerProgress:
+      description: Progress of the task.
+      type: object
+      required:
+      - successIDs
+      - failedIDs
+      - exceptionsByID
+      properties:
+        successIDs:
+          description: 'The IDs of records for which an action has succeeded.
+
+            '
+          example:
+          - 25
+          - 145
+          - 11431
+          - 1313
+          type: array
+          items:
+            type: integer
+        failedIDs:
+          description: 'The IDs of records for which and action has failed.
+
+            '
+          example:
+          - 14424
+          - 1264524
+          type: array
+          items:
+            type: integer
+        exceptionsByID:
+          description: Detailed errors by failedID during the action.
+          example:
+            '14424':
+              message: Discussions of type "redirect" can't be moved.
+              code: 400
+          type: object
+          required:
+          - message
+          - type
+          properties:
+            message:
+              type: string
+            code:
+              type: number
+        countTotalIDs:
+          description: Total count of records that can be progressed.
+          type: integer
+      x-addon: dashboard
+    RangeExpression:
+      description: Specify a range or CSV of values.
+      type: string
+      format: range-expression
+      externalDocs:
+        url: https://success.vanillaforums.com/kb/articles/308-range-expressions
+      x-addon: dashboard
+    UploadedFile:
+      type: string
+      format: binary
+      x-addon: dashboard
+    LongRunnerResult:
+      description: 'Endpoints will return this if they may time out and require the client
+
+        to progress the task with additional requests.
+
+        '
+      type: object
+      required:
+      - progress
+      - callbackPayload
+      properties:
+        callbackPayload:
+          description: 'A signed JWT payload to pass to the /api/v2/calls endpoint in order to continue
+
+            progression of the task.
+
+            '
+          type: string
+          example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+            '
+        progress:
+          $ref: '#/components/schemas/LongRunnerProgress'
+      x-addon: dashboard
+    MediaItemPatch:
+      properties:
+        foreignID:
+          description: Unique ID of the resource this media item will be attached to.
+          type: integer
+        foreignType:
+          description: Type of resource the media item will be attached to (e.g. comment).
+          enum:
+          - embed
+          - comment
+          - discussion
+          type: string
+      required:
+      - foreignType
+      - foreignID
+      type: object
+      x-addon: dashboard
+    TrackingSlipData:
+      type: object
+      description: 'Represents a scheduled server-side job.
+
+        '
+      properties:
+        jobID:
+          description: The ID of a particular job.
+          type: string
+          example: 10232183.longrunnerjob.5fa1a178cfe1b9.07902191
+        jobTrackingID:
+          description: 'A shared ID that can be used to track the status of a job.
+
+            This ID persists even if jobs fail and retry, or spawn child jobs.
+
+            '
+          type: string
+          example: 42adsf424::613fda84bdea32.25565677
+        status:
+          description: The current status of the job.
+          type: string
+          enum:
+          - abandoned
+          - complete
+          - error
+          - failed
+          - intended
+          - invalid
+          - stackError
+          - progress
+          - retry
+          - received
+          - unknown
+          example: received
+      x-addon: dashboard
+  responses:
+    LongRunnerResponse:
+      description: 'Endpoints that may time out and require the client to
+
+        progress them with the `/api/v2/calls` endpoints may return this.
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LongRunnerResult'
+      x-addon: dashboard
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+    TrackingSlipResponse:
+      description: 'Endpoints may queue a job to perform a task in the background.
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TrackingSlipData'
+      x-addon: dashboard
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

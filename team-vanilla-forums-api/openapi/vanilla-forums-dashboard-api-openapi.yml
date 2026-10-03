@@ -1,0 +1,558 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Dashboard API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Dashboard
+paths:
+  /dashboard/menus:
+    get:
+      summary: List the dashboard menus
+      description: 'This endpoint returns the entire navigation structure of the dashboard. It has three levels:
+
+
+        1. The first level represents main menu sections.
+
+        2. Each section can have children, seperated into groups.
+
+        3. Groups contain the actual menu links.'
+      tags:
+      - Dashboard
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  description: Represents a main menu item.
+                  type: object
+                  properties:
+                    description:
+                      description: The menu description.
+                      minLength: 1
+                      type: string
+                    children:
+                      items:
+                        properties:
+                          id:
+                            description: The id of the group.
+                            minLength: 1
+                            type: string
+                          children:
+                            items:
+                              properties:
+                                badge:
+                                  description: Information about a badge to display beside the link.
+                                  properties:
+                                    text:
+                                      description: Literal text for the badge.
+                                      minLength: 1
+                                      type: string
+                                    type:
+                                      description: The type of badge.
+                                      enum:
+                                      - view
+                                      - text
+                                      minLength: 1
+                                      type: string
+                                    url:
+                                      description: The URL of a view.
+                                      type: string
+                                  type: object
+                                id:
+                                  description: The id of the link.
+                                  minLength: 1
+                                  type: string
+                                parentID:
+                                  description: The id of the parent.
+                                  minLength: 1
+                                  type: string
+                                name:
+                                  description: The title of the link.
+                                  minLength: 1
+                                  type: string
+                                react:
+                                  description: Whether or not the link represents a React component.
+                                  type: boolean
+                                url:
+                                  description: The URL of the link.
+                                  minLength: 1
+                                  type: string
+                              required:
+                              - name
+                              - id
+                              - parentID
+                              - url
+                              - react
+                              type: object
+                            type: array
+                          name:
+                            description: The title of the group.
+                            minLength: 1
+                            type: string
+                        required:
+                        - children
+                        type: object
+                      type: array
+                    id:
+                      description: The ID of the menu.
+                      minLength: 1
+                      type: string
+                    name:
+                      description: The title of the menu.
+                      minLength: 1
+                      type: string
+                    url:
+                      description: The URL to the menu if it doesn't have a submenu.
+                      type: string
+                  required:
+                  - name
+                  - id
+                  - description
+                  - children
+                type: array
+          description: Success
+      x-addon: dashboard
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getDashboardMenus
+      x-operation-id-source: derived
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

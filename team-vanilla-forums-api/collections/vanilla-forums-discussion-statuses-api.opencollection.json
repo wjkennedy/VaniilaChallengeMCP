@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Discussion Statuses API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discussion Statuses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get known discussion statuses.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/statuses",
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by scope type. Can include 'global', 'scoped', or both."
+              },
+              {
+                "name": "subType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get known discussion statuses."
+        },
+        {
+          "info": {
+            "name": "Create a new discussion status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/statuses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new discussion status."
+        },
+        {
+          "info": {
+            "name": "Get a discussion status by its ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/statuses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a discussion status by its ID."
+        },
+        {
+          "info": {
+            "name": "Update a discussion status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/statuses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a discussion status."
+        },
+        {
+          "info": {
+            "name": "Delete a discussion status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/statuses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a discussion status."
+        },
+        {
+          "info": {
+            "name": "Toggle scoped statuses on or off.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/toggle-scoped-statuses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Toggle scoped statuses on or off."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

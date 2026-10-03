@@ -1,0 +1,103 @@
+generated: '2026-07-21'
+method: searched
+source: https://packagist.org/search.json?q=vanilla/ + https://registry.npmjs.org/-/v1/search?text=%40vanillaforums + https://api.github.com/orgs/vanilla/repos
+description: >-
+  First-party client libraries and developer packages published by Vanilla
+  Forums (Higher Logic Vanilla). Vanilla ships no general-purpose REST API SDK;
+  its first-party client libraries center on the jsConnect single sign-on
+  protocol (clients for PHP, Java, Ruby, .NET, Python) plus the Garden PHP
+  libraries the platform itself is built from. The main vanilla/vanilla open
+  source repository was taken private after the Higher Logic acquisition; the
+  packages below remain published and maintained on public registries.
+packages:
+  - language: php
+    registry: packagist
+    name: vanilla/js-connect-php
+    url: https://packagist.org/packages/vanilla/js-connect-php
+    install: composer require vanilla/js-connect-php
+    official: true
+    notes: Client library for Vanilla's jsConnect SSO system (~444k downloads).
+  - language: php
+    registry: packagist
+    name: vanilla/garden-http
+    url: https://packagist.org/packages/vanilla/garden-http
+    install: composer require vanilla/garden-http
+    official: true
+    notes: Vanilla's HTTP client library for building RESTful API clients (used to call the Vanilla API from PHP).
+  - language: php
+    registry: packagist
+    name: vanilla/garden-schema
+    url: https://packagist.org/packages/vanilla/garden-schema
+    install: composer require vanilla/garden-schema
+    official: true
+    notes: Data validation and cleaning library based on OpenAPI 3.0 Schema.
+  - language: php
+    registry: packagist
+    name: vanilla/garden-cli
+    url: https://packagist.org/packages/vanilla/garden-cli
+    install: composer require vanilla/garden-cli
+    official: true
+    notes: Command-line parser library (~1.3M downloads).
+  - language: php
+    registry: packagist
+    name: vanilla/knowledge-porter
+    url: https://packagist.org/packages/vanilla/knowledge-porter
+    install: composer require vanilla/knowledge-porter
+    official: true
+    notes: Command-line porter that migrates knowledge-base content into Vanilla via the API.
+  - language: java
+    registry: github
+    name: vanilla/jsConnectJava
+    url: https://github.com/vanilla/jsConnectJava
+    official: true
+    notes: jsConnect SSO client for Java.
+  - language: csharp
+    registry: github
+    name: vanilla/jsConnectdotNet
+    url: https://github.com/vanilla/jsConnectdotNet
+    official: true
+    notes: jsConnect SSO client for .NET.
+  - language: csharp
+    registry: github
+    name: vanilla/jsConnectAspNetCoreMvc
+    url: https://github.com/vanilla/jsConnectAspNetCoreMvc
+    official: true
+    notes: jsConnect for ASP.NET Core MVC.
+  - language: ruby
+    registry: github
+    name: vanilla/jsConnectRuby
+    url: https://github.com/vanilla/jsConnectRuby
+    official: true
+    notes: jsConnect SSO client for Ruby.
+  - language: python
+    registry: github
+    name: vanilla/python-jsconnect
+    url: https://github.com/vanilla/python-jsconnect
+    official: true
+    notes: jsConnect SSO client for Python (archived).
+  - language: php
+    registry: github
+    name: vanilla/porter
+    url: https://github.com/vanilla/porter
+    official: true
+    notes: Exports legacy forums (phpBB, vBulletin, etc.) into a Vanilla-importable format.
+  - language: php
+    registry: wordpress
+    name: vanilla/wordpress-vanilla
+    url: https://github.com/vanilla/wordpress-vanilla
+    official: true
+    notes: Official WordPress plugin for Vanilla Forums integration.
+  - language: javascript
+    registry: npm
+    name: "@vanillaforums/eslint-config"
+    url: https://www.npmjs.com/package/@vanillaforums/eslint-config
+    install: npm install @vanillaforums/eslint-config
+    official: true
+    notes: Vanilla Forums ESLint config (developer tooling, not an API SDK).
+  - language: javascript
+    registry: npm
+    name: "@vanillaforums/babel-preset"
+    url: https://www.npmjs.com/package/@vanillaforums/babel-preset
+    install: npm install @vanillaforums/babel-preset
+    official: true
+    notes: Vanilla Forums Babel preset (developer tooling, not an API SDK).

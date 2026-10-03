@@ -1,0 +1,862 @@
+{
+  "item": [
+    {
+      "id": "40291331-3aa2-4d23-92b5-bf1eeb8243e1",
+      "name": "Roles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71607573-8fb2-4dbe-818b-8ffe98322e41",
+          "name": "List roles.",
+          "request": {
+            "name": "List roles.",
+            "description": {},
+            "url": {
+              "path": [
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "personalInfo",
+                  "value": "true",
+                  "description": "Include roles in which membbership is personal information.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "851d6463-9a04-4902-9e97-8602b08f9fe2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "personalInfo",
+                      "value": "true"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"roleID\": 4867,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"type\": \"string\",\n    \"deletable\": false,\n    \"canSession\": true,\n    \"personalInfo\": true,\n    \"permissions\": [\n      {\n        \"type\": \"category\",\n        \"permissions\": {},\n        \"id\": 7633\n      },\n      {\n        \"type\": \"category\",\n        \"permissions\": {},\n        \"id\": 6511\n      }\n    ],\n    \"domains\": \"string\"\n  },\n  {\n    \"roleID\": 2331,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"type\": \"string\",\n    \"deletable\": true,\n    \"canSession\": false,\n    \"personalInfo\": false,\n    \"permissions\": [\n      {\n        \"type\": \"category\",\n        \"permissions\": {},\n        \"id\": 7260\n      },\n      {\n        \"type\": \"global\",\n        \"permissions\": {},\n        \"id\": 135\n      }\n    ],\n    \"domains\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "195676b9-e01b-47d6-8557-0b831d7bcd9d",
+          "name": "Add a role.",
+          "request": {
+            "name": "Add a role.",
+            "description": {},
+            "url": {
+              "path": [
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"canSession\": \"<boolean>\",\n  \"deletable\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"permissions\": [\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    }\n  ],\n  \"personalInfo\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"domains\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c2bd0fd-1db8-45a6-88e0-9b4d84a848a6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roleID\": 1007,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"string\",\n  \"deletable\": false,\n  \"canSession\": false,\n  \"personalInfo\": false,\n  \"permissions\": [\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    }\n  ],\n  \"domains\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecb5d39d-c596-465a-88c1-2833fb1d3e08",
+          "name": "Delete a role.",
+          "request": {
+            "name": "Delete a role.",
+            "description": {},
+            "url": {
+              "path": [
+                "roles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The role ID.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c3ed931-7fde-49fa-b117-bf4ef4ff9b9b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The role ID.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0513336-1e95-4d94-99d9-b097423e107c",
+          "name": "Get a role.",
+          "request": {
+            "name": "Get a role.",
+            "description": {},
+            "url": {
+              "path": [
+                "roles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The role ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04b59cd1-c0f3-4595-9f8a-bba35fcce8cc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The role ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roleID\": 1007,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"string\",\n  \"deletable\": false,\n  \"canSession\": false,\n  \"personalInfo\": false,\n  \"permissions\": [\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    }\n  ],\n  \"domains\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af3ab31c-1d79-4822-9ada-a6552df78522",
+          "name": "Update a role.",
+          "request": {
+            "name": "Update a role.",
+            "description": {},
+            "url": {
+              "path": [
+                "roles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The role ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"canSession\": \"<boolean>\",\n  \"deletable\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"permissions\": [\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    }\n  ],\n  \"personalInfo\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"domains\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef9829b9-225c-41c9-b1b8-2e5ea7fae3a7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"canSession\": \"<boolean>\",\n  \"deletable\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"permissions\": [\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    }\n  ],\n  \"personalInfo\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"domains\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roleID\": 1007,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"string\",\n  \"deletable\": false,\n  \"canSession\": false,\n  \"personalInfo\": false,\n  \"permissions\": [\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"permissions\": \"<object>\",\n      \"id\": \"<integer>\"\n    }\n  ],\n  \"domains\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3344fc1d-57c1-466c-bc52-09ca388c447c",
+          "name": "Get a role for editing.",
+          "request": {
+            "name": "Get a role for editing.",
+            "description": {},
+            "url": {
+              "path": [
+                "roles",
+                ":id",
+                "edit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The role ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "216c05c5-ae44-43a0-b542-92c5219e6eec",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":id",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The role ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roleID\": 1698,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"string\",\n  \"deletable\": true,\n  \"canSession\": true,\n  \"personalInfo\": true,\n  \"domains\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cdb19af-a69f-4491-a122-b85534f1ec99",
+          "name": "Update permissions on a role",
+          "request": {
+            "name": "Update permissions on a role",
+            "description": {},
+            "url": {
+              "path": [
+                "roles",
+                ":id",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  },\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1daaeb25-3aa3-4e7f-8b2f-dbe5f60ab2af",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  },\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  },\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c3aadd0-11e8-4563-9885-44eaa85a6601",
+          "name": "Overwrite all permissions for a role.",
+          "request": {
+            "name": "Overwrite all permissions for a role.",
+            "description": {},
+            "url": {
+              "path": [
+                "roles",
+                ":id",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  },\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "33a13743-51cf-4bbb-bac5-09f5833c97bf",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  },\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  },\n  {\n    \"type\": \"<string>\",\n    \"permissions\": \"<object>\",\n    \"id\": \"<integer>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "10933820-90fe-45ee-bd8a-963e3dc9ae84",
+    "name": "Vanilla Addons Roles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Analytics API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the results of an analytics query.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/analysis",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the results of an analytics query."
+        },
+        {
+          "info": {
+            "name": "GET /analytics/catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/catalog",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get the data catlog meta data for analytics."
+        },
+        {
+          "info": {
+            "name": "GET /analytics/catalog/data-sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/catalog/data-sources",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List the catalog's data sources."
+        },
+        {
+          "info": {
+            "name": "GET /analytics/catalog/data-sources/{key}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/catalog/data-sources/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The key of the data source."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a single data source."
+        },
+        {
+          "info": {
+            "name": "Get all of the available analytics dashboards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/dashboard-navigation",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get all of the available analytics dashboards."
+        },
+        {
+          "info": {
+            "name": "List all dashboards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/dashboards",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List all dashboards."
+        },
+        {
+          "info": {
+            "name": "Add a new dashboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/dashboards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new dashboard."
+        },
+        {
+          "info": {
+            "name": "Get a dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/dashboards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the dashboard."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a dashboard"
+        },
+        {
+          "info": {
+            "name": "Update an existing dashboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/dashboards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the dashboard."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing dashboard."
+        },
+        {
+          "info": {
+            "name": "Delete a dashboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/dashboards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the dashboard."
+              }
+            ]
+          },
+          "docs": "Delete a dashboard."
+        },
+        {
+          "info": {
+            "name": "Get the result of an analytics query.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/keen-query/:analysisType",
+            "params": [
+              {
+                "name": "analysisType",
+                "value": "count",
+                "type": "path",
+                "description": "Type of analytics analysis to perform."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the result of an analytics query."
+        },
+        {
+          "info": {
+            "name": "Retrieve data for a leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/leaderboard",
+            "params": [
+              {
+                "name": "board",
+                "value": "",
+                "type": "query",
+                "description": "The leaderboard to query."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to return."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time frame."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End of the time frame."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Retrieve data for a leaderboard."
+        },
+        {
+          "info": {
+            "name": "Get the result of an analytics query. (legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/analytics/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the result of an analytics query. (legacy)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

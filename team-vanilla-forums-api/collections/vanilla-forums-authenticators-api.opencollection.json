@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Authenticators API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authenticators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List every available authenticator types.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/authenticator-types",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List every available authenticator types."
+        },
+        {
+          "info": {
+            "name": "List the authenticators.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/authenticators",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by one or more authenticator types."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be included in the response. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List the authenticators."
+        },
+        {
+          "info": {
+            "name": "Get a single authenticator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/authenticators/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An authenticatorID or an authenticationKey."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a single authenticator."
+        },
+        {
+          "info": {
+            "name": "Update an authenticator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/authenticators/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An authenticatorID or an authenticationKey."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an authenticator."
+        },
+        {
+          "info": {
+            "name": "Delete an authenticator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/authenticators/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An authenticatorID or an authenticationKey."
+              }
+            ]
+          },
+          "docs": "Delete an authenticator."
+        },
+        {
+          "info": {
+            "name": "Enable or disable debug logging for an authenticator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/authenticators/:id/debug",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An authenticatorID or an authenticationKey."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable or disable debug logging for the specified authenticator.\nWhen enabled, debug logs will be recorded for 24 hours.\nWhen disabled, all existing debug logs for the authenticator are deleted.\n\n**Requires sysAdmin permission in addition to Garden.Settings.Manage.**\n"
+        },
+        {
+          "info": {
+            "name": "Get debug log attempts for an authenticator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/authenticators/:id/debug-logs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An authenticatorID or an authenticationKey."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "wasSuccessful",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether the attempt was successful."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Retrieve debug log attempts for the specified authenticator with pagination.\n\nEach attempt groups multiple log messages from a single authentication flow,\nidentified by a shared debugAttemptUUID. The wasSuccessful flag indicates\nwhether any message in the attempt has type \"connect_success\" or \"logout_success\".\n\n**Requires sysAdmin permission in addition to Garden.Settings.Manage.**\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

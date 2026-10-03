@@ -1,0 +1,1247 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Role Requests API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Role Requests
+paths:
+  /role-requests/applications:
+    post:
+      summary: Apply to a role
+      tags:
+      - Role Requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roleID:
+                  type: integer
+                  description: The role to apply to.
+                attributes:
+                  type: object
+                  description: Custom fields for the request.
+      responses:
+        '201':
+          description: Created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleApplication'
+      x-addon: dashboard
+      operationId: postRoleRequestsApplications
+      x-operation-id-source: derived
+    get:
+      summary: List role applicants
+      tags:
+      - Role Requests
+      parameters:
+      - name: roleID
+        in: query
+        description: Filter by role.
+        schema:
+          type: integer
+      - name: status
+        in: query
+        description: Filter by status.
+        schema:
+          $ref: '#/components/schemas/RoleRequestStatus'
+      - name: userID
+        in: query
+        description: Filter by user.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Offset'
+      - name: limit
+        in: query
+        description: Desired number of items per page.
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - name: sort
+        in: query
+        description: Sort the results.
+        schema:
+          type: string
+          enum:
+          - dateInserted
+          - -dateInserted
+      - $ref: '#/components/parameters/RoleRequestExpand'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                  - $ref: '#/components/schemas/RoleApplication'
+                  - $ref: '#/components/schemas/RoleRequestExpansions'
+      x-addon: dashboard
+      operationId: getRoleRequestsApplications
+      x-operation-id-source: derived
+  /role-requests/applications/{id}:
+    get:
+      summary: Get a single application
+      tags:
+      - Role Requests
+      parameters:
+      - $ref: '#/components/parameters/RoleRequestID'
+      - $ref: '#/components/parameters/RoleRequestExpand'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/RoleApplication'
+                - $ref: '#/components/schemas/RoleRequestExpansions'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      operationId: getRoleRequestsApplicationsById
+      x-operation-id-source: derived
+    patch:
+      summary: Update a role application
+      tags:
+      - Role Requests
+      parameters:
+      - $ref: '#/components/parameters/RoleRequestID'
+      - $ref: '#/components/parameters/RoleRequestExpand'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  $ref: '#/components/schemas/RoleRequestStatus'
+      responses:
+        '200':
+          description: Updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleApplication'
+      x-addon: dashboard
+      operationId: patchRoleRequestsApplicationsById
+      x-operation-id-source: derived
+    delete:
+      summary: Delete a role application
+      tags:
+      - Role Requests
+      parameters:
+      - $ref: '#/components/parameters/RoleRequestID'
+      responses:
+        '204':
+          description: Success
+      x-addon: dashboard
+      operationId: deleteRoleRequestsApplicationsById
+      x-operation-id-source: derived
+  /role-requests/metas:
+    put:
+      summary: Add or update a role request meta definition
+      tags:
+      - Role Requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roleID:
+                  type: integer
+                  description: The role to apply to.
+                type:
+                  $ref: '#/components/schemas/RoleRequestType'
+                name:
+                  type: string
+                  description: The title displayed to to the user.
+                body:
+                  type: string
+                  description: The default text to display to the user.
+                format:
+                  $ref: '#/components/schemas/Format'
+                attributes:
+                  $ref: '#/components/schemas/RoleRequestMetaAttributes'
+                attributesSchema:
+                  $ref: '#/components/schemas/BasicSchema'
+              required:
+              - roleID
+              - type
+              - body
+              - format
+              - attributesSchema
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleRequestMeta'
+      x-addon: dashboard
+      operationId: putRoleRequestsMetas
+      x-operation-id-source: derived
+    get:
+      summary: List role request meta information
+      tags:
+      - Role Requests
+      parameters:
+      - name: type
+        in: query
+        description: Filter on type.
+        schema:
+          $ref: '#/components/schemas/RoleRequestType'
+      - name: roleID
+        in: query
+        description: Filter on role.
+        schema:
+          type: integer
+      - name: hasRole
+        in: query
+        description: Filter on roles the user already has or doesn't have.
+        schema:
+          type: boolean
+      - name: expand
+        in: query
+        description: Expand the result.
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - role
+            - roleRequest
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleRequestMeta'
+      x-addon: dashboard
+      operationId: getRoleRequestsMetas
+      x-operation-id-source: derived
+  /role-requests/metas/{type}/{roleID}:
+    get:
+      summary: Get a meta item
+      tags:
+      - Role Requests
+      parameters:
+      - name: type
+        in: path
+        required: true
+        description: The type of request.
+        schema:
+          $ref: '#/components/schemas/RoleRequestType'
+      - name: roleID
+        in: path
+        required: true
+        description: The role ID.
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleRequestMeta'
+      x-addon: dashboard
+      operationId: getRoleRequestsMetasByTypeByRoleID
+      x-operation-id-source: derived
+    delete:
+      summary: Delete a meta item
+      tags:
+      - Role Requests
+      parameters:
+      - name: type
+        in: path
+        required: true
+        description: The type of request.
+        schema:
+          $ref: '#/components/schemas/RoleRequestType'
+      - name: roleID
+        in: path
+        required: true
+        description: The role ID.
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success.
+      x-addon: dashboard
+      operationId: deleteRoleRequestsMetasByTypeByRoleID
+      x-operation-id-source: derived
+components:
+  schemas:
+    UserFragment:
+      oneOf:
+      - type: object
+        properties:
+          userID:
+            description: The ID of the user.
+            type: integer
+          name:
+            description: The username of the user.
+            minLength: 1
+            type: string
+          url:
+            description: The URL of the user's profile.
+            type: string
+            format: uri
+          photoUrl:
+            description: The URL of the user's avatar picture.
+            type: string
+            format: uri
+          dateLastActive:
+            description: Time the user was last active.
+            format: date-time
+            type:
+            - string
+            - 'null'
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+          label:
+            description: The label of the user as plaintext.
+            type: string
+          labelHtml:
+            description: The label of the user in HTML format.
+            type: string
+          private:
+            description: Whether the user profile is private or not.
+            type: boolean
+        required:
+        - userID
+        - name
+        - photoUrl
+        - dateLastActive
+      - type: object
+        description: A user fragment when only expanding by ssoID.
+        properties:
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+        required:
+        - ssoID
+      x-addon: dashboard
+    RoleRequestType:
+      description: The type of role request.
+      type: string
+      enum:
+      - application
+      - invitation
+      x-addon: dashboard
+    RoleRequestMetaAttributes:
+      type: object
+      properties:
+        notification:
+          description: Customize the notification sent when a role is approved.
+          type: object
+          properties:
+            approved:
+              $ref: '#/components/schemas/RoleRequestMetaNotification'
+            denied:
+              $ref: '#/components/schemas/RoleRequestMetaNotification'
+            communityManager:
+              $ref: '#/components/schemas/RoleRequestMetaNotification'
+        link:
+          description: Customize the request link display.
+          type: object
+          properties:
+            name:
+              description: Override the link text.
+              type: string
+            description:
+              description: Give a link description.
+              type: string
+      x-addon: dashboard
+    RoleRequestFragment:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/RoleRequestStatus'
+        dateInserted:
+          type: string
+          format: date-time
+      required:
+      - status
+      - dateInserted
+      x-addon: dashboard
+    BasicSchema:
+      description: A basic OpenAPI schema validator so that schemas can be submitted as data.
+      type: object
+      properties:
+        type:
+          description: Must be an object.
+          type: string
+          enum:
+          - object
+        properties:
+          description: A map of property names to property definitions.
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/BasicSchemaProperty'
+        required:
+          description: The names of required properties.
+          type: array
+          items:
+            type: string
+      example:
+        type: object
+        properties:
+          license:
+            type: string
+            description: Find your license number in the help menu.
+          notes:
+            type: string
+            x-control: textarea
+      x-addon: dashboard
+    RoleRequestItem:
+      type: object
+      properties:
+        roleRequestID:
+          type: integer
+          description: The unique ID of the entry.
+        type:
+          $ref: '#/components/schemas/RoleRequestType'
+        roleID:
+          type: integer
+          description: The role being applied/invited to.
+        userID:
+          type: integer
+          description: The user applying/being invited.
+        status:
+          $ref: '#/components/schemas/RoleRequestStatus'
+        dateOfStatus:
+          type: integer
+          description: The date the status was changed.  Only community managers see this.
+        statusUserID:
+          type: integer
+          description: The user that last set the status. Only community managers see this.
+        dateExpires:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date the application/invitation expires.
+        attributes:
+          type: object
+      required:
+      - roleRequestID
+      - roleID
+      - userID
+      - status
+      - dateExpires
+      - attributes
+      x-addon: dashboard
+    RoleRequestExpansions:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/RoleFragment'
+        user:
+          $ref: '#/components/schemas/UserFragment'
+        statusUser:
+          $ref: '#/components/schemas/UserFragment'
+      x-addon: dashboard
+    RoleRequestMetaNotification:
+      type: object
+      properties:
+        name:
+          description: Override the notification subject.
+          type: string
+          minLength: 1
+        body:
+          description: Override the notification body.
+          type: string
+        format:
+          $ref: '#/components/schemas/Format'
+        url:
+          description: Overide the notification URL.
+          type: string
+          format: uri
+      x-addon: dashboard
+    RoleRequestMeta:
+      type: object
+      properties:
+        roleID:
+          type: integer
+        type:
+          $ref: '#/components/schemas/RoleRequestType'
+        name:
+          type: string
+          description: The title displayed to to the user.
+        body:
+          type: string
+          description: The default text to display to the user.
+        format:
+          $ref: '#/components/schemas/Format'
+        attributesSchema:
+          $ref: '#/components/schemas/BasicSchema'
+        attributes:
+          $ref: '#/components/schemas/RoleRequestMetaAttributes'
+        url:
+          type: string
+          description: The URL users visit to apply/accept the role request.
+          format: uri
+        hasRole:
+          type: boolean
+          description: Whether or not the user has this role.
+        roleRequest:
+          $ref: '#/components/schemas/RoleRequestFragment'
+      required:
+      - roleID
+      - type
+      - name
+      - body
+      - format
+      - attributesSchema
+      - attributes
+      - url
+      example:
+        roleID: 1
+        type: application
+        name: Community Manager Application
+        body: Fill out the fields below to apply to become a community manager.
+        format: markdown
+        attributesSchema:
+          type: object
+          properties:
+            body:
+              type: string
+              description: Tell us why you want to be a community manager.
+              x-label: Details
+            isExperienced:
+              type: boolean
+              x-label: I have previous experience as a community manager.
+        url: https://example.com/requests/role-applications?role=1
+      x-addon: dashboard
+    Format:
+      description: The format of the body used to convert it to HTML.
+      type: string
+      enum:
+      - rich
+      - markdown
+      - text
+      - textex
+      - wysiwyg
+      - bbcode
+      example: markdown
+      x-addon: dashboard
+    BasicSchemaProperty:
+      type: object
+      properties:
+        type:
+          description: The data type of the property.
+          type: string
+          enum:
+          - string
+          - number
+          - integer
+          - boolean
+        description:
+          description: A description to help the user enter the right information.
+          type: string
+        x-label:
+          description: The control label.
+          type: string
+        x-control:
+          description: The type of control used to collect the input.
+          type: string
+          enum:
+          - textbox
+          - textarea
+          - checkbox
+        default:
+          description: The default value if none is specified.
+          oneOf:
+          - type: string
+          - type: number
+          - type: integer
+          - type: boolean
+        enum:
+          description: Limit input to a set of values.
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: number
+            - type: integer
+            - type: boolean
+        minLength:
+          description: Minimum string length.
+          type: integer
+          minimum: 0
+        maxLength:
+          description: Maximum string length.
+          type: integer
+          minimum: 1
+        minimum:
+          description: Minimum numeric value.
+          type: number
+        maximum:
+          description: Maximum numeric value.
+          type: number
+      required:
+      - type
+      x-addon: dashboard
+    RoleFragment:
+      type: object
+      properties:
+        name:
+          description: Name of the role.
+          minLength: 1
+          type: string
+        roleID:
+          description: ID of the role.
+          type: integer
+      required:
+      - roleID
+      - name
+      x-addon: dashboard
+    UpdateInfo:
+      type: object
+      properties:
+        dateUpdated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date the record was updateed.
+          readOnly: true
+        updateUserID:
+          type:
+          - integer
+          - 'null'
+          description: The user that updateed the record.
+          readOnly: true
+        updateIPAddress:
+          type:
+          - string
+          - 'null'
+          format: ipv4
+          description: The IP address the record was updateed from.
+          readOnly: true
+      x-addon: dashboard
+    RoleApplication:
+      allOf:
+      - $ref: '#/components/schemas/RoleRequestItem'
+      - $ref: '#/components/schemas/InsertInfo'
+      - $ref: '#/components/schemas/UpdateInfo'
+      x-addon: dashboard
+    RoleRequestStatus:
+      description: The current status of the request.
+      type: string
+      enum:
+      - pending
+      - approved
+      - denied
+      x-addon: dashboard
+    InsertInfo:
+      type: object
+      properties:
+        dateInserted:
+          type: string
+          format: date-time
+          description: The date the record was inserted.
+          readOnly: true
+        insertUserID:
+          type: integer
+          description: The user that inserted the record.
+          readOnly: true
+        insertIPAddress:
+          type: string
+          format: ipv4
+          description: The IP address the record was inserted from.
+          readOnly: true
+      required:
+      - dateInserted
+      - insertUserID
+      - insertIPAddress
+      x-addon: dashboard
+  parameters:
+    RoleRequestID:
+      name: id
+      in: path
+      description: The ID of the request.
+      required: true
+      schema:
+        type: integer
+      x-addon: dashboard
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+    Offset:
+      name: offset
+      in: query
+      description: 'Similar to a page parameter, but specifies a specific numeric record offset starting at zero.
+
+        '
+      schema:
+        type: integer
+        minimum: 0
+      x-addon: dashboard
+    RoleRequestExpand:
+      name: expand
+      description: 'Expand associated records using one or more valid field names. A value of "all" will expand all expandable fields.
+
+
+        Note that only community managers can view and expand the `statusUser`.'
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+          - all
+          - user
+          - role
+          - statusUser
+          - user.ssoID
+      style: form
+      x-addon: dashboard
+  responses:
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+    NotFound:
+      description: The record does not exist or was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: More information about the error.
+              status:
+                type: number
+                description: The HTTP status code for the error.
+                format: int32
+            required:
+            - message
+          example:
+            status: 404
+            message: Page Not Found
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

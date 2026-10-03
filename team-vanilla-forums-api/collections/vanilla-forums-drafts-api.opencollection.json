@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Drafts API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drafts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List drafts created by the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/drafts",
+            "params": [
+              {
+                "name": "recordType",
+                "value": "",
+                "type": "query",
+                "description": "Filter drafts by record type.\n"
+              },
+              {
+                "name": "parentRecordType",
+                "value": "",
+                "type": "query",
+                "description": "Filter drafts by parent record type.\n"
+              },
+              {
+                "name": "parentRecordID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the unique ID of the parent for a draft. Used with recordType.\n"
+              },
+              {
+                "name": "draftStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by draft status\n"
+              },
+              {
+                "name": "dateUpdated",
+                "value": "",
+                "type": "query",
+                "description": "Filter by update date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "dateScheduled",
+                "value": "",
+                "type": "query",
+                "description": "Filter by date scheduled\n"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort the response by a specific field.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand the response with additional data.\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List drafts created by the current user."
+        },
+        {
+          "info": {
+            "name": "Create a draft.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/drafts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a draft."
+        },
+        {
+          "info": {
+            "name": "Get a draft.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/drafts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The draft ID.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a draft."
+        },
+        {
+          "info": {
+            "name": "Update a draft.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/drafts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The draft ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a draft."
+        },
+        {
+          "info": {
+            "name": "Delete a draft.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/drafts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The draft ID.\n"
+              }
+            ]
+          },
+          "docs": "Delete a draft."
+        },
+        {
+          "info": {
+            "name": "Get a draft for editing.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/drafts/:id/edit",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The draft ID.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a draft for editing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

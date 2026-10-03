@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Sessions API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List sessions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/sessions",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filters records by valid/invalid session."
+              },
+              {
+                "name": "userID",
+                "value": "",
+                "type": "query",
+                "description": "The user ID."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List sessions."
+        },
+        {
+          "info": {
+            "name": "Delete a session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/sessions",
+            "params": [
+              {
+                "name": "userID",
+                "value": "",
+                "type": "query",
+                "description": "The user ID."
+              },
+              {
+                "name": "sessionID",
+                "value": "",
+                "type": "query",
+                "description": "The session ID."
+              }
+            ]
+          },
+          "docs": "Delete a session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

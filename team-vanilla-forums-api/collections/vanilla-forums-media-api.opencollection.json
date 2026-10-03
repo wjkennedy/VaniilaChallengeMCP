@@ -1,0 +1,385 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Media API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List media files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/media",
+            "params": [
+              {
+                "name": "mediaID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of media IDs. Requires community.manage permission."
+              },
+              {
+                "name": "foreignType",
+                "value": "discussion",
+                "type": "query",
+                "description": "Filter for media attached to a specific record. Requires foreignID."
+              },
+              {
+                "name": "foreignID",
+                "value": "5",
+                "type": "query",
+                "description": "Filter for media attached to a specific record. Requires foreignType."
+              },
+              {
+                "name": "insertUserID",
+                "value": "$me",
+                "type": "query",
+                "description": "Filter for media uploaded by a specific user. Requires community.manage permission to check for other users. Smart expression $me supported to filter for current sessioned user."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List media files"
+        },
+        {
+          "info": {
+            "name": "Upload a media file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/media",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a media file."
+        },
+        {
+          "info": {
+            "name": "Get a media item, using its URL.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/media/by-url",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "Full URL to the item.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a media item, using its URL."
+        },
+        {
+          "info": {
+            "name": "Delete a media item, using its URL.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/media/by-url",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "Full URL to the item.\n"
+              },
+              {
+                "name": "deleteFile",
+                "value": "",
+                "type": "query",
+                "description": "Permanently delete the file from the CDN. This action is irreversible.\n"
+              }
+            ]
+          },
+          "docs": "Delete a media item, using its URL."
+        },
+        {
+          "info": {
+            "name": "Delete a list of media by their ID's.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/media/list",
+            "params": [
+              {
+                "name": "deleteFile",
+                "value": "",
+                "type": "query",
+                "description": "Permanently delete the file from the CDN. This action is irreversible.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a list of media by their ID's."
+        },
+        {
+          "info": {
+            "name": "Delete a list of media by their URL's.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/media/list-by-url",
+            "params": [
+              {
+                "name": "deleteFile",
+                "value": "",
+                "type": "query",
+                "description": "Permanently delete the file from the CDN. This action is irreversible.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a list of media by their URL's."
+        },
+        {
+          "info": {
+            "name": "Scrape information from a URL.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/media/scrape",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Scrape information from a URL."
+        },
+        {
+          "info": {
+            "name": "Complete a chunked media upload session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/media/upload-session-complete/:uploadSessionID",
+            "params": [
+              {
+                "name": "uploadSessionID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Complete a chunked media upload session."
+        },
+        {
+          "info": {
+            "name": "Get a presigned URL for a chunked upload part.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/media/upload-session-part/:uploadSessionID/:partNumber",
+            "params": [
+              {
+                "name": "uploadSessionID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "partNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Legacy presigned URL flow. Clients should prefer PUT on this path to avoid S3 CORS requirements."
+        },
+        {
+          "info": {
+            "name": "Upload a chunked media part through the API.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/media/upload-session-part/:uploadSessionID/:partNumber",
+            "params": [
+              {
+                "name": "uploadSessionID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "partNumber",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Uploads part bytes server-side to S3. Same-origin; no browser S3 CORS configuration required."
+        },
+        {
+          "info": {
+            "name": "Abort a chunked media upload session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/media/upload-session/:uploadSessionID",
+            "params": [
+              {
+                "name": "uploadSessionID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Abort a chunked media upload session."
+        },
+        {
+          "info": {
+            "name": "Start a chunked media upload session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/media/upload-sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a chunked media upload session."
+        },
+        {
+          "info": {
+            "name": "Get a media item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/media/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The media ID.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a media item."
+        },
+        {
+          "info": {
+            "name": "Delete a media item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/media/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The media ID.\n"
+              },
+              {
+                "name": "deleteFile",
+                "value": "",
+                "type": "query",
+                "description": "Permanently delete the file from the CDN. This action is irreversible.\n"
+              }
+            ]
+          },
+          "docs": "Delete a media item."
+        },
+        {
+          "info": {
+            "name": "Update a media item's attachment to another record.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/media/:id/attachment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The media ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a media item's attachment to another record."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

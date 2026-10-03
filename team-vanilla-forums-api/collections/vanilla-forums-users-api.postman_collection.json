@@ -1,0 +1,2730 @@
+{
+  "item": [
+    {
+      "id": "38a48833-988f-4216-a35a-8684a13b378a",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca90b578-ee8c-45c4-9b09-7cbdb11bfac5",
+          "name": "List users.",
+          "request": {
+            "name": "List users.",
+            "description": {},
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateInserted",
+                  "value": "<date-filter>",
+                  "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateUpdated",
+                  "value": "<date-filter>",
+                  "description": "Filter by update date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateLastActive",
+                  "value": "<date-filter>",
+                  "description": "When the user was last active on the community."
+                },
+                {
+                  "disabled": false,
+                  "key": "roleID",
+                  "value": "<integer>",
+                  "description": "Filter by the role ID of a user."
+                },
+                {
+                  "disabled": false,
+                  "key": "roleIDs",
+                  "value": "<integer>",
+                  "description": "Filter by one of multiple role IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "roleIDs",
+                  "value": "<integer>",
+                  "description": "Filter by one of multiple role IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "isBanned",
+                  "value": "<boolean>",
+                  "description": "Filter by the banned status of a user. Pass true to filter only banned users, and false to exclude banned users."
+                },
+                {
+                  "disabled": false,
+                  "key": "rankIDs",
+                  "value": "<integer>",
+                  "description": "Filter by one of multiple rank IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "rankIDs",
+                  "value": "<integer>",
+                  "description": "Filter by one of multiple rank IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "userID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of user IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by the user's username."
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "Filter by the user's email address."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Filter by the user's email address or username."
+                },
+                {
+                  "disabled": false,
+                  "key": "ipAddresses",
+                  "value": "<string>",
+                  "description": "Filter by the user's associated IP addresses"
+                },
+                {
+                  "disabled": false,
+                  "key": "ipAddresses",
+                  "value": "<string>",
+                  "description": "Filter by the user's associated IP addresses"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Token used to fetch next page of results. Cannot be combined with page.\nWarning: May lead to duplicate results if not sorted by primary key.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields that will be included in the response.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Fields that will be included in the response.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "groupID",
+                  "value": "<integer>",
+                  "description": "Filter users by group association"
+                },
+                {
+                  "disabled": false,
+                  "key": "membershipStatus",
+                  "value": "<string>",
+                  "description": "Filter users by group membership status. Depends on groupID."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "followed",
+                  "value": "<boolean>",
+                  "description": "Filter by users that the current user is following."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54ce8aa5-e2b8-4db7-bbd2-f5ba148748b6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateInserted",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateUpdated",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateLastActive",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "roleID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "roleIDs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "roleIDs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "isBanned",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "rankIDs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "rankIDs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "userID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ipAddresses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ipAddresses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "membershipStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "followed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userID\": 8198,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"photoUrl\": \"string\",\n    \"points\": 0,\n    \"emailConfirmed\": false,\n    \"showEmail\": true,\n    \"bypassSpam\": true,\n    \"banned\": 581,\n    \"dateInserted\": \"2024-10-10T03:04:02.845Z\",\n    \"dateLastActive\": \"1955-11-06T08:02:43.196Z\",\n    \"dateUpdated\": \"1960-05-16T05:26:47.909Z\",\n    \"hashMethod\": \"string\",\n    \"roles\": [\n      {\n        \"roleID\": 3565,\n        \"name\": \"string\"\n      },\n      {\n        \"roleID\": 5975,\n        \"name\": \"string\"\n      }\n    ],\n    \"hidden\": true,\n    \"rank\": {\n      \"rankID\": 1344,\n      \"name\": \"string\",\n      \"userTitle\": \"string\"\n    },\n    \"rankID\": 8266,\n    \"suggestAnswers\": true,\n    \"insertIPAddress\": \"string\",\n    \"lastIPAddress\": \"string\",\n    \"countVisits\": 4720,\n    \"inviteUserID\": 2405,\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false,\n    \"isSsoUser\": false,\n    \"followed\": false,\n    \"preferences\": {\n      \"preferences.popup.userFollowingNewDiscussion\": true,\n      \"preferences.email.userFollowingNewDiscussion\": false,\n      \"preferences.popup.userFollowingNewComment\": true,\n      \"preferences.email.userFollowingNewComment\": false\n    },\n    \"dateFollowed\": \"1963-08-06T13:39:29.260Z\",\n    \"preferredLocale\": \"en\"\n  },\n  {\n    \"userID\": 9002,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"photoUrl\": \"string\",\n    \"points\": 0,\n    \"emailConfirmed\": true,\n    \"showEmail\": true,\n    \"bypassSpam\": true,\n    \"banned\": 6734,\n    \"dateInserted\": \"2018-12-30T01:59:43.965Z\",\n    \"dateLastActive\": \"1966-01-28T23:15:42.140Z\",\n    \"dateUpdated\": \"1970-09-06T01:33:17.340Z\",\n    \"hashMethod\": \"string\",\n    \"roles\": [\n      {\n        \"roleID\": 7330,\n        \"name\": \"string\"\n      },\n      {\n        \"roleID\": 4632,\n        \"name\": \"string\"\n      }\n    ],\n    \"hidden\": true,\n    \"rank\": {\n      \"rankID\": 3251,\n      \"name\": \"string\",\n      \"userTitle\": \"string\"\n    },\n    \"rankID\": 6578,\n    \"suggestAnswers\": false,\n    \"insertIPAddress\": \"string\",\n    \"lastIPAddress\": \"string\",\n    \"countVisits\": 3623,\n    \"inviteUserID\": 6955,\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true,\n    \"isSsoUser\": false,\n    \"followed\": true,\n    \"preferences\": {\n      \"preferences.popup.userFollowingNewDiscussion\": true,\n      \"preferences.email.userFollowingNewDiscussion\": true,\n      \"preferences.popup.userFollowingNewComment\": false,\n      \"preferences.email.userFollowingNewComment\": false\n    },\n    \"dateFollowed\": \"1948-06-19T00:40:17.443Z\",\n    \"preferredLocale\": \"en\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3a72113-9292-4f7c-bf6a-a6425c6017f7",
+          "name": "Add a user.",
+          "request": {
+            "name": "Add a user.",
+            "description": {},
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"emailConfirmed\": true,\n  \"bypassSpam\": false,\n  \"showEmail\": \"<boolean>\",\n  \"sendWelcomeEmail\": true,\n  \"photo\": \"<string>\",\n  \"roleID\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"private\": false,\n  \"profileFields\": {\n    \"Country\": \"<string>\",\n    \"GitHub\": \"<string>\",\n    \"Location\": \"<string>\",\n    \"Twitter\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "475593c8-7c27-4767-aef7-c097547b3d1c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"emailConfirmed\": true,\n  \"bypassSpam\": false,\n  \"showEmail\": \"<boolean>\",\n  \"sendWelcomeEmail\": true,\n  \"photo\": \"<string>\",\n  \"roleID\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"private\": false,\n  \"profileFields\": {\n    \"Country\": \"<string>\",\n    \"GitHub\": \"<string>\",\n    \"Location\": \"<string>\",\n    \"Twitter\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userID\": 8757,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"photoUrl\": \"string\",\n  \"points\": 0,\n  \"emailConfirmed\": false,\n  \"showEmail\": true,\n  \"bypassSpam\": true,\n  \"banned\": 3439,\n  \"dateInserted\": \"1967-12-16T06:18:36.659Z\",\n  \"dateLastActive\": \"1990-03-28T02:00:45.081Z\",\n  \"dateUpdated\": \"1999-05-22T10:26:41.878Z\",\n  \"hashMethod\": \"string\",\n  \"roles\": [\n    {\n      \"roleID\": 6100,\n      \"name\": \"string\"\n    },\n    {\n      \"roleID\": 9251,\n      \"name\": \"string\"\n    }\n  ],\n  \"hidden\": true,\n  \"rank\": {\n    \"rankID\": 1341,\n    \"name\": \"string\",\n    \"userTitle\": \"string\"\n  },\n  \"rankID\": 1419,\n  \"suggestAnswers\": true,\n  \"insertIPAddress\": \"string\",\n  \"lastIPAddress\": \"string\",\n  \"countVisits\": 7453,\n  \"inviteUserID\": 5239,\n  \"label\": \"string\",\n  \"labelHtml\": \"string\",\n  \"private\": true,\n  \"isSsoUser\": true,\n  \"followed\": false,\n  \"preferences\": {\n    \"preferences.popup.userFollowingNewDiscussion\": false,\n    \"preferences.email.userFollowingNewDiscussion\": false,\n    \"preferences.popup.userFollowingNewComment\": false,\n    \"preferences.email.userFollowingNewComment\": false\n  },\n  \"dateFollowed\": \"1965-11-24T00:43:28.965Z\",\n  \"preferredLocale\": \"en\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3ef0914-2751-4003-b3f2-fa4d074a912f",
+          "name": "Search for users by full or partial name matching.",
+          "request": {
+            "name": "Search for users by full or partial name matching.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "by-names"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Filter for username. Supports full or partial matching with appended wildcard (e.g. User*).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "name",
+                  "description": "Sort method for results.\nMust be one of: \"countComments\", \"dateLastActive\", \"name\", \"mention\".\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "mentionSettings",
+                  "value": "name",
+                  "description": "Enforce setting to limit results, similar to default settings.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordType",
+                  "value": "<string>",
+                  "description": "Specified what we are filtering by category/group/discussion/escalation\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordID",
+                  "value": "<integer>",
+                  "description": "Specify value of the recordType\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b721510-c85c-4b40-a7af-5ca48c1e3271",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "by-names"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "name"
+                    },
+                    {
+                      "key": "mentionSettings",
+                      "value": "name"
+                    },
+                    {
+                      "key": "recordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recordID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userID\": 3538,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://aHwikXltskLbIPJsaxbqObVxtZm.jzUguxN\",\n    \"dateLastActive\": \"1955-12-26T14:41:48.708Z\",\n    \"url\": \"http://qongnHxjiYtczhomK.ddgkkxmf4GzyhoAhqWtDR-MpNiW7QKoiBCUy.5KnXY98\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  {\n    \"userID\": 7464,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://KaimWemxnFHSNGQwokXf.hetJEfnhvWkVGvDg6UigDwLNqjmnvCDQ4MzmRkQLEz\",\n    \"dateLastActive\": \"2021-03-24T12:19:28.247Z\",\n    \"url\": \"http://pbnublmjDilaSo.erfbWK3c1zgd2QOU9lBf3AYDPloeyexE-Tq7Zus\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70993451-83f3-4623-aa73-58cf7cc8d310",
+          "name": "Get user's leaderboard.",
+          "request": {
+            "name": "Get user's leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "leaders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leaderboardType",
+                  "value": "reputation",
+                  "description": "(Required) Leaderboard type (\"reputation\" => \"Reputation points\", \"posts\" => \"Discussion/comment posts\", \"acceptedAnswers\" => \"Accepted Answers count\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "slotType",
+                  "value": "a",
+                  "description": "(Required) Slot type (\"d\" = day, \"w\" = week, \"m\" = month, \"y\" = year, \"a\" = all)."
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryID",
+                  "value": "<integer>",
+                  "description": "The numeric ID of a category to limit search results to."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum amount of records to be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "includedRoleIDs",
+                  "value": "<range-expression>",
+                  "description": "Specify a range or CSV of included role IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludedRoleIDs",
+                  "value": "<range-expression>",
+                  "description": "Specify a range or CSV of excluded role IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c7c0077a-d7ad-44b2-8719-26a44f0a0402",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "leaders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leaderboardType",
+                      "value": "reputation"
+                    },
+                    {
+                      "key": "slotType",
+                      "value": "a"
+                    },
+                    {
+                      "key": "categoryID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "includedRoleIDs",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "excludedRoleIDs",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userID\": 6360,\n    \"slotType\": \"a\",\n    \"timeSlot\": \"1996-02-08T18:06:12.020Z\",\n    \"source\": \"string\",\n    \"points\": 4440,\n    \"name\": \"string\",\n    \"photo\": \"string\"\n  },\n  {\n    \"userID\": 6347,\n    \"slotType\": \"m\",\n    \"timeSlot\": \"1987-01-26T05:18:20.702Z\",\n    \"source\": \"string\",\n    \"points\": 6248,\n    \"name\": \"string\",\n    \"photo\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85125e40-26bf-45fa-8f8d-c984fdde3d93",
+          "name": "Get information about the current user.",
+          "request": {
+            "name": "Get information about the current user.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "72a981a1-4f91-4045-a8d6-676e16134fe3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dateLastActive\": \"1987-05-27T14:04:53.727Z\",\n  \"isAdmin\": true,\n  \"isSysAdmin\": true,\n  \"name\": \"string\",\n  \"permissions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"photoUrl\": \"http://GJgjYFTCP.jouu2A4MyFNHjuyK,Kt02bw57Zhbu8AsmRPAI9OWypXYYPB.lgbuCbtaM\",\n  \"userID\": 5531,\n  \"url\": \"https://TIKAgJUdmWrqS.veB-.eIegDWG4qHa7xGZ\",\n  \"ssoID\": \"string\",\n  \"label\": \"string\",\n  \"labelHtml\": \"string\",\n  \"private\": false,\n  \"email\": \"fmeCpHzPkey@Z.kzta\",\n  \"isSsoUser\": false,\n  \"countUnreadNotifications\": 276,\n  \"countUnreadConversations\": 4181\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7cab6922-33f0-486a-b39f-29eb6b9071e1",
+          "name": "Get information about menu counts for current user.",
+          "request": {
+            "name": "Get information about menu counts for current user.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "me-counts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aac20936-f16d-4fe1-bd56-1378056cf614",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "me-counts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"counts\": [\n    {\n      \"name\": \"UnreadNotifications\",\n      \"count\": 2\n    },\n    {\n      \"name\": \"Bookmarks\",\n      \"count\": 3\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc5394e8-a918-4c56-92f3-32b2ee2f82ed",
+          "name": "Submit a new user registration.",
+          "request": {
+            "name": "Submit a new user registration.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"discoveryText\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2600f7c5-73ee-45b1-9e47-264f79ea6802",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"discoveryText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userID\": 8029,\n  \"name\": \"string\",\n  \"email\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a008609-bedc-49bf-af54-0e5101f96dfd",
+          "name": "/users/request-password",
+          "request": {
+            "name": "/users/request-password",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "request-password"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "22a1b89c-c14c-4e65-947c-6fc19cc3ba83",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "request-password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2b538fb-4890-4fad-bdec-1c95fe91966d",
+          "name": "Delete a user.",
+          "request": {
+            "name": "Delete a user.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deleteMethod\": \"delete\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e640cd59-bbab-4560-8eea-565940d55006",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deleteMethod\": \"delete\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0b60a28-edb7-4ce7-852b-73128984d030",
+          "name": "Get a user.",
+          "request": {
+            "name": "Get a user.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "role-token",
+                  "value": "<string>",
+                  "description": "Authenticate using a JWT, [role/token](https://success.vanillaforums.com/kb/articles/436-api-role-tokens).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb5035c9-879e-4319-b7ee-e52bb2ff759d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "role-token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userID\": 8757,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"photoUrl\": \"string\",\n  \"points\": 0,\n  \"emailConfirmed\": false,\n  \"showEmail\": true,\n  \"bypassSpam\": true,\n  \"banned\": 3439,\n  \"dateInserted\": \"1967-12-16T06:18:36.659Z\",\n  \"dateLastActive\": \"1990-03-28T02:00:45.081Z\",\n  \"dateUpdated\": \"1999-05-22T10:26:41.878Z\",\n  \"hashMethod\": \"string\",\n  \"roles\": [\n    {\n      \"roleID\": 6100,\n      \"name\": \"string\"\n    },\n    {\n      \"roleID\": 9251,\n      \"name\": \"string\"\n    }\n  ],\n  \"hidden\": true,\n  \"rank\": {\n    \"rankID\": 1341,\n    \"name\": \"string\",\n    \"userTitle\": \"string\"\n  },\n  \"rankID\": 1419,\n  \"suggestAnswers\": true,\n  \"insertIPAddress\": \"string\",\n  \"lastIPAddress\": \"string\",\n  \"countVisits\": 7453,\n  \"inviteUserID\": 5239,\n  \"label\": \"string\",\n  \"labelHtml\": \"string\",\n  \"private\": true,\n  \"isSsoUser\": true,\n  \"followed\": false,\n  \"preferences\": {\n    \"preferences.popup.userFollowingNewDiscussion\": false,\n    \"preferences.email.userFollowingNewDiscussion\": false,\n    \"preferences.popup.userFollowingNewComment\": false,\n    \"preferences.email.userFollowingNewComment\": false\n  },\n  \"dateFollowed\": \"1965-11-24T00:43:28.965Z\",\n  \"preferredLocale\": \"en\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4cde119-84b9-4e61-8118-06efde29741e",
+              "name": "Forbidden, e.g. expired or invalid role token, role token used with another auth mechanism.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "role-token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 3483\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa20b922-bde7-4dbb-b9df-46fce4831bb4",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "role-token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43eb6f51-ca2e-4dca-bb43-b72636ea1b7e",
+          "name": "Update a user.",
+          "request": {
+            "name": "Update a user.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bypassSpam\": \"<boolean>\",\n  \"email\": \"<string>\",\n  \"emailConfirmed\": \"<boolean>\",\n  \"showEmail\": \"<boolean>\",\n  \"suggestAnswers\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"resetPassword\": \"<boolean>\",\n  \"passwordConfirmation\": \"<string>\",\n  \"photo\": \"<string>\",\n  \"roleID\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"profileFields\": {\n    \"Country\": \"<string>\",\n    \"GitHub\": \"<string>\",\n    \"Location\": \"<string>\",\n    \"Twitter\": \"<string>\"\n  },\n  \"private\": false,\n  \"banned\": \"<boolean>\",\n  \"rankID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e83169cf-4528-4ae7-bd60-f3f316ea9ca9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bypassSpam\": \"<boolean>\",\n  \"email\": \"<string>\",\n  \"emailConfirmed\": \"<boolean>\",\n  \"showEmail\": \"<boolean>\",\n  \"suggestAnswers\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"resetPassword\": \"<boolean>\",\n  \"passwordConfirmation\": \"<string>\",\n  \"photo\": \"<string>\",\n  \"roleID\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"profileFields\": {\n    \"Country\": \"<string>\",\n    \"GitHub\": \"<string>\",\n    \"Location\": \"<string>\",\n    \"Twitter\": \"<string>\"\n  },\n  \"private\": false,\n  \"banned\": \"<boolean>\",\n  \"rankID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userID\": 8757,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"photoUrl\": \"string\",\n  \"points\": 0,\n  \"emailConfirmed\": false,\n  \"showEmail\": true,\n  \"bypassSpam\": true,\n  \"banned\": 3439,\n  \"dateInserted\": \"1967-12-16T06:18:36.659Z\",\n  \"dateLastActive\": \"1990-03-28T02:00:45.081Z\",\n  \"dateUpdated\": \"1999-05-22T10:26:41.878Z\",\n  \"hashMethod\": \"string\",\n  \"roles\": [\n    {\n      \"roleID\": 6100,\n      \"name\": \"string\"\n    },\n    {\n      \"roleID\": 9251,\n      \"name\": \"string\"\n    }\n  ],\n  \"hidden\": true,\n  \"rank\": {\n    \"rankID\": 1341,\n    \"name\": \"string\",\n    \"userTitle\": \"string\"\n  },\n  \"rankID\": 1419,\n  \"suggestAnswers\": true,\n  \"insertIPAddress\": \"string\",\n  \"lastIPAddress\": \"string\",\n  \"countVisits\": 7453,\n  \"inviteUserID\": 5239,\n  \"label\": \"string\",\n  \"labelHtml\": \"string\",\n  \"private\": true,\n  \"isSsoUser\": true,\n  \"followed\": false,\n  \"preferences\": {\n    \"preferences.popup.userFollowingNewDiscussion\": false,\n    \"preferences.email.userFollowingNewDiscussion\": false,\n    \"preferences.popup.userFollowingNewComment\": false,\n    \"preferences.email.userFollowingNewComment\": false\n  },\n  \"dateFollowed\": \"1965-11-24T00:43:28.965Z\",\n  \"preferredLocale\": \"en\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a9dfd75-39a2-4328-937b-24bf7e21754a",
+          "name": "Ban a user.",
+          "request": {
+            "name": "Ban a user.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "ban"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"banned\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c11318af-965e-4c7c-b16a-53ff42aaec2a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "ban"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"banned\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"banned\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e9a14dc-cad1-43c6-8459-3e47c19d8628",
+          "name": "Confirm a users current email address by using a confirmation code",
+          "request": {
+            "name": "Confirm a users current email address by using a confirmation code",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "confirm-email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"confirmationCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e4f0a713-696b-4b8c-9b9f-a266651d8cb0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "confirm-email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"confirmationCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userID\": 4637,\n  \"email\": \"string\",\n  \"emailConfirmed\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81e8d643-7217-4064-8302-c5b5fe10d233",
+          "name": "Get a user for editing.",
+          "request": {
+            "name": "Get a user for editing.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "edit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc1e60b2-74a8-4d4b-8011-773183956fe9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userID\": 7411,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"photo\": \"string\",\n  \"emailConfirmed\": true,\n  \"bypassSpam\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32593ee3-b4af-427a-801b-5056830e967d",
+          "name": "Follow or unfollow a user.",
+          "request": {
+            "name": "Follow or unfollow a user.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "follow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID to follow/unfollow."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"preferences.followed\": \"<boolean>\",\n  \"preferences.popup.userFollowingNewDiscussion\": \"<boolean>\",\n  \"preferences.email.userFollowingNewDiscussion\": \"<boolean>\",\n  \"preferences.popup.userFollowingNewComment\": \"<boolean>\",\n  \"preferences.email.userFollowingNewComment\": \"<boolean>\",\n  \"preferences.popup.userFollowingNewEvent\": \"<boolean>\",\n  \"preferences.email.userFollowingNewEvent\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5048e15c-9b06-43d1-a483-2759e5d1f132",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "follow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID to follow/unfollow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferences.followed\": \"<boolean>\",\n  \"preferences.popup.userFollowingNewDiscussion\": \"<boolean>\",\n  \"preferences.email.userFollowingNewDiscussion\": \"<boolean>\",\n  \"preferences.popup.userFollowingNewComment\": \"<boolean>\",\n  \"preferences.email.userFollowingNewComment\": \"<boolean>\",\n  \"preferences.popup.userFollowingNewEvent\": \"<boolean>\",\n  \"preferences.email.userFollowingNewEvent\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"preferences.followed\": true,\n  \"preferences.popup.userFollowingNewDiscussion\": true,\n  \"preferences.email.userFollowingNewDiscussion\": true,\n  \"preferences.popup.userFollowingNewComment\": true,\n  \"preferences.email.userFollowingNewComment\": false,\n  \"preferences.popup.userFollowingNewEvent\": true,\n  \"preferences.email.userFollowingNewEvent\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5182208-1d0f-46df-adf9-f2b69bb2cec2",
+          "name": "Get a user's following preferences.",
+          "request": {
+            "name": "Get a user's following preferences.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "follow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID to get following preferences for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aace1610-bb97-4993-99e3-5f7e25c8b52b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "follow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID to get following preferences for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"preferences.followed\": true,\n  \"preferences.popup.userFollowingNewDiscussion\": true,\n  \"preferences.email.userFollowingNewDiscussion\": true,\n  \"preferences.popup.userFollowingNewComment\": true,\n  \"preferences.email.userFollowingNewComment\": false,\n  \"preferences.popup.userFollowingNewEvent\": true,\n  \"preferences.email.userFollowingNewEvent\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "265edc18-653f-40c7-afed-15451abcdac4",
+          "name": "Adjust a user’s Online privacy.",
+          "request": {
+            "name": "Adjust a user’s Online privacy.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "hidden"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hidden\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fbf3ecc1-4281-43a0-aea0-6256dd3602ff",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "hidden"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"hidden\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hidden\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cfaf43c-5abd-48c6-9600-be789d58bddc",
+          "name": "Delete a user photo.",
+          "request": {
+            "name": "Delete a user photo.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "photo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78b6e4b9-a865-456e-95b2-a3044dc2e0f0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd18300e-20a3-4518-ab7a-72488e19c832",
+          "name": "/users/:id/photo",
+          "request": {
+            "name": "/users/:id/photo",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "photo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e937dcc2-c8b7-4533-b7ba-834737c1fe02",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "photo",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"photoUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7b4af1a-3f53-41fd-bb56-1f1e1fa41f54",
+          "name": "Update the rank of a user.",
+          "request": {
+            "name": "Update the rank of a user.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "rank"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rankID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a6761bbf-6748-431b-9c40-da7351b00a5e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "rank"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rankID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rankID\": 260\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe496b38-69b7-4f7b-b26f-14f8586bf2bd",
+          "name": "Get a user's posts that have received a certain reaction.",
+          "request": {
+            "name": "Get a user's posts that have received a certain reaction.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "reacted"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reactionUrlcode",
+                  "value": "<string>",
+                  "description": "(Required) The reaction to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "expand parameters"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "expand parameters"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The user ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64e1b990-8720-4dec-b941-fca3d89b08d9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "reacted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reactionUrlcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The user ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"insertUserID\": 8877,\n    \"recordID\": 5563,\n    \"recordType\": \"Comment\",\n    \"discussionID\": 316,\n    \"url\": \"string\",\n    \"dateUpdated\": \"1980-11-22T10:14:43.165Z\",\n    \"commentID\": 8124,\n    \"insertUser\": {\n      \"userID\": 8750,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://MbCAEKdAmG.cpiPKqyXECFk+s-ir9CI,cYdM4L84HGuN+m5X\",\n      \"dateLastActive\": \"1957-09-30T02:16:16.723Z\",\n      \"url\": \"https://yQUwzpEUZPeNGEkTfHRfuHHTTFTdcNKfC.xkVxCQMUbNqtSb+QEJf5rkJWhzvox\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"updateUser\": {\n      \"userID\": 2338,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://qtERnCtyVK.iyviFeCpYpPGGcSrq.9Q4O4KGioYOOEgBPrwuh\",\n      \"dateLastActive\": \"1987-09-02T02:37:32.212Z\",\n      \"url\": \"https://VqQrnxLk.vhhCp3qxbebfE1CpMwd63xd6Gi8P8U+FXx4k49sJiwEo,XTny5aHhx+pTotHb2ggHbf5PUUZ\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"reactions\": [\n      {\n        \"tagID\": 9583,\n        \"urlcode\": \"string\",\n        \"name\": \"string\",\n        \"class\": \"string\",\n        \"count\": 9977\n      },\n      {\n        \"tagID\": 1598,\n        \"urlcode\": \"string\",\n        \"name\": \"string\",\n        \"class\": \"string\",\n        \"count\": 9122\n      }\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"insertUserID\": 2221,\n    \"recordID\": 1913,\n    \"recordType\": \"Comment\",\n    \"discussionID\": 4194,\n    \"url\": \"string\",\n    \"dateUpdated\": \"1952-09-03T15:52:45.347Z\",\n    \"commentID\": 8452,\n    \"insertUser\": {\n      \"userID\": 5537,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://bDFWdPXaujToFOrx.pqtN-iv,JJxoUjn7qx7DxiVa32eqHvk+pz+1xJMeAW13gfBWhr\",\n      \"dateLastActive\": \"1974-05-19T13:11:25.582Z\",\n      \"url\": \"http://pdhoW.uolpKDOYXxn-saWud8lhs0AK-1yRAL3,-vu\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"updateUser\": {\n      \"userID\": 4091,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://YRltdomwu.byvkwo,pWFKHymDGzRfZ9nWcb9yJhf0yB.GU\",\n      \"dateLastActive\": \"2003-05-29T23:37:20.259Z\",\n      \"url\": \"http://fVUmztgmGeDrPaxQcsj.eequ56,S-byGphGghaWJSeDg6KRRvy7ucWF9lRps8rMPCKvjai-wSB+ec7obFuqD\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"reactions\": [\n      {\n        \"tagID\": 7841,\n        \"urlcode\": \"string\",\n        \"name\": \"string\",\n        \"class\": \"string\",\n        \"count\": 3171\n      },\n      {\n        \"tagID\": 3077,\n        \"urlcode\": \"string\",\n        \"name\": \"string\",\n        \"class\": \"string\",\n        \"count\": 2025\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b14b749f-e9ab-4179-bf50-2b9c2962328e",
+    "name": "Vanilla Addons Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

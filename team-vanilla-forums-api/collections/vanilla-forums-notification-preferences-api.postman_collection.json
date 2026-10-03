@@ -1,0 +1,564 @@
+{
+  "item": [
+    {
+      "id": "e2738084-a2a5-4aa1-a80f-27f56ad6e847",
+      "name": "Notification Preferences",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2323c7d6-7568-4479-b1c0-f182f9f34df6",
+          "name": "Get the schema for the notification preferences page.",
+          "request": {
+            "name": "Get the schema for the notification preferences page.",
+            "description": {},
+            "url": {
+              "path": [
+                "notification-preferences",
+                "schema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "schemaType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7536fefd-dea9-473c-ba67-66044e2d871b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification-preferences",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "schemaType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"notifications\": {\n      \"x-control\": {\n        \"label\": \"Notifications\",\n        \"description\": \"Choose to be notified by notification popup or email.\"\n      },\n      \"type\": \"object\",\n      \"properties\": {\n        \"followedPosts\": {\n          \"x-control\": {\n            \"label\": \"Posts\",\n            \"description\": null\n          },\n          \"type\": \"object\",\n          \"properties\": {\n            \"DiscussionComment\": {\n              \"x-control\": {\n                \"label\": \"Discussion Comment\",\n                \"description\": \"New comments on my posts\"\n              },\n              \"type\": \"object\",\n              \"properties\": {\n                \"email\": {\n                  \"type\": \"boolean\"\n                },\n                \"popup\": {\n                  \"type\": \"boolean\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee14682e-2111-4ffe-94d1-7898b5b6d0db",
+          "name": "Get a user's notification preferences.",
+          "request": {
+            "name": "Get a user's notification preferences.",
+            "description": {},
+            "url": {
+              "path": [
+                "notification-preferences",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a78ab774-64d1-4b27-b371-d559e8585e20",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification-preferences",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AnswerAccepted\": {\n    \"popup\": false,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"QuestionAnswer\": {\n    \"popup\": true,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"QuestionFollowUp\": {\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"BookmarkedAnswerAccepted\": {\n    \"popup\": true,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"MyQuestionAnswerAccepted\": {\n    \"popup\": true,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"AuthorStatus\": {\n    \"popup\": true,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"VoterStatus\": {\n    \"popup\": false,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"Rank\": {\n    \"popup\": false,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"ScheduledPostFailure\": {},\n  \"DiscussionComment\": {\n    \"popup\": false,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"ActivityComment\": {\n    \"popup\": true,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"WallComment\": {\n    \"popup\": true,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"Applicant\": {\n    \"popup\": true,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"BookmarkComment\": {\n    \"popup\": true,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"Mention\": {\n    \"popup\": false,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"NewDiscussion\": {\n    \"popup\": false,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"postTag\": {\n    \"popup\": false,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"NewComment\": {\n    \"popup\": false,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"ParticipateComment\": {\n    \"popup\": false,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"DigestEnabled\": {\n    \"email\": false,\n    \"disabled\": false,\n    \"frequency\": \"weekly\"\n  },\n  \"AiSuggestions\": {\n    \"popup\": true,\n    \"disabled\": false\n  },\n  \"FeatureDisclosure\": {},\n  \"appeal\": {\n    \"popup\": true,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"myAppeal\": {\n    \"popup\": true,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"escalation\": {\n    \"popup\": true,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"myEscalation\": {\n    \"popup\": true,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"postRemoved\": {\n    \"popup\": true,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"report\": {\n    \"popup\": true,\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"CommunityEngagement\": {\n    \"email\": true,\n    \"disabled\": false\n  },\n  \"userFollowingNewDiscussion\": {\n    \"popup\": true,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"userFollowingNewComment\": {\n    \"popup\": false,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"userFollowingNewEvent\": {\n    \"popup\": false,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"ConversationMessage\": {\n    \"popup\": false,\n    \"email\": false,\n    \"disabled\": false\n  },\n  \"NotificationLanguage\": \"fr\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d37d0da-28cf-4b31-8165-69afd4c7af43",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification-preferences",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9b78383-ab1c-4881-9119-cd6aa1accb40",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification-preferences",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66815d7b-2a04-46d4-b859-bb537538a028",
+          "name": "Update a user's notification preferences.",
+          "request": {
+            "name": "Update a user's notification preferences.",
+            "description": {},
+            "url": {
+              "path": [
+                "notification-preferences",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"QuestionAnswer\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"QuestionFollowUp\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"BookmarkedAnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"MyQuestionAnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"AuthorStatus\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"VoterStatus\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Rank\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ScheduledPostFailure\": \"<object>\",\n  \"DiscussionComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ActivityComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"WallComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Applicant\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"BookmarkComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Mention\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NewDiscussion\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"postTag\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NewComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ParticipateComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"DigestEnabled\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false,\n    \"frequency\": \"weekly\"\n  },\n  \"AiSuggestions\": {\n    \"popup\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"FeatureDisclosure\": \"<object>\",\n  \"appeal\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"myAppeal\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"escalation\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"myEscalation\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"postRemoved\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"report\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"CommunityEngagement\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewDiscussion\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewEvent\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ConversationMessage\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NotificationLanguage\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a64ccecb-4acf-4fee-affc-5ef1d5418a29",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification-preferences",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"QuestionAnswer\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"QuestionFollowUp\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"BookmarkedAnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"MyQuestionAnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"AuthorStatus\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"VoterStatus\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Rank\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ScheduledPostFailure\": \"<object>\",\n  \"DiscussionComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ActivityComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"WallComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Applicant\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"BookmarkComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Mention\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NewDiscussion\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"postTag\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NewComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ParticipateComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"DigestEnabled\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false,\n    \"frequency\": \"weekly\"\n  },\n  \"AiSuggestions\": {\n    \"popup\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"FeatureDisclosure\": \"<object>\",\n  \"appeal\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"myAppeal\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"escalation\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"myEscalation\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"postRemoved\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"report\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"CommunityEngagement\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewDiscussion\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewEvent\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ConversationMessage\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NotificationLanguage\": \"fr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"QuestionAnswer\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"QuestionFollowUp\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"BookmarkedAnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"MyQuestionAnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"AuthorStatus\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"VoterStatus\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Rank\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ScheduledPostFailure\": \"<object>\",\n  \"DiscussionComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ActivityComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"WallComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Applicant\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"BookmarkComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Mention\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NewDiscussion\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"postTag\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NewComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ParticipateComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"DigestEnabled\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false,\n    \"frequency\": \"weekly\"\n  },\n  \"AiSuggestions\": {\n    \"popup\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"FeatureDisclosure\": \"<object>\",\n  \"appeal\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"myAppeal\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"escalation\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"myEscalation\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"postRemoved\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"report\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"CommunityEngagement\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewDiscussion\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewEvent\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ConversationMessage\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NotificationLanguage\": \"fr\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e3c88e9-22b9-42f4-ba17-a9fe3a1780c9",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification-preferences",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"QuestionAnswer\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"QuestionFollowUp\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"BookmarkedAnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"MyQuestionAnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"AuthorStatus\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"VoterStatus\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Rank\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ScheduledPostFailure\": \"<object>\",\n  \"DiscussionComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ActivityComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"WallComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Applicant\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"BookmarkComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Mention\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NewDiscussion\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"postTag\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NewComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ParticipateComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"DigestEnabled\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false,\n    \"frequency\": \"weekly\"\n  },\n  \"AiSuggestions\": {\n    \"popup\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"FeatureDisclosure\": \"<object>\",\n  \"appeal\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"myAppeal\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"escalation\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"myEscalation\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"postRemoved\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"report\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"CommunityEngagement\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewDiscussion\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewEvent\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ConversationMessage\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NotificationLanguage\": \"fr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f8d2619-ddde-4bb6-803c-4f21bb1f7b6b",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification-preferences",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"QuestionAnswer\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"QuestionFollowUp\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"BookmarkedAnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"MyQuestionAnswerAccepted\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"AuthorStatus\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"VoterStatus\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Rank\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ScheduledPostFailure\": \"<object>\",\n  \"DiscussionComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ActivityComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"WallComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Applicant\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"BookmarkComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"Mention\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NewDiscussion\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"postTag\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NewComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ParticipateComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"DigestEnabled\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false,\n    \"frequency\": \"weekly\"\n  },\n  \"AiSuggestions\": {\n    \"popup\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"FeatureDisclosure\": \"<object>\",\n  \"appeal\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"myAppeal\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"escalation\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"myEscalation\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"postRemoved\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"report\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"CommunityEngagement\": {\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewDiscussion\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewComment\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"userFollowingNewEvent\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"ConversationMessage\": {\n    \"popup\": \"<boolean>\",\n    \"email\": \"<boolean>\",\n    \"disabled\": false\n  },\n  \"NotificationLanguage\": \"fr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9b4bc666-0d1c-4e05-a58c-132706a167be",
+    "name": "Vanilla Addons Notification Preferences API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1213 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Themes API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Themes
+paths:
+  /themes:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/ExpandAssetsParam'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Themes'
+                type: array
+          description: Success
+      tags:
+      - Themes
+      summary: Get all themes available
+      x-addon: dashboard
+      operationId: getThemes
+      x-operation-id-source: derived
+    post:
+      requestBody:
+        $ref: '#/components/requestBodies/PostTheme'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme'
+          description: Success
+      tags:
+      - Themes
+      summary: Create a new theme
+      x-addon: themingapi
+      operationId: postThemes
+      x-operation-id-source: derived
+  /themes/current:
+    get:
+      summary: Get the current theme
+      parameters:
+      - $ref: '#/components/parameters/ExpandAssetsParam'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme'
+          description: Success
+      tags:
+      - Themes
+      x-addon: dashboard
+      operationId: getThemesCurrent
+      x-operation-id-source: derived
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                themeID:
+                  description: Theme ID.
+                  type: integer
+              example:
+                themeID: 3
+              required:
+              - themeID
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme'
+          description: Success
+      tags:
+      - Themes
+      summary: Set theme as "current"
+      x-addon: themingapi
+      operationId: putThemesCurrent
+      x-operation-id-source: derived
+  /themes/preview:
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                themeID:
+                  description: Theme ID.
+                  type: integer
+              example:
+                themeID: 3
+              required:
+              - themeID
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme'
+          description: Success
+      tags:
+      - Themes
+      summary: 'Set preview theme. Note: only applies to current user session'
+      x-addon: themingapi
+      operationId: putThemesPreview
+      x-operation-id-source: derived
+  /themes/{themeID}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/ExpandAssetsParam'
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme'
+          description: Success
+      tags:
+      - Themes
+      summary: Get a theme
+      x-addon: dashboard
+      operationId: getThemesByThemeID
+      x-operation-id-source: derived
+    patch:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        $ref: '#/components/requestBodies/PatchTheme'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme'
+          description: Success
+      tags:
+      - Themes
+      summary: Update theme name
+      x-addon: themingapi
+      operationId: patchThemesByThemeID
+      x-operation-id-source: derived
+    delete:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Themes
+      summary: Delete theme
+      x-addon: themingapi
+      operationId: deleteThemesByThemeID
+      x-operation-id-source: derived
+  /themes/{themeID}/revisions:
+    get:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Theme'
+          description: Success
+      tags:
+      - Themes
+      summary: Get all revisions for a theme
+      x-addon: dashboard
+      operationId: getThemesByThemeIDRevisions
+      x-operation-id-source: derived
+components:
+  schemas:
+    Themes:
+      properties:
+        assets:
+          $ref: '#/components/schemas/ThemeAssets'
+        preview:
+          $ref: '#/components/schemas/PreviewAssets'
+        type:
+          type: string
+          enum:
+          - themeFile
+        themeID:
+          type: integer
+        version:
+          type: string
+      required:
+      - assets
+      - type
+      - themeID
+      - version
+      type: object
+      x-addon: dashboard
+    ThemeFooterAsset:
+      description: Custom footer HTML.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: string
+          description: Contents of the asset. May require an expand parameter to retreive.
+      required:
+      - url
+      - type
+      type: object
+      x-addon: dashboard
+    ThemeMobileLogoAsset:
+      description: Site logo to be displayed in the theme when viewed on a mobile device.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+      type: object
+      x-addon: dashboard
+    ThemeScriptsAsset:
+      description: External script files to be included.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThemeScript'
+      required:
+      - url
+      - type
+      type: object
+      x-addon: dashboard
+    ThemeVariablesAsset:
+      description: A collection of variables intended to be used by theme.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: object
+          description: JSON contents of the asset.
+      required:
+      - url
+      - type
+      type: object
+      x-addon: dashboard
+    ThemeScript:
+      properties:
+        url:
+          type: string
+      required:
+      - url
+      type: object
+      x-addon: dashboard
+    ThemeJavascriptAsset:
+      description: Javascript for the theme.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: string
+          description: Contents of the asset. May require an expand parameter to retreive.
+      required:
+      - url
+      - type
+      type: object
+      x-addon: dashboard
+    ThemeAssets:
+      description: Assets to include in a page as part of the theme.
+      properties:
+        header:
+          $ref: '#/components/schemas/ThemeHeaderAsset'
+        footer:
+          $ref: '#/components/schemas/ThemeFooterAsset'
+        javascript:
+          $ref: '#/components/schemas/ThemeJavascriptAsset'
+        scripts:
+          $ref: '#/components/schemas/ThemeScriptsAsset'
+        styles:
+          $ref: '#/components/schemas/ThemeCssAsset'
+        variables:
+          $ref: '#/components/schemas/ThemeVariablesAsset'
+        logo:
+          $ref: '#/components/schemas/ThemeLogoAsset'
+        mobileLogo:
+          $ref: '#/components/schemas/ThemeMobileLogoAsset'
+      type: object
+      x-addon: dashboard
+    ThemeHeaderAsset:
+      description: Custom header HTML.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: string
+          description: Contents of the asset. May require an expand parameter to retreive.
+      required:
+      - url
+      - type
+      type: object
+      x-addon: dashboard
+    ThemeLogoAsset:
+      description: Site logo to be displayed in the theme.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+      type: object
+      x-addon: dashboard
+    ThemeCssAsset:
+      description: CSS for the theme.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: string
+          description: Contents of the asset. May require an expand parameter to retreive.
+      required:
+      - data
+      - type
+      type: object
+      x-addon: dashboard
+    Theme:
+      properties:
+        themeID:
+          type: string
+          description: Unique ID of the theme.
+        version:
+          type: string
+          description: Theme version.
+        name:
+          description: Theme name.
+          type: string
+        parentTheme:
+          type: string
+          description: Parent theme template
+        parentVersion:
+          type: string
+          description: Parent theme template version
+        revisionID:
+          type: integer
+          description: Theme revision ID
+        revisionName:
+          type: string
+          description: Theme revision name
+        assets:
+          $ref: '#/components/schemas/ThemeAssets'
+        preview:
+          $ref: '#/components/schemas/PreviewAssets'
+      required:
+      - assets
+      - type
+      - themeID
+      - version
+      type: object
+      x-addon: dashboard
+    PreviewAssets:
+      description: A collections of variables to generate a preview.
+      properties:
+        preset:
+          type: string
+        globalPrimary:
+          type:
+          - string
+          - 'null'
+        globalBg:
+          type:
+          - string
+          - 'null'
+        globalFg:
+          type:
+          - string
+          - 'null'
+        titleBarBg:
+          type:
+          - string
+          - 'null'
+        titleBarFg:
+          type:
+          - string
+          - 'null'
+        backgroundImage:
+          type:
+          - string
+          - 'null'
+      type: object
+      x-addon: dashboard
+    ExpandAssetsValues:
+      type: array
+      items:
+        type: string
+        enum:
+        - all
+        - javascript.data
+        - css.data
+        - variables.data
+        - header.data
+        - footer.data
+      x-addon: dashboard
+  requestBodies:
+    PatchTheme:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                description: Theme name.
+                type: string
+              revisionName:
+                type: string
+                description: Theme revision name
+              assets:
+                type: object
+                properties:
+                  header:
+                    description: Header HTML Asset.
+                    type: object
+                    properties:
+                      type:
+                        description: The type of the asset.
+                        type: string
+                        example: html
+                        enum:
+                        - html
+                        - css
+                        - js
+                      data:
+                        type: string
+                        example: <header>Hello Footer<footer />
+                        description: Contents of the asset. May require an expand parameter to retreive.
+                  footer:
+                    description: Footer HTML Asset.
+                    type: object
+                    properties:
+                      type:
+                        description: The type of the asset.
+                        type: string
+                        example: html
+                        enum:
+                        - html
+                        - css
+                        - js
+                      data:
+                        type: string
+                        example: <header>Hello Footer<footer />
+                        description: Contents of the asset. May require an expand parameter to retreive.
+                  variables:
+                    description: Variables JSON Asset.
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: json
+                      data:
+                        type: object
+                        description: JSON content of the asset.
+                        example:
+                          global:
+                            mainColors:
+                              primary: '#5cc530'
+                  scripts:
+                    description: Scripts JSON Asset.
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: json
+                      data:
+                        type: object
+                        description: JSON content of the asset.
+                        example:
+                          global:
+                            mainColors:
+                              primary: '#5cc530'
+                  styles:
+                    description: Styles CSS Asset.
+                    type: object
+                    properties:
+                      type:
+                        description: The type of the asset.
+                        type: string
+                        example: html
+                        enum:
+                        - html
+                        - css
+                        - js
+                      data:
+                        type: string
+                        example: <header>Hello Footer<footer />
+                        description: Contents of the asset. May require an expand parameter to retreive.
+                  javascript:
+                    description: Javascript JS Asset.
+                    type: object
+                    properties:
+                      type:
+                        description: The type of the asset.
+                        type: string
+                        example: html
+                        enum:
+                        - html
+                        - css
+                        - js
+                      data:
+                        type: string
+                        example: <header>Hello Footer<footer />
+                        description: Contents of the asset. May require an expand parameter to retreive.
+            example:
+              name: My custom Theme
+              assets:
+                header:
+                  data: <div><!-- HEADER --></div>
+                  type: html
+                footer:
+                  data: <div><!-- FOOTER --></div>
+                  type: html
+      required: true
+      x-addon: themingapi
+    PostTheme:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                description: Theme name.
+                type: string
+              revisionName:
+                type: string
+                description: Theme revision name
+              assets:
+                type: object
+                properties:
+                  header:
+                    description: Header HTML Asset.
+                    type: object
+                    properties:
+                      type:
+                        description: The type of the asset.
+                        type: string
+                        example: html
+                        enum:
+                        - html
+                        - css
+                        - js
+                      data:
+                        type: string
+                        example: <header>Hello Footer<footer />
+                        description: Contents of the asset. May require an expand parameter to retreive.
+                  footer:
+                    description: Footer HTML Asset.
+                    type: object
+                    properties:
+                      type:
+                        description: The type of the asset.
+                        type: string
+                        example: html
+                        enum:
+                        - html
+                        - css
+                        - js
+                      data:
+                        type: string
+                        example: <header>Hello Footer<footer />
+                        description: Contents of the asset. May require an expand parameter to retreive.
+                  variables:
+                    description: Variables JSON Asset.
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: json
+                      data:
+                        type: object
+                        description: JSON content of the asset.
+                        example:
+                          global:
+                            mainColors:
+                              primary: '#5cc530'
+                  scripts:
+                    description: Scripts JSON Asset.
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: json
+                      data:
+                        type: object
+                        description: JSON content of the asset.
+                        example:
+                          global:
+                            mainColors:
+                              primary: '#5cc530'
+                  styles:
+                    description: Styles CSS Asset.
+                    type: object
+                    properties:
+                      type:
+                        description: The type of the asset.
+                        type: string
+                        example: html
+                        enum:
+                        - html
+                        - css
+                        - js
+                      data:
+                        type: string
+                        example: <header>Hello Footer<footer />
+                        description: Contents of the asset. May require an expand parameter to retreive.
+                  javascript:
+                    description: Javascript JS Asset.
+                    type: object
+                    properties:
+                      type:
+                        description: The type of the asset.
+                        type: string
+                        example: html
+                        enum:
+                        - html
+                        - css
+                        - js
+                      data:
+                        type: string
+                        example: <header>Hello Footer<footer />
+                        description: Contents of the asset. May require an expand parameter to retreive.
+              parentTheme:
+                type: string
+                description: Parent theme template
+              parentVersion:
+                type: string
+                description: Parent theme template version
+              active:
+                type: string
+                description: Flag theme revision is active or not. Only for GET themes/{id}/revisions
+            example:
+              name: My custom Theme
+              assets:
+                header:
+                  data: <div><!-- HEADER --></div>
+                  type: html
+                footer:
+                  data: <div><!-- FOOTER --></div>
+                  type: html
+              parentTheme: theme-foundation
+            required:
+            - name
+      required: true
+      x-addon: themingapi
+  parameters:
+    ExpandAssetsParam:
+      in: query
+      name: expand
+      description: 'Expand associated records using one or more valid field names. A value of `all` will expand all expandable fields. style
+
+        '
+      schema:
+        $ref: '#/components/schemas/ExpandAssetsValues'
+      style: form
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

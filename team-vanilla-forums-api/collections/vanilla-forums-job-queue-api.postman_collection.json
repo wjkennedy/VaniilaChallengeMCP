@@ -1,0 +1,189 @@
+{
+  "item": [
+    {
+      "id": "febe597e-323c-487c-96f5-179e83a54a61",
+      "name": "Job Queue",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09bd9224-95d1-4179-83ec-825c3b39d26c",
+          "name": "Track job feedback.",
+          "request": {
+            "name": "Track job feedback.",
+            "description": {},
+            "url": {
+              "path": [
+                "job-queue-feedback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jobsFeedback\": [\n    [\n      \"<object>\",\n      \"<object>\"\n    ],\n    [\n      \"<object>\",\n      \"<object>\"\n    ]\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a9416a72-4c39-4275-9aec-d98643048581",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job-queue-feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jobsFeedback\": [\n    [\n      \"<object>\",\n      \"<object>\"\n    ],\n    [\n      \"<object>\",\n      \"<object>\"\n    ]\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobs\": [\n    {\n      \"queuedJobID\": 2383,\n      \"jobID\": \"string\",\n      \"jobType\": \"string\",\n      \"driver\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"string\",\n      \"metrics\": \"string\",\n      \"insertUserID\": 3596,\n      \"dateInserted\": \"string\",\n      \"updateUserID\": 5235,\n      \"dateUpdated\": \"string\",\n      \"dateQueued\": \"string\",\n      \"dateCompleted\": \"string\"\n    },\n    {\n      \"queuedJobID\": 1628,\n      \"jobID\": \"string\",\n      \"jobType\": \"string\",\n      \"driver\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"string\",\n      \"metrics\": \"string\",\n      \"insertUserID\": 5381,\n      \"dateInserted\": \"string\",\n      \"updateUserID\": 2915,\n      \"dateUpdated\": \"string\",\n      \"dateQueued\": \"string\",\n      \"dateCompleted\": \"string\"\n    }\n  ],\n  \"failedIDs\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "662c9dcd-d104-4f05-b16d-7200ce0ad29a",
+          "name": "Trigger a health check job.",
+          "request": {
+            "name": "Trigger a health check job.",
+            "description": {},
+            "url": {
+              "path": [
+                "job-queue",
+                "health-check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f792e2f9-9577-4d45-8959-a72b511f6bd8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job-queue",
+                    "health-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobTrackingID\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ade68578-fe0c-468a-8f3e-6710a0f18515",
+    "name": "Vanilla Addons Job Queue API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

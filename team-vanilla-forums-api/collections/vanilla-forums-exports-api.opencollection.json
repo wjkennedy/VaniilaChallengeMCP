@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Exports API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Exports.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/exports",
+            "params": [
+              {
+                "name": "insertUserID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exportStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List Exports."
+        },
+        {
+          "info": {
+            "name": "Get a export.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/exports/:exportUUID",
+            "params": [
+              {
+                "name": "exportUUID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a export."
+        },
+        {
+          "info": {
+            "name": "Delete a export.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/exports/:exportUUID",
+            "params": [
+              {
+                "name": "exportUUID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a export."
+        },
+        {
+          "info": {
+            "name": "Download a export.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/exports/:exportUUID/download",
+            "params": [
+              {
+                "name": "exportUUID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Download a export."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

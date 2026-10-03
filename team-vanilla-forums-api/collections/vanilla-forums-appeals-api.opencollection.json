@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Appeals API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appeals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List appeals.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/appeals",
+            "params": [
+              {
+                "name": "appealingUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the user who created the appeal."
+              },
+              {
+                "name": "assignedUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the user assigned to the appeal."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by appeal type."
+              },
+              {
+                "name": "escalationID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by escalation ID (for content-removal appeals)."
+              },
+              {
+                "name": "escalationLogID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by escalation log ID (for content-removal appeals)."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by appeal status."
+              },
+              {
+                "name": "dateInserted",
+                "value": "",
+                "type": "query",
+                "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort the results."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of appeals with optional filtering. Requires community.manage permission."
+        },
+        {
+          "info": {
+            "name": "Create an appeal.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/appeals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new appeal for a ban or content removal decision.\n"
+        },
+        {
+          "info": {
+            "name": "Get a single appeal.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/appeals/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the appeal."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get an appeal by ID. Users can view their own appeals, or moderators with community.manage can view all appeals."
+        },
+        {
+          "info": {
+            "name": "Update an appeal.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/appeals/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the appeal."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an appeal's status or assignment. Requires community.manage permission.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

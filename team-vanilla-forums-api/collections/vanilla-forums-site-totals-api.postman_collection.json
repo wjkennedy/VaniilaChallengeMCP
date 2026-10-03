@@ -1,0 +1,151 @@
+{
+  "item": [
+    {
+      "id": "260e17c4-c051-4438-b6da-7b5fbfe07bd2",
+      "name": "Site Totals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27a1c979-245c-4061-89bc-601543713085",
+          "name": "Get a list of site-total counts.",
+          "request": {
+            "name": "Get a list of site-total counts.",
+            "description": {},
+            "url": {
+              "path": [
+                "site-totals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "siteSectionID",
+                  "value": "<string>",
+                  "description": "Get the counts only for a specific site section (subcommunity)."
+                },
+                {
+                  "disabled": false,
+                  "key": "counts",
+                  "value": "<string>",
+                  "description": "Choose the site counts you want by choosing one or more valid field names. Choosing \"all\" will return all available counts."
+                },
+                {
+                  "disabled": false,
+                  "key": "counts",
+                  "value": "<string>",
+                  "description": "Choose the site counts you want by choosing one or more valid field names. Choosing \"all\" will return all available counts."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c71770f4-7be5-4b2a-aa6d-9d481cc548bb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site-totals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "siteSectionID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counts",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counts",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"siteSectionID\": 7910,\n  \"counts\": {\n    \"customPage\": {\n      \"count\": 1760,\n      \"isCalculating\": true,\n      \"isFiltered\": false\n    },\n    \"question\": {\n      \"count\": 6183,\n      \"isCalculating\": false,\n      \"isFiltered\": false\n    },\n    \"accepted\": {\n      \"count\": 1655,\n      \"isCalculating\": false,\n      \"isFiltered\": false\n    },\n    \"category\": {\n      \"count\": 784,\n      \"isCalculating\": false,\n      \"isFiltered\": true\n    },\n    \"discussion\": {\n      \"count\": 7967,\n      \"isCalculating\": true,\n      \"isFiltered\": true\n    },\n    \"comment\": {\n      \"count\": 817,\n      \"isCalculating\": true,\n      \"isFiltered\": true\n    },\n    \"post\": {\n      \"count\": 7499,\n      \"isCalculating\": true,\n      \"isFiltered\": true\n    },\n    \"user\": {\n      \"count\": 987,\n      \"isCalculating\": false,\n      \"isFiltered\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "60b9bb54-d6e0-4a99-8541-5a4b3fdecdae",
+    "name": "Vanilla Addons Site Totals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1985 @@
+{
+  "item": [
+    {
+      "id": "a1d4a683-0c0a-4451-9fed-f13238c2a5f7",
+      "name": "Collections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ec6e2307-e118-480e-b7e9-8ce31a1d3f72",
+          "name": "List collections.",
+          "request": {
+            "name": "List collections.",
+            "description": {},
+            "url": {
+              "path": [
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "collectionID",
+                  "value": "<range-expression>",
+                  "description": "Filter by one or more collection IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by collection name"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateUpdated",
+                  "value": "<date-filter>",
+                  "description": "Filter by updated date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Desired number of collections per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51617928-e8a3-4b5c-9ff3-79b7c690c8a6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collectionID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateUpdated",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"collectionID\": 4522,\n    \"name\": \"string\",\n    \"records\": [\n      {\n        \"recordID\": 9443,\n        \"recordType\": \"groups\",\n        \"dateAddedToCollection\": \"1982-06-19T17:59:41.950Z\",\n        \"sort\": 5180\n      },\n      {\n        \"recordID\": 5155,\n        \"recordType\": \"category\",\n        \"dateAddedToCollection\": \"1984-03-06T14:27:52.421Z\",\n        \"sort\": 3951\n      }\n    ],\n    \"dateInserted\": \"2014-09-23T14:39:35.278Z\",\n    \"dateUpdated\": \"1983-07-02T02:29:34.470Z\",\n    \"insertUserID\": 1063,\n    \"updateUserID\": 1643\n  },\n  {\n    \"collectionID\": 2163,\n    \"name\": \"string\",\n    \"records\": [\n      {\n        \"recordID\": 3068,\n        \"recordType\": \"knowledgeBase\",\n        \"dateAddedToCollection\": \"1971-10-05T21:33:52.483Z\",\n        \"sort\": 4854\n      },\n      {\n        \"recordID\": 1164,\n        \"recordType\": \"groups\",\n        \"dateAddedToCollection\": \"1975-09-05T03:08:43.842Z\",\n        \"sort\": 3000\n      }\n    ],\n    \"dateInserted\": \"2011-12-19T06:38:24.775Z\",\n    \"dateUpdated\": \"2004-07-31T22:15:23.139Z\",\n    \"insertUserID\": 5073,\n    \"updateUserID\": 6246\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72ce88b9-0f21-4739-a5fd-3338532152df",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collectionID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateUpdated",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dc7da46-4ca1-4fa5-bf72-07fc9f333b3f",
+          "name": "Create new collection",
+          "request": {
+            "name": "Create new collection",
+            "description": {},
+            "url": {
+              "path": [
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2773b75d-e86e-411b-999b-c2feed0c4f71",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collectionID\": 9323,\n  \"name\": \"<string>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"dateAddedToCollection\": \"2006-12-08T14:20:05.977Z\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"dateAddedToCollection\": \"1951-05-14T07:31:46.646Z\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd83251a-2e41-46e9-9dfb-ef51ccd442f7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 9002\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca097510-2976-4521-9651-8116110a75e4",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e73d7c2-f678-47dc-b8e3-5b88c630a205",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d54409e5-daa7-4872-8052-b158dd21ea81",
+          "name": "List the collections a given record belongs to.",
+          "request": {
+            "name": "List the collections a given record belongs to.",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                "by-resource"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "recordID",
+                  "value": "<integer>",
+                  "description": "(Required) The id of the record."
+                },
+                {
+                  "disabled": false,
+                  "key": "recordType",
+                  "value": "<string>",
+                  "description": "(Required) The type of the record."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03599672-4154-4f16-a85d-24b086736bab",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "by-resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "recordID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "recordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"dateInserted\": \"<dateTime>\",\n    \"dateUpdated\": \"<dateTime>\",\n    \"insertUserID\": \"<integer>\",\n    \"updateUserID\": \"<integer>\",\n    \"records\": [\n      {\n        \"recordID\": \"<integer>\",\n        \"recordType\": \"<string>\",\n        \"sort\": \"<integer>\"\n      },\n      {\n        \"recordID\": \"<integer>\",\n        \"recordType\": \"<string>\",\n        \"sort\": \"<integer>\"\n      }\n    ]\n  },\n  {\n    \"name\": \"<string>\",\n    \"dateInserted\": \"<dateTime>\",\n    \"dateUpdated\": \"<dateTime>\",\n    \"insertUserID\": \"<integer>\",\n    \"updateUserID\": \"<integer>\",\n    \"records\": [\n      {\n        \"recordID\": \"<integer>\",\n        \"recordType\": \"<string>\",\n        \"sort\": \"<integer>\"\n      },\n      {\n        \"recordID\": \"<integer>\",\n        \"recordType\": \"<string>\",\n        \"sort\": \"<integer>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dfd50259-2de3-4af4-b6b9-8ca5b101bde7",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "by-resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "recordID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "recordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "591f7ab1-7f8e-4258-ae19-38a8754aa9a1",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "by-resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "recordID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "recordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5f0396a-2a9d-4c03-8a32-fad4b7d423ea",
+          "name": "Add a record to one or more collections.",
+          "request": {
+            "name": "Add a record to one or more collections.",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                "by-resource"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"record\": {\n    \"recordID\": \"<integer>\",\n    \"recordType\": \"<string>\",\n    \"sort\": \"<integer>\"\n  },\n  \"collectionIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80727b01-a032-449e-b0d6-547b74298ea2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "by-resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"record\": {\n    \"recordID\": \"<integer>\",\n    \"recordType\": \"<string>\",\n    \"sort\": \"<integer>\"\n  },\n  \"collectionIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collectionID\": 2006,\n  \"name\": \"string\",\n  \"records\": [\n    {\n      \"recordID\": 2040,\n      \"recordType\": \"groups\",\n      \"sort\": 5723,\n      \"record\": {\n        \"value\": \"reference #/components/schemas/Article not found in the OpenAPI spec\"\n      }\n    },\n    {\n      \"recordID\": 8039,\n      \"recordType\": \"discussion\",\n      \"sort\": 3308,\n      \"record\": {\n        \"value\": \"reference #/components/schemas/Article not found in the OpenAPI spec\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9dbbb4c-86f9-4643-9c54-7594ce860099",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "by-resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"record\": {\n    \"recordID\": \"<integer>\",\n    \"recordType\": \"<string>\",\n    \"sort\": \"<integer>\"\n  },\n  \"collectionIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59d036d9-8870-49cf-8070-958f5c334940",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "by-resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"record\": {\n    \"recordID\": \"<integer>\",\n    \"recordType\": \"<string>\",\n    \"sort\": \"<integer>\"\n  },\n  \"collectionIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ccd4769-e508-4125-bb8a-f3ed678f2b2c",
+          "name": "List collections & contents.",
+          "request": {
+            "name": "List collections & contents.",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                "contents",
+                ":locale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "collectionID",
+                  "value": "<range-expression>",
+                  "description": "Filter by one or more collection IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateAddedToCollection",
+                  "value": "<date-filter>",
+                  "description": "Filter by date a record has been added to collection. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Desired number of collections per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locale",
+                  "description": "(Required) Filter the records by their locale."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b90a5fe9-5dcb-494c-bdc0-fb801aa1a33c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "contents",
+                    ":locale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collectionID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "dateAddedToCollection",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) Filter the records by their locale."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"recordID\": \"<integer>\",\n    \"recordType\": \"<string>\",\n    \"dateAddedToCollection\": \"1996-05-25T20:10:43.082Z\",\n    \"sort\": \"<integer>\",\n    \"collectionID\": 7952,\n    \"record\": {\n      \"value\": \"reference #/components/schemas/Article not found in the OpenAPI spec\"\n    },\n    \"collection\": {\n      \"collectionID\": 9799,\n      \"name\": \"string\"\n    }\n  },\n  {\n    \"recordID\": \"<integer>\",\n    \"recordType\": \"<string>\",\n    \"dateAddedToCollection\": \"1974-07-24T06:43:27.618Z\",\n    \"sort\": \"<integer>\",\n    \"collectionID\": 7003,\n    \"record\": {\n      \"value\": \"reference #/components/schemas/Article not found in the OpenAPI spec\"\n    },\n    \"collection\": {\n      \"collectionID\": 6699,\n      \"name\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9981cefa-2acd-47f0-9f3b-b5dced9a2b42",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "contents",
+                    ":locale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collectionID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "dateAddedToCollection",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) Filter the records by their locale."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3820a494-e6fd-4df6-9ead-8f0ac4088963",
+          "name": "Get a single collection.",
+          "request": {
+            "name": "Get a single collection.",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The collection id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7309df38-01d6-4dcc-a2f0-af75863a3d98",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collectionID\": 9323,\n  \"name\": \"<string>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"dateAddedToCollection\": \"2006-12-08T14:20:05.977Z\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"dateAddedToCollection\": \"1951-05-14T07:31:46.646Z\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a78c5ee6-b5b8-4040-bb3f-9c23b8a9cb7b",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "990e1003-23a1-4409-b04c-e8b7b23adc8b",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d6cb3e3-cfb3-4ef9-b9b2-8e9aee2e81ea",
+          "name": "Update a collection",
+          "request": {
+            "name": "Update a collection",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The collection id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7ccb3aad-afb8-4bdc-bc2b-25ee7e31438e",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collectionID\": 9323,\n  \"name\": \"<string>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"dateAddedToCollection\": \"2006-12-08T14:20:05.977Z\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"dateAddedToCollection\": \"1951-05-14T07:31:46.646Z\",\n      \"sort\": \"<integer>\"\n    }\n  ],\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b212fa04-2e0b-4641-bfd2-2f99bec290bf",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 9002\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "637d2d57-3fb6-4185-9172-282b7da32346",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e479f4b2-9271-4c9d-ae47-930ea5240aad",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"dateInserted\": \"<dateTime>\",\n  \"dateUpdated\": \"<dateTime>\",\n  \"insertUserID\": \"<integer>\",\n  \"updateUserID\": \"<integer>\",\n  \"records\": [\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    },\n    {\n      \"recordID\": \"<integer>\",\n      \"recordType\": \"<string>\",\n      \"sort\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f49d7b5-8ba1-496e-9f89-66657f52e255",
+          "name": "Delete a collection.",
+          "request": {
+            "name": "Delete a collection.",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The collection id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13bd443f-4988-4741-9e99-d48dc3a30899",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "069bceda-cec2-4a25-859e-6a5914089e5f",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75219d28-dcce-4bca-a6f1-f22c31638131",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a96fe7c6-30fd-4cfb-91db-ed31e209e358",
+          "name": "List collection with the each record expanded",
+          "request": {
+            "name": "List collection with the each record expanded",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                ":id",
+                "content",
+                ":locale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The collection id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locale",
+                  "description": "(Required) Filter the records by their locale."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1c125a1-b44a-428f-b1f6-a9b6d4c77d21",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id",
+                    "content",
+                    ":locale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) Filter the records by their locale."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collectionID\": 2006,\n  \"name\": \"string\",\n  \"records\": [\n    {\n      \"recordID\": 2040,\n      \"recordType\": \"groups\",\n      \"sort\": 5723,\n      \"record\": {\n        \"value\": \"reference #/components/schemas/Article not found in the OpenAPI spec\"\n      }\n    },\n    {\n      \"recordID\": 8039,\n      \"recordType\": \"discussion\",\n      \"sort\": 3308,\n      \"record\": {\n        \"value\": \"reference #/components/schemas/Article not found in the OpenAPI spec\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bb52374-db8c-4972-9c24-d30e8b75bf77",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id",
+                    "content",
+                    ":locale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) Filter the records by their locale."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b54be805-e320-42dd-8dc9-7b8ce769dbc6",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":id",
+                    "content",
+                    ":locale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The collection id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) Filter the records by their locale."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b7d8a5c8-da1d-418d-83fd-5784406cb70d",
+    "name": "Vanilla Addons Collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

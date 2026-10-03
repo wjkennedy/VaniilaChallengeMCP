@@ -1,0 +1,384 @@
+{
+  "item": [
+    {
+      "id": "48d1ddaf-bab0-4559-a819-e92cce12205b",
+      "name": "AI Settings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f0fa1f3-76b3-4761-8d2f-0b9b745c506a",
+          "name": "Get Bot Shield Settings",
+          "request": {
+            "name": "Get Bot Shield Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "ai-settings",
+                "bot-shield"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9b34340-69b7-435b-8037-53b920d7cfd7",
+              "name": "Bot Shield",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai-settings",
+                    "bot-shield"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": \"enabled\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad710fcd-56b2-4472-9b2f-72f825803eb3",
+          "name": "Update Bot Shield Settings",
+          "request": {
+            "name": "Update Bot Shield Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "ai-settings",
+                "bot-shield"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d133388-8768-4acc-9987-060249bff78c",
+              "name": "Bot Shield",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai-settings",
+                    "bot-shield"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f5337ab-4133-4db1-a02c-c111a0150153",
+          "name": "Get AI feature notification status",
+          "request": {
+            "name": "Get AI feature notification status",
+            "description": {},
+            "url": {
+              "path": [
+                "ai-settings",
+                "feature-notification-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d8938ca-db18-485b-b97f-a42c508f11a9",
+              "name": "Per-feature and aggregate notify state for the current enablement period.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai-settings",
+                    "feature-notification-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"enabledFeatureKeys\": [\n    \"string\",\n    \"string\"\n  ],\n  \"canNotifyUsers\": true,\n  \"features\": [\n    {\n      \"featureKey\": \"string\",\n      \"enabled\": false,\n      \"notifiedInCurrentPeriod\": true,\n      \"dateLastNotified\": \"2017-05-09T18:30:27.019Z\",\n      \"featureNotificationDispatchID\": 6744,\n      \"lastDispatchStatus\": \"failed\"\n    },\n    {\n      \"featureKey\": \"string\",\n      \"enabled\": false,\n      \"notifiedInCurrentPeriod\": false,\n      \"dateLastNotified\": \"1952-08-01T01:05:40.943Z\",\n      \"featureNotificationDispatchID\": 5264,\n      \"lastDispatchStatus\": \"complete\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "604d9e2e-7191-448c-b6c4-1625bff013e3",
+          "name": "Send AI feature disclosure notifications",
+          "request": {
+            "name": "Send AI feature disclosure notifications",
+            "description": {},
+            "url": {
+              "path": [
+                "ai-settings",
+                "feature-notifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1e4514f-f7c6-4463-b0a2-2b71edc51b32",
+              "name": "Notification dispatch accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai-settings",
+                    "feature-notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"featureKeys\": [\n    \"string\",\n    \"string\"\n  ],\n  \"notifiedCount\": 8574,\n  \"status\": \"pending\",\n  \"featureNotificationDispatchID\": 6397\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f04106bc-cbd1-410e-95eb-b206653ba4c8",
+    "name": "Vanilla Addons AI Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

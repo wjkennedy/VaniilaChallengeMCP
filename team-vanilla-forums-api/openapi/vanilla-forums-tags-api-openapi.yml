@@ -1,0 +1,1174 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Tags API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Tags
+paths:
+  /tags:
+    get:
+      parameters:
+      - name: query
+        description: The search term to find a tag.
+        in: query
+        schema:
+          type: string
+      - name: tagID
+        description: The ID of the tag to find.
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+        style: form
+      - name: type
+        description: The type of tags to list.
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+      - name: parentID
+        description: ID of parent to filter results.
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+        style: form
+      - name: excludeNoCountDiscussion
+        description: Filter results by tagged discussion
+        in: query
+        schema:
+          type: boolean
+        style: form
+      - name: replacingTagID
+        description: Filter results to only show valid replacement candidates for the specified tag ID. Excludes the tag being replaced and applies scope compatibility rules.
+        in: query
+        schema:
+          type: integer
+      - name: scope
+        in: query
+        schema:
+          type: object
+          properties:
+            categoryIDs:
+              description: Filter by specific categoryIDs this tag is scoped to.
+              type: array
+              items:
+                type: integer
+            siteSectionIDs:
+              description: Filter by specific siteSectionIDs this tag is scoped to.
+              type: array
+              items:
+                type: string
+      - name: scopeType
+        description: Filter by scope type. Can include 'global', 'scoped', or both.
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - global
+            - scoped
+        style: form
+      - $ref: '#/components/parameters/Page'
+      - description: Desired number of tags per page.
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: expand
+        description: 'Expand associated records using one or more valid field names. A value of "all" will expand all expandable fields.
+
+          '
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - all
+            - lastPost
+            - preferences
+            - permissions
+            - lastPost.insertUser
+            - lastPost.insertUser.ssoID
+            - lastPost.insertUser.roles
+            - lastPost.insertUser.profileFields
+            - lastPost.insertUser.extended
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LegacyTag'
+          description: Success
+      tags:
+      - Tags
+      summary: List tags
+      x-addon: vanilla
+      operationId: getTags
+      x-operation-id-source: derived
+    post:
+      summary: Add a tag
+      tags:
+      - Tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagPost'
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: vanilla
+      operationId: postTags
+      x-operation-id-source: derived
+  /tags/{id}:
+    parameters:
+    - name: id
+      description: The ID of the tag.
+      in: path
+      required: true
+      schema:
+        type: integer
+      x-addon: vanilla
+    get:
+      parameters:
+      - name: expand
+        description: 'Expand associated records using one or more valid field names (all, lastPost, preferences).
+
+          A value of "all" will expand all expandable fields.
+
+          '
+        in: query
+        schema:
+          items:
+            enum:
+            - lastPost
+            - preferences
+            - all
+            type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      summary: Get a single tag
+      tags:
+      - Tags
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: vanilla
+      operationId: getTagsById
+      x-operation-id-source: derived
+    patch:
+      summary: Update a tag
+      tags:
+      - Tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagPatch'
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: vanilla
+      operationId: patchTagsById
+      x-operation-id-source: derived
+    delete:
+      summary: Delete a tag
+      description: 'Delete a tag. Optionally provide a replacementTagID to reassign all discussions
+
+        to another tag before deletion. If no replacement is provided, the tag associations
+
+        are simply removed from all discussions.'
+      tags:
+      - Tags
+      parameters:
+      - name: replacementTagID
+        description: Optional tag ID to reassign discussions to before deletion.
+        in: query
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success.
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Tag is reserved and cannot be deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+      x-addon: vanilla
+      operationId: deleteTagsById
+      x-operation-id-source: derived
+  /tags/{id}/delete-info:
+    parameters:
+    - name: id
+      description: The ID of the tag.
+      in: path
+      required: true
+      schema:
+        type: integer
+      x-addon: vanilla
+    get:
+      summary: Get information about the impact of deleting a tag
+      description: 'Returns information about what would happen if this tag is deleted,
+
+        including the number of discussions using this tag and any categories
+
+        that would fall below minimum tag requirements.'
+      tags:
+      - Tags
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteTagInfo'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: vanilla
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getTagsByIdDeleteInfo
+      x-operation-id-source: derived
+  /tags/{id}/preferences/{userID}:
+    parameters:
+    - in: path
+      name: id
+      description: The tag ID.
+      required: true
+      schema:
+        type: integer
+      x-addon: vanilla
+    - in: path
+      name: userID
+      required: true
+      schema:
+        type: integer
+      x-addon: vanilla
+    get:
+      tags:
+      - Tags
+      summary: List a user's tag preferences
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagPreferences'
+          description: Success
+      x-addon: vanilla
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getTagsByIdPreferencesByUserID
+      x-operation-id-source: derived
+    patch:
+      tags:
+      - Tags
+      summary: Set a user's tag preferences
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagPreferences'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagPreferences'
+          description: Success
+      x-addon: vanilla
+      operationId: patchTagsByIdPreferencesByUserID
+      x-operation-id-source: derived
+components:
+  schemas:
+    UserFragment:
+      oneOf:
+      - type: object
+        properties:
+          userID:
+            description: The ID of the user.
+            type: integer
+          name:
+            description: The username of the user.
+            minLength: 1
+            type: string
+          url:
+            description: The URL of the user's profile.
+            type: string
+            format: uri
+          photoUrl:
+            description: The URL of the user's avatar picture.
+            type: string
+            format: uri
+          dateLastActive:
+            description: Time the user was last active.
+            format: date-time
+            type:
+            - string
+            - 'null'
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+          label:
+            description: The label of the user as plaintext.
+            type: string
+          labelHtml:
+            description: The label of the user in HTML format.
+            type: string
+          private:
+            description: Whether the user profile is private or not.
+            type: boolean
+        required:
+        - userID
+        - name
+        - photoUrl
+        - dateLastActive
+      - type: object
+        description: A user fragment when only expanding by ssoID.
+        properties:
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+        required:
+        - ssoID
+      x-addon: dashboard
+    DiscussionPermissions:
+      type: object
+      description: Permissions for the current user related to discussions. Applied when expanded..
+      example:
+        discussions.view: true
+        discussions.add: true
+        discussions.edit: false
+        discussions.delete: false
+        discussions.sink: false
+        comments.add: true
+        comments.edit: false
+        comments.delete: false
+      x-addon: vanilla
+    TagFragment:
+      description: A tag that can be applied to content.
+      type: object
+      properties:
+        tagID:
+          type: integer
+          description: The ID of the tag.
+          readOnly: true
+        urlcode:
+          type: string
+          description: The URL slug of the tag.
+        name:
+          type:
+          - string
+          - 'null'
+          description: The full name of the tag.
+        description:
+          type: string
+          description: The description of the tag.
+      required:
+      - tagID
+      - urlcode
+      - name
+      x-addon: vanilla
+    TagScopeType:
+      type: string
+      description: Scope type for a tag.
+      enum:
+      - global
+      - scoped
+      x-addon: vanilla
+    DeleteTagInfo:
+      type: object
+      description: Information about the impact of deleting a tag.
+      properties:
+        countDiscussions:
+          type: integer
+          description: Number of discussions using this tag.
+        categoriesBelowMinimum:
+          type: array
+          description: Categories that would fall below minimum tag requirements if this tag is deleted.
+          items:
+            type: string
+      required:
+      - countDiscussions
+      - categoriesBelowMinimum
+      x-addon: vanilla
+    TagPreferences:
+      type: object
+      properties:
+        preferences.followed:
+          type: boolean
+        preferences.popup.postTag:
+          type: boolean
+        preferences.email.postTag:
+          type: boolean
+      x-addon: vanilla
+    Tag:
+      description: A full tag.
+      allOf:
+      - $ref: '#/components/schemas/TagFragment'
+      - type: object
+        properties:
+          parentTagID:
+            type:
+            - integer
+            - 'null'
+            description: The parent ID of the tag.
+          type:
+            type:
+            - string
+            - 'null'
+            default: null
+            description: The tag type.
+          scope:
+            $ref: '#/components/schemas/TagScope'
+      - $ref: '#/components/schemas/InsertInfo'
+      x-addon: vanilla
+    TagPost:
+      properties:
+        name:
+          type: string
+          description: The full name of the tag.
+        urlcode:
+          type: string
+          description: The URL slug of the tag.
+        parentTagID:
+          type:
+          - integer
+          - 'null'
+          description: The parent ID of the tag.
+        type:
+          type:
+          - string
+          - 'null'
+          default: null
+          description: The tag type.
+        description:
+          type: string
+          description: The description of the tag.
+        scopeType:
+          $ref: '#/components/schemas/TagScopeType'
+        scope:
+          $ref: '#/components/schemas/TagScope'
+      required:
+      - name
+      type: object
+      x-addon: vanilla
+    PostFragment:
+      properties:
+        discussionID:
+          description: The discussion ID of the post.
+          type: integer
+        commentID:
+          description: The comment ID of the post, if any.
+          type: integer
+        name:
+          description: The title of the post.
+          minLength: 1
+          type: string
+        body:
+          description: The HTML formatted body of the post.
+          type: string
+        url:
+          description: The URL of the post.
+          minLength: 1
+          type: string
+        dateInserted:
+          description: The date of the post.
+          format: date-time
+          type: string
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        insertUserID:
+          description: The author of the post.
+          type: integer
+      required:
+      - name
+      - url
+      - dateInserted
+      - insertUserID
+      type: object
+      x-addon: vanilla
+    LegacyTag:
+      description: A backwards compatible tag.
+      allOf:
+      - $ref: '#/components/schemas/TagFragment'
+      - type: object
+        properties:
+          id:
+            type: integer
+            description: The ID of the tag.
+            deprecated: true
+          urlCode:
+            description: The url-code of the tag.
+            type: string
+            deprecated: true
+          parentTagID:
+            type:
+            - integer
+            - 'null'
+            description: The parent ID of the tag.
+          url:
+            type: string
+            description: URL to view items tagged with this tag.
+          lastPost:
+            $ref: '#/components/schemas/PostFragment'
+          preferences:
+            $ref: '#/components/schemas/TagPreferences'
+          permissions:
+            $ref: '#/components/schemas/DiscussionPermissions'
+        required:
+        - id
+        - urlCode
+        - parentTagID
+      x-addon: vanilla
+    BasicError:
+      type: object
+      properties:
+        message:
+          description: Verbose description of the error.
+          type: string
+        status:
+          description: Response status code.
+          type: integer
+      required:
+      - message
+      - status
+      x-addon: dashboard
+    TagScope:
+      type: object
+      description: Scoping information for a tag.
+      properties:
+        categoryIDs:
+          type: array
+          items:
+            type: integer
+        siteSectionIDs:
+          type: array
+          items:
+            type: string
+      x-addon: vanilla
+    InsertInfo:
+      type: object
+      properties:
+        dateInserted:
+          type: string
+          format: date-time
+          description: The date the record was inserted.
+          readOnly: true
+        insertUserID:
+          type: integer
+          description: The user that inserted the record.
+          readOnly: true
+        insertIPAddress:
+          type: string
+          format: ipv4
+          description: The IP address the record was inserted from.
+          readOnly: true
+      required:
+      - dateInserted
+      - insertUserID
+      - insertIPAddress
+      x-addon: dashboard
+    TagPatch:
+      properties:
+        name:
+          type: string
+          description: The full name of the tag.
+        urlcode:
+          type: string
+          description: The URL slug of the tag.
+        description:
+          type: string
+          description: The description of the tag.
+        parentTagID:
+          type:
+          - integer
+          - 'null'
+          description: The parent ID of the tag.
+        type:
+          type:
+          - string
+          - 'null'
+          default: null
+          description: The tag type.
+        scopeType:
+          $ref: '#/components/schemas/TagScopeType'
+        scope:
+          $ref: '#/components/schemas/TagScope'
+      type: object
+      x-addon: vanilla
+  responses:
+    NotFound:
+      description: The record does not exist or was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: More information about the error.
+              status:
+                type: number
+                description: The HTTP status code for the error.
+                format: int32
+            required:
+            - message
+          example:
+            status: 404
+            message: Page Not Found
+      x-addon: dashboard
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

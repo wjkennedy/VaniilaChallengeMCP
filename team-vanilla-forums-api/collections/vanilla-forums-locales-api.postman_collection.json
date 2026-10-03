@@ -1,0 +1,429 @@
+{
+  "item": [
+    {
+      "id": "49da6a2e-b012-42ea-acbe-536f9ff40cbe",
+      "name": "Locales",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0d968319-369f-44b1-b076-050963a048e4",
+          "name": "Get all enabled locales on the site.",
+          "request": {
+            "name": "Get all enabled locales on the site.",
+            "description": {},
+            "url": {
+              "path": [
+                "locales"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6e48413-45bc-4f57-9db5-f7f000ab5231",
+              "name": "A list of enabled locales",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locales"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"localeID\": \"vf_fr_CA,\",\n    \"localeKey\": \"fr\",\n    \"regionalKey\": \"fr_CA\",\n    \"displayNames\": {\n      \"en\": \"French\",\n      \"fr\": \"Français\",\n      \"de\": \"Französisch\"\n    }\n  },\n  {\n    \"localeID\": \"vf_fr_CA,\",\n    \"localeKey\": \"fr\",\n    \"regionalKey\": \"fr_CA\",\n    \"displayNames\": {\n      \"en\": \"French\",\n      \"fr\": \"Français\",\n      \"de\": \"Französisch\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "114c5dc1-2dba-49cc-8d1d-973d70c882a4",
+          "name": "/locales",
+          "request": {
+            "name": "/locales",
+            "description": {},
+            "url": {
+              "path": [
+                "locales"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "translatable",
+                  "value": "<boolean>",
+                  "description": "Whether or not to mark this locale as translatable by machine translations."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locale",
+                  "description": "(Required) The locale code requested."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9bfde97-00fb-4e1a-8a38-0e7a754fb7dc",
+              "name": "The specified locale information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locales"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "translatable",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) The locale code requested."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"localeID\": \"vf_fr_CA,\",\n  \"localeKey\": \"fr\",\n  \"regionalKey\": \"fr_CA\",\n  \"displayNames\": {\n    \"en\": \"French\",\n    \"fr\": \"Français\",\n    \"de\": \"Französisch\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6df2ba8d-04b7-4d91-951e-ab966a811a7f",
+          "name": "Get single locale",
+          "request": {
+            "name": "Get single locale",
+            "description": {},
+            "url": {
+              "path": [
+                "locales",
+                ":locale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locale",
+                  "description": "(Required) The locale code requested."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22ba73e6-8542-43af-9f8d-45d46ed5e8f5",
+              "name": "The specified locale information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locales",
+                    ":locale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) The locale code requested."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"localeID\": \"vf_fr_CA,\",\n  \"localeKey\": \"fr\",\n  \"regionalKey\": \"fr_CA\",\n  \"displayNames\": {\n    \"en\": \"French\",\n    \"fr\": \"Français\",\n    \"de\": \"Französisch\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2af359f-a7db-4e51-bdc5-1e113e5522f9",
+          "name": "/locales/:locale",
+          "request": {
+            "name": "/locales/:locale",
+            "description": {},
+            "url": {
+              "path": [
+                "locales",
+                ":locale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locale",
+                  "description": "(Required) The locale code requested."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2243db6-1335-4cdb-b5c9-b7642310b540",
+              "name": "The specified locale information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locales",
+                    ":locale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) The locale code requested."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"localeID\": \"vf_fr_CA,\",\n  \"localeKey\": \"fr\",\n  \"regionalKey\": \"fr_CA\",\n  \"displayNames\": {\n    \"en\": \"French\",\n    \"fr\": \"Français\",\n    \"de\": \"Französisch\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2ba9d5ff-4634-4a78-93da-fc930cec2a6a",
+    "name": "Vanilla Addons Locales API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

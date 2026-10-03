@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Search API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for records matching specific criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records using the supplied terms.\n"
+              },
+              {
+                "name": "recordTypes",
+                "value": "",
+                "type": "query",
+                "description": "Restrict the search to the specified main type(s) of records.\n"
+              },
+              {
+                "name": "types",
+                "value": "",
+                "type": "query",
+                "description": "Restrict the search to the specified type(s) of records.\n"
+              },
+              {
+                "name": "discussionID",
+                "value": "",
+                "type": "query",
+                "description": "Set the scope of the search to the comments of a discussion. Incompatible with recordType and type.\n"
+              },
+              {
+                "name": "categoryID",
+                "value": "",
+                "type": "query",
+                "description": "Set the scope of the search to a specific category (includes results from the social group category).\n"
+              },
+              {
+                "name": "categoryIDs",
+                "value": "",
+                "type": "query",
+                "description": "Set the scope of the search to specific categories.\n"
+              },
+              {
+                "name": "followedCategories",
+                "value": "",
+                "type": "query",
+                "description": "Set the scope of the search to followed categories only.\n"
+              },
+              {
+                "name": "includeChildCategories",
+                "value": "",
+                "type": "query",
+                "description": "Search the specified category's subtree. Works with categoryID\n"
+              },
+              {
+                "name": "includeArchivedCategories",
+                "value": "",
+                "type": "query",
+                "description": "Allow search in archived categories.\n"
+              },
+              {
+                "name": "knowledgeBaseID",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records by KnowledgeBase ID\n"
+              },
+              {
+                "name": "knowledgeCategoryIDs",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records by KnowledgeCategory ID\n"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records by matching part of their name.\n"
+              },
+              {
+                "name": "featured",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records by their featured status.\n"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records by their locale.\n"
+              },
+              {
+                "name": "siteSiteSectionGroup",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records by their site-section-group.\n"
+              },
+              {
+                "name": "insertUserNames",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records by inserted user names.\n"
+              },
+              {
+                "name": "insertUserIDs",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records by inserted userIDs.\n"
+              },
+              {
+                "name": "dateInserted",
+                "value": "",
+                "type": "query",
+                "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Filter discussions by matching tags.\n"
+              },
+              {
+                "name": "tagOperator",
+                "value": "",
+                "type": "query",
+                "description": "Tags search condition.\nMust be one of: \"and\", \"or\".\n"
+              },
+              {
+                "name": "queryOperator",
+                "value": "",
+                "type": "query",
+                "description": "Set the default search type.\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "expandBody",
+                "value": "",
+                "type": "query",
+                "description": "Expand the results to include a rendered body field.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "includeTypeaheads",
+                "value": "",
+                "type": "query",
+                "description": "BETA: Include typeahead results in the search response.\n"
+              },
+              {
+                "name": "includeResults",
+                "value": "",
+                "type": "query",
+                "description": "BETA: Include search results in the search response.\n"
+              },
+              {
+                "name": "matchMode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "statusID",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records statusID"
+              },
+              {
+                "name": "answerStatusID",
+                "value": "",
+                "type": "query",
+                "description": "Filter answer-type comments by answer statusID. Be sure it add a `types` filter if you only want answers."
+              },
+              {
+                "name": "postTypeID",
+                "value": "",
+                "type": "query",
+                "description": "Filter the records postTypeID"
+              },
+              {
+                "name": "postMeta",
+                "value": "",
+                "type": "query",
+                "description": "Post meta values to filter posts"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Search for records matching specific criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

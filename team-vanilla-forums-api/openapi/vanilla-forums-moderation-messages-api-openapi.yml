@@ -1,0 +1,870 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Moderation Messages API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Moderation Messages
+paths:
+  /moderation-messages:
+    post:
+      summary: Post a moderation message
+      tags:
+      - Moderation Messages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModerationMessagePost'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModerationMessage'
+                type: array
+          description: Success
+      x-addon: dashboard
+      operationId: postModerationMessages
+      x-operation-id-source: derived
+    get:
+      summary: Get a list of moderation messages
+      tags:
+      - Moderation Messages
+      parameters:
+      - name: isEnabled
+        description: Whether the message is enabled or not.
+        in: query
+        schema:
+          type: boolean
+      - name: recordID
+        description: Filter by recordID
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: type
+        in: query
+        description: Filter by message type.
+        schema:
+          type: string
+          enum:
+          - casual
+          - info
+          - alert
+          - warning
+      - name: layoutViewType
+        in: query
+        description: Filter messages by the layoutViewType
+        schema:
+          $ref: '#/components/schemas/LayoutViewType'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ModerationMessage'
+      x-addon: dashboard
+      operationId: getModerationMessages
+      x-operation-id-source: derived
+  /moderation-messages/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      x-addon: dashboard
+    get:
+      summary: Get a moderation message by its ID
+      tags:
+      - Moderation Messages
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModerationMessage'
+          description: Success
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getModerationMessagesById
+      x-operation-id-source: derived
+    patch:
+      summary: Edit a moderation message
+      tags:
+      - Moderation Messages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModerationMessagePatch'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModerationMessage'
+          description: Success
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      operationId: patchModerationMessagesById
+      x-operation-id-source: derived
+    delete:
+      summary: Delete a moderation message
+      tags:
+      - Moderation Messages
+      responses:
+        '204':
+          description: Success
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      operationId: deleteModerationMessagesById
+      x-operation-id-source: derived
+  /moderation-messages/{id}/dismiss:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      x-addon: dashboard
+    put:
+      summary: Dismiss a moderation message for the session user
+      tags:
+      - Moderation Messages
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dismissed:
+                    type: boolean
+      x-addon: dashboard
+      operationId: putModerationMessagesByIdDismiss
+      x-operation-id-source: derived
+components:
+  schemas:
+    Format:
+      description: The format of the body used to convert it to HTML.
+      type: string
+      enum:
+      - rich
+      - markdown
+      - text
+      - textex
+      - wysiwyg
+      - bbcode
+      example: markdown
+      x-addon: dashboard
+    RangeExpression:
+      description: Specify a range or CSV of values.
+      type: string
+      format: range-expression
+      externalDocs:
+        url: https://success.vanillaforums.com/kb/articles/308-range-expressions
+      x-addon: dashboard
+    ModerationMessagePatch:
+      type: object
+      properties:
+        body:
+          type: string
+          description: The content of the message.
+        format:
+          $ref: '#/components/schemas/Format'
+        isDismissible:
+          type: boolean
+          description: Whether the moderation message can be dismissed by a user.
+          default: false
+        isEnabled:
+          type: boolean
+          description: Whether the message is enabled.
+          default: false
+        recordType:
+          type:
+          - string
+          - 'null'
+          enum:
+          - category
+          description: The record type (i.e., category) associated with the message, if any.
+          default: null
+        recordID:
+          type:
+          - integer
+          - 'null'
+          description: The recordID associated with the message, if any.
+          default: null
+        includeDescendants:
+          type: boolean
+          description: Whether to display the message for descendants of the record it's associated with (i.e., subcategories).
+        type:
+          type: string
+          description: The type of moderation message.
+          enum:
+          - casual
+          - info
+          - alert
+          - warning
+        viewLocation:
+          type: string
+          description: Where on the page the message should appear.
+          enum:
+          - content
+          - panel
+        layoutViewType:
+          $ref: '#/components/schemas/LayoutViewType'
+      x-addon: dashboard
+    ModerationMessage:
+      type: object
+      properties:
+        moderationMessageID:
+          type: integer
+          description: The id of the message.
+        body:
+          type: string
+          description: The content of the message.
+        format:
+          $ref: '#/components/schemas/Format'
+        isDismissible:
+          type: boolean
+          description: Whether the moderation message can be dismissed by a user.
+        isEnabled:
+          type: boolean
+          description: Whether the message is enabled.
+        recordType:
+          type:
+          - string
+          - 'null'
+          enum:
+          - category
+          description: The record type (i.e., category) associated with the message, if any.
+        recordID:
+          type:
+          - integer
+          - 'null'
+          description: The recordID associated with the message, if any.
+        includeDescendants:
+          type: boolean
+          description: Whether to display the message for descendants of the record it's associated with (i.e., subcategories).
+        type:
+          type: string
+          description: The type of moderation message.
+          enum:
+          - casual
+          - info
+          - alert
+          - warning
+        viewLocation:
+          type: string
+          description: Where on the page the message should appear.
+          enum:
+          - content
+          - panel
+        layoutViewType:
+          $ref: '#/components/schemas/LayoutViewType'
+      required:
+      - body
+      - format
+      - viewLocation
+      - moderationMessageID
+      - isEnabled
+      - isDismissible
+      x-addon: dashboard
+    LayoutViewType:
+      description: Type of resource to which this layout applies
+      type: string
+      enum:
+      - all
+      - newQuestion
+      - question
+      - newIdea
+      - idea
+      - poll
+      - categoryList
+      - discussionList
+      - categoryList
+      - nestedCategoryList
+      - discussionCategoryPage
+      - discussion
+      - newDiscussion
+      - home
+      - profile
+      - registration
+      - signin
+      - inbox
+      x-addon: dashboard
+    ModerationMessagePost:
+      type: object
+      properties:
+        body:
+          type: string
+          description: The content of the message.
+        format:
+          $ref: '#/components/schemas/Format'
+        isDismissible:
+          type: boolean
+          description: Whether the moderation message can be dismissed by a user.
+        isEnabled:
+          type: boolean
+          description: Whether the message is enabled.
+        recordType:
+          type:
+          - string
+          - 'null'
+          enum:
+          - category
+          description: The record type (i.e., category) associated with the message, if any.
+        recordID:
+          type:
+          - integer
+          - 'null'
+          description: The recordID associated with the message, if any.
+        includeDescendants:
+          type: boolean
+          description: Whether to display the message for descendants of the record it's associated with (i.e., subcategories).
+        type:
+          type: string
+          description: The type of moderation message.
+          enum:
+          - casual
+          - info
+          - alert
+          - warning
+        viewLocation:
+          type: string
+          description: Where on the page the message should appear.
+          enum:
+          - content
+          - panel
+        layoutViewType:
+          $ref: '#/components/schemas/LayoutViewType'
+      required:
+      - body
+      - format
+      - layoutViewType
+      - viewLocation
+      x-addon: dashboard
+  responses:
+    NotFound:
+      description: The record does not exist or was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: More information about the error.
+              status:
+                type: number
+                description: The HTTP status code for the error.
+                format: int32
+            required:
+            - message
+          example:
+            status: 404
+            message: Page Not Found
+      x-addon: dashboard
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

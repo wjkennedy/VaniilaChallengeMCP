@@ -1,0 +1,1324 @@
+{
+  "item": [
+    {
+      "id": "93a457a6-0870-4b82-9ac9-d0f60a24b664",
+      "name": "Categories",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3cf8e9c-c13f-47ff-aeeb-b2ce2bfc5fe1",
+          "name": "List categories.",
+          "request": {
+            "name": "List categories.",
+            "description": {},
+            "url": {
+              "path": [
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "categoryID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of category IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentCategoryID",
+                  "value": "<integer>",
+                  "description": "Parent category ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentCategoryCode",
+                  "value": "<string>",
+                  "description": "Parent category URL code."
+                },
+                {
+                  "disabled": false,
+                  "key": "followed",
+                  "value": "<boolean>",
+                  "description": "Only list categories followed by the current user."
+                },
+                {
+                  "disabled": false,
+                  "key": "followedUserID",
+                  "value": "<integer>",
+                  "description": "List the categories followed by the given UserID"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxDepth",
+                  "value": "2",
+                  "description": "The maximum tree depth to return when getting a tree structure. This parameter is incompatible with a flat structure."
+                },
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<boolean>",
+                  "description": "Filter by archived status of a category. True for archived only. False for no archived categories.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "featured",
+                  "value": "<boolean>",
+                  "description": "Only list featured categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination). This parameter is incompatible with a tree structure."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Desired number of items per page. This parameter is incompatible with a tree structure."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "siteSectionID",
+                  "value": "<string>",
+                  "description": "Filter categories by site section ID (ex. subcommunity).\nThe subcommunity ID or folder can be used if you use [smart IDs](https://success.vanillaforums.com/kb/articles/46-smart-ids).\nThe query looks like:\n\n```\nsiteSectionID=$subcommunityID:{id|folder}\n```\nexample: \"$subcommunityID:en\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeParentCategory",
+                  "value": "<boolean>",
+                  "description": "Whether to include the parent category when used with parentCategoryID, parentCategoryCode, or siteSectionID."
+                },
+                {
+                  "disabled": false,
+                  "key": "outputFormat",
+                  "value": "<string>",
+                  "description": "Format of the output as flat or tree."
+                },
+                {
+                  "disabled": false,
+                  "key": "layoutViewType",
+                  "value": "<string>",
+                  "description": "Layout View Type.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "postTypeID",
+                  "value": "<string>",
+                  "description": "Filter by allowed post type ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "postTypeStatus",
+                  "value": "<string>",
+                  "description": "Allowed status for the post type ID filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "filterDiscussionsAdd",
+                  "value": "<boolean>",
+                  "description": "Filter out categories that cannot be posted into"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86fd31b9-5444-43af-8099-02a14a64ad97",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "categoryID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "parentCategoryID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "parentCategoryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "followed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "followedUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "maxDepth",
+                      "value": "2"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "featured",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "siteSectionID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeParentCategory",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "layoutViewType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postTypeID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postTypeStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filterDiscussionsAdd",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"categoryID\": 3557,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"parentCategoryID\": 465,\n    \"customPermissions\": false,\n    \"isArchived\": false,\n    \"urlcode\": \"string\",\n    \"url\": \"string\",\n    \"displayAs\": \"discussions\",\n    \"countCategories\": 1479,\n    \"countDiscussions\": 6498,\n    \"countComments\": 2052,\n    \"countFollowers\": 6079,\n    \"countAllDiscussions\": 5919,\n    \"countAllComments\": 7897,\n    \"depth\": 7906,\n    \"children\": [\n      {\n        \"categoryID\": 4373,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parentCategoryID\": 7124,\n        \"customPermissions\": true,\n        \"isArchived\": true,\n        \"urlcode\": \"string\",\n        \"url\": \"string\",\n        \"displayAs\": \"discussions\",\n        \"countCategories\": 1850,\n        \"countDiscussions\": 962,\n        \"countComments\": 6738,\n        \"countFollowers\": 7385,\n        \"countAllDiscussions\": 5874,\n        \"countAllComments\": 9105,\n        \"depth\": 107,\n        \"children\": [\n          \"string\",\n          \"string\"\n        ],\n        \"followed\": true,\n        \"allowedDiscussionTypes\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"categoryID\": 5704,\n        \"name\": \"stri\",\n        \"description\": \"string\",\n        \"parentCategoryID\": 9180,\n        \"customPermissions\": true,\n        \"isArchived\": true,\n        \"urlcode\": \"string\",\n        \"url\": \"string\",\n        \"displayAs\": \"discussions\",\n        \"countCategories\": 591,\n        \"countDiscussions\": 9216,\n        \"countComments\": 1107,\n        \"countFollowers\": 472,\n        \"countAllDiscussions\": 2942,\n        \"countAllComments\": 5932,\n        \"depth\": 2842,\n        \"children\": [\n          \"string\",\n          \"string\"\n        ],\n        \"followed\": true,\n        \"allowedDiscussionTypes\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"followed\": false,\n    \"iconUrl\": \"string\",\n    \"iconUrlSrcSet\": {\n      \"10\": \"string\",\n      \"300\": \"string\",\n      \"800\": \"string\",\n      \"1200\": \"string\"\n    },\n    \"lastPost\": {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"dateInserted\": \"2017-10-15T18:07:06.472Z\",\n      \"insertUserID\": 6339,\n      \"discussionID\": 2333,\n      \"commentID\": 3812,\n      \"body\": \"string\",\n      \"insertUser\": {\n        \"userID\": 9543,\n        \"name\": \"string\",\n        \"photoUrl\": \"https://tu.ntiDcVZSQJKm2\",\n        \"dateLastActive\": \"2010-09-20T01:20:30.118Z\",\n        \"url\": \"http://hFkKgyfpPcLPaWxuEsNX.monnwWr+oomDXTacl.cROlFW7MvFWSiI\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      }\n    },\n    \"preferences\": {\n      \"preferences.followed\": false,\n      \"preferences.popup.posts\": true,\n      \"preferences.email.posts\": true,\n      \"preferences.popup.comments\": true,\n      \"preferences.email.comments\": true,\n      \"preferences.email.digest\": true\n    },\n    \"permissions\": {\n      \"discussions.view\": true,\n      \"discussions.add\": true,\n      \"discussions.edit\": false,\n      \"discussions.delete\": false,\n      \"discussions.sink\": false,\n      \"comments.add\": true,\n      \"comments.edit\": false,\n      \"comments.delete\": false\n    },\n    \"defaultStatusID\": 7562\n  },\n  {\n    \"categoryID\": 1629,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"parentCategoryID\": 4516,\n    \"customPermissions\": false,\n    \"isArchived\": true,\n    \"urlcode\": \"string\",\n    \"url\": \"string\",\n    \"displayAs\": \"discussions\",\n    \"countCategories\": 6404,\n    \"countDiscussions\": 2016,\n    \"countComments\": 4827,\n    \"countFollowers\": 586,\n    \"countAllDiscussions\": 2369,\n    \"countAllComments\": 3298,\n    \"depth\": 3845,\n    \"children\": [\n      {\n        \"categoryID\": 2781,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parentCategoryID\": 1077,\n        \"customPermissions\": false,\n        \"isArchived\": false,\n        \"urlcode\": \"string\",\n        \"url\": \"string\",\n        \"displayAs\": \"discussions\",\n        \"countCategories\": 9647,\n        \"countDiscussions\": 4448,\n        \"countComments\": 8367,\n        \"countFollowers\": 5135,\n        \"countAllDiscussions\": 9978,\n        \"countAllComments\": 9022,\n        \"depth\": 3644,\n        \"children\": [\n          \"string\",\n          \"string\"\n        ],\n        \"followed\": true,\n        \"allowedDiscussionTypes\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"categoryID\": 4132,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parentCategoryID\": 5026,\n        \"customPermissions\": false,\n        \"isArchived\": false,\n        \"urlcode\": \"string\",\n        \"url\": \"string\",\n        \"displayAs\": \"discussions\",\n        \"countCategories\": 9430,\n        \"countDiscussions\": 2270,\n        \"countComments\": 6116,\n        \"countFollowers\": 155,\n        \"countAllDiscussions\": 4177,\n        \"countAllComments\": 4213,\n        \"depth\": 5422,\n        \"children\": [\n          \"string\",\n          \"string\"\n        ],\n        \"followed\": true,\n        \"allowedDiscussionTypes\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"followed\": false,\n    \"iconUrl\": \"string\",\n    \"iconUrlSrcSet\": {\n      \"10\": \"string\",\n      \"300\": \"string\",\n      \"800\": \"string\",\n      \"1200\": \"string\"\n    },\n    \"lastPost\": {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"dateInserted\": \"2017-11-26T02:34:35.539Z\",\n      \"insertUserID\": 2849,\n      \"discussionID\": 4981,\n      \"commentID\": 1117,\n      \"body\": \"string\",\n      \"insertUser\": {\n        \"userID\": 5712,\n        \"name\": \"string\",\n        \"photoUrl\": \"https://BuKFoWa.jztVyxKRrYcCvsiTEffM+jm563ibCKNccGnV30gZ71kxz.ELR\",\n        \"dateLastActive\": \"2010-07-14T23:33:07.621Z\",\n        \"url\": \"https://ZCNiwErFdR.rojllkt6f7CTGdldZ6hDVxlULDGk,XmFEvUKvAQKZWnPOhZbB\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": true\n      }\n    },\n    \"preferences\": {\n      \"preferences.followed\": true,\n      \"preferences.popup.posts\": false,\n      \"preferences.email.posts\": false,\n      \"preferences.popup.comments\": false,\n      \"preferences.email.comments\": true,\n      \"preferences.email.digest\": false\n    },\n    \"permissions\": {\n      \"discussions.view\": true,\n      \"discussions.add\": true,\n      \"discussions.edit\": false,\n      \"discussions.delete\": false,\n      \"discussions.sink\": false,\n      \"comments.add\": true,\n      \"comments.edit\": false,\n      \"comments.delete\": false\n    },\n    \"defaultStatusID\": 2306\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9109610a-83b4-4e3a-bc40-247e8ba4ebe2",
+          "name": "Add a category.",
+          "request": {
+            "name": "Add a category.",
+            "description": {},
+            "url": {
+              "path": [
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"customPermissions\": \"<boolean>\",\n  \"displayAs\": \"discussions\",\n  \"parentCategoryID\": \"<integer>\",\n  \"featured\": false,\n  \"ideationType\": \"<string>\",\n  \"allowedDiscussionTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowedPostTypeIDs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hasRestrictedPostTypes\": \"<boolean>\",\n  \"defaultStatusID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e06cab9c-7d9d-4428-a42e-53e930c2dd9e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"categoryID\": 3801,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"parentCategoryID\": 475,\n  \"customPermissions\": true,\n  \"isArchived\": true,\n  \"urlcode\": \"string\",\n  \"url\": \"string\",\n  \"displayAs\": \"discussions\",\n  \"countCategories\": 8253,\n  \"countDiscussions\": 4154,\n  \"countComments\": 9566,\n  \"countFollowers\": 7829,\n  \"countAllDiscussions\": 8849,\n  \"countAllComments\": 1591,\n  \"followed\": true,\n  \"ideationType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3c8272c-88f8-400e-bc38-a1c31e0c8ef2",
+          "name": "Search categories.",
+          "request": {
+            "name": "Search categories.",
+            "description": {},
+            "url": {
+              "path": [
+                "categories",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Category name filter.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "displayAs",
+                  "value": "<string>",
+                  "description": "The display style of the category."
+                },
+                {
+                  "disabled": false,
+                  "key": "displayAs",
+                  "value": "<string>",
+                  "description": "The display style of the category."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "layoutViewType",
+                  "value": "<string>",
+                  "description": "Layout View Type.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "filterDiscussionsAdd",
+                  "value": "<boolean>",
+                  "description": "Filter out categories that cannot be posted into"
+                },
+                {
+                  "disabled": false,
+                  "key": "siteSectionID",
+                  "value": "<string>",
+                  "description": "Filter categories by site section ID (ex. subcommunity)."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "075f2928-559f-402d-9604-e2408719579a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "displayAs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "displayAs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "layoutViewType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filterDiscussionsAdd",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "siteSectionID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"categoryID\": 6771,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"parentCategoryID\": 2425,\n    \"customPermissions\": true,\n    \"isArchived\": true,\n    \"urlcode\": \"string\",\n    \"url\": \"string\",\n    \"displayAs\": \"discussions\",\n    \"countCategories\": 9474,\n    \"countDiscussions\": 1616,\n    \"countComments\": 4649,\n    \"countFollowers\": 1639,\n    \"countAllDiscussions\": 6228,\n    \"countAllComments\": 9930,\n    \"followed\": true,\n    \"breadcrumbs\": [\n      {\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"url\": \"string\"\n      }\n    ]\n  },\n  {\n    \"categoryID\": 538,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"parentCategoryID\": 6891,\n    \"customPermissions\": false,\n    \"isArchived\": false,\n    \"urlcode\": \"string\",\n    \"url\": \"string\",\n    \"displayAs\": \"discussions\",\n    \"countCategories\": 6814,\n    \"countDiscussions\": 4774,\n    \"countComments\": 4928,\n    \"countFollowers\": 1034,\n    \"countAllDiscussions\": 3422,\n    \"countAllComments\": 4625,\n    \"followed\": true,\n    \"breadcrumbs\": [\n      {\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      {\n        \"name\": \"s\",\n        \"url\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd8afad5-0d9d-43a4-93c7-66fd41305f08",
+          "name": "Delete a category.",
+          "request": {
+            "name": "Delete a category.",
+            "description": {},
+            "url": {
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The category ID.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c07085c-3141-42a2-80bc-7149a8e795d7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The category ID.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "864aab6c-f8fa-4341-8a0e-8c37c0639ab8",
+          "name": "Get a category.",
+          "request": {
+            "name": "Get a category.",
+            "description": {},
+            "url": {
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The category ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ca43a1f-dc4b-4978-91fa-89e583816d28",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The category ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"categoryID\": 8328,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"parentCategoryID\": 8241,\n  \"customPermissions\": true,\n  \"isArchived\": false,\n  \"urlcode\": \"string\",\n  \"url\": \"string\",\n  \"displayAs\": \"discussions\",\n  \"countCategories\": 4020,\n  \"countDiscussions\": 8245,\n  \"countComments\": 8391,\n  \"countFollowers\": 3508,\n  \"countAllDiscussions\": 1314,\n  \"countAllComments\": 8049,\n  \"followed\": true,\n  \"ideationType\": \"string\",\n  \"permissions\": {\n    \"discussions.view\": true,\n    \"discussions.add\": true,\n    \"discussions.edit\": false,\n    \"discussions.delete\": false,\n    \"discussions.sink\": false,\n    \"comments.add\": true,\n    \"comments.edit\": false,\n    \"comments.delete\": false\n  },\n  \"defaultStatusID\": 7853\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0209004-3bc0-42ff-a6d3-b9f567a74b66",
+          "name": "Update a category.",
+          "request": {
+            "name": "Update a category.",
+            "description": {},
+            "url": {
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The category ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"customPermissions\": \"<boolean>\",\n  \"displayAs\": \"discussions\",\n  \"parentCategoryID\": \"<integer>\",\n  \"featured\": false,\n  \"ideationType\": \"<string>\",\n  \"allowedDiscussionTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowedPostTypeIDs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hasRestrictedPostTypes\": \"<boolean>\",\n  \"defaultStatusID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3cb5857b-20e0-4a1e-a6fb-787fefd07634",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The category ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"customPermissions\": \"<boolean>\",\n  \"displayAs\": \"discussions\",\n  \"parentCategoryID\": \"<integer>\",\n  \"featured\": false,\n  \"ideationType\": \"<string>\",\n  \"allowedDiscussionTypes\": [\n    \"Discussion\",\n    \"Discussion\"\n  ],\n  \"allowedPostTypeIDs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hasRestrictedPostTypes\": \"<boolean>\",\n  \"defaultStatusID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"categoryID\": 3078,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"parentCategoryID\": 8955,\n  \"customPermissions\": false,\n  \"isArchived\": false,\n  \"urlcode\": \"string\",\n  \"url\": \"string\",\n  \"displayAs\": \"discussions\",\n  \"countCategories\": 306,\n  \"countDiscussions\": 7893,\n  \"countComments\": 4381,\n  \"countFollowers\": 1517,\n  \"countAllDiscussions\": 9771,\n  \"countAllComments\": 752,\n  \"followed\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17338b83-e056-4fa2-ba05-d2aeb2964128",
+          "name": "Get a category for editing.",
+          "request": {
+            "name": "Get a category for editing.",
+            "description": {},
+            "url": {
+              "path": [
+                "categories",
+                ":id",
+                "edit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The category ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a92e5263-bd6a-4111-a0ff-e3852913078c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The category ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"categoryID\": 6696,\n  \"name\": \"string\",\n  \"parentCategoryID\": 1455,\n  \"urlcode\": \"stri\",\n  \"description\": \"string\",\n  \"displayAs\": \"discussions\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02c345c2-9fa2-436d-8015-9b50eecbaa25",
+          "name": "/categories/:id/follow",
+          "request": {
+            "name": "/categories/:id/follow",
+            "description": {},
+            "url": {
+              "path": [
+                "categories",
+                ":id",
+                "follow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"followed\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3904ff78-ee6c-49df-9f31-b64833b1a0d2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id",
+                    "follow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"followed\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"followed\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "978a5060-97ce-484a-9a19-5bdc739609a1",
+          "name": "List a user's category preferences.",
+          "request": {
+            "name": "List a user's category preferences.",
+            "description": {},
+            "url": {
+              "path": [
+                "categories",
+                ":id",
+                "preferences",
+                ":userID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The category ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "userID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33e082fe-9a58-4c0f-a2ff-2f31d0650c29",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id",
+                    "preferences",
+                    ":userID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The category ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "userID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"preferences.followed\": false,\n  \"preferences.popup.posts\": true,\n  \"preferences.email.posts\": false,\n  \"preferences.popup.comments\": false,\n  \"preferences.email.comments\": true,\n  \"preferences.email.digest\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0d9d5f4-caa5-465a-9937-0c4f1930d595",
+          "name": "Set a user's category preferences.",
+          "request": {
+            "name": "Set a user's category preferences.",
+            "description": {},
+            "url": {
+              "path": [
+                "categories",
+                ":id",
+                "preferences",
+                ":userID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The category ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "userID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"preferences.followed\": \"<boolean>\",\n  \"preferences.popup.posts\": \"<boolean>\",\n  \"preferences.email.posts\": \"<boolean>\",\n  \"preferences.popup.comments\": \"<boolean>\",\n  \"preferences.email.comments\": \"<boolean>\",\n  \"preferences.email.digest\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be01a117-6279-4c8c-b665-56cc4d109f8b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id",
+                    "preferences",
+                    ":userID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The category ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "userID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferences.followed\": \"<boolean>\",\n  \"preferences.popup.posts\": \"<boolean>\",\n  \"preferences.email.posts\": \"<boolean>\",\n  \"preferences.popup.comments\": \"<boolean>\",\n  \"preferences.email.comments\": \"<boolean>\",\n  \"preferences.email.digest\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"preferences.followed\": \"<boolean>\",\n  \"preferences.popup.posts\": \"<boolean>\",\n  \"preferences.email.posts\": \"<boolean>\",\n  \"preferences.popup.comments\": \"<boolean>\",\n  \"preferences.email.comments\": \"<boolean>\",\n  \"preferences.email.digest\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "28f2b61c-6c05-4930-a7e9-9a42e42b32dc",
+    "name": "Vanilla Addons Categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

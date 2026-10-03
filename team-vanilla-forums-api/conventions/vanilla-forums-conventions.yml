@@ -1,0 +1,117 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://success.vanillaforums.com/kb/articles/40-api-v2-overview (pagination,
+  fields) + https://success.vanillaforums.com/kb/articles/44-rate-limits +
+  https://success.vanillaforums.com/kb/articles/46-smart-ids +
+  https://success.vanillaforums.com/kb/articles/308-id-range-expressions +
+  https://success.vanillaforums.com/kb/articles/45-date-filters +
+  https://success.vanillaforums.com/kb/articles/594-export-csv-files-from-api-calls
+  + derived from openapi/vanilla-api-openapi-original.json
+description: >-
+  Cross-cutting request/response conventions of the Vanilla (Higher Logic
+  Vanilla) API v2 - the runtime semantics the OpenAPI does not fully express.
+base_url: https://{your-community-domain}/api/v2 (every Vanilla cloud community serves its own API; e.g. https://open.vanillaforums.com/api/v2)
+api_style: REST over HTTPS, JSON requests and responses
+
+authentication:
+  scheme: Bearer personal access token or JWT; access_token / role-token query parameters as fallbacks
+  detail: authentication/vanilla-forums-authentication.yml
+
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key mechanism is documented and the OpenAPI contains no
+    idempotency parameters (0 mentions across 371 operations). Retries of
+    write requests are not deduplicated by the platform.
+
+pagination:
+  style: page-based (numbered pagination, plus "more" pagination where counting totals would not be performant)
+  request_params:
+    page: page number
+    limit: results per page
+  response_fields: >-
+    Results are returned as a bare JSON array; paging metadata is carried in
+    the RFC 8288 Link response header with rel="first", rel="last" (numbered
+    pagination only), rel="prev" (page > 1) and rel="next" (more records). The
+    Paging-Next header is always present when more rows are available. Pages
+    can return fewer rows than limit (or be empty) because rows are removed by
+    permission checks after paging.
+  docs: https://success.vanillaforums.com/kb/articles/40-api-v2-overview
+
+sparse_fields:
+  supported: true
+  mechanism: fields query parameter (comma-separated field list), usable on every GET call; also applies to CSV exports
+  openapi_evidence: fields parameter appears on 171 operations in the OpenAPI
+  docs: https://success.vanillaforums.com/kb/articles/40-api-v2-overview
+
+field_expansion:
+  supported: true
+  mechanism: expand query parameter (e.g. expand=insertUser,lastUser; expand=ssoID to join SSO user IDs)
+  openapi_evidence: expand parameter appears on 36 operations in the OpenAPI
+  docs: https://success.vanillaforums.com/kb/articles/282-expanding-user-sso-ids
+
+smart_ids:
+  supported: true
+  mechanism: >-
+    Smart IDs (${field}:{value}) transparently resolve alternate keys to
+    primary IDs in the path, query, or body - e.g. /users/$name:baz,
+    /categories/$urlcode:support-qna, ?insertUserID=$me, and SSO foreign-ID
+    lookup via $<authProviderKey>:<foreignID>. Must resolve to exactly one row.
+  docs: https://success.vanillaforums.com/kb/articles/46-smart-ids
+
+id_range_expressions:
+  supported: true
+  mechanism: >-
+    Range expressions on primary-key filters: CSV (?discussionID=100,150),
+    array notation (?discussionID[]=100), dot ranges (?discussionID=100..,
+    ..100, 100..200) and operator notation (?discussionID=>=100) - useful for
+    efficient incremental sync.
+  docs: https://success.vanillaforums.com/kb/articles/308-id-range-expressions
+
+date_filters:
+  supported: true
+  mechanism: >-
+    Date fields accept RFC 3339 values with operators (=, >, <, >=, <=; e.g.
+    ?dateInserted=>2013-01-24) and bracketed ranges, square-inclusive /
+    round-exclusive (e.g. [2018-01-01,2019-01-01) for anything in 2018).
+  docs: https://success.vanillaforums.com/kb/articles/45-date-filters
+
+csv_export:
+  supported: true
+  mechanism: >-
+    Append .csv to a list endpoint (e.g. /api/v2/users.csv?page=1&limit=5000)
+    to export CSV; CSV raises the per-page limit to 5,000 (vs 500 JSON).
+    Core product since Release 2023.017, gated by the Garden > Exports >
+    Manage permission. Combine with fields/expand/date filters to shape output.
+  docs: https://success.vanillaforums.com/kb/articles/594-export-csv-files-from-api-calls
+
+metadata:
+  supported: false
+  notes: No arbitrary metadata key-value store on API resources; custom profile fields serve that role for users.
+
+request_tracing:
+  request_id_header: null
+  notes: No documented request-id response header; webhook deliveries carry a globally-unique Delivery ID.
+
+versioning:
+  scheme: URI path (/api/v2); platform features ship on weekly release trains (YYYY.NNN) documented in release notes
+  current: v2
+  detail: lifecycle/vanilla-forums-lifecycle.yml
+  changelog: changelog/vanilla-forums-changelog.yml
+
+error_envelope:
+  media_type: application/json
+  shape: '{"message": "<verbose description>", "status": <http status code>, "description": <nullable detail>}'
+  openapi_schema: BasicError (components.schemas.BasicError, required message + status)
+  detail: errors/vanilla-forums-problem-types.yml
+
+rate_limits:
+  signaling: HTTP 429 Too Many Requests on a temporary 1-minute per-IP block; no documented rate-limit response headers
+  limits: GET 300 req/min/IP; POST/PUT/PATCH/DELETE 120 req/min/IP; hard block above 250 requests in 10 seconds (manual unblock by support)
+  detail: rate-limits/vanilla-forums-rate-limits.yml
+  docs: https://success.vanillaforums.com/kb/articles/44-rate-limits
+
+cors:
+  supported: true
+  docs: https://success.vanillaforums.com/kb/articles/42-cors-cross-origin-resource-sharing

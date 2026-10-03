@@ -1,0 +1,1894 @@
+{
+  "item": [
+    {
+      "id": "5c48cb63-6c1e-4046-85e3-761ce4e5e6f9",
+      "name": "Media",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b446c13a-edeb-4c1f-a533-73d4c4caa247",
+          "name": "List media files",
+          "request": {
+            "name": "List media files",
+            "description": {},
+            "url": {
+              "path": [
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mediaID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of media IDs. Requires community.manage permission."
+                },
+                {
+                  "disabled": false,
+                  "key": "foreignType",
+                  "value": "<string>",
+                  "description": "Filter for media attached to a specific record. Requires foreignID."
+                },
+                {
+                  "disabled": false,
+                  "key": "foreignID",
+                  "value": "<number>",
+                  "description": "Filter for media attached to a specific record. Requires foreignType."
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<string>",
+                  "description": "Filter for media uploaded by a specific user. Requires community.manage permission to check for other users. Smart expression $me supported to filter for current sessioned user."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "097b4c94-d3dc-4448-8fd5-89c70b1c4a36",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mediaID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "foreignType",
+                      "value": "discussion"
+                    },
+                    {
+                      "key": "foreignID",
+                      "value": "5"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "$me"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"mediaID\": 9751,\n    \"mediaUUID\": \"string\",\n    \"url\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"size\": 2764,\n    \"dateInserted\": \"1968-10-19T12:27:57.360Z\",\n    \"insertUserID\": 9280,\n    \"foreignType\": \"string\",\n    \"foreignID\": 7392,\n    \"width\": 5822,\n    \"height\": 8292,\n    \"active\": true\n  },\n  {\n    \"mediaID\": 5465,\n    \"mediaUUID\": \"string\",\n    \"url\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"size\": 2241,\n    \"dateInserted\": \"1982-05-17T09:33:31.767Z\",\n    \"insertUserID\": 4568,\n    \"foreignType\": \"string\",\n    \"foreignID\": 7057,\n    \"width\": 3568,\n    \"height\": 9892,\n    \"active\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64159e91-db48-4c60-a7e2-30897c99bd0b",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mediaID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "foreignType",
+                      "value": "discussion"
+                    },
+                    {
+                      "key": "foreignID",
+                      "value": "5"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "$me"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3dfdb0d6-3134-414a-80fc-9db3ee8f3200",
+          "name": "Upload a media file.",
+          "request": {
+            "name": "Upload a media file.",
+            "description": {},
+            "url": {
+              "path": [
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "value": "<binary>",
+                  "type": "text",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f535d25-b6fc-43ac-9c7e-b58bb7874e14",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mediaID\": 9816,\n  \"mediaUUID\": \"string\",\n  \"url\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"size\": 8787,\n  \"dateInserted\": \"1997-06-08T17:59:34.191Z\",\n  \"insertUserID\": 8979,\n  \"foreignType\": \"string\",\n  \"foreignID\": 5366,\n  \"width\": 6362,\n  \"height\": 7210,\n  \"active\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e20f141-9f95-450a-bddf-17ab18cb8855",
+          "name": "Delete a media item, using its URL.",
+          "request": {
+            "name": "Delete a media item, using its URL.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                "by-url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>",
+                  "description": "(Required) Full URL to the item.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "deleteFile",
+                  "value": "<boolean>",
+                  "description": "(Required) Permanently delete the file from the CDN. This action is irreversible.\n"
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0af382e-bd67-4fad-9149-c9c9cd1b12e2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "by-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleteFile",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6fbd65e-8381-4e6f-b586-b7a8c4a150d2",
+          "name": "Get a media item, using its URL.",
+          "request": {
+            "name": "Get a media item, using its URL.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                "by-url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>",
+                  "description": "(Required) Full URL to the item.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46516686-9d2a-4853-b65b-79f1f3d9a6e7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "by-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mediaID\": 9816,\n  \"mediaUUID\": \"string\",\n  \"url\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"size\": 8787,\n  \"dateInserted\": \"1997-06-08T17:59:34.191Z\",\n  \"insertUserID\": 8979,\n  \"foreignType\": \"string\",\n  \"foreignID\": 5366,\n  \"width\": 6362,\n  \"height\": 7210,\n  \"active\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "784eca91-9217-4114-adb8-2b278b09309b",
+          "name": "Delete a list of media by their ID's.",
+          "request": {
+            "name": "Delete a list of media by their ID's.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deleteFile",
+                  "value": "<boolean>",
+                  "description": "(Required) Permanently delete the file from the CDN. This action is irreversible.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mediaIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "024fca97-f8dd-4682-aaea-99db999aa8c3",
+              "name": "Endpoints may queue a job to perform a task in the background.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteFile",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mediaIDs\": [\n    2452,\n    14253,\n    14124\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobID\": \"10232183.longrunnerjob.5fa1a178cfe1b9.07902191\",\n  \"jobTrackingID\": \"42adsf424::613fda84bdea32.25565677\",\n  \"status\": \"received\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b199ad9f-ca08-432f-a98e-426250f2edbf",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteFile",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mediaIDs\": [\n    2452,\n    14253,\n    14124\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6e0f8ca2-924e-4a44-896c-1d4cdb5e434d",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteFile",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mediaIDs\": [\n    2452,\n    14253,\n    14124\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e96be0cd-3d31-40c1-b8ea-df0e33000b8d",
+              "name": "Endpoints that may time out and require the client to\nprogress them with the `/api/v2/calls` endpoints may return this.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteFile",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mediaIDs\": [\n    2452,\n    14253,\n    14124\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"progress\": {\n    \"successIDs\": [\n      25,\n      145,\n      11431,\n      1313\n    ],\n    \"failedIDs\": [\n      14424,\n      1264524\n    ],\n    \"exceptionsByID\": {\n      \"message\": \"string\",\n      \"code\": 2278.027314064757\n    },\n    \"countTotalIDs\": 2933\n  },\n  \"callbackPayload\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\\n\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a596fc59-4647-4857-8f2d-eb8a49ca2e95",
+          "name": "Delete a list of media by their URL's.",
+          "request": {
+            "name": "Delete a list of media by their URL's.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                "list-by-url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deleteFile",
+                  "value": "<boolean>",
+                  "description": "(Required) Permanently delete the file from the CDN. This action is irreversible.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "922d91aa-055e-4510-abda-7425fa5f7b00",
+              "name": "Endpoints may queue a job to perform a task in the background.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "list-by-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteFile",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobID\": \"10232183.longrunnerjob.5fa1a178cfe1b9.07902191\",\n  \"jobTrackingID\": \"42adsf424::613fda84bdea32.25565677\",\n  \"status\": \"received\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fc66ad8-1bc7-48d2-901e-c6849ec87ce0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "list-by-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteFile",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41e26dff-ffa9-4d64-9b58-1f574861febb",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "list-by-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteFile",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2487738-21bb-4112-970a-36d1ecfc7148",
+              "name": "Endpoints that may time out and require the client to\nprogress them with the `/api/v2/calls` endpoints may return this.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "list-by-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteFile",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"progress\": {\n    \"successIDs\": [\n      25,\n      145,\n      11431,\n      1313\n    ],\n    \"failedIDs\": [\n      14424,\n      1264524\n    ],\n    \"exceptionsByID\": {\n      \"message\": \"string\",\n      \"code\": 735.1942026353674\n    },\n    \"countTotalIDs\": 2020\n  },\n  \"callbackPayload\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\\n\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af5c0428-45cc-4e48-a266-11dd9f33f4b3",
+          "name": "Scrape information from a URL.",
+          "request": {
+            "name": "Scrape information from a URL.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                "scrape"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"force\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66f80a30-43d2-4f2d-a5cf-3669604a9c04",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"force\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\",\n  \"type\": \"soundcloud\",\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"photoUrl\": \"string\",\n  \"height\": 8316,\n  \"width\": 9835,\n  \"attributes\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7f0ac06-b9f8-4487-b70c-0e3ea31c6cc9",
+          "name": "Complete a chunked media upload session.",
+          "request": {
+            "name": "Complete a chunked media upload session.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                "upload-session-complete",
+                ":uploadSessionID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uploadSessionID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parts\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d067f5b1-d457-4f7c-b3c4-4295416bda76",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "upload-session-complete",
+                    ":uploadSessionID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uploadSessionID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parts\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mediaID\": 9816,\n  \"mediaUUID\": \"string\",\n  \"url\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"size\": 8787,\n  \"dateInserted\": \"1997-06-08T17:59:34.191Z\",\n  \"insertUserID\": 8979,\n  \"foreignType\": \"string\",\n  \"foreignID\": 5366,\n  \"width\": 6362,\n  \"height\": 7210,\n  \"active\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6aca1efa-9d25-47ff-8721-eb497f86fa09",
+          "name": "Get a presigned URL for a chunked upload part.",
+          "request": {
+            "name": "Get a presigned URL for a chunked upload part.",
+            "description": {
+              "content": "Legacy presigned URL flow. Clients should prefer PUT on this path to avoid S3 CORS requirements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "upload-session-part",
+                ":uploadSessionID",
+                ":partNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uploadSessionID",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "partNumber",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "642172a0-3362-48c1-9abc-ddff7bb68bef",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "upload-session-part",
+                    ":uploadSessionID",
+                    ":partNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uploadSessionID",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "partNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71cfc770-c153-47ec-9aeb-e20d4ed3f405",
+          "name": "Upload a chunked media part through the API.",
+          "request": {
+            "name": "Upload a chunked media part through the API.",
+            "description": {
+              "content": "Uploads part bytes server-side to S3. Same-origin; no browser S3 CORS configuration required.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "upload-session-part",
+                ":uploadSessionID",
+                ":partNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uploadSessionID",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "partNumber",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "file"
+            }
+          },
+          "response": [
+            {
+              "id": "0413dc3f-4c37-46d1-be7f-8e29011280dd",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "upload-session-part",
+                    ":uploadSessionID",
+                    ":partNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uploadSessionID",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "partNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "file"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partNumber\": 2435,\n  \"eTag\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f007475-c732-4065-9459-754b6e23546c",
+          "name": "Abort a chunked media upload session.",
+          "request": {
+            "name": "Abort a chunked media upload session.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                "upload-session",
+                ":uploadSessionID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uploadSessionID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03bf4352-1523-4996-b5ed-743f7fdefde0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "upload-session",
+                    ":uploadSessionID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uploadSessionID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a76ad9c5-5e45-48ab-814c-275126a8f89b",
+          "name": "Start a chunked media upload session.",
+          "request": {
+            "name": "Start a chunked media upload session.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                "upload-sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"size\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"foreignType\": \"<string>\",\n  \"foreignID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d8e892e-6960-43f5-8c96-3a92a4dd4f92",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "upload-sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"size\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"foreignType\": \"<string>\",\n  \"foreignID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41cf7654-7992-48d1-99e6-39d423704c47",
+          "name": "Delete a media item.",
+          "request": {
+            "name": "Delete a media item.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deleteFile",
+                  "value": "<boolean>",
+                  "description": "(Required) Permanently delete the file from the CDN. This action is irreversible.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The media ID.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4d0507e-c7b0-4d94-9dbe-7dd78ee36d32",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteFile",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The media ID.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8a3d39d-8585-4090-a0eb-7b3a2f2fc6d7",
+          "name": "Get a media item.",
+          "request": {
+            "name": "Get a media item.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The media ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ada613e-aa8f-48fb-bb08-c4dcbbfda9e3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The media ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mediaID\": 9816,\n  \"mediaUUID\": \"string\",\n  \"url\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"size\": 8787,\n  \"dateInserted\": \"1997-06-08T17:59:34.191Z\",\n  \"insertUserID\": 8979,\n  \"foreignType\": \"string\",\n  \"foreignID\": 5366,\n  \"width\": 6362,\n  \"height\": 7210,\n  \"active\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5d69651-ef49-4a25-89ce-cd8f762f1d14",
+          "name": "Update a media item's attachment to another record.",
+          "request": {
+            "name": "Update a media item's attachment to another record.",
+            "description": {},
+            "url": {
+              "path": [
+                "media",
+                ":id",
+                "attachment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The media ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"foreignType\": \"<string>\",\n  \"foreignID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5b789b83-3844-43d7-b31d-14adea254fa1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    ":id",
+                    "attachment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The media ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"foreignType\": \"<string>\",\n  \"foreignID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mediaID\": 2152,\n  \"url\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"size\": 9324,\n  \"dateInserted\": \"1981-04-26T03:32:30.205Z\",\n  \"insertUserID\": 6591,\n  \"foreignType\": \"string\",\n  \"foreignID\": 9710,\n  \"height\": 374,\n  \"width\": 2366\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6faf0cc3-ee46-4dcf-be78-69debd033eb6",
+    "name": "Vanilla Addons Media API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1054 @@
+{
+  "item": [
+    {
+      "id": "2470d1a2-d528-4fe4-89ab-9779c71a1cea",
+      "name": "Conversations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0ee2a4d-19fb-4e3c-bc7e-8faaa49f915e",
+          "name": "List user conversations.",
+          "request": {
+            "name": "List user conversations.",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<integer>",
+                  "description": "Filter by author.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "participantUserID",
+                  "value": "<integer>",
+                  "description": "Filter by participating user. (Has no effect if insertUserID is used)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aab4bc10-a118-49b3-a2f3-76717c44a7dd",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "participantUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"conversationID\": 2792,\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"url\": \"string\",\n    \"dateInserted\": \"2025-07-31T17:04:22.810Z\",\n    \"insertUserID\": 8498,\n    \"countParticipants\": 7477,\n    \"countMessages\": 7414,\n    \"countUnread\": 3758,\n    \"insertUser\": {\n      \"userID\": 5236,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://YivAixC.nbJs-hfj,ibdFV8lMns4XyOWPVRaGnmth-w,9vNFOXrl\",\n      \"dateLastActive\": \"1964-02-10T15:41:19.893Z\",\n      \"url\": \"http://geCHngGufMPGBiLIwbRLC.kdvfRtxCH8LmGsee\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"lastMessage\": {\n      \"insertUserID\": 9295,\n      \"dateInserted\": \"1997-06-23T04:53:07.099Z\",\n      \"insertUser\": {\n        \"userID\": 91,\n        \"name\": \"string\",\n        \"photoUrl\": \"https://SrnKqdpCA.nxT6exR9BcXvoAVwn3pteiYGyC6Rm0YLRYtntHUUy3oRxRnJkj.I+bYzqibXdEzwc\",\n        \"dateLastActive\": \"1988-02-23T13:42:00.161Z\",\n        \"url\": \"https://dSXMCuOilNQtGn.yvva+FoBMtgpphWfVvS0+I\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      }\n    },\n    \"participants\": [\n      {\n        \"userID\": 2838,\n        \"status\": \"deleted\",\n        \"user\": {\n          \"userID\": 2397,\n          \"name\": \"string\",\n          \"photoUrl\": \"https://LaDom.vac8MbOnLC0of+8cKbzs9wWHG5IwZ1gYKGnr5es.y,BmHNEJqhXTj+i1uONSOu1x+vYxoIx6Yndb\",\n          \"dateLastActive\": \"1972-07-12T23:14:16.855Z\",\n          \"url\": \"http://tqbOeJhKeWO.wjwuf7F,e6vi-Q7J7X.P2xPsTe0PCoOncS3yuo\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": true\n        }\n      },\n      {\n        \"userID\": 1443,\n        \"status\": \"participating\",\n        \"user\": {\n          \"userID\": 6771,\n          \"name\": \"string\",\n          \"photoUrl\": \"https://hpcKvktiixArHt.uemjFdR8gkla5J6n797VML\",\n          \"dateLastActive\": \"2021-10-20T06:28:01.491Z\",\n          \"url\": \"https://g.jfi8yN.WBM9bRS0hwnYehf2rPlLP3jJ3vjvB\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": true\n        }\n      }\n    ],\n    \"unread\": false\n  },\n  {\n    \"conversationID\": 4441,\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"url\": \"string\",\n    \"dateInserted\": \"1970-08-13T07:21:40.001Z\",\n    \"insertUserID\": 8448,\n    \"countParticipants\": 9162,\n    \"countMessages\": 8099,\n    \"countUnread\": 166,\n    \"insertUser\": {\n      \"userID\": 8094,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://wBsFLWecLiOmvZuCTe.keG2DG0L9t8+2NH+BomNo9rnQELdbFl4PEyAliYOTldn+33dAM+VkdyE8Nh-Lm-xvcN\",\n      \"dateLastActive\": \"2001-12-10T05:58:19.775Z\",\n      \"url\": \"http://PTbMtFG.wmig39hxVMJEu7gQ-oCoT\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"lastMessage\": {\n      \"insertUserID\": 6121,\n      \"dateInserted\": \"2003-09-24T21:36:32.893Z\",\n      \"insertUser\": {\n        \"userID\": 4229,\n        \"name\": \"string\",\n        \"photoUrl\": \"https://fwytOjY.hdgnDssjumhj5rQDEkvG7jPlqmjPz2JN,r0FuCzjEbGdEGyqD3VJcKBgOub\",\n        \"dateLastActive\": \"1986-08-09T21:48:19.000Z\",\n        \"url\": \"http://TggXoWTKLyujLHmPyYuscsdVYgqVHKWK.rifW55W2C7nbL\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": true\n      }\n    },\n    \"participants\": [\n      {\n        \"userID\": 3024,\n        \"status\": \"participating\",\n        \"user\": {\n          \"userID\": 1696,\n          \"name\": \"string\",\n          \"photoUrl\": \"https://ztBgeNmwnoVSQskePWvi.bnhFXi6\",\n          \"dateLastActive\": \"1999-12-21T19:47:01.202Z\",\n          \"url\": \"http://RbjeEy.enupyHamGh9ige93sgnZv6oiRj-z7Dbn2\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": false\n        }\n      },\n      {\n        \"userID\": 3497,\n        \"status\": \"deleted\",\n        \"user\": {\n          \"userID\": 6036,\n          \"name\": \"string\",\n          \"photoUrl\": \"http://RDcbiJPhxbOosvENUGbsHZb.axikrEPkVHkJPTJSUxFV+I4pJWDwWZ,+kXi\",\n          \"dateLastActive\": \"2008-06-26T05:31:15.492Z\",\n          \"url\": \"http://vHJJrAOyVaMhvDUwXNY.eoO0,qM2Zzm0DizTy.9pc0Z\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": true\n        }\n      }\n    ],\n    \"unread\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ca38a40-7cba-43c7-97a2-67764eb73754",
+          "name": "Add a conversation.",
+          "request": {
+            "name": "Add a conversation.",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"participantUserIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"initialBody\": \"<string>\",\n  \"initialFormat\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11bfddbc-803a-4c47-8aee-fa1992457d95",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conversationID\": 1210,\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"url\": \"string\",\n  \"dateInserted\": \"1985-03-27T08:09:15.676Z\",\n  \"insertUserID\": 5060,\n  \"countParticipants\": 2741,\n  \"countMessages\": 54,\n  \"countUnread\": 2656,\n  \"insertUser\": {\n    \"userID\": 6114,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://PoswHUmkNDoeEEsCEYoJnqKxa.ltclg7PCey1LesY3WjLVaXGeJOXi04v3juDg1FnJfII+Yk7NIm1Z\",\n    \"dateLastActive\": \"2016-11-25T09:40:44.528Z\",\n    \"url\": \"https://vsdSC.ejof83C..SAs09OJnF2tS4\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"lastMessage\": {\n    \"insertUserID\": 8081,\n    \"dateInserted\": \"2023-02-18T09:21:10.253Z\",\n    \"insertUser\": {\n      \"userID\": 8535,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://IyWyrvcsKhEFWVvCEVXfW.mpjWrfdj2kQTY,aIt3IiE3qfZPa-D-xK4ZG2XvcUCAlUjK1orVft8y-j,w6\",\n      \"dateLastActive\": \"1994-09-03T20:25:01.943Z\",\n      \"url\": \"https://mMgzkE.nwvyyGA3gSl-btEUVYojC8nASW6YQZXnADp7+,QPKd3kHJAdRZffH-LaGQoCZPA\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  },\n  \"participants\": [\n    {\n      \"userID\": 7542,\n      \"status\": \"participating\",\n      \"user\": {\n        \"userID\": 8957,\n        \"name\": \"string\",\n        \"photoUrl\": \"https://tzSVHiRMDgVuNAAUlUSkZQtkjW.ycI5DZQhb1XU36ycoX4WbMwrowRFV8V-rjnWn.hIDKjc-XUX9eoM,wu3Cb6sr9-wb\",\n        \"dateLastActive\": \"2007-05-28T11:14:44.637Z\",\n        \"url\": \"http://rE.stEdQpTwtz6ibEwyvcNjdqximDxq\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": true\n      }\n    },\n    {\n      \"userID\": 1314,\n      \"status\": \"deleted\",\n      \"user\": {\n        \"userID\": 6649,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://ahnnYqBTJbxUwthlKlVPFIUqvnL.jvlp0sh2Wo\",\n        \"dateLastActive\": \"1955-11-27T02:24:13.339Z\",\n        \"url\": \"https://AyMMNyB.vyjfCLSIw6I.Mb4SJDUKbEgboJMN7POkaFW\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      }\n    }\n  ],\n  \"unread\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92966771-75d7-433f-b88b-1dff8f1baa0f",
+          "name": "Get a conversation.",
+          "request": {
+            "name": "Get a conversation.",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The conversation ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bec6f63b-60b8-4168-aa67-8afc446f6d94",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The conversation ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conversationID\": 1210,\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"url\": \"string\",\n  \"dateInserted\": \"1985-03-27T08:09:15.676Z\",\n  \"insertUserID\": 5060,\n  \"countParticipants\": 2741,\n  \"countMessages\": 54,\n  \"countUnread\": 2656,\n  \"insertUser\": {\n    \"userID\": 6114,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://PoswHUmkNDoeEEsCEYoJnqKxa.ltclg7PCey1LesY3WjLVaXGeJOXi04v3juDg1FnJfII+Yk7NIm1Z\",\n    \"dateLastActive\": \"2016-11-25T09:40:44.528Z\",\n    \"url\": \"https://vsdSC.ejof83C..SAs09OJnF2tS4\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"lastMessage\": {\n    \"insertUserID\": 8081,\n    \"dateInserted\": \"2023-02-18T09:21:10.253Z\",\n    \"insertUser\": {\n      \"userID\": 8535,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://IyWyrvcsKhEFWVvCEVXfW.mpjWrfdj2kQTY,aIt3IiE3qfZPa-D-xK4ZG2XvcUCAlUjK1orVft8y-j,w6\",\n      \"dateLastActive\": \"1994-09-03T20:25:01.943Z\",\n      \"url\": \"https://mMgzkE.nwvyyGA3gSl-btEUVYojC8nASW6YQZXnADp7+,QPKd3kHJAdRZffH-LaGQoCZPA\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  },\n  \"participants\": [\n    {\n      \"userID\": 7542,\n      \"status\": \"participating\",\n      \"user\": {\n        \"userID\": 8957,\n        \"name\": \"string\",\n        \"photoUrl\": \"https://tzSVHiRMDgVuNAAUlUSkZQtkjW.ycI5DZQhb1XU36ycoX4WbMwrowRFV8V-rjnWn.hIDKjc-XUX9eoM,wu3Cb6sr9-wb\",\n        \"dateLastActive\": \"2007-05-28T11:14:44.637Z\",\n        \"url\": \"http://rE.stEdQpTwtz6ibEwyvcNjdqximDxq\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": true\n      }\n    },\n    {\n      \"userID\": 1314,\n      \"status\": \"deleted\",\n      \"user\": {\n        \"userID\": 6649,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://ahnnYqBTJbxUwthlKlVPFIUqvnL.jvlp0sh2Wo\",\n        \"dateLastActive\": \"1955-11-27T02:24:13.339Z\",\n        \"url\": \"https://AyMMNyB.vyjfCLSIw6I.Mb4SJDUKbEgboJMN7POkaFW\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      }\n    }\n  ],\n  \"unread\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f333f71-2872-443b-9886-1ad6cfecd4f3",
+          "name": "Leave a conversation.",
+          "request": {
+            "name": "Leave a conversation.",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations",
+                ":id",
+                "leave"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The conversation ID.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffadde4c-eaa3-4023-828f-000365de4131",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "leave"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The conversation ID.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f77ea90-7d3f-46e8-9f2f-294ecf5ea76d",
+          "name": "Get participants of a conversation.",
+          "request": {
+            "name": "Get participants of a conversation.",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations",
+                ":id",
+                "participants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "participating",
+                  "description": "Filter by participant status.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "5",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The conversation ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f92803a-83a2-472d-95ea-a53ff85982a5",
+              "name": "List of participants.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "participants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "participating"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The conversation ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userID\": 7201,\n    \"status\": \"deleted\",\n    \"user\": {\n      \"userID\": 6565,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://YPJVoBunpXgdaSFboHvFPwMBkHhnL.xjIIVY0LuZkETEg1k-D9Z2U+0ucD2.zS37gLkhhg-EDlHkUchcCNaVbMllCLSyUKiDRgIeQLU.y3Y\",\n      \"dateLastActive\": \"1954-12-12T05:41:30.410Z\",\n      \"url\": \"http://eYpTXfoBjyvuEx.adiJpQ5AjZd+YGLQsOuViZAjIKVeiw+7b,XF9\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  },\n  {\n    \"userID\": 3818,\n    \"status\": \"deleted\",\n    \"user\": {\n      \"userID\": 5688,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://yHabFygfYiXEZRSDHA.drukyNuD,YKo4w6+bxmVJSzFaHs9Yt1DpwOLNC61kzubg3Yh-K6\",\n      \"dateLastActive\": \"1970-06-24T03:36:24.515Z\",\n      \"url\": \"http://DCQpzPfMGf.heT9WlKLMnBgyAzz0YAqu1yiSpBV8\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80513bd2-0b8d-4b7f-918e-a1d29ede66a1",
+          "name": "Add participants to a conversation.",
+          "request": {
+            "name": "Add participants to a conversation.",
+            "description": {},
+            "url": {
+              "path": [
+                "conversations",
+                ":id",
+                "participants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The conversation ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"participantUserIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"initialBody\": \"<string>\",\n  \"initialFormat\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0df757bb-ada7-4c14-b16f-daba3d31d1a9",
+              "name": "List of participants.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "participants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The conversation ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"participantUserIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"initialBody\": \"<string>\",\n  \"initialFormat\": \"markdown\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userID\": 7201,\n    \"status\": \"deleted\",\n    \"user\": {\n      \"userID\": 6565,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://YPJVoBunpXgdaSFboHvFPwMBkHhnL.xjIIVY0LuZkETEg1k-D9Z2U+0ucD2.zS37gLkhhg-EDlHkUchcCNaVbMllCLSyUKiDRgIeQLU.y3Y\",\n      \"dateLastActive\": \"1954-12-12T05:41:30.410Z\",\n      \"url\": \"http://eYpTXfoBjyvuEx.adiJpQ5AjZd+YGLQsOuViZAjIKVeiw+7b,XF9\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  },\n  {\n    \"userID\": 3818,\n    \"status\": \"deleted\",\n    \"user\": {\n      \"userID\": 5688,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://yHabFygfYiXEZRSDHA.drukyNuD,YKo4w6+bxmVJSzFaHs9Yt1DpwOLNC61kzubg3Yh-K6\",\n      \"dateLastActive\": \"1970-06-24T03:36:24.515Z\",\n      \"url\": \"http://DCQpzPfMGf.heT9WlKLMnBgyAzz0YAqu1yiSpBV8\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef7fe928-7e14-482a-9cb6-8958b64514c8",
+          "name": "List user messages.",
+          "request": {
+            "name": "List user messages.",
+            "description": {},
+            "url": {
+              "path": [
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "conversationID",
+                  "value": "<integer>",
+                  "description": "Filter by conversation.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<integer>",
+                  "description": "Filter by author.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e701e098-c64f-4c85-befe-14f23fb9ca0d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "conversationID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"messageID\": 3495,\n    \"conversationID\": 6946,\n    \"body\": \"string\",\n    \"insertUserID\": 8716,\n    \"dateInserted\": \"1976-11-15T11:32:46.719Z\",\n    \"insertUser\": {\n      \"userID\": 3006,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://DcpIRlLW.ckucFsd7-HP+GLtKe7FMTWV5NY3C7rjMVX63Sy2byYV\",\n      \"dateLastActive\": \"1993-11-25T12:49:45.352Z\",\n      \"url\": \"http://CDwjcRImTIQ.dlsqRtnKZAtkiz7F28JppAol.EmefxOohL1iPVQPNTxinfiW\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  },\n  {\n    \"messageID\": 2617,\n    \"conversationID\": 1751,\n    \"body\": \"string\",\n    \"insertUserID\": 5900,\n    \"dateInserted\": \"2004-11-19T20:39:33.769Z\",\n    \"insertUser\": {\n      \"userID\": 7175,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://ypnHykPj.ccbm.bLdzXJ6FSxm7srtihp2\",\n      \"dateLastActive\": \"1954-08-05T18:19:11.757Z\",\n      \"url\": \"https://rWEMirpNTshOtXnTSBtQNVEZmEgXOJF.ncvW1sD0TBp\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a11f45cd-4859-4e80-ab20-f1c1294aaba0",
+          "name": "Add a message.",
+          "request": {
+            "name": "Add a message.",
+            "description": {},
+            "url": {
+              "path": [
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conversationID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8ea0ca93-9068-419e-b7a4-848467c3f6c9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conversationID\": \"<integer>\",\n  \"body\": \"<string>\",\n  \"format\": \"markdown\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messageID\": 5829,\n  \"conversationID\": 9722,\n  \"body\": \"string\",\n  \"insertUserID\": 6069,\n  \"dateInserted\": \"1949-11-15T09:25:52.896Z\",\n  \"insertUser\": {\n    \"userID\": 71,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://rmjzEnNpdWhczdFrEJe.qgcrg.FpOC0Oxd3DnGkiZjsh0272KQSwQLaYS8CLzzq0OjodO\",\n    \"dateLastActive\": \"1963-09-04T15:41:41.121Z\",\n    \"url\": \"http://qbWKkDmSYEVhtkundEevIvK.owx3rtCxf.S,5+GNCIyE5uxir2f4xb67ua.6KZHo5dzgb7UHMaKjpGICP9m3CoYvdc3M1DNPRRvXOqtiTc,v\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4a90c9a-0e6a-41f1-bfa4-4d52de719ceb",
+          "name": "Get a message.",
+          "request": {
+            "name": "Get a message.",
+            "description": {},
+            "url": {
+              "path": [
+                "messages",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The message ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "708542c7-cc7b-4060-810a-eb82638e6257",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The message ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messageID\": 5829,\n  \"conversationID\": 9722,\n  \"body\": \"string\",\n  \"insertUserID\": 6069,\n  \"dateInserted\": \"1949-11-15T09:25:52.896Z\",\n  \"insertUser\": {\n    \"userID\": 71,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://rmjzEnNpdWhczdFrEJe.qgcrg.FpOC0Oxd3DnGkiZjsh0272KQSwQLaYS8CLzzq0OjodO\",\n    \"dateLastActive\": \"1963-09-04T15:41:41.121Z\",\n    \"url\": \"http://qbWKkDmSYEVhtkundEevIvK.owx3rtCxf.S,5+GNCIyE5uxir2f4xb67ua.6KZHo5dzgb7UHMaKjpGICP9m3CoYvdc3M1DNPRRvXOqtiTc,v\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c70f9063-264e-4b79-b820-4a549922f6d7",
+    "name": "Vanilla Addons Conversations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://success.vanillaforums.com/kb (Release Notes knowledge base, entries fetched 2026-07-21)
+description: >-
+  Higher Logic Vanilla ships the cloud platform on a numbered release train and
+  publishes dated release notes in the success community knowledge base going
+  back to 2016. Each release rolls out in three waves - Staging, Production,
+  Enterprise - about a week apart. The API surface evolves with the platform;
+  the API v2 overview points readers to release notes for new endpoint
+  announcements.
+scheme: YYYY.NNN release trains (e.g. 2026.012), roughly biweekly, with Staging -> Production -> Enterprise rollout waves
+current: '2026.012'
+changelog_url: https://success.vanillaforums.com/kb
+entries:
+  - version: '2026.012'
+    url: https://success.vanillaforums.com/kb/articles/1964-release-2026-012
+    schedule:
+      staging: Week of July 13, 2026
+      production: Week of July 20, 2026
+      enterprise: Week of July 27, 2026
+    breaking: false
+    highlights:
+      - Hybrid Event registration (Online / In Person / Hybrid types, per-type capacity limits)
+      - Upcoming-event content in Email Digest
+      - General accessibility improvements across the platform
+  - version: '2026.011'
+    url: https://success.vanillaforums.com/kb/articles/1961-release-2026-011
+    schedule:
+      staging: Week of June 29, 2026
+    breaking: false
+    highlights:
+      - Custom Post Types improvements
+      - Create Post layout improvements
+      - Accessibility, event timezone handling, and Productboard integration improvements
+notes: >-
+  Only the recent window is captured; the knowledge base is the source of
+  truth (releases catalogued per-year back to 2016 Cloud Releases).

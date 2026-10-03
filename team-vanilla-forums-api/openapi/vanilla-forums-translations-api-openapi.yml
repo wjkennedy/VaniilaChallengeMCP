@@ -1,0 +1,713 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Translations API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Translations
+paths:
+  /locales/translations/{locale}:
+    get:
+      summary: Get all of the application's translation strings
+      tags:
+      - Translations
+      parameters:
+      - $ref: '#/components/parameters/LocaleCodeParameter'
+      - $ref: '#/components/parameters/CacheBusterParameter'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: A map of string keys to translation strings.
+                type: object
+                additionalProperties:
+                  type: string
+          description: Success
+      x-addon: dashboard
+      operationId: getLocalesTranslationsByLocale
+      x-operation-id-source: derived
+  /locales/translations/{locale}.js:
+    get:
+      summary: Get the application's translations strings as a javascrpt file
+      description: 'This endpoint is intended for application optimization where translations are requested within a `` tag
+
+        rather than as an external API call.'
+      tags:
+      - Translations
+      parameters:
+      - $ref: '#/components/parameters/LocaleCodeParameter'
+      - $ref: '#/components/parameters/CacheBusterParameter'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/javascript:
+              schema:
+                type: string
+      x-addon: dashboard
+      operationId: getLocalesTranslations{locale}Js
+      x-operation-id-source: derived
+  /translations/{resourceUrlCode}:
+    get:
+      parameters:
+      - description: Resource to filter.
+        in: path
+        name: resourceUrlCode
+        required: true
+        schema:
+          type: string
+      - description: recordType of the translation.
+        in: query
+        name: recordType
+        schema:
+          type: string
+      - description: array of recordIDs of the translation.
+        in: query
+        name: recordIDs
+        schema:
+          items:
+            type: integer
+          type: array
+      - description: array of recordKeys of the translation.
+        in: query
+        name: recordKeys
+        schema:
+          items:
+            type: string
+          type: array
+      - description: locale of the translation.
+        in: query
+        name: locale
+        required: true
+        schema:
+          type: string
+      - description: desired number of items per page.
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 100
+          maximum: 100
+          minimum: 1
+      - description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+          '
+        in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+          maximum: 100
+          minimum: 1
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Translation'
+                type: array
+          description: Success
+      tags:
+      - Translations
+      summary: Get translations from a specified resource
+      x-addon: dashboard
+      operationId: getTranslationsByResourceUrlCode
+      x-operation-id-source: derived
+    patch:
+      parameters:
+      - description: resource to add\update in.
+        in: path
+        name: resourceUrlCode
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+      tags:
+      - Translations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchTranslations'
+        required: true
+      summary: Add or update translations
+      x-addon: dashboard
+      operationId: patchTranslationsByResourceUrlCode
+      x-operation-id-source: derived
+  /translations/{resourceUrlCode}/remove:
+    patch:
+      parameters:
+      - description: Delete a translation.
+        in: path
+        name: resourceUrlCode
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+      tags:
+      - Translations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                properties:
+                  recordType:
+                    description: Name of the resource associated to the translation.
+                    type: string
+                  recordID:
+                    description: The recordID associated to the translation.
+                    type: integer
+                  recordKey:
+                    description: The recordKey associated to the translation.
+                    type: string
+                  locale:
+                    description: The locale associated to the translation.
+                    type: string
+                  propertyName:
+                    description: The property name associated to the translation.
+                    type: string
+                required:
+                - recordType
+                - locale
+                - propertyName
+                type: object
+      summary: Delete specified translations
+      x-addon: dashboard
+      operationId: patchTranslationsByResourceUrlCodeRemove
+      x-operation-id-source: derived
+components:
+  parameters:
+    LocaleCodeParameter:
+      name: locale
+      in: path
+      description: The locale code requested.
+      required: true
+      schema:
+        type: string
+        pattern: '[a-zA-Z0-9-]+'
+      x-addon: dashboard
+    CacheBusterParameter:
+      name: etag
+      in: query
+      description: 'Whether or not output is cached.
+
+        '
+      schema:
+        type: string
+      x-addon: dashboard
+  schemas:
+    Translation:
+      properties:
+        resource:
+          description: Name of the resource.
+          type: string
+        key:
+          description: a unique translation identifier.
+          type: string
+        locale:
+          description: The locale of the translation.
+          type: string
+        translation:
+          description: The translation sentence.
+          type: string
+      required:
+      - resource
+      - key
+      - locale
+      - translation
+      type: object
+      x-addon: dashboard
+    PatchTranslations:
+      type: array
+      items:
+        properties:
+          recordType:
+            description: They recordType associated to the translation.
+            type: string
+          recordID:
+            description: The recordID associated to the translation.
+            type: integer
+          recordKey:
+            description: The recordKey associated to the translation.
+            type: string
+          locale:
+            description: The locale associated to the translation.
+            type: string
+          propertyName:
+            description: The property name associated to the translation.
+            type: string
+          translation:
+            description: The translation sentence.
+            type: string
+        required:
+        - recordType
+        - locale
+        - propertyName
+        - translation
+        type: object
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

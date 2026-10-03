@@ -1,0 +1,1145 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Posts API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Posts
+paths:
+  /posts:
+    get:
+      parameters:
+      - description: Specify a range or CSV of included role IDs.
+        in: query
+        name: roleIDs
+        required: true
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination">Pagination).
+
+          '
+        in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+          maximum: 50
+          minimum: 1
+      - name: limit
+        in: query
+        description: Desired number of items per page.
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sort the results according to a specified field.
+
+          '
+        schema:
+          type: string
+          enum:
+          - score
+          - dateInserted
+          - dateLastComment
+          - -score
+          - -dateInserted
+          - -dateLastComment
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: '#/components/schemas/Discussion'
+                  - $ref: '#/components/schemas/Comment'
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '500':
+          description: Server Error
+      tags:
+      - Posts
+      summary: Get a list of posts
+      x-addon: vanilla
+      operationId: getPosts
+      x-operation-id-source: derived
+components:
+  schemas:
+    UserFragment:
+      oneOf:
+      - type: object
+        properties:
+          userID:
+            description: The ID of the user.
+            type: integer
+          name:
+            description: The username of the user.
+            minLength: 1
+            type: string
+          url:
+            description: The URL of the user's profile.
+            type: string
+            format: uri
+          photoUrl:
+            description: The URL of the user's avatar picture.
+            type: string
+            format: uri
+          dateLastActive:
+            description: Time the user was last active.
+            format: date-time
+            type:
+            - string
+            - 'null'
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+          label:
+            description: The label of the user as plaintext.
+            type: string
+          labelHtml:
+            description: The label of the user in HTML format.
+            type: string
+          private:
+            description: Whether the user profile is private or not.
+            type: boolean
+        required:
+        - userID
+        - name
+        - photoUrl
+        - dateLastActive
+      - type: object
+        description: A user fragment when only expanding by ssoID.
+        properties:
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+        required:
+        - ssoID
+      x-addon: dashboard
+    DiscussionPermissions:
+      type: object
+      description: Permissions for the current user related to discussions. Applied when expanded..
+      example:
+        discussions.view: true
+        discussions.add: true
+        discussions.edit: false
+        discussions.delete: false
+        discussions.sink: false
+        comments.add: true
+        comments.edit: false
+        comments.delete: false
+      x-addon: vanilla
+    CategoryFragment:
+      properties:
+        categoryID:
+          description: The ID of the category.
+          type: integer
+        name:
+          description: The name of the category.
+          minLength: 1
+          type: string
+        url:
+          description: Full URL to the category.
+          minLength: 1
+          type: string
+      required:
+      - categoryID
+      - name
+      - url
+      type: object
+      x-addon: vanilla
+    RangeExpression:
+      description: Specify a range or CSV of values.
+      type: string
+      format: range-expression
+      externalDocs:
+        url: https://success.vanillaforums.com/kb/articles/308-range-expressions
+      x-addon: dashboard
+    Discussion:
+      properties:
+        attributes:
+          properties:
+            idea:
+              properties:
+                status:
+                  properties:
+                    name:
+                      description: Label for the status.
+                      minLength: 1
+                      type: string
+                    state:
+                      description: The open/closed state of an idea.
+                      enum:
+                      - open
+                      - closed
+                      minLength: 1
+                      type: string
+                  required:
+                  - name
+                  - state
+                  type: object
+                statusID:
+                  description: Unique numeric ID of a status.
+                  type: integer
+                statusNotes:
+                  description: Status update notes.
+                  minLength: 1
+                  type:
+                  - string
+                  - 'null'
+                type:
+                  description: 'Voting type for this idea: up-only or up and down.'
+                  enum:
+                  - up
+                  - up-down
+                  minLength: 1
+                  type: string
+              required:
+              - statusNotes
+              - statusID
+              - status
+              - type
+              type: object
+              x-addon: ideation
+          type: object
+        body:
+          description: The body of the discussion.
+          minLength: 1
+          type: string
+        bookmarked:
+          description: Whether or not the discussion is bookmarked by the current user.
+          type: boolean
+        muted:
+          description: Whether or not the discussion is muted by the current user.
+          type: boolean
+        category:
+          $ref: '#/components/schemas/CategoryFragment'
+        categoryID:
+          description: The category the discussion is in.
+          type: integer
+        closed:
+          description: Whether the discussion is closed or open.
+          type: boolean
+        isLivePost:
+          description: true if this post is live.
+          type: boolean
+        countComments:
+          description: The number of comments on the discussion.
+          type: integer
+        countUnread:
+          description: The number of unread comments.
+          type: integer
+        countViews:
+          description: The number of views on the discussion.
+          type: integer
+        dateInserted:
+          description: When the discussion was created.
+          format: date-time
+          type: string
+        dateUpdated:
+          description: When the discussion was last updated.
+          format: date-time
+          type:
+          - string
+          - 'null'
+        dateLastComment:
+          description: The date of the last comment or the original discussion date if it has no comments.
+          type: string
+          format: date-time
+        discussionID:
+          description: The ID of the discussion.
+          type: integer
+        image:
+          $ref: '#/components/schemas/Image'
+        images:
+          description: List of all images in the post.
+          items:
+            $ref: '#/components/schemas/Image'
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        insertUserID:
+          description: The user that created the discussion.
+          type: integer
+        lastPost:
+          $ref: '#/components/schemas/PostFragment'
+        lastUserID:
+          type: integer
+          description: The last user to post in the discussion.
+        lastUser:
+          $ref: '#/components/schemas/UserFragment'
+        name:
+          description: The title of the discussion.
+          minLength: 1
+          type: string
+        pinLocation:
+          description: The location for the discussion, if pinned. "category" are pinned to their own category. "recent" are pinned to the recent discussions list, as well as their own category.
+          enum:
+          - category
+          - recent
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        pinned:
+          description: Whether or not the discussion has been pinned.
+          type: boolean
+        publishedSilently:
+          description: Whether or not the discussion was published silently.
+          type: boolean
+        contentLocale:
+          description: The locale from which the discussion name/body were last updated.
+          type: string
+        score:
+          description: Total points associated with this post.
+          type:
+          - integer
+          - 'null'
+        announce:
+          description: Whether or not the discussion has been announced.
+          type: boolean
+        sink:
+          description: Whether or not the discussion has been sunk.
+          type: boolean
+        unread:
+          description: Whether or not the discussion should have an unread indicator.
+          type: boolean
+        url:
+          description: The full URL to the discussion.
+          type: string
+        statusID:
+          type: integer
+          description: The statusID current applied to the discussion.
+        status:
+          $ref: '#/components/schemas/StatusFragment'
+        showSuggestions:
+          type: boolean
+          description: Whether the discussion has visible suggestions
+          x-feature: Feature.AISuggestions.Enabled
+        reportMeta:
+          $ref: '#/components/schemas/ReportMeta'
+        type:
+          description: The base post type of the discussion.
+          minLength: 1
+          type: string
+          enum:
+          - discussion
+          - idea
+          - question
+        postTypeID:
+          description: The discussions postType.
+          type: string
+        postMeta:
+          $ref: '#/components/schemas/PostMeta'
+        suggestions:
+          type: array
+          items:
+            properties:
+              format:
+                type: string
+                description: Source of the suggestion
+              sourceIcon:
+                type: string
+                description: Icon of the suggestion source
+              type:
+                type: string
+                description: Type of suggestion discussion/comment
+              id:
+                type: integer
+                description: Index of the suggestion
+              url:
+                type: string
+                description: URL of the suggestion
+              title:
+                type: string
+                description: Title of the suggestion
+              summary:
+                type: string
+                description: Summary of the suggestion
+              hidden:
+                type: boolean
+                description: Whether the suggestion is dismissed
+              commentID:
+                type: integer
+                description: Comment ID of the suggestion
+            type: object
+          x-feature: Feature.AISuggestions.Enabled
+        permissions:
+          $ref: '#/components/schemas/DiscussionPermissions'
+      required:
+      - discussionID
+      - type
+      - name
+      - body
+      - categoryID
+      - dateInserted
+      - dateUpdated
+      - insertUserID
+      - pinLocation
+      - closed
+      - sink
+      - countComments
+      - countViews
+      - score
+      - bookmarked
+      - muted
+      - unread
+      - attributes
+      type: object
+      x-addon: vanilla
+    SrcSet:
+      description: An image's srcset for various sizes.
+      type: object
+      properties:
+        '10':
+          description: 10px large Image url.
+          type: string
+        '300':
+          description: 300px large Image url.
+          type: string
+        '800':
+          description: 800px large Image url.
+          type: string
+        '1200':
+          description: 1200px large Image url.
+          type: string
+      x-addon: dashboard
+    Comment:
+      properties:
+        attributes:
+          type:
+          - object
+          - 'null'
+        name:
+          description: Name of the comment (based on the discussion).
+          type: string
+        body:
+          description: The body of the comment.
+          minLength: 1
+          type: string
+        image:
+          $ref: '#/components/schemas/Image'
+        commentID:
+          description: The ID of the comment.
+          type: integer
+        dateInserted:
+          description: When the comment was created.
+          format: date-time
+          type: string
+        groupID:
+          description: GroupID of the comment if applicable.
+          type:
+          - integer
+          - 'null'
+        dateUpdated:
+          description: When the comment was last updated.
+          format: date-time
+          type:
+          - string
+          - 'null'
+        categoryID:
+          description: The category of the comment.
+          type: integer
+        discussionID:
+          description: The ID of the discussion.
+          type: integer
+        isLivePost:
+          description: true if this post is live.
+          type: boolean
+        parentRecordType:
+          description: The type of the parent record.
+          type: string
+          enum:
+          - discussion
+          - escalation
+          - event
+        parentRecordID:
+          description: The ID of the parent record.
+          type: integer
+        parentCommentID:
+          description: The ID of the parent comment.
+          type: integer
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        insertUserID:
+          description: The user that created the comment.
+          type: integer
+        score:
+          description: Total points associated with this post.
+          type:
+          - integer
+          - 'null'
+        scoreChildComments:
+          description: Total points associated with this post and its children.
+          type: integer
+        countChildComments:
+          description: Count of all the nested comments.
+          type: integer
+        depth:
+          description: The depth of the comment. Depths start at 1 and increment for every parent comment.
+          type: integer
+          default: 1
+        url:
+          description: The full URL to the comment.
+          type: string
+        contentLocale:
+          description: The locale from which the comment body was last updated.
+          type: string
+        reportMeta:
+          $ref: '#/components/schemas/ReportMeta'
+        suggestion:
+          type: object
+          properties:
+            format:
+              type: string
+              description: Source of the suggestion
+            sourceIcon:
+              type: string
+              description: Icon of the suggestion source
+            type:
+              type: string
+              description: Type of suggestion discussion/comment
+            id:
+              type: integer
+              description: Index of the suggestion
+            url:
+              type: string
+              description: URL of the suggestion
+            title:
+              type: string
+              description: Title of the suggestion
+          x-feature: Feature.AISuggestions.Enabled
+      required:
+      - commentID
+      - categoryID
+      - name
+      - body
+      - parentRecordID
+      - parentRecordType
+      - dateInserted
+      - dateUpdated
+      - insertUserID
+      - score
+      - attributes
+      type: object
+      x-addon: vanilla
+    ReportReasonFragment:
+      type: object
+      properties:
+        reportReasonID:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        sort:
+          type: integer
+        reportID:
+          type: integer
+        deleted:
+          type: boolean
+      required:
+      - reportReasonID
+      - name
+      - description
+      - sort
+      - deleted
+      x-addon: vanilla
+    PostMeta:
+      type: object
+      description: Custom post fields. This is an object keyed by postFieldID.
+      example:
+        my-field: value1
+        my-arrayField:
+        - arrVal1
+        - arrVal2
+      x-addon: vanilla
+    PostFragment:
+      properties:
+        discussionID:
+          description: The discussion ID of the post.
+          type: integer
+        commentID:
+          description: The comment ID of the post, if any.
+          type: integer
+        name:
+          description: The title of the post.
+          minLength: 1
+          type: string
+        body:
+          description: The HTML formatted body of the post.
+          type: string
+        url:
+          description: The URL of the post.
+          minLength: 1
+          type: string
+        dateInserted:
+          description: The date of the post.
+          format: date-time
+          type: string
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        insertUserID:
+          description: The author of the post.
+          type: integer
+      required:
+      - name
+      - url
+      - dateInserted
+      - insertUserID
+      type: object
+      x-addon: vanilla
+    ReportMeta:
+      type: object
+      properties:
+        reportsReasons:
+          type: array
+          description: Report reasons.
+          items:
+            $ref: '#/components/schemas/ReportReasonFragment'
+        reportUserIDs:
+          description: User IDs that have reported this post.
+          type: array
+          items:
+            type: integer
+        reportUsers:
+          description: Users that have reported this post.
+          type: array
+          items:
+            $ref: '#/components/schemas/UserFragment'
+        countReportUsers:
+          description: The number of users that have reported this post.
+          type: number
+        reportGuestUsers:
+          description: Guest reporters, with email and name.
+          type: array
+          items:
+            type: object
+            properties:
+              reporterEmail:
+                type: string
+                description: The guest reporter's email address.
+              reporterName:
+                type: string
+                description: The guest reporter's display name.
+            required:
+            - reporterEmail
+        dateLastReport:
+          description: The date of the last report on the post.
+          type: string
+          format: date-time
+        countReports:
+          type: integer
+          default: 0
+          description: The number of reports on the post.
+      x-addon: vanilla
+    StatusFragment:
+      type: object
+      description: Describes a status currently applied to a discussion. Expandable with `status` and `status.log` expands.
+      properties:
+        statusID:
+          description: Record status ID of the discussion status.
+          type: integer
+        name:
+          description: The name of the status.
+          type: string
+        recordType:
+          description: Type of the discussion status.
+          type: string
+          enum:
+          - discussion
+        recordSubType:
+          description: Some statuses may only apply to a specific subtype of record.
+          type: string
+        state:
+          description: States are used to group statuses together.
+          type: string
+          enum:
+          - open
+          - closed
+        dateUpdated:
+          type: string
+          format: date-time
+          description: When the discussion was updated with the status.
+        log:
+          type: object
+          description: Information about when the status was applied.
+          required:
+          - dateUpdated
+          - updateUser
+          properties:
+            reasonUpdated:
+              description: Reason for status change
+              type:
+              - string
+              - 'null'
+            updateUser:
+              $ref: '#/components/schemas/UserFragment'
+            dateUpdated:
+              description: When the discussion was last updated.
+              format: date-time
+              type: string
+      required:
+      - statusID
+      - name
+      - recordType
+      - state
+      x-addon: vanilla
+    Image:
+      description: An image, pulled from content.
+      type: object
+      properties:
+        url:
+          description: The original image URL.
+          type: string
+        urlSrcSet:
+          $ref: '#/components/schemas/SrcSet'
+        alt:
+          description: The image's alternative text.
+          type: string
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

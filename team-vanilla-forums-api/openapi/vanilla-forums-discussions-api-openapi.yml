@@ -1,0 +1,3042 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Discussions API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Discussions
+paths:
+  /comments/list:
+    delete:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: An array of comment IDs.
+              properties:
+                commentIDs:
+                  type: array
+                  items:
+                    type: integer
+                  example:
+                  - 2452
+                  - 14253
+                  - 14124
+                deleteMethod:
+                  enum:
+                  - full
+                  - tombstone
+                  type: string
+      responses:
+        '202':
+          $ref: '#/components/responses/TrackingSlipResponse'
+        '204':
+          description: Success
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '408':
+          $ref: '#/components/responses/LongRunnerResponse'
+      tags:
+      - Discussions
+      summary: Delete a list of comments
+      x-addon: vanilla
+      operationId: deleteCommentsList
+      x-operation-id-source: derived
+  /discussions:
+    get:
+      parameters:
+      - name: discussionID
+        description: Filter by a range or CSV of discussion IDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: categoryID
+        description: Filter by a category.
+        in: query
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/DateInserted'
+      - $ref: '#/components/parameters/DateUpdated'
+      - $ref: '#/components/parameters/DateLastComment'
+      - name: slotType
+        description: Filter to discussions created within a certain timeframe. Daily, Weekly, Monthly, Yearly, or all time.
+        in: query
+        schema:
+          type: string
+          enum:
+          - d
+          - w
+          - m
+          - y
+          - a
+      - name: siteSectionID
+        description: 'Filter discussions by site section ID (ex. subcommunity).
+
+          The subcommunity ID or folder can be used if you use [smart IDs](https://success.vanillaforums.com/kb/articles/46-smart-ids).
+
+          The query looks like:
+
+
+          ```
+
+          siteSectionID=$subcommunityID:{id|folder}
+
+          ```'
+        in: query
+        schema:
+          type: string
+      - name: tagID
+        description: Filter discussion by a range of tag IDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: tagOperator
+        description: Either 'and' or 'or'. 'or' logic means a post only needs 1 of the provided tags. 'and' means it needs all of them.
+        in: query
+        schema:
+          type: string
+          enum:
+          - and
+          - or
+          default: or
+      - name: type
+        description: Filter by discussion type, or comma separated list.
+        in: query
+        schema:
+          type: string
+        x-filter:
+          field: d.Type
+      - name: postTypeID
+        description: Filter by one or more postTypeIDs.
+        in: query
+        schema:
+          type: string
+      - name: status
+        description: Filter questions by status (accepted, answered, unanswered).
+        in: query
+        schema:
+          type: string
+        x-filter:
+          field: d.QnA
+      - name: excludeHiddenCategories
+        description: Exclude discussions from categories that has the `HideAllDiscussions` option set to true.
+        in: query
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - name: followed
+        description: 'Only fetch discussions from followed categories. Pinned discussions are mixed in.
+
+          '
+        in: query
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - name: userFollowed
+        description: 'Only fetch discussions from users the current user is following. Requires authentication. Returns empty array for guest users or users who follow no one.
+
+          '
+        in: query
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - name: score
+        description: Filter by score.
+        in: query
+        schema:
+          type: integer
+      - name: pinned
+        description: 'Whether or not to include pinned discussions. If true, only return pinned discussions. Cannot be used with the pinOrder parameter.
+
+          '
+        in: query
+        schema:
+          type: boolean
+      - name: pinOrder
+        description: 'If including pinned posts, in what order should they be integrated? When "first", discussions pinned to a specific category will only be affected if the discussion''s category is passed as the categoryID parameter. Cannot be used with the pinned parameter.
+
+          Must be one of: "first", "mixed".
+
+          '
+        in: query
+        schema:
+          type: string
+          default: first
+          enum:
+          - first
+          - mixed
+      - name: hasComments
+        description: Optionally only include discussions that have/doesn't have comments.
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - $ref: '#/components/parameters/Page'
+      - name: limit
+        description: 'Desired number of items per page. **Note that you may not get the exact number of records back as specified with the limit unless you also specify pinOrder=mixed**. This is an optimization for pinned (i.e. announcement) discussion handling.
+
+          '
+        in: query
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - name: sort
+        description: Sort the results.
+        in: query
+        schema:
+          type: string
+          enum:
+          - dateLastComment
+          - dateInserted
+          - discussionID
+          - -dateLastComment
+          - -dateInserted
+          - -discussionID
+      - name: insertUserID
+        description: 'Filter by author.
+
+          '
+        in: query
+        schema:
+          type: integer
+        x-filter:
+          field: d.InsertUserID
+      - name: insertUserRoleID
+        description: Filter by author role. One or more roleIDs can be passed in a CSV.
+        in: query
+        schema:
+          type: string
+      - name: insertUserRankID
+        description: Filter by author rank. One or more rankIDs can be passed in a CSV.
+        in: query
+        x-addon: ranks
+        schema:
+          type: string
+      - $ref: '#/components/parameters/discussionExpand'
+      - name: resolved
+        description: Filter by resolved status.
+        in: query
+        schema:
+          type: boolean
+        x-filter:
+          field: d.Resolved
+      - name: bookmarkUserID
+        description: Bookmarked by the UserID.
+        in: query
+        schema:
+          type: integer
+        allowEmptyValue: false
+      - name: participatedUserID
+        description: Commented (participated) on by the UserID.
+        in: query
+        schema:
+          type: integer
+        allowEmptyValue: false
+      - name: reactionType
+        description: Discussions for which the user has given the specified reaction.
+        in: query
+        schema:
+          type: string
+      - name: statusID
+        description: List of statusIDs to filter discussion by.
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: internalStatusID
+        description: List of internalStatusIDs to filter discussion by.
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: suggested
+        description: Filter discussion list based on user interests.
+        in: query
+        schema:
+          type: boolean
+        x-feature: suggestedContent.enabled
+      - name: excerptLength
+        description: Length of excerpts.
+        in: query
+        schema:
+          type: integer
+      - name: excludedCategoryIDs
+        description: Category IDs to exclude.
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+      - $ref: '#/components/parameters/PostFieldFilters'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Discussion'
+                type: array
+          description: Success
+      tags:
+      - Discussions
+      summary: List discussions
+      x-addon: vanilla
+      operationId: getDiscussions
+      x-operation-id-source: derived
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPremoderation'
+          description: Premoderation
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscussionPost'
+        required: true
+      summary: Add a discussion
+      x-addon: vanilla
+      operationId: postDiscussions
+      x-operation-id-source: derived
+  /discussions/bookmarked:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - $ref: '#/components/parameters/discussionExpand'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Discussion'
+                type: array
+          description: Success
+      tags:
+      - Discussions
+      summary: Get a list of the current user's bookmarked discussions
+      x-addon: vanilla
+      operationId: getDiscussionsBookmarked
+      x-operation-id-source: derived
+  /discussions/close:
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: An array of discussion IDs.
+              properties:
+                discussionIDs:
+                  type: array
+                  items:
+                    type: integer
+                closed:
+                  description: Whether to close (true) or open (false) this set of discussions.
+                  type: boolean
+      responses:
+        '200':
+          description: Success
+        '202':
+          $ref: '#/components/responses/TrackingSlipResponse'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '408':
+          $ref: '#/components/responses/LongRunnerResponse'
+      tags:
+      - Discussions
+      summary: Close/open a list of discussions
+      x-addon: vanilla
+      operationId: patchDiscussionsClose
+      x-operation-id-source: derived
+  /discussions/idea:
+    x-addon: ideation
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPremoderation'
+          description: Premoderation
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscussionPost'
+        required: true
+      summary: Add an idea
+      x-addon: vanilla
+      operationId: postDiscussionsIdea
+      x-operation-id-source: derived
+  /discussions/list:
+    delete:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: An array of discussion IDs.
+              properties:
+                discussionIDs:
+                  type: array
+                  items:
+                    type: integer
+                  example:
+                  - 2452
+                  - 14253
+                  - 14124
+      responses:
+        '202':
+          $ref: '#/components/responses/TrackingSlipResponse'
+        '204':
+          description: Success
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '408':
+          $ref: '#/components/responses/LongRunnerResponse'
+      tags:
+      - Discussions
+      summary: Delete a list of discussions
+      x-addon: vanilla
+      operationId: deleteDiscussionsList
+      x-operation-id-source: derived
+  /discussions/merge:
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                discussionIDs:
+                  description: An array of discussion IDs to merge together.
+                  type: array
+                  items:
+                    type: integer
+                  example:
+                  - 2052
+                  - 2053
+                  - 5602
+                destinationDiscussionID:
+                  description: The discussionID that everything will be merged into.
+                  type: integer
+                  example: 2052
+                addRedirects:
+                  description: If a redirect discussion needs to be created.
+                  type: boolean
+                  example: true
+      responses:
+        '200':
+          description: Success
+        '202':
+          $ref: '#/components/responses/TrackingSlipResponse'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '408':
+          $ref: '#/components/responses/LongRunnerResponse'
+      tags:
+      - Discussions
+      summary: Merge discussions
+      x-addon: vanilla
+      operationId: patchDiscussionsMerge
+      x-operation-id-source: derived
+  /discussions/move:
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: An array of discussion IDs.
+              properties:
+                discussionIDs:
+                  type: array
+                  items:
+                    type: integer
+                categoryID:
+                  description: The category ID to move discussions into.
+                  type: integer
+                addRedirects:
+                  description: If a redirect discussion needs to be created.
+                  type: boolean
+                postTypeID:
+                  description: The post type ID to associate with the moved discussion.
+                  type: string
+      responses:
+        '200':
+          description: Success
+        '202':
+          $ref: '#/components/responses/TrackingSlipResponse'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '408':
+          $ref: '#/components/responses/LongRunnerResponse'
+      tags:
+      - Discussions
+      summary: Move a list of discussions
+      x-addon: vanilla
+      operationId: patchDiscussionsMove
+      x-operation-id-source: derived
+  /discussions/muted:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - $ref: '#/components/parameters/discussionExpand'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Discussion'
+                type: array
+          description: Success
+      tags:
+      - Discussions
+      summary: Get a list of the current user's muted discussions
+      x-addon: vanilla
+      operationId: getDiscussionsMuted
+      x-operation-id-source: derived
+  /discussions/poll:
+    x-addon: polls
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPremoderation'
+          description: Premoderation
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscussionPost'
+        required: true
+      summary: Add a poll
+      x-addon: vanilla
+      operationId: postDiscussionsPoll
+      x-operation-id-source: derived
+  /discussions/question:
+    x-addon: qna
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPremoderation'
+          description: Premoderation
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscussionPost'
+        required: true
+      summary: Add a discussion
+      x-addon: vanilla
+      operationId: postDiscussionsQuestion
+      x-operation-id-source: derived
+  /discussions/resolve-bulk:
+    post:
+      summary: Mark all discussions you can triage as resolved
+      responses:
+        '201':
+          description: Success
+      tags:
+      - Discussions
+      x-addon: vanilla
+      operationId: postDiscussionsResolveBulk
+      x-operation-id-source: derived
+  /discussions/search:
+    get:
+      parameters:
+      - description: 'The numeric ID of a category to limit search results to.
+
+          '
+        in: query
+        name: categoryID
+        schema:
+          type: integer
+      - description: 'Limit results to those in followed categories. Cannot be used with the categoryID parameter.
+
+          '
+        in: query
+        name: followed
+        schema:
+          type: boolean
+      - description: 'Search terms.
+
+          '
+        in: query
+        name: query
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - description: 'Expand associated records.
+
+          '
+        in: query
+        name: expand
+        schema:
+          default: false
+          type: boolean
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Discussion'
+                type: array
+          description: Success
+      tags:
+      - Discussions
+      summary: Search discussions
+      x-addon: vanilla
+      operationId: getDiscussionsSearch
+      x-operation-id-source: derived
+  /discussions/split:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newPost:
+                  type: object
+                  description: Date about new discussion to create.
+                  properties:
+                    name:
+                      description: Name of the new discussion.
+                      type: string
+                    body:
+                      description: The body of the discussion.
+                      type: string
+                    format:
+                      $ref: '#/components/schemas/Format'
+                    categoryID:
+                      description: Category ID for the new discussion.
+                      type: integer
+                    postType:
+                      description: Post type of the discussion.
+                      type: string
+                    authorType:
+                      description: Author of the new discussion.
+                      type: string
+                      enum:
+                      - me
+                      - System
+                  required:
+                  - name
+                  - categoryID
+                  - postType
+                  - authorType
+                commentIDs:
+                  description: Comment IDs to split out into its own discussion.
+                  type: array
+                  items:
+                    type: integer
+              required:
+              - commentIDs
+              - newPost
+      responses:
+        '200':
+          description: Success
+        '202':
+          $ref: '#/components/responses/TrackingSlipResponse'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '408':
+          $ref: '#/components/responses/LongRunnerResponse'
+      tags:
+      - Discussions
+      summary: Split comments out into a discussion
+      x-addon: vanilla
+      operationId: postDiscussionsSplit
+      x-operation-id-source: derived
+  /discussions/{id}:
+    delete:
+      parameters:
+      - description: 'The discussion ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/discussionExpand'
+      responses:
+        '202':
+          $ref: '#/components/responses/TrackingSlipResponse'
+        '204':
+          description: Success
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '408':
+          $ref: '#/components/responses/LongRunnerResponse'
+      tags:
+      - Discussions
+      summary: Delete a discussion
+      x-addon: vanilla
+      operationId: deleteDiscussionsById
+      x-operation-id-source: derived
+    get:
+      parameters:
+      - description: 'The discussion ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/discussionExpand'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+      tags:
+      - Discussions
+      summary: Get a discussion
+      x-addon: vanilla
+      operationId: getDiscussionsById
+      x-operation-id-source: derived
+    patch:
+      parameters:
+      - description: The discussion ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPremoderation'
+          description: Premoderation
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscussionPatch'
+        required: true
+      summary: Update a discussion
+      x-addon: vanilla
+      operationId: patchDiscussionsById
+      x-operation-id-source: derived
+  /discussions/{id}/bookmark:
+    put:
+      parameters:
+      - description: The discussion ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  bookmarked:
+                    description: The current bookmark value.
+                    type: boolean
+                required:
+                - bookmarked
+                type: object
+          description: Success
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                bookmarked:
+                  description: Pass true to bookmark or false to remove bookmark.
+                  type: boolean
+              required:
+              - bookmarked
+              type: object
+        required: true
+      summary: Bookmark a discussion
+      x-addon: vanilla
+      operationId: putDiscussionsByIdBookmark
+      x-operation-id-source: derived
+  /discussions/{id}/bump:
+    patch:
+      summary: Bump a discussion higher in the list by updating the DateLastComment field
+      tags:
+      - Discussions
+      parameters:
+      - description: The discussion ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
+      x-addon: vanilla
+      operationId: patchDiscussionsByIdBump
+      x-operation-id-source: derived
+  /discussions/{id}/canonical-url:
+    put:
+      parameters:
+      - description: The discussion ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                canonicalUrl:
+                  description: Canonical url for discussion.
+                  type: string
+              required:
+              - canonicalUrl
+              type: object
+        required: true
+      summary: Set custom canonical url for a discussion
+      x-addon: vanilla
+      operationId: putDiscussionsByIdCanonicalUrl
+      x-operation-id-source: derived
+    delete:
+      parameters:
+      - description: The discussion ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+        '404':
+          description: Not Found
+      tags:
+      - Discussions
+      summary: Remove custom canonical url for a discussion
+      x-addon: vanilla
+      operationId: deleteDiscussionsByIdCanonicalUrl
+      x-operation-id-source: derived
+  /discussions/{id}/dismiss:
+    put:
+      parameters:
+      - description: The discussion ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  dismissed:
+                    description: The current dismiss value.
+                    default: true
+                    type: boolean
+                type: object
+          description: Success
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                dismissed:
+                  description: Pass true to dismiss the announcement or false to remove the dismissal.
+                  type: boolean
+              type: object
+        required: true
+      summary: Dismiss an announcement
+      x-addon: vanilla
+      operationId: putDiscussionsByIdDismiss
+      x-operation-id-source: derived
+  /discussions/{id}/edit:
+    get:
+      parameters:
+      - description: 'The discussion ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/discussionExpand'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscussionGetEdit'
+          description: Success
+      tags:
+      - Discussions
+      summary: Get a discussion for editing
+      x-addon: vanilla
+      operationId: getDiscussionsByIdEdit
+      x-operation-id-source: derived
+  /discussions/{id}/idea:
+    x-addon: ideation
+    patch:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  statusID:
+                    description: Idea status ID.
+                    type: integer
+                  statusNotes:
+                    description: Notes on a status change. Notes will persist until overwritten.
+                    minLength: 1
+                    type:
+                    - string
+                    - 'null'
+                required:
+                - statusID
+                - statusNotes
+                type: object
+          description: Success
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                statusID:
+                  description: Idea status ID.
+                  type: integer
+                statusNotes:
+                  description: Notes on a status change. Notes will persist until overwritten.
+                  minLength: 1
+                  type:
+                  - string
+                  - 'null'
+              required:
+              - statusID
+              - statusNotes
+              type: object
+        required: true
+      summary: Update idea metadata on a discussion
+      x-addon: vanilla
+      operationId: patchDiscussionsByIdIdea
+      x-operation-id-source: derived
+  /discussions/{id}/mute:
+    put:
+      parameters:
+      - description: The discussion ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  muted:
+                    description: The current muted value.
+                    type: boolean
+                required:
+                - muted
+                type: object
+          description: Success
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                muted:
+                  description: Pass true to mute or false to unmute a discussion.
+                  type: boolean
+              required:
+              - muted
+              type: object
+        required: true
+      x-addon: vanilla
+      summary: Replace discussions by id mute
+      x-summary-source: derived
+      operationId: putDiscussionsByIdMute
+      x-operation-id-source: derived
+  /discussions/{id}/poll:
+    x-addon: polls
+    get:
+      parameters:
+      - description: 'The Discussion ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+                properties:
+                  countOptions:
+                    description: The number of options to choose from.
+                    type: integer
+                  countVotes:
+                    description: The number of votes.
+                    type: integer
+                  dateInserted:
+                    description: When the poll was created.
+                    format: date-time
+                    type: string
+                  dateUpdated:
+                    description: When the poll was updated.
+                    format: date-time
+                    type:
+                    - string
+                    - 'null'
+                  discussionID:
+                    description: The discussion the poll is displayed in.
+                    type: integer
+                  insertUser:
+                    $ref: '#/components/schemas/UserFragment'
+                  insertUserID:
+                    description: The unique ID of the user who created this poll.
+                    type: integer
+                  name:
+                    description: The name of the poll.
+                    minLength: 1
+                    type: string
+                  pollID:
+                    description: The unique ID of the poll.
+                    type: integer
+                  updateUser:
+                    $ref: '#/components/schemas/UserFragment'
+                  updateUserID:
+                    description: The unique ID of the user who updated this poll.
+                    type:
+                    - integer
+                    - 'null'
+                required:
+                - pollID
+                - name
+                - discussionID
+                - countOptions
+                - countVotes
+                - insertUserID
+                - dateInserted
+                - updateUserID
+                - dateUpdated
+                type: object
+          description: Success
+      tags:
+      - Discussions
+      summary: Get a poll
+      x-addon: vanilla
+      operationId: getDiscussionsByIdPoll
+      x-operation-id-source: derived
+    patch:
+      parameters:
+      - description: The discussion ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: The poll title.
+                  type: string
+                body:
+                  description: The poll body.
+                  type: string
+                format:
+                  $ref: '#/components/schemas/Format'
+                categoryID:
+                  description: The category the poll is in.
+                  type: integer
+                anonymous:
+                  description: Whether the poll is anonymous.
+                  type: boolean
+                pollOption:
+                  description: Poll options (include pollOptionID to update in place).
+                  type: array
+                  minItems: 2
+                  items:
+                    type: object
+                    properties:
+                      body:
+                        type: string
+                      pollOptionID:
+                        description: Existing option ID to update; omit for new options.
+                        type: integer
+        required: true
+      summary: Update a poll
+      x-addon: vanilla
+      operationId: patchDiscussionsByIdPoll
+      x-operation-id-source: derived
+  /discussions/{id}/quote:
+    get:
+      parameters:
+      - description: 'The discussion ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/discussionExpand'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  bodyRaw:
+                    description: The raw body of the discussion. This can be an array of rich operations or a string for other formats
+                    minLength: 1
+                    type: string
+                    x-todo: 'tpye: array'
+                  dateInserted:
+                    description: When the discussion was created.
+                    format: date-time
+                    type: string
+                  dateUpdated:
+                    description: When the discussion was last updated.
+                    format: date-time
+                    type:
+                    - string
+                    - 'null'
+                  discussionID:
+                    description: The ID of the discussion.
+                    type: integer
+                  format:
+                    $ref: '#/components/schemas/Format'
+                  insertUser:
+                    $ref: '#/components/schemas/UserFragment'
+                  name:
+                    description: The title of the discussion
+                    minLength: 1
+                    type: string
+                  url:
+                    description: The full URL to the discussion.
+                    minLength: 1
+                    type: string
+                required:
+                - discussionID
+                - name
+                - bodyRaw
+                - dateInserted
+                - dateUpdated
+                - insertUser
+                - url
+                - format
+                type: object
+          description: Success
+      tags:
+      - Discussions
+      x-addon: vanilla
+      summary: Get discussions by id quote
+      x-summary-source: derived
+      operationId: getDiscussionsByIdQuote
+      x-operation-id-source: derived
+  /discussions/{id}/status:
+    put:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                statusID:
+                  description: statusID to change to.
+                  type: integer
+                statusNotes:
+                  description: Reason for status change.
+                  type: string
+              required:
+              - statusId
+              type: object
+        required: true
+      summary: Change a discussion status
+      x-addon: vanilla
+      operationId: putDiscussionsByIdStatus
+      x-operation-id-source: derived
+  /discussions/{id}/status-log:
+    get:
+      parameters:
+      - description: 'The discussion ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 50
+          maximum: 100
+          minimum: 1
+      - description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+          '
+        in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+          maximum: 100
+          minimum: 1
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/StatusLog'
+                type: array
+          description: Success
+      tags:
+      - Discussions
+      summary: List of status changes for a discussion
+      x-addon: vanilla
+      operationId: getDiscussionsByIdStatusLog
+      x-operation-id-source: derived
+  /discussions/{id}/tags:
+    parameters:
+    - name: id
+      description: The discussion ID
+      in: path
+      required: true
+      schema:
+        type: integer
+      x-addon: vanilla
+    put:
+      summary: Set the tags on a discussion
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagReference'
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TagFragment'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: vanilla
+      operationId: putDiscussionsByIdTags
+      x-operation-id-source: derived
+    post:
+      summary: Add tags to a discussion
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagReference'
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TagFragment'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: vanilla
+      operationId: postDiscussionsByIdTags
+      x-operation-id-source: derived
+  /discussions/{id}/type:
+    put:
+      parameters:
+      - description: The discussion ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discussion'
+          description: Success
+      tags:
+      - Discussions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                type:
+                  description: Record type to convert to.
+                  type: string
+                postTypeID:
+                  description: Custom post type ID.
+                  type: string
+              required:
+              - type
+              type: object
+        required: true
+      summary: Change a discussion type
+      x-addon: vanilla
+      operationId: putDiscussionsByIdType
+      x-operation-id-source: derived
+components:
+  schemas:
+    UserFragment:
+      oneOf:
+      - type: object
+        properties:
+          userID:
+            description: The ID of the user.
+            type: integer
+          name:
+            description: The username of the user.
+            minLength: 1
+            type: string
+          url:
+            description: The URL of the user's profile.
+            type: string
+            format: uri
+          photoUrl:
+            description: The URL of the user's avatar picture.
+            type: string
+            format: uri
+          dateLastActive:
+            description: Time the user was last active.
+            format: date-time
+            type:
+            - string
+            - 'null'
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+          label:
+            description: The label of the user as plaintext.
+            type: string
+          labelHtml:
+            description: The label of the user in HTML format.
+            type: string
+          private:
+            description: Whether the user profile is private or not.
+            type: boolean
+        required:
+        - userID
+        - name
+        - photoUrl
+        - dateLastActive
+      - type: object
+        description: A user fragment when only expanding by ssoID.
+        properties:
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+        required:
+        - ssoID
+      x-addon: dashboard
+    ReportMeta:
+      type: object
+      properties:
+        reportsReasons:
+          type: array
+          description: Report reasons.
+          items:
+            $ref: '#/components/schemas/ReportReasonFragment'
+        reportUserIDs:
+          description: User IDs that have reported this post.
+          type: array
+          items:
+            type: integer
+        reportUsers:
+          description: Users that have reported this post.
+          type: array
+          items:
+            $ref: '#/components/schemas/UserFragment'
+        countReportUsers:
+          description: The number of users that have reported this post.
+          type: number
+        reportGuestUsers:
+          description: Guest reporters, with email and name.
+          type: array
+          items:
+            type: object
+            properties:
+              reporterEmail:
+                type: string
+                description: The guest reporter's email address.
+              reporterName:
+                type: string
+                description: The guest reporter's display name.
+            required:
+            - reporterEmail
+        dateLastReport:
+          description: The date of the last report on the post.
+          type: string
+          format: date-time
+        countReports:
+          type: integer
+          default: 0
+          description: The number of reports on the post.
+      x-addon: vanilla
+    Image:
+      description: An image, pulled from content.
+      type: object
+      properties:
+        url:
+          description: The original image URL.
+          type: string
+        urlSrcSet:
+          $ref: '#/components/schemas/SrcSet'
+        alt:
+          description: The image's alternative text.
+          type: string
+      x-addon: dashboard
+    TagReference:
+      description: A reference to a tag for assignment to other items.
+      type: object
+      properties:
+        tagIDs:
+          type: array
+          items:
+            type: integer
+          description: You can specify the name of the tag.
+        urlcodes:
+          type: array
+          items:
+            type: string
+          description: You can also specify the url code of the tag.
+      x-addon: vanilla
+    DiscussionPermissions:
+      type: object
+      description: Permissions for the current user related to discussions. Applied when expanded..
+      example:
+        discussions.view: true
+        discussions.add: true
+        discussions.edit: false
+        discussions.delete: false
+        discussions.sink: false
+        comments.add: true
+        comments.edit: false
+        comments.delete: false
+      x-addon: vanilla
+    TagFragment:
+      description: A tag that can be applied to content.
+      type: object
+      properties:
+        tagID:
+          type: integer
+          description: The ID of the tag.
+          readOnly: true
+        urlcode:
+          type: string
+          description: The URL slug of the tag.
+        name:
+          type:
+          - string
+          - 'null'
+          description: The full name of the tag.
+        description:
+          type: string
+          description: The description of the tag.
+      required:
+      - tagID
+      - urlcode
+      - name
+      x-addon: vanilla
+    RangeExpression:
+      description: Specify a range or CSV of values.
+      type: string
+      format: range-expression
+      externalDocs:
+        url: https://success.vanillaforums.com/kb/articles/308-range-expressions
+      x-addon: dashboard
+    SrcSet:
+      description: An image's srcset for various sizes.
+      type: object
+      properties:
+        '10':
+          description: 10px large Image url.
+          type: string
+        '300':
+          description: 300px large Image url.
+          type: string
+        '800':
+          description: 800px large Image url.
+          type: string
+        '1200':
+          description: 1200px large Image url.
+          type: string
+      x-addon: dashboard
+    PostPremoderation:
+      properties:
+        description:
+          description: Body of the premoderation
+          type: string
+        message:
+          description: General Message of the premoderation
+          type: string
+        reportID:
+          description: Id of the Report of the premoderation
+          type: string
+        premoderatinReasons:
+          items:
+            properties:
+              premoderationType:
+                description: Premoderation Type
+                enum:
+                - premoderatedCategory
+                - premoderatedKeyword
+                - premoderatedRole
+                - premoderatedSpamStopForumSpam
+                - premoderatedSpamAkisment
+                type: string
+            type: object
+          type: array
+      x-addon: vanilla
+    ReportReasonFragment:
+      type: object
+      properties:
+        reportReasonID:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        sort:
+          type: integer
+        reportID:
+          type: integer
+        deleted:
+          type: boolean
+      required:
+      - reportReasonID
+      - name
+      - description
+      - sort
+      - deleted
+      x-addon: vanilla
+    PostMeta:
+      type: object
+      description: Custom post fields. This is an object keyed by postFieldID.
+      example:
+        my-field: value1
+        my-arrayField:
+        - arrVal1
+        - arrVal2
+      x-addon: vanilla
+    DiscussionPatch:
+      properties:
+        body:
+          description: The body of the discussion.
+          minLength: 1
+          type: string
+        categoryID:
+          description: The category the discussion is in.
+          type: integer
+        closed:
+          description: Whether the discussion is closed or open.
+          type: boolean
+        format:
+          $ref: '#/components/schemas/Format'
+        name:
+          description: The title of the discussion.
+          minLength: 1
+          type: string
+        pinLocation:
+          description: The location for the discussion, if pinned. "category" are pinned to their own category. "recent" are pinned to the recent discussions list, as well as their own category.
+          enum:
+          - category
+          - recent
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        pinned:
+          description: Whether or not the discussion has been pinned.
+          type: boolean
+        sink:
+          description: Whether or not the discussion has been sunk.
+          type: boolean
+        postMeta:
+          $ref: '#/components/schemas/PostMeta'
+        newTagNames:
+          type: array
+          items:
+            type: string
+        tagIDs:
+          type: array
+          items:
+            type: integer
+      type: object
+      x-addon: vanilla
+    Format:
+      description: The format of the body used to convert it to HTML.
+      type: string
+      enum:
+      - rich
+      - markdown
+      - text
+      - textex
+      - wysiwyg
+      - bbcode
+      example: markdown
+      x-addon: dashboard
+    CategoryFragment:
+      properties:
+        categoryID:
+          description: The ID of the category.
+          type: integer
+        name:
+          description: The name of the category.
+          minLength: 1
+          type: string
+        url:
+          description: Full URL to the category.
+          minLength: 1
+          type: string
+      required:
+      - categoryID
+      - name
+      - url
+      type: object
+      x-addon: vanilla
+    StatusLog:
+      type: object
+      properties:
+        statusID:
+          description: Record status ID of the discussion status.
+          type: integer
+        insertUserID:
+          description: The id of the user who inserted it.
+          type: integer
+        dateInserted:
+          description: Datetime of when the log was created.
+          format: date-time
+          type: string
+        recordType:
+          description: Type of the discussion status.
+          type: string
+          enum:
+          - discussion
+        recordID:
+          description: Discussion Id of the current discussion
+          type: string
+        reason:
+          description: Reason for status change
+          type:
+          - string
+          - 'null'
+      required:
+      - statusID
+      - insertUserID
+      - dateInserted
+      - recordType
+      - recordID
+      x-addon: vanilla
+    LongRunnerResult:
+      description: 'Endpoints will return this if they may time out and require the client
+
+        to progress the task with additional requests.
+
+        '
+      type: object
+      required:
+      - progress
+      - callbackPayload
+      properties:
+        callbackPayload:
+          description: 'A signed JWT payload to pass to the /api/v2/calls endpoint in order to continue
+
+            progression of the task.
+
+            '
+          type: string
+          example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+            '
+        progress:
+          $ref: '#/components/schemas/LongRunnerProgress'
+      x-addon: dashboard
+    DiscussionPost:
+      properties:
+        body:
+          description: The body of the discussion.
+          minLength: 1
+          type: string
+        categoryID:
+          description: The category the discussion is in.
+          type: integer
+        closed:
+          description: Whether the discussion is closed or open.
+          type: boolean
+        format:
+          $ref: '#/components/schemas/Format'
+        name:
+          description: The title of the discussion.
+          minLength: 1
+          type: string
+        pinLocation:
+          description: The location for the discussion, if pinned. "category" are pinned to their own category. "recent" are pinned to the recent discussions list, as well as their own category.
+          enum:
+          - category
+          - recent
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        pinned:
+          description: Whether or not the discussion has been pinned.
+          type: boolean
+        sink:
+          description: Whether or not the discussion has been sunk.
+          type: boolean
+        postTypeID:
+          description: The discussions postTypeID.
+          type: string
+        postMeta:
+          $ref: '#/components/schemas/PostMeta'
+        publishedSilently:
+          description: Whether the discussion should be published silently without sending notifications or webhooks. Requires silentPosting.allow permission.
+          type:
+          - boolean
+          - 'null'
+        newTagNames:
+          type: array
+          items:
+            type: string
+        tagIDs:
+          type: array
+          items:
+            type: integer
+      required:
+      - name
+      - body
+      - format
+      type: object
+      x-addon: vanilla
+    TrackingSlipData:
+      type: object
+      description: 'Represents a scheduled server-side job.
+
+        '
+      properties:
+        jobID:
+          description: The ID of a particular job.
+          type: string
+          example: 10232183.longrunnerjob.5fa1a178cfe1b9.07902191
+        jobTrackingID:
+          description: 'A shared ID that can be used to track the status of a job.
+
+            This ID persists even if jobs fail and retry, or spawn child jobs.
+
+            '
+          type: string
+          example: 42adsf424::613fda84bdea32.25565677
+        status:
+          description: The current status of the job.
+          type: string
+          enum:
+          - abandoned
+          - complete
+          - error
+          - failed
+          - intended
+          - invalid
+          - stackError
+          - progress
+          - retry
+          - received
+          - unknown
+          example: received
+      x-addon: dashboard
+    Discussion:
+      properties:
+        attributes:
+          properties:
+            idea:
+              properties:
+                status:
+                  properties:
+                    name:
+                      description: Label for the status.
+                      minLength: 1
+                      type: string
+                    state:
+                      description: The open/closed state of an idea.
+                      enum:
+                      - open
+                      - closed
+                      minLength: 1
+                      type: string
+                  required:
+                  - name
+                  - state
+                  type: object
+                statusID:
+                  description: Unique numeric ID of a status.
+                  type: integer
+                statusNotes:
+                  description: Status update notes.
+                  minLength: 1
+                  type:
+                  - string
+                  - 'null'
+                type:
+                  description: 'Voting type for this idea: up-only or up and down.'
+                  enum:
+                  - up
+                  - up-down
+                  minLength: 1
+                  type: string
+              required:
+              - statusNotes
+              - statusID
+              - status
+              - type
+              type: object
+              x-addon: ideation
+          type: object
+        body:
+          description: The body of the discussion.
+          minLength: 1
+          type: string
+        bookmarked:
+          description: Whether or not the discussion is bookmarked by the current user.
+          type: boolean
+        muted:
+          description: Whether or not the discussion is muted by the current user.
+          type: boolean
+        category:
+          $ref: '#/components/schemas/CategoryFragment'
+        categoryID:
+          description: The category the discussion is in.
+          type: integer
+        closed:
+          description: Whether the discussion is closed or open.
+          type: boolean
+        isLivePost:
+          description: true if this post is live.
+          type: boolean
+        countComments:
+          description: The number of comments on the discussion.
+          type: integer
+        countUnread:
+          description: The number of unread comments.
+          type: integer
+        countViews:
+          description: The number of views on the discussion.
+          type: integer
+        dateInserted:
+          description: When the discussion was created.
+          format: date-time
+          type: string
+        dateUpdated:
+          description: When the discussion was last updated.
+          format: date-time
+          type:
+          - string
+          - 'null'
+        dateLastComment:
+          description: The date of the last comment or the original discussion date if it has no comments.
+          type: string
+          format: date-time
+        discussionID:
+          description: The ID of the discussion.
+          type: integer
+        image:
+          $ref: '#/components/schemas/Image'
+        images:
+          description: List of all images in the post.
+          items:
+            $ref: '#/components/schemas/Image'
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        insertUserID:
+          description: The user that created the discussion.
+          type: integer
+        lastPost:
+          $ref: '#/components/schemas/PostFragment'
+        lastUserID:
+          type: integer
+          description: The last user to post in the discussion.
+        lastUser:
+          $ref: '#/components/schemas/UserFragment'
+        name:
+          description: The title of the discussion.
+          minLength: 1
+          type: string
+        pinLocation:
+          description: The location for the discussion, if pinned. "category" are pinned to their own category. "recent" are pinned to the recent discussions list, as well as their own category.
+          enum:
+          - category
+          - recent
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        pinned:
+          description: Whether or not the discussion has been pinned.
+          type: boolean
+        publishedSilently:
+          description: Whether or not the discussion was published silently.
+          type: boolean
+        contentLocale:
+          description: The locale from which the discussion name/body were last updated.
+          type: string
+        score:
+          description: Total points associated with this post.
+          type:
+          - integer
+          - 'null'
+        announce:
+          description: Whether or not the discussion has been announced.
+          type: boolean
+        sink:
+          description: Whether or not the discussion has been sunk.
+          type: boolean
+        unread:
+          description: Whether or not the discussion should have an unread indicator.
+          type: boolean
+        url:
+          description: The full URL to the discussion.
+          type: string
+        statusID:
+          type: integer
+          description: The statusID current applied to the discussion.
+        status:
+          $ref: '#/components/schemas/StatusFragment'
+        showSuggestions:
+          type: boolean
+          description: Whether the discussion has visible suggestions
+          x-feature: Feature.AISuggestions.Enabled
+        reportMeta:
+          $ref: '#/components/schemas/ReportMeta'
+        type:
+          description: The base post type of the discussion.
+          minLength: 1
+          type: string
+          enum:
+          - discussion
+          - idea
+          - question
+        postTypeID:
+          description: The discussions postType.
+          type: string
+        postMeta:
+          $ref: '#/components/schemas/PostMeta'
+        suggestions:
+          type: array
+          items:
+            properties:
+              format:
+                type: string
+                description: Source of the suggestion
+              sourceIcon:
+                type: string
+                description: Icon of the suggestion source
+              type:
+                type: string
+                description: Type of suggestion discussion/comment
+              id:
+                type: integer
+                description: Index of the suggestion
+              url:
+                type: string
+                description: URL of the suggestion
+              title:
+                type: string
+                description: Title of the suggestion
+              summary:
+                type: string
+                description: Summary of the suggestion
+              hidden:
+                type: boolean
+                description: Whether the suggestion is dismissed
+              commentID:
+                type: integer
+                description: Comment ID of the suggestion
+            type: object
+          x-feature: Feature.AISuggestions.Enabled
+        permissions:
+          $ref: '#/components/schemas/DiscussionPermissions'
+      required:
+      - discussionID
+      - type
+      - name
+      - body
+      - categoryID
+      - dateInserted
+      - dateUpdated
+      - insertUserID
+      - pinLocation
+      - closed
+      - sink
+      - countComments
+      - countViews
+      - score
+      - bookmarked
+      - muted
+      - unread
+      - attributes
+      type: object
+      x-addon: vanilla
+    LongRunnerProgress:
+      description: Progress of the task.
+      type: object
+      required:
+      - successIDs
+      - failedIDs
+      - exceptionsByID
+      properties:
+        successIDs:
+          description: 'The IDs of records for which an action has succeeded.
+
+            '
+          example:
+          - 25
+          - 145
+          - 11431
+          - 1313
+          type: array
+          items:
+            type: integer
+        failedIDs:
+          description: 'The IDs of records for which and action has failed.
+
+            '
+          example:
+          - 14424
+          - 1264524
+          type: array
+          items:
+            type: integer
+        exceptionsByID:
+          description: Detailed errors by failedID during the action.
+          example:
+            '14424':
+              message: Discussions of type "redirect" can't be moved.
+              code: 400
+          type: object
+          required:
+          - message
+          - type
+          properties:
+            message:
+              type: string
+            code:
+              type: number
+        countTotalIDs:
+          description: Total count of records that can be progressed.
+          type: integer
+      x-addon: dashboard
+    PostFragment:
+      properties:
+        discussionID:
+          description: The discussion ID of the post.
+          type: integer
+        commentID:
+          description: The comment ID of the post, if any.
+          type: integer
+        name:
+          description: The title of the post.
+          minLength: 1
+          type: string
+        body:
+          description: The HTML formatted body of the post.
+          type: string
+        url:
+          description: The URL of the post.
+          minLength: 1
+          type: string
+        dateInserted:
+          description: The date of the post.
+          format: date-time
+          type: string
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        insertUserID:
+          description: The author of the post.
+          type: integer
+      required:
+      - name
+      - url
+      - dateInserted
+      - insertUserID
+      type: object
+      x-addon: vanilla
+    StatusFragment:
+      type: object
+      description: Describes a status currently applied to a discussion. Expandable with `status` and `status.log` expands.
+      properties:
+        statusID:
+          description: Record status ID of the discussion status.
+          type: integer
+        name:
+          description: The name of the status.
+          type: string
+        recordType:
+          description: Type of the discussion status.
+          type: string
+          enum:
+          - discussion
+        recordSubType:
+          description: Some statuses may only apply to a specific subtype of record.
+          type: string
+        state:
+          description: States are used to group statuses together.
+          type: string
+          enum:
+          - open
+          - closed
+        dateUpdated:
+          type: string
+          format: date-time
+          description: When the discussion was updated with the status.
+        log:
+          type: object
+          description: Information about when the status was applied.
+          required:
+          - dateUpdated
+          - updateUser
+          properties:
+            reasonUpdated:
+              description: Reason for status change
+              type:
+              - string
+              - 'null'
+            updateUser:
+              $ref: '#/components/schemas/UserFragment'
+            dateUpdated:
+              description: When the discussion was last updated.
+              format: date-time
+              type: string
+      required:
+      - statusID
+      - name
+      - recordType
+      - state
+      x-addon: vanilla
+    DiscussionGetEdit:
+      properties:
+        body:
+          description: The body of the discussion.
+          minLength: 1
+          type: string
+        categoryID:
+          description: The category the discussion is in.
+          type: integer
+        closed:
+          description: Whether the discussion is closed or open.
+          type: boolean
+        discussionID:
+          description: The ID of the discussion.
+          type: integer
+        format:
+          $ref: '#/components/schemas/Format'
+        name:
+          description: The title of the discussion.
+          minLength: 1
+          type: string
+        pinLocation:
+          description: 'The location for the discussion, if pinned. "category" are pinned to their own category.
+
+            "recent" are pinned to the recent discussions list, as well as their own category.
+
+            '
+          enum:
+          - category
+          - recent
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        pinned:
+          description: Whether or not the discussion has been pinned.
+          type: boolean
+        sink:
+          description: Whether or not the discussion has been sunk.
+          type: boolean
+        postTypeID:
+          description: The discussions postTypeID.
+          type: string
+        postMeta:
+          $ref: '#/components/schemas/PostMeta'
+        tagIDs:
+          type: array
+          items:
+            type: integer
+      required:
+      - discussionID
+      - name
+      - body
+      - format
+      - categoryID
+      - sink
+      - closed
+      - pinned
+      - pinLocation
+      type: object
+      x-addon: vanilla
+  responses:
+    LongRunnerResponse:
+      description: 'Endpoints that may time out and require the client to
+
+        progress them with the `/api/v2/calls` endpoints may return this.
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LongRunnerResult'
+      x-addon: dashboard
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+    TrackingSlipResponse:
+      description: 'Endpoints may queue a job to perform a task in the background.
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TrackingSlipData'
+      x-addon: dashboard
+    NotFound:
+      description: The record does not exist or was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: More information about the error.
+              status:
+                type: number
+                description: The HTTP status code for the error.
+                format: int32
+            required:
+            - message
+          example:
+            status: 404
+            message: Page Not Found
+      x-addon: dashboard
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+    DateInserted:
+      name: dateInserted
+      in: query
+      description: 'Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+
+        '
+      schema:
+        format: date-filter
+        type: string
+      x-addon: dashboard
+    discussionExpand:
+      name: expand
+      description: 'Expand associated records using one or more valid field names. A value of "all" will expand all expandable fields.
+
+        '
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+          - all
+          - category
+          - insertUser
+          - lastUser
+          - lastPost
+          - lastPost.body
+          - lastPost.insertUser
+          - reactions
+          - tagsIDs
+          - tags
+          - status
+          - status.log
+          - reportMeta
+          - attachments
+          - postMeta
+          - permissions
+          - insertUser.ssoID
+          - insertUser.roles
+          - insertUser.profileFields
+          - insertUser.extended
+          - lastUser.ssoID
+          - lastUser.roles
+          - lastUser.profileFields
+          - lastUser.extended
+          - lastPost.insertUser
+          - lastPost.insertUser.ssoID
+          - lastPost.insertUser.roles
+          - lastPost.insertUser.profileFields
+          - lastPost.insertUser.extended
+          - lastPost.insertUser.ssoID
+          - lastPost.insertUser.roles
+          - lastPost.insertUser.profileFields
+          - lastPost.insertUser.extended
+          - acceptedAnswers
+          - rejectedAnswers
+          - warnings
+      style: form
+      x-addon: vanilla
+    DateLastComment:
+      name: dateLastComment
+      in: query
+      description: 'Filter by the date of the last comment or the original discussion date if it has no comments. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+
+        '
+      schema:
+        format: date-filter
+        type: string
+      x-addon: vanilla
+    DateUpdated:
+      name: dateUpdated
+      in: query
+      description: 'Filter by update date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+
+        '
+      schema:
+        format: date-filter
+        type: string
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

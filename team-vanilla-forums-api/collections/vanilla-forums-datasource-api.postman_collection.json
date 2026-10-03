@@ -1,0 +1,669 @@
+{
+  "item": [
+    {
+      "id": "c23fffbf-069e-49c2-b24b-0929c40b5bc2",
+      "name": "DataSource",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f480404f-0fbe-4192-be7a-ebce31691709",
+          "name": "List all data sources for widgets",
+          "request": {
+            "name": "List all data sources for widgets",
+            "description": {},
+            "url": {
+              "path": [
+                "data-sources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by name"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseUrl",
+                  "value": "<string>",
+                  "description": "Filter by base URL"
+                },
+                {
+                  "disabled": false,
+                  "key": "authenticationType",
+                  "value": "<string>",
+                  "description": "Filter by authentication type"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "-dateUpdated",
+                  "description": "Sort by field"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4002e030-3637-4277-a1da-79283be0b85c",
+              "name": "List of fragments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authenticationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateUpdated"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"accessControl\": {\n      \"type\": \"restricted\",\n      \"roleIDs\": [\n        4073,\n        8008\n      ],\n      \"rankIDs\": [\n        9570,\n        1208\n      ]\n    },\n    \"authenticationType\": \"<string>\",\n    \"baseUrl\": \"string\",\n    \"dataSourceID\": \"my-data-source\",\n    \"dateInserted\": \"2025-03-05T06:56:04+00:00\",\n    \"insertUserID\": \"2025-03-05T06:56:04+00:00\",\n    \"name\": \"My Call to Action\",\n    \"description\": \"string\",\n    \"documentationUrl\": \"string\",\n    \"headers\": {},\n    \"secretHeaders\": {},\n    \"allowedPaths\": [\n      \"/api/the-thing*\"\n    ],\n    \"allowedMethods\": [\n      \"GET\"\n    ],\n    \"dateUpdated\": \"2025-03-05T06:56:04+00:00\",\n    \"updateUserID\": \"2025-03-05T06:56:04+00:00\"\n  },\n  {\n    \"accessControl\": {\n      \"type\": \"restricted\",\n      \"roleIDs\": [\n        8323,\n        1450\n      ],\n      \"rankIDs\": [\n        3873,\n        3092\n      ]\n    },\n    \"authenticationType\": \"<string>\",\n    \"baseUrl\": \"string\",\n    \"dataSourceID\": \"my-data-source\",\n    \"dateInserted\": \"2025-03-05T06:56:04+00:00\",\n    \"insertUserID\": \"2025-03-05T06:56:04+00:00\",\n    \"name\": \"My Call to Action\",\n    \"description\": \"string\",\n    \"documentationUrl\": \"string\",\n    \"headers\": {},\n    \"secretHeaders\": {},\n    \"allowedPaths\": [\n      \"/api/the-thing*\"\n    ],\n    \"allowedMethods\": [\n      \"GET\"\n    ],\n    \"dateUpdated\": \"2025-03-05T06:56:04+00:00\",\n    \"updateUserID\": \"2025-03-05T06:56:04+00:00\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ff78fca-6ec1-4b30-9d21-9cd0f3018d9c",
+          "name": "Create a new data source",
+          "request": {
+            "name": "Create a new data source",
+            "description": {},
+            "url": {
+              "path": [
+                "data-sources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataSourceID\": \"<string>\",\n  \"name\": \"<string>\",\n  \"authenticationType\": \"<string>\",\n  \"baseUrl\": \"<string>\",\n  \"accessControl\": {\n    \"type\": \"<string>\",\n    \"roleIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"rankIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"documentationUrl\": \"<string>\",\n  \"headers\": \"<object>\",\n  \"secretHeaders\": \"<object>\",\n  \"allowedPaths\": [\n    \"*\"\n  ],\n  \"allowedMethods\": [\n    \"GET\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3b9c6ed-430e-4f0f-ae95-9fc20541b2f2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataSourceID\": \"my-data-source\",\n  \"name\": \"My Call to Action\",\n  \"authenticationType\": \"<string>\",\n  \"baseUrl\": \"<string>\",\n  \"accessControl\": {\n    \"type\": \"<string>\",\n    \"roleIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"rankIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"documentationUrl\": \"<string>\",\n  \"headers\": \"<object>\",\n  \"secretHeaders\": \"<object>\",\n  \"allowedPaths\": [\n    \"/api/the-thing*\"\n  ],\n  \"allowedMethods\": [\n    \"GET\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accessControl\": {\n    \"type\": \"<string>\",\n    \"roleIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"rankIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  },\n  \"authenticationType\": \"<string>\",\n  \"baseUrl\": \"<string>\",\n  \"dataSourceID\": \"my-data-source\",\n  \"dateInserted\": \"2025-03-05T06:56:04+00:00\",\n  \"insertUserID\": \"2025-03-05T06:56:04+00:00\",\n  \"name\": \"My Call to Action\",\n  \"description\": \"<string>\",\n  \"documentationUrl\": \"<string>\",\n  \"headers\": \"<object>\",\n  \"secretHeaders\": \"<object>\",\n  \"allowedPaths\": [\n    \"/api/the-thing*\"\n  ],\n  \"allowedMethods\": [\n    \"GET\"\n  ],\n  \"dateUpdated\": \"2025-03-05T06:56:04+00:00\",\n  \"updateUserID\": \"2025-03-05T06:56:04+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e955e331-ba7c-416d-92a9-ea112e9f9c20",
+          "name": "Make a proxy call to a data source",
+          "request": {
+            "name": "Make a proxy call to a data source",
+            "description": {
+              "content": "Executes an HTTP request through a data source. You must provide either a `dataSourceID`\nto use an existing data source, or a `dataSource` object to define an inline data source.\nYou cannot provide both.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-sources",
+                "proxy-call"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"call\": {\n    \"path\": \"<string>\",\n    \"method\": \"<string>\",\n    \"queryParams\": \"<object>\",\n    \"queryParamsSerialization\": \"brackets\",\n    \"body\": \"<object>\"\n  },\n  \"dataSourceID\": \"<string>\",\n  \"dataSource\": {\n    \"dataSourceID\": \"<string>\",\n    \"name\": \"<string>\",\n    \"authenticationType\": \"<string>\",\n    \"baseUrl\": \"<string>\",\n    \"accessControl\": {\n      \"type\": \"<string>\",\n      \"roleIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"rankIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    \"description\": \"<string>\",\n    \"documentationUrl\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"secretHeaders\": \"<object>\",\n    \"allowedPaths\": [\n      \"*\"\n    ],\n    \"allowedMethods\": [\n      \"GET\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19893500-e13b-41d9-93a3-24cdbae738a0",
+              "name": "The response body from the proxied HTTP request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-sources",
+                    "proxy-call"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"call\": {\n    \"path\": \"/api/v1/items\",\n    \"method\": \"<string>\",\n    \"queryParams\": \"<object>\",\n    \"queryParamsSerialization\": \"brackets\",\n    \"body\": \"<object>\"\n  },\n  \"dataSourceID\": \"my-data-source\",\n  \"dataSource\": {\n    \"dataSourceID\": \"my-data-source\",\n    \"name\": \"My Call to Action\",\n    \"authenticationType\": \"<string>\",\n    \"baseUrl\": \"<string>\",\n    \"accessControl\": {\n      \"type\": \"<string>\",\n      \"roleIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"rankIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    \"description\": \"<string>\",\n    \"documentationUrl\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"secretHeaders\": \"<object>\",\n    \"allowedPaths\": [\n      \"/api/the-thing*\"\n    ],\n    \"allowedMethods\": [\n      \"GET\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"body\": {},\n  \"headers\": {\n    \"Content-Type\": \"application/json\"\n  },\n  \"statusCode\": 200\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcc3e89d-5cb8-49c6-99ec-b1ad72295bbc",
+              "name": "User does not have access to this data source",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-sources",
+                    "proxy-call"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"call\": {\n    \"path\": \"/api/v1/items\",\n    \"method\": \"<string>\",\n    \"queryParams\": \"<object>\",\n    \"queryParamsSerialization\": \"brackets\",\n    \"body\": \"<object>\"\n  },\n  \"dataSourceID\": \"my-data-source\",\n  \"dataSource\": {\n    \"dataSourceID\": \"my-data-source\",\n    \"name\": \"My Call to Action\",\n    \"authenticationType\": \"<string>\",\n    \"baseUrl\": \"<string>\",\n    \"accessControl\": {\n      \"type\": \"<string>\",\n      \"roleIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"rankIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    \"description\": \"<string>\",\n    \"documentationUrl\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"secretHeaders\": \"<object>\",\n    \"allowedPaths\": [\n      \"/api/the-thing*\"\n    ],\n    \"allowedMethods\": [\n      \"GET\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f808087-cd5d-4f18-a214-0def8d37a3b9",
+          "name": "Get a fragment",
+          "request": {
+            "name": "Get a fragment",
+            "description": {},
+            "url": {
+              "path": [
+                "data-sources",
+                ":dataSourceID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataSourceID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc00491e-2633-48e2-b561-ffd98e9239cb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-sources",
+                    ":dataSourceID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataSourceID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accessControl\": {\n    \"type\": \"<string>\",\n    \"roleIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"rankIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  },\n  \"authenticationType\": \"<string>\",\n  \"baseUrl\": \"<string>\",\n  \"dataSourceID\": \"my-data-source\",\n  \"dateInserted\": \"2025-03-05T06:56:04+00:00\",\n  \"insertUserID\": \"2025-03-05T06:56:04+00:00\",\n  \"name\": \"My Call to Action\",\n  \"description\": \"<string>\",\n  \"documentationUrl\": \"<string>\",\n  \"headers\": \"<object>\",\n  \"secretHeaders\": \"<object>\",\n  \"allowedPaths\": [\n    \"/api/the-thing*\"\n  ],\n  \"allowedMethods\": [\n    \"GET\"\n  ],\n  \"dateUpdated\": \"2025-03-05T06:56:04+00:00\",\n  \"updateUserID\": \"2025-03-05T06:56:04+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46d4c28b-d97f-4e80-8437-8a626a3abe04",
+          "name": "Delete a data source",
+          "request": {
+            "name": "Delete a data source",
+            "description": {},
+            "url": {
+              "path": [
+                "data-sources",
+                ":dataSourceID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataSourceID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0c67f3c-556d-4db6-826c-08967eed0a55",
+              "name": "Data source deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-sources",
+                    ":dataSourceID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataSourceID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5ef5183-cd9e-471d-a9fa-5af364b8f080",
+          "name": "Update a data source.",
+          "request": {
+            "name": "Update a data source.",
+            "description": {
+              "content": "Updates a data source.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-sources",
+                ":dataSourceID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataSourceID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"authenticationType\": \"<string>\",\n  \"baseUrl\": \"<string>\",\n  \"documentationUrl\": \"<string>\",\n  \"headers\": \"<object>\",\n  \"secretHeaders\": \"<object>\",\n  \"allowedPaths\": [\n    \"*\"\n  ],\n  \"allowedMethods\": [\n    \"GET\"\n  ],\n  \"accessControl\": {\n    \"type\": \"<string>\",\n    \"roleIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"rankIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25416fee-f232-4c77-a4ba-92929ac25f5d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-sources",
+                    ":dataSourceID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataSourceID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Call to Action\",\n  \"description\": \"<string>\",\n  \"authenticationType\": \"<string>\",\n  \"baseUrl\": \"<string>\",\n  \"documentationUrl\": \"<string>\",\n  \"headers\": \"<object>\",\n  \"secretHeaders\": \"<object>\",\n  \"allowedPaths\": [\n    \"/api/the-thing*\"\n  ],\n  \"allowedMethods\": [\n    \"GET\"\n  ],\n  \"accessControl\": {\n    \"type\": \"<string>\",\n    \"roleIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"rankIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accessControl\": {\n    \"type\": \"<string>\",\n    \"roleIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"rankIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  },\n  \"authenticationType\": \"<string>\",\n  \"baseUrl\": \"<string>\",\n  \"dataSourceID\": \"my-data-source\",\n  \"dateInserted\": \"2025-03-05T06:56:04+00:00\",\n  \"insertUserID\": \"2025-03-05T06:56:04+00:00\",\n  \"name\": \"My Call to Action\",\n  \"description\": \"<string>\",\n  \"documentationUrl\": \"<string>\",\n  \"headers\": \"<object>\",\n  \"secretHeaders\": \"<object>\",\n  \"allowedPaths\": [\n    \"/api/the-thing*\"\n  ],\n  \"allowedMethods\": [\n    \"GET\"\n  ],\n  \"dateUpdated\": \"2025-03-05T06:56:04+00:00\",\n  \"updateUserID\": \"2025-03-05T06:56:04+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "49acaeaa-8473-43ed-98f3-223770a6cbe3",
+    "name": "Vanilla Addons DataSource API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

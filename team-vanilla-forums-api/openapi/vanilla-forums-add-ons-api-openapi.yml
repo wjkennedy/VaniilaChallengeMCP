@@ -1,0 +1,705 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Addons API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Add Ons
+paths:
+  /addons:
+    get:
+      parameters:
+      - description: The type of addon.
+        in: query
+        name: type
+        schema:
+          enum:
+          - addon
+          - theme
+          - locale
+          type: string
+      - description: 'Filter enabled or disabled addons.
+
+          '
+        in: query
+        name: enabled
+        schema:
+          type: boolean
+      - description: 'Which theme to show the enabled status for.
+
+          '
+        in: query
+        name: themeType
+        schema:
+          type: string
+          default: desktop
+          enum:
+          - desktop
+          - mobile
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Addon'
+                type: array
+          description: Success
+      tags:
+      - Add Ons
+      summary: List addons
+      x-addon: dashboard
+      operationId: getAddons
+      x-operation-id-source: derived
+  /addons/{addonID}:
+    get:
+      parameters:
+      - description: 'The ID of the addon.
+
+          '
+        in: path
+        name: addonID
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: 'Which theme to show the enabled status for.
+
+          '
+        in: query
+        name: themeType
+        schema:
+          type: string
+          default: desktop
+          enum:
+          - desktop
+          - mobile
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Addon'
+          description: Success
+      tags:
+      - Add Ons
+      summary: Get an addon
+      x-addon: dashboard
+      operationId: getAddonsByAddonID
+      x-operation-id-source: derived
+    patch:
+      parameters:
+      - description: The ID of the addon.
+        in: path
+        name: addonID
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Addon'
+                type: array
+          description: Success
+      tags:
+      - Add Ons
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                enabled:
+                  description: Enable or disable the addon.
+                  type: boolean
+                themeType:
+                  type: string
+                  default: desktop
+                  description: Which theme type to set.
+                  enum:
+                  - desktop
+                  - mobile
+              required:
+              - enabled
+              type: object
+        required: true
+      summary: Enable or disable an addon
+      x-addon: dashboard
+      operationId: patchAddonsByAddonID
+      x-operation-id-source: derived
+components:
+  schemas:
+    Addon:
+      properties:
+        addonID:
+          description: The ID of the addon used for API calls.
+          minLength: 1
+          type: string
+        conflict:
+          description: An array of addons that conflict with this addon.
+          items:
+            properties:
+              addonID:
+                description: The ID of the addon used for API calls.
+                minLength: 1
+                type: string
+              constraint:
+                description: The version requirement.
+                minLength: 1
+                type: string
+              key:
+                description: The unique key that identifies the addon
+                minLength: 1
+                type: string
+              name:
+                description: The name of the addon.
+                minLength: 1
+                type: string
+              type:
+                description: The type of addon.
+                enum:
+                - addon
+                - theme
+                - locale
+                minLength: 1
+                type: string
+            required:
+            - addonID
+            - name
+            - key
+            - type
+            - constraint
+            type: object
+          type: array
+        attributes:
+          type: object
+          properties:
+            locale:
+              type: string
+        description:
+          description: The addon's description
+          type: string
+        enabled:
+          description: Whether or not the addon is enabled.
+          type: boolean
+        iconUrl:
+          description: The addon's icon.
+          format: uri
+          minLength: 1
+          type: string
+        key:
+          description: The unique key that identifies the addon
+          minLength: 1
+          type: string
+        name:
+          description: The name of the addon.
+          minLength: 1
+          type: string
+        require:
+          description: An array of addons that are required to enable the addon.
+          items:
+            properties:
+              addonID:
+                description: The ID of the addon used for API calls.
+                minLength: 1
+                type: string
+              constraint:
+                description: The version requirement.
+                minLength: 1
+                type: string
+              key:
+                description: The unique key that identifies the addon
+                minLength: 1
+                type: string
+              name:
+                description: The name of the addon.
+                minLength: 1
+                type: string
+              type:
+                description: The type of addon.
+                enum:
+                - addon
+                - theme
+                - locale
+                minLength: 1
+                type: string
+            required:
+            - addonID
+            - name
+            - key
+            - type
+            - constraint
+            type: object
+          type: array
+        type:
+          description: The type of addon.
+          enum:
+          - addon
+          - theme
+          - locale
+          minLength: 1
+          type: string
+        version:
+          description: The addon's version.
+          minLength: 1
+          type: string
+      required:
+      - addonID
+      - name
+      - key
+      - type
+      - iconUrl
+      - version
+      - enabled
+      type: object
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

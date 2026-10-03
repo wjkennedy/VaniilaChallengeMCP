@@ -1,0 +1,2157 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Reports & Escalations API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Reports & Escalations
+paths:
+  /escalations:
+    post:
+      tags:
+      - Reports & Escalations
+      summary: Create an Escalation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EscalationInsert'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Escalation'
+      x-addon: vanilla
+      operationId: postEscalations
+      x-operation-id-source: derived
+    get:
+      tags:
+      - Reports & Escalations
+      summary: Get a list of escalations
+      parameters:
+      - name: escalationID
+        description: Filter by a range or CSV of discussion escalationIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: recordType
+        in: query
+        schema:
+          type: string
+          enum:
+          - discussion
+          - comment
+          - premoderated
+      - name: recordID
+        description: Filter by a range or CSV of discussion recordIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: placeRecordType
+        in: query
+        schema:
+          type: string
+          enum:
+          - category
+      - name: placeRecordID
+        description: Filter by a range or CSV of category placeRecordIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: status
+        description: Filter by one or more statuses (CSV & array supported).
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - open
+            - in-progress
+            - on-hold
+            - external-zendesk
+            - done
+      - name: assignedUserID
+        description: Filter by a range or CSV of assigned userIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: removedUserID
+        description: Filter by a range or CSV of userIDs who removed the record.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: recordUserID
+        description: Filter by a range or CSV of users who created the content that was escalated.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: recordUserRoleID
+        description: Filter by a range or CSV of users' roles who created the content that was escalated.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: reportReasonID
+        description: Filter by a report reason. Multiple reasonIDs can be passed in a CSV or array.
+        in: query
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 100
+          maximum: 500
+          minimum: 1
+      - name: escalationID
+        description: Filter by a range or CSV of escalationIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - $ref: '#/components/parameters/DateInserted'
+      - name: dateRemoved
+        in: query
+        description: 'Filter by removed date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+
+          '
+        schema:
+          format: date-filter
+          type: string
+      - name: recordIsLive
+        description: Whether the record still exists.
+        in: query
+        schema:
+          type: boolean
+      - name: hasAssociatedAppeal
+        description: Whether the escalation has an associated appeal.
+        in: query
+        schema:
+          type: boolean
+      - name: appealStatus
+        description: Filter by appeal status. Multiple statuses can be passed as CSV or array.
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - pending
+            - in-review
+            - approved
+            - rejected
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Escalation'
+      x-addon: vanilla
+      operationId: getEscalations
+      x-operation-id-source: derived
+  /escalations/:escalationID:
+    get:
+      tags:
+      - Reports & Escalations
+      summary: Get an escalation
+      parameters:
+      - name: escalationID
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Escalation'
+      x-addon: vanilla
+      operationId: getEscalations:escalationID
+      x-operation-id-source: derived
+    patch:
+      tags:
+      - Reports & Escalations
+      summary: Update an escalation
+      parameters:
+      - name: escalationID
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EscalationPatch'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Escalation'
+      x-addon: vanilla
+      operationId: patchEscalations:escalationID
+      x-operation-id-source: derived
+  /escalations/log:
+    get:
+      tags:
+      - Reports & Escalations
+      summary: Get a list of escalation Logs
+      parameters:
+      - name: escalationID
+        description: Filter by a range or CSV of discussion escalationIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: recordType
+        in: query
+        schema:
+          type: string
+          enum:
+          - discussion
+          - comment
+          - premoderated
+      - name: recordID
+        description: Filter by a range or CSV of discussion recordIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: action
+        description: Filter by one or more action (CSV & array supported).
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - removed
+            - escalated
+            - restored
+      - name: insertUserID
+        description: Filter by a user performing the action
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: recordUserID
+        description: Filter by a range or CSV of users who created the content that was acted upon.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: recordUserRoleID
+        description: Filter by a range or CSV of users' roles who created the content that was escalated.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 100
+          maximum: 500
+          minimum: 1
+      - name: escalationID
+        description: Filter by a range or CSV of escalationIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - $ref: '#/components/parameters/DateInserted'
+      - name: recordIsLive
+        description: Whether the record still exists.
+        in: query
+        schema:
+          type: boolean
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EscalationLog'
+      x-addon: vanilla
+      operationId: getEscalationsLog
+      x-operation-id-source: derived
+  /escalations/log/:escalationLogID:
+    get:
+      tags:
+      - Reports & Escalations
+      summary: Get an escalation Log
+      description: 'Retrieve a specific escalation log entry. Moderators can access any log entry.
+
+        Non-moderators can only access logs where they are the record owner (e.g., for appealing content removal).'
+      parameters:
+      - name: escalationLogID
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: expand
+        in: query
+        description: Expand additional data. Options are appeal (submitted appeal), record (removed content), or all.
+        schema:
+          oneOf:
+          - type: string
+            enum:
+            - appeal
+            - record
+            - all
+          - type: array
+            items:
+              type: string
+              enum:
+              - appeal
+              - record
+              - all
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EscalationLog'
+      x-addon: vanilla
+      operationId: getEscalationsLog:escalationLogID
+      x-operation-id-source: derived
+  /escalations/lookup-assignee:
+    get:
+      summary: Search for users that could be assigned to an escalation by full or partial…
+      parameters:
+      - name: escalationID
+        description: If passed will filter to potential assignees for this specific escalation.
+        in: query
+        required: true
+        schema:
+          type: integer
+      - description: 'Filter for username. Supports full or partial matching with appended wildcard (e.g. User*).
+
+          '
+        in: query
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+          '
+        in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserFragment'
+                type: array
+          description: Success
+      tags:
+      - Reports & Escalations
+      x-addon: vanilla
+      operationId: getEscalationsLookupAssignee
+      x-operation-id-source: derived
+  /report-reasons:
+    get:
+      tags:
+      - Reports & Escalations
+      summary: Get a list of report reasons for the current sessioned user.
+      parameters:
+      - name: includeDeleted
+        description: Allow selecting deleted reports. Requires `moderation.manage` permission.
+        in: query
+        schema:
+          type: boolean
+          default: false
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReportReason'
+      x-addon: vanilla
+      operationId: getReportReasons
+      x-operation-id-source: derived
+    post:
+      tags:
+      - Reports & Escalations
+      summary: Create a report reason
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportReasonPost'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportReason'
+        '409':
+          description: Conflict. Returned if the reportReasonID already exists.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Report reason already exists.
+                  code:
+                    type: number
+                    example: 409
+                  conflictingReason:
+                    $ref: '#/components/schemas/ReportReason'
+      x-addon: vanilla
+      operationId: postReportReasons
+      x-operation-id-source: derived
+  /report-reasons/:reportReasonID:
+    get:
+      tags:
+      - Reports & Escalations
+      summary: Get a report reason if you have permission for it
+      parameters:
+      - name: reportReasonID
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: includeDeleted
+        description: Allow selecting deleted reports. Requires `moderation.manage` permission.
+        in: query
+        schema:
+          type: boolean
+          default: false
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportReason'
+        '404':
+          description: Not Found. Also returned if there is no permission to not leak reasonIDs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Report reason not found.
+      x-addon: vanilla
+      operationId: getReportReasons:reportReasonID
+      x-operation-id-source: derived
+    patch:
+      tags:
+      - Reports & Escalations
+      summary: Update a report reason
+      parameters:
+      - name: reportReasonID
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportReasonPost'
+      responses:
+        '201':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportReason'
+      x-addon: vanilla
+      operationId: patchReportReasons:reportReasonID
+      x-operation-id-source: derived
+    delete:
+      tags:
+      - Reports & Escalations
+      summary: Delete a report reason.
+      parameters:
+      - name: reportID
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No Content
+      x-addon: vanilla
+      operationId: deleteReportReasons:reportReasonID
+      x-operation-id-source: derived
+  /report-reasons/sorts:
+    put:
+      tags:
+      - Reports & Escalations
+      summary: Update the sort order of report reasons
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Mapping of reportReasonID to new sorts.
+              example:
+                spam: 1
+                abuse: 2
+                sexual-content: 3
+      responses:
+        '204':
+          description: No Content
+      x-addon: vanilla
+      operationId: putReportReasonsSorts
+      x-operation-id-source: derived
+  /reports:
+    post:
+      tags:
+      - Reports & Escalations
+      summary: Create a report
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportInsert'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+      x-addon: vanilla
+      operationId: postReports
+      x-operation-id-source: derived
+    get:
+      tags:
+      - Reports & Escalations
+      summary: Get a list of reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Report'
+      parameters:
+      - name: recordType
+        in: query
+        schema:
+          type: string
+          enum:
+          - discussion
+          - comment
+      - name: reportReasonID
+        description: Filter by a report reason. Multiple reasonIDs can be passed in a CSV or array.
+        in: query
+        schema:
+          type: string
+      - name: recordID
+        description: Filter by a range or CSV of discussion recordIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: placeRecordType
+        in: query
+        schema:
+          type: string
+          enum:
+          - category
+      - name: placeRecordID
+        description: Filter by a range or CSV of category placeRecordIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: insertUserID
+        description: Filter by a range or CSV of users that made the report.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: insertUserRoleID
+        description: Filter by a range or CSV of users' roles that made the report.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: removedUserID
+        description: Filter by a range or CSV of userIDs who removed the record.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: recordUserID
+        description: Filter by a range or CSV of users who's content was reported.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: status
+        description: Filter by one or more statuses (CSV & array supported).
+        in: query
+        schema:
+          type: array
+          default:
+          - new
+          items:
+            type: string
+            enum:
+            - new
+            - escalated
+            - dismissed
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 100
+          maximum: 500
+          minimum: 1
+      - name: reportID
+        description: Filter by a range or CSV of recordIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - $ref: '#/components/parameters/DateInserted'
+      - name: dateRemoved
+        in: query
+        description: 'Filter by removed date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+
+          '
+        schema:
+          format: date-filter
+          type: string
+      - name: reporterEmail
+        description: Filter by guest reporter email address.
+        in: query
+        schema:
+          type: string
+          format: email
+      - name: recordIsLive
+        description: Whether the record still exists.
+        in: query
+        schema:
+          type: boolean
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      x-addon: vanilla
+      operationId: getReports
+      x-operation-id-source: derived
+  /reports/:reportID:
+    get:
+      tags:
+      - Reports & Escalations
+      summary: Get a report
+      parameters:
+      - name: reportID
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+      x-addon: vanilla
+      operationId: getReports:reportID
+      x-operation-id-source: derived
+  /reports/:reportID/approve-record:
+    parameters:
+    - name: reportID
+      in: path
+      required: true
+      schema:
+        type: integer
+      x-addon: vanilla
+    patch:
+      tags:
+      - Reports & Escalations
+      summary: Approve a pending or removed post that was premoderated
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                verifyRecordUser:
+                  type: boolean
+                  description: If true mark the user as verified.
+                premoderatedRecord:
+                  type: object
+                  description: Optional mod edits to make to the post before being approved.
+                  properties:
+                    body:
+                      type: string
+                      description: Body content formatted in rich.
+                    name:
+                      type: string
+                      description: Name/Title content in plain text.
+                  required:
+                  - body
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+      x-addon: vanilla
+      operationId: patchReports:reportIDApproveRecord
+      x-operation-id-source: derived
+  /reports/:reportID/dismiss:
+    parameters:
+    - name: reportID
+      in: path
+      required: true
+      schema:
+        type: integer
+      x-addon: vanilla
+    post:
+      tags:
+      - Reports & Escalations
+      summary: Dismiss a user's report
+      responses:
+        '204':
+          description: No Content
+      x-addon: vanilla
+      operationId: postReports:reportIDDismiss
+      x-operation-id-source: derived
+  /reports/:reportID/reject-record:
+    parameters:
+    - name: reportID
+      in: path
+      required: true
+      schema:
+        type: integer
+      x-addon: vanilla
+    patch:
+      tags:
+      - Reports & Escalations
+      summary: Reject a pending or live post that was premoderated and ensure it is deleted
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+      x-addon: vanilla
+      operationId: patchReports:reportIDRejectRecord
+      x-operation-id-source: derived
+  /reports/automation:
+    get:
+      tags:
+      - Reports & Escalations
+      summary: List of Posts that where reported set number of times
+      parameters:
+      - name: countReports
+        in: query
+        required: true
+        schema:
+          type: integer
+          default: 1
+      - name: reportReasonID
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: placeRecordID
+        description: Filter by a range or CSV of category placeRecordIDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: includeSubcategories
+        description: Include reports from subcategories.
+        in: query
+        schema:
+          type: boolean
+          default: false
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 100
+          maximum: 500
+          minimum: 1
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReportCounter'
+      x-addon: vanilla
+      operationId: getReportsAutomation
+      x-operation-id-source: derived
+components:
+  schemas:
+    Format:
+      description: The format of the body used to convert it to HTML.
+      type: string
+      enum:
+      - rich
+      - markdown
+      - text
+      - textex
+      - wysiwyg
+      - bbcode
+      example: markdown
+      x-addon: dashboard
+    UserFragment:
+      oneOf:
+      - type: object
+        properties:
+          userID:
+            description: The ID of the user.
+            type: integer
+          name:
+            description: The username of the user.
+            minLength: 1
+            type: string
+          url:
+            description: The URL of the user's profile.
+            type: string
+            format: uri
+          photoUrl:
+            description: The URL of the user's avatar picture.
+            type: string
+            format: uri
+          dateLastActive:
+            description: Time the user was last active.
+            format: date-time
+            type:
+            - string
+            - 'null'
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+          label:
+            description: The label of the user as plaintext.
+            type: string
+          labelHtml:
+            description: The label of the user in HTML format.
+            type: string
+          private:
+            description: Whether the user profile is private or not.
+            type: boolean
+        required:
+        - userID
+        - name
+        - photoUrl
+        - dateLastActive
+      - type: object
+        description: A user fragment when only expanding by ssoID.
+        properties:
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+        required:
+        - ssoID
+      x-addon: dashboard
+    Report:
+      type: object
+      properties:
+        reportID:
+          type: integer
+        recordType:
+          description: Type of record being reported.
+          type: string
+          enum:
+          - discussion
+          - comment
+        recordID:
+          description: ID of the record being reported.
+          type: integer
+        recordName:
+          description: Name of the record being reported.
+          type: string
+        recordHtml:
+          description: Rendered HTML contents of the reported record.
+          type: string
+        recordExcerpt:
+          description: Excerpt of the reported record.
+          type: string
+        recordUrl:
+          description: URL of the record being reported.
+          type: string
+        recordIsLive:
+          description: Whether the record still exists.
+          type: boolean
+        recordWasEdited:
+          description: Whether the record was edited after the report was made.
+          type: boolean
+        placeRecordType:
+          description: Type of record the reported record is placed in.
+          type: string
+          enum:
+          - category
+        placeRecordID:
+          description: ID of the record the reported record is placed in.
+          type: integer
+        placeRecordName:
+          description: Name of the record the reported record is placed in.
+          type: string
+        placeRecordUrl:
+          description: URL of the record the reported record is placed in.
+          type: string
+          format: uri
+        recordUserID:
+          description: ID of the user who made the reported record.
+          type: integer
+        recordUser:
+          $ref: '#/components/schemas/UserFragment'
+        recordDateInserted:
+          type: string
+          format: date-time
+        recordDateUpdated:
+          type: string
+          format: date-time
+        isPending:
+          description: Whether the reported content is a pending post (Eg. premoderation report).
+          type: boolean
+        isPendingUpdate:
+          description: Whether the reported content is a pending update for a post that was live.
+          type: boolean
+        reportReasons:
+          description: Full report reasons
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportReasonFragment'
+        noteHtml:
+          type: string
+          description: Additional information about the report in HTML format.
+        insertUserID:
+          description: ID of the user making the report. 0 for guest reporters.
+          type: integer
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        reporterEmail:
+          description: Email address of the guest reporter. Only present when insertUserID is 0.
+          type:
+          - string
+          - 'null'
+        reporterName:
+          description: Display name of the guest reporter. Only present when insertUserID is 0.
+          type:
+          - string
+          - 'null'
+        reportedUserID:
+          description: ID of the user being reported.
+          type: integer
+        reportedUser:
+          $ref: '#/components/schemas/UserFragment'
+        updateUserID:
+          description: ID of the user who last updated the report.
+          type: integer
+        updateUser:
+          $ref: '#/components/schemas/UserFragment'
+        dateInserted:
+          description: Date the report was made.
+          type: string
+          format: date-time
+        dateUpdated:
+          description: Date the report was last updated.
+          type: string
+          format: date-time
+      required:
+      - reportID
+      - recordType
+      - recordID
+      - recordName
+      - recordHtml
+      - recordUrl
+      - recordIsLive
+      - recordWasEdited
+      - recordUserID
+      - recordDateInserted
+      - placeRecordType
+      - placeRecordID
+      - reportReasonIDs
+      - insertUserID
+      - reportedUserID
+      - updateUserID
+      - dateInserted
+      - dateUpdated
+      - noteHtml
+      x-addon: vanilla
+    Appeal:
+      type: object
+      properties:
+        appealID:
+          type: integer
+          description: The unique ID of the appeal.
+        type:
+          type: string
+          description: The type of appeal.
+          enum:
+          - ban
+          - content-removal
+        status:
+          type: string
+          description: The current status of the appeal.
+          enum:
+          - pending
+          - approved
+          - rejected
+          - in-review
+        insertUserID:
+          type: integer
+          description: The ID of the user who created the appeal record.
+        assignedUserID:
+          type:
+          - integer
+          - 'null'
+          description: The ID of the moderator assigned to review the appeal.
+        appealingUserID:
+          type: integer
+          description: The ID of the user making the appeal.
+        escalationID:
+          type:
+          - integer
+          - 'null'
+          description: The escalation ID for content-removal appeals.
+        escalationLogID:
+          type:
+          - integer
+          - 'null'
+          description: The escalation log ID for content-removal appeals.
+        dateInserted:
+          type: string
+          format: date-time
+          description: When the appeal was created.
+        dateUpdated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the appeal was last updated.
+        appealText:
+          type: string
+          description: The user's appeal message.
+        appealingUserInfo:
+          type: object
+          description: Information about the user making the appeal.
+          properties:
+            userID:
+              type: integer
+              description: The user ID.
+            name:
+              type: string
+              description: The username.
+            email:
+              type:
+              - string
+              - 'null'
+              description: The user's email address.
+          required:
+          - userID
+          - name
+        appealEventInfo:
+          type: object
+          description: 'Information about the moderation event being appealed.
+
+            Fields vary based on appeal type (ban vs content-removal).
+
+            '
+          properties:
+            userNoteID:
+              type:
+              - integer
+              - 'null'
+              description: The ID of the user note (for ban appeals).
+            moderatorUserID:
+              type:
+              - integer
+              - 'null'
+              description: The ID of the moderator who made the decision.
+            moderatorName:
+              type:
+              - string
+              - 'null'
+              description: The name of the moderator who made the decision.
+            reasons:
+              type:
+              - array
+              - 'null'
+              description: The reasons given for the ban or content removal.
+              items:
+                type: string
+            moderatorMessage:
+              type:
+              - string
+              - 'null'
+              description: The message from the moderator at time of ban/removal.
+            dateOfEvent:
+              type:
+              - string
+              - 'null'
+              format: date-time
+              description: When the ban or content removal occurred.
+            recordType:
+              type:
+              - string
+              - 'null'
+              description: The type of record (for content-removal appeals).
+              enum:
+              - discussion
+              - comment
+            recordID:
+              type:
+              - integer
+              - 'null'
+              description: The ID of the record that was removed (for content-removal appeals).
+            decisionMessage:
+              type:
+              - string
+              - 'null'
+              description: The decision message added when resolving the appeal.
+      required:
+      - appealID
+      - type
+      - status
+      - insertUserID
+      - appealingUserID
+      - dateInserted
+      - appealText
+      - appealingUserInfo
+      - appealEventInfo
+      x-addon: dashboard
+    RangeExpression:
+      description: Specify a range or CSV of values.
+      type: string
+      format: range-expression
+      externalDocs:
+        url: https://success.vanillaforums.com/kb/articles/308-range-expressions
+      x-addon: dashboard
+    EscalationPatch:
+      type: object
+      properties:
+        recordIsLive:
+          type: boolean
+          description: If false, remove the post from the frontend.
+        assignedUserID:
+          type: integer
+          description: ID of the user to assign the escalation to. The user must have the "post.moderate" permission in the records category. -4 indicates "unassigned".
+        status:
+          type: string
+          description: Status of the escalation.
+          enum:
+          - open
+          - in-progress
+          - on-hold
+          - external-zendesk
+          - done
+      x-addon: vanilla
+    ReportReason:
+      type: object
+      properties:
+        reportReasonID:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        dateInserted:
+          type: string
+          format: date-time
+        dateUpdated:
+          type: string
+          format: date-time
+        insertUserID:
+          type: integer
+        updateUserID:
+          type: integer
+        sort:
+          type: integer
+        roleIDs:
+          type: array
+          items:
+            type: integer
+        roles:
+          type: array
+          items:
+            type: object
+            properties:
+              roleID:
+                type: integer
+              name:
+                type: string
+        deleted:
+          type: boolean
+        countReports:
+          type: integer
+          description: The number of reports that have used this reason. Only available with `community.manage` permission.
+      required:
+      - reportReasonID
+      - name
+      - description
+      - dateInserted
+      - insertUserID
+      - sort
+      - deleted
+      x-addon: vanilla
+    Escalation:
+      type: object
+      properties:
+        name:
+          description: Title of the escalation.
+          type: string
+        url:
+          description: HTML url of the escalation.
+          type: string
+          format: uri
+        status:
+          type: string
+          description: Status of the escalation.
+          enum:
+          - open
+          - in-progress
+          - on-hold
+          - external-zendesk
+          - done
+        assignedUserID:
+          description: ID of the user assigned to the escalation. -4 indicates "unassigned".
+          type: integer
+        assignedUser:
+          $ref: '#/components/schemas/UserFragment'
+        recordType:
+          description: Type of record being reported.
+          type: string
+          enum:
+          - discussion
+          - comment
+          - premoderated
+        recordID:
+          description: ID of the record being reported.
+          type: integer
+        recordUrl:
+          description: URL of the record being reported.
+          type: string
+        recordName:
+          description: Name/title of the record being reported.
+          type: string
+        recordIsLive:
+          description: Whether the record still exists.
+          type: boolean
+        recordWasEdited:
+          description: Whether the record was edited after the report was made.
+          type: boolean
+        placeRecordType:
+          description: Type of record the reported record is placed in.
+          type: string
+          enum:
+          - category
+        placeRecordID:
+          description: ID of the record the reported record is placed in.
+          type: integer
+        placeRecordName:
+          description: Name of the record the reported record is placed in.
+          type: string
+        placeRecordUrl:
+          description: URL of the record the reported record is placed in.
+          type: string
+          format: uri
+        reportReasons:
+          description: Full report reasons
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportReasonFragment'
+        countReports:
+          description: The number of reports made about this record.
+          type: integer
+        countReportUsers:
+          description: The number of unique users who have reported this record.
+          type: integer
+        reportUserIDs:
+          description: The IDs of the users who have reported this record.
+          type: array
+          items:
+            type: integer
+        reportUsers:
+          description: The users who have reported this record.
+          type: array
+          items:
+            $ref: '#/components/schemas/UserFragment'
+        dateLastReport:
+          description: The date of the most recent report made about this record.
+          type: string
+          format: date-time
+        lastCommentID:
+          description: The ID of the last comment.
+          type: integer
+        dateLastComment:
+          description: The date of the last comment.
+          format: date-time
+          type: string
+        lastCommentUserID:
+          description: The ID of the user who made the last comment.
+          type: integer
+        lastCommentUser:
+          description: The user who made the last comment.
+          $ref: '#/components/schemas/UserFragment'
+        appeals:
+          description: Appeals submitted for this escalation.
+          type: array
+          items:
+            $ref: '#/components/schemas/Appeal'
+        countAppeals:
+          description: The number of appeals submitted for this escalation.
+          type: integer
+      required:
+      - name
+      - status
+      - recordType
+      - recordID
+      - recordName
+      - recordUrl
+      - recordIsLive
+      - recordWasEdited
+      - recordUserID
+      - recordDateInserted
+      - placeRecordType
+      - placeRecordID
+      - reportReasons
+      - countReportUsers
+      - countReports
+      - reportUserIDs
+      - reportUsers
+      x-addon: vanilla
+    ReportReasonPost:
+      type: object
+      properties:
+        reportReasonID:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        sort:
+          type: integer
+        roleIDs:
+          type: array
+          items:
+            type: integer
+      required:
+      - reportReasonID
+      - name
+      - description
+      - roleIDs
+      x-addon: vanilla
+    EscalationLog:
+      type: object
+      properties:
+        escalationLogID:
+          description: Primary ID of the log.
+          type: integer
+        authorNotificationMessage:
+          description: Message to the user.
+          type: string
+        action:
+          type: string
+          description: Status of the escalation.
+          enum:
+          - removed
+          - escalated
+          - restored
+        insertUserID:
+          description: ID of the user triggered the action.
+          type: integer
+        dateInserted:
+          description: The date log creation.
+          type: string
+          format: date-time
+        recordType:
+          description: Type of record being reported.
+          type: string
+          enum:
+          - discussion
+          - comment
+          - premoderated
+        recordID:
+          description: ID of the record being reported.
+          type: integer
+        recordUserID:
+          description: ID of the user who created the record being reported.
+          type: integer
+        reasons:
+          description: Reasons for action.
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportReasonFragment'
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        recordUser:
+          $ref: '#/components/schemas/UserFragment'
+        appeal:
+          description: The appeal submitted for this removal (if expand=appeal or expand=all).
+          $ref: '#/components/schemas/Appeal'
+        record:
+          description: The removed content from the log table (if expand=record or expand=all).
+          type: object
+          properties:
+            recordName:
+              type: string
+              description: The name/title of the removed post.
+            recordBody:
+              type: string
+              description: The body content of the removed post.
+            recordFormat:
+              type: string
+              description: The format of the removed post body.
+            recordUrl:
+              type: string
+              description: The URL of the removed post.
+      required:
+      - message
+      - action
+      - recordType
+      - recordID
+      - recordUserID
+      - insertUserID
+      x-addon: vanilla
+    ReportCounter:
+      type: object
+      properties:
+        recordType:
+          description: Type of record being reported.
+          type: string
+          enum:
+          - discussion
+          - comment
+        recordID:
+          description: ID of the record being reported.
+          type: integer
+        recordName:
+          description: Name of the record being reported.
+          type: string
+        recordHtml:
+          description: Rendered HTML contents of the reported record.
+          type: string
+        placeRecordType:
+          description: Type of record the reported record is placed in.
+          type: string
+          enum:
+          - category
+        placeRecordID:
+          description: ID of the record the reported record is placed in.
+          type: integer
+        placeRecordName:
+          description: Name of the record the reported record is placed in.
+          type: string
+        reportReasons:
+          description: Full report reasons
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportReasonFragment'
+      required:
+      - recordType
+      - recordID
+      - recordName
+      - recordHtml
+      - placeRecordType
+      - placeRecordID
+      - placeRecordName
+      - reportReasonIDs
+      x-addon: vanilla
+    ReportReasonFragment:
+      type: object
+      properties:
+        reportReasonID:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        sort:
+          type: integer
+        reportID:
+          type: integer
+        deleted:
+          type: boolean
+      required:
+      - reportReasonID
+      - name
+      - description
+      - sort
+      - deleted
+      x-addon: vanilla
+    ReportInsert:
+      type: object
+      properties:
+        recordType:
+          description: Type of record being reported.
+          type: string
+          enum:
+          - discussion
+          - comment
+        recordID:
+          description: ID of the record being reported.
+          type: integer
+        reportReasonIDs:
+          description: One or more reasons for the report.
+          type: array
+          items:
+            type: string
+          example:
+          - spam
+          - abuse
+        noteBody:
+          description: Additional information about the report.
+          type: string
+        noteFormat:
+          description: Format of the note field.
+          type: string
+        reporterEmail:
+          description: Email address of the guest reporter. Required when the reporter is not logged in.
+          type: string
+          format: email
+        reporterName:
+          description: Display name of the guest reporter (plain text only).
+          type: string
+      required:
+      - recordType
+      - recordID
+      - reportReasonIDs
+      - noteBody
+      - noteFormat
+      x-addon: vanilla
+    EscalationInsert:
+      type: object
+      properties:
+        name:
+          description: Name for the escalation.
+          type: string
+        status:
+          type: string
+          description: Status of the escalation.
+          enum:
+          - open
+          - in-progress
+          - on-hold
+          - external-zendesk
+          - done
+        assignedUserID:
+          description: ID of the user assigned to the escalation. -4 indicates "unassigned".
+          type: integer
+        recordType:
+          description: Type of record being reported.
+          type: string
+          enum:
+          - discussion
+          - comment
+          - premoderated
+        recordID:
+          description: ID of the record being reported.
+          type: integer
+        reportID:
+          description: ID of the report being escalated.
+          type: integer
+        reportReasonIDs:
+          description: One or more reasons for the report. Used if reportID is not provided.
+          type: array
+          items:
+            type: string
+          example:
+          - spam
+          - abuse
+        noteBody:
+          description: Additional information about the report.
+          type: string
+        noteFormat:
+          description: Format of the note field.
+          type: string
+        recordIsLive:
+          type: boolean
+          description: If false, remove the post from the frontend.
+        initialCommentBody:
+          type: string
+          description: Create an initial comment on the escalation.
+        initialCommentFormat:
+          $ref: '#/components/schemas/Format'
+      required:
+      - name
+      - recordType
+      - recordID
+      x-addon: vanilla
+  parameters:
+    DateInserted:
+      name: dateInserted
+      in: query
+      description: 'Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+
+        '
+      schema:
+        format: date-filter
+        type: string
+      x-addon: dashboard
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

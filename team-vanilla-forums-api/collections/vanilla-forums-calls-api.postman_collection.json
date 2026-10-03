@@ -1,0 +1,154 @@
+{
+  "item": [
+    {
+      "id": "d9e55523-18e5-4503-9ca1-7253bb8eb30c",
+      "name": "Calls",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "761600e1-f314-4062-9860-043723a32484",
+          "name": "Continue running a callbackPayload from a previous API call.",
+          "request": {
+            "name": "Continue running a callbackPayload from a previous API call.",
+            "description": {
+              "content": "Various endoints may return a 202 status response with\n`callbackPayload` property in the body. Simply pass that\nresponse to this endpoint to continue processing.\n\nEndpoints with responses like this are structured as follows:\n1. Call other endpoint.\n2. Endpoint may return 202 with \"callbackPayload\" and progress.\n3. Pass the callback payload to this endpoint.\n4. This endpoint may return a 202 with another `callbackPayload`\n5. Repeat until task is complete.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "calls",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/system+jwt"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "af4d1516-2bf3-4164-a285-30486b5b696a",
+              "name": "Endpoints that may time out and require the client to\nprogress them with the `/api/v2/calls` endpoints may return this.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calls",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\n"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"progress\": {\n    \"successIDs\": [\n      25,\n      145,\n      11431,\n      1313\n    ],\n    \"failedIDs\": [\n      14424,\n      1264524\n    ],\n    \"exceptionsByID\": {\n      \"message\": \"string\",\n      \"code\": 5007.288193447998\n    },\n    \"countTotalIDs\": 400\n  },\n  \"callbackPayload\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\\n\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e70f9305-98dd-499f-9dcf-8a0e2fa3cc1a",
+              "name": "Endpoints that may time out and require the client to\nprogress them with the `/api/v2/calls` endpoints may return this.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calls",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\n"
+                }
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"progress\": {\n    \"successIDs\": [\n      25,\n      145,\n      11431,\n      1313\n    ],\n    \"failedIDs\": [\n      14424,\n      1264524\n    ],\n    \"exceptionsByID\": {\n      \"message\": \"string\",\n      \"code\": 3490.8007334731105\n    },\n    \"countTotalIDs\": 1994\n  },\n  \"callbackPayload\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\\n\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "14fb45f9-9fd5-421d-89e4-75dbfa944781",
+    "name": "Vanilla Addons Calls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

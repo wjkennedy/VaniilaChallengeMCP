@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of /.well-known/ on apis.yml + OpenAPI hosts, 2026-07-21
+description: >-
+  Probe of the well-known discovery surface across Vanilla Forums / Higher
+  Logic Vanilla hosts. No well-known documents are published: vanillaforums.com
+  301-redirects everything into the higherlogic.com migration, the success
+  community and higherlogic.com return 404, and open.vanillaforums.com returns
+  403 (community permission gate) for every probed path. Empty is the honest
+  result — nothing was saved.
+hosts:
+  - host: https://vanillaforums.com
+    documents:
+      - {path: /.well-known/security.txt, status: 301, note: redirects to vanilla.higherlogic.com, which 404s}
+      - {path: /.well-known/openid-configuration, status: 301}
+      - {path: /.well-known/oauth-authorization-server, status: 301}
+      - {path: /.well-known/api-catalog, status: 301}
+      - {path: /.well-known/ai-plugin.json, status: 301}
+  - host: https://www.higherlogic.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://success.vanillaforums.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://open.vanillaforums.com
+    documents:
+      - {path: /.well-known/security.txt, status: 403}
+      - {path: /.well-known/openid-configuration, status: 403}
+      - {path: /.well-known/oauth-authorization-server, status: 403}
+      - {path: /.well-known/api-catalog, status: 403}
+      - {path: /.well-known/ai-plugin.json, status: 404}

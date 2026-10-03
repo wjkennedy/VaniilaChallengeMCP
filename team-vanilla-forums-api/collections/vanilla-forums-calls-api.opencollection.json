@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Calls API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Calls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Continue running a callbackPayload from a previous API call.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/calls/run"
+          },
+          "docs": "Various endoints may return a 202 status response with\n`callbackPayload` property in the body. Simply pass that\nresponse to this endpoint to continue processing.\n\nEndpoints with responses like this are structured as follows:\n1. Call other endpoint.\n2. Endpoint may return 202 with \"callbackPayload\" and progress.\n3. Pass the callback payload to this endpoint.\n4. This endpoint may return a 202 with another `callbackPayload`\n5. Repeat until task is complete.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

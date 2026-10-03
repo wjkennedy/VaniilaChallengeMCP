@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Dashboard API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dashboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the dashboard menus.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/dashboard/menus",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "This endpoint returns the entire navigation structure of the dashboard. It has three levels:\n\n1. The first level represents main menu sections.\n2. Each section can have children, seperated into groups.\n3. Groups contain the actual menu links.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

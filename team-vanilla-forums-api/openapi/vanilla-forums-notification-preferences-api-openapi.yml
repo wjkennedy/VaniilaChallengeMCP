@@ -1,0 +1,941 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Notification Preferences API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Notification Preferences
+paths:
+  /notification-preferences/schema:
+    get:
+      parameters:
+      - in: query
+        name: userID
+        required: false
+        schema:
+          type: integer
+      - in: query
+        name: schemaType
+        required: false
+        schema:
+          type: string
+          enum:
+          - user
+          - defaults
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      summary: Get the schema for the notification preferences page
+      tags:
+      - Notification Preferences
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationPreferencesSchema'
+              example:
+                type: object
+                properties:
+                  notifications:
+                    x-control:
+                      label: Notifications
+                      description: Choose to be notified by notification popup or email.
+                    type: object
+                    properties:
+                      followedPosts:
+                        x-control:
+                          label: Posts
+                          description: null
+                        type: object
+                        properties:
+                          DiscussionComment:
+                            x-control:
+                              label: Discussion Comment
+                              description: New comments on my posts
+                            type: object
+                            properties:
+                              email:
+                                type: boolean
+                              popup:
+                                type: boolean
+      x-addon: dashboard
+      operationId: getNotificationPreferencesSchema
+      x-operation-id-source: derived
+  /notification-preferences/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      x-addon: dashboard
+    get:
+      summary: Get a user's notification preferences
+      tags:
+      - Notification Preferences
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationPreferences'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getNotificationPreferencesById
+      x-operation-id-source: derived
+    patch:
+      summary: Update a user's notification preferences
+      tags:
+      - Notification Preferences
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationPreferences'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationPreferences'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      operationId: patchNotificationPreferencesById
+      x-operation-id-source: derived
+components:
+  schemas:
+    NotificationPreferences:
+      type: object
+      x-addon: dashboard
+      properties:
+        AnswerAccepted:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        QuestionAnswer:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        QuestionFollowUp:
+          type: object
+          properties:
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        BookmarkedAnswerAccepted:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        MyQuestionAnswerAccepted:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        AuthorStatus:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        VoterStatus:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        Rank:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        ScheduledPostFailure:
+          type: object
+        DiscussionComment:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        ActivityComment:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        WallComment:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        Applicant:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        BookmarkComment:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        Mention:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        NewDiscussion:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        postTag:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        NewComment:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        ParticipateComment:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        DigestEnabled:
+          type: object
+          properties:
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+            frequency:
+              type: string
+              default: weekly
+        AiSuggestions:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        FeatureDisclosure:
+          type: object
+        appeal:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        myAppeal:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        escalation:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        myEscalation:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        postRemoved:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        report:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        CommunityEngagement:
+          type: object
+          properties:
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        userFollowingNewDiscussion:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        userFollowingNewComment:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        userFollowingNewEvent:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        ConversationMessage:
+          type: object
+          properties:
+            popup:
+              type: boolean
+            email:
+              type: boolean
+            disabled:
+              type: boolean
+              default: false
+        NotificationLanguage:
+          type: string
+          example: fr
+    NotificationPreferencesSchema:
+      type: object
+      x-addon: dashboard
+  responses:
+    NotFound:
+      description: The record does not exist or was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: More information about the error.
+              status:
+                type: number
+                description: The HTTP status code for the error.
+                format: int32
+            required:
+            - message
+          example:
+            status: 404
+            message: Page Not Found
+      x-addon: dashboard
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

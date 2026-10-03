@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Icons API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Icons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete an icon variant",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/icons/:iconUUID",
+            "params": [
+              {
+                "name": "iconUUID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an icon variant"
+        },
+        {
+          "info": {
+            "name": "List the active version of each icon.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/icons/active",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List the active version of each icon."
+        },
+        {
+          "info": {
+            "name": "List icon variants by name.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/icons/by-name",
+            "params": [
+              {
+                "name": "iconName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List icon variants by name."
+        },
+        {
+          "info": {
+            "name": "Override icons",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/icons/override",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create one or more new icon variants and mark them as active."
+        },
+        {
+          "info": {
+            "name": "Restore existing icon revisions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/icons/restore",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restore one or more existing icon variants to active status."
+        },
+        {
+          "info": {
+            "name": "List all system icons.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/icons/system",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List all system icons."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

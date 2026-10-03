@@ -1,0 +1,47 @@
+slug: vanilla-forums
+provider: Vanilla Forums
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Roles
+  spec_file: vanilla-forums-roles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: PATCH /roles/{id}/permissions 'Update permissions on a role'; PUT /roles/{id}/permissions
+    'Overwrite all permissions for a role.'
+  reason: CRUD over roles plus explicit permission assignment is role-based access control administration,
+    mapping to Identity & Access Management. Not a domain business object for this vendor.
+- tag: Analytics
+  spec_file: vanilla-forums-analytics-api-openapi.yml
+  capability_id: BC-610.50
+  capability_id_l1: BC-610
+  capability_name: Analytics & BI Management
+  confidence: 0.72
+  evidence: POST /analytics/analysis  Get the results of an analytics query.; POST /analytics/dashboards  Add
+    a new dashboard.; GET /analytics/catalog/data-sources
+  reason: Operations create/manage analytics dashboards and run queries over data sources — reporting/BI
+    delivery. Could arguably be product usage analytics, but the surface is generic dashboard/query/BI
+    tooling, so Analytics & BI Management is the honest mapping.
+- tag: Authenticators
+  spec_file: vanilla-forums-authenticators-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: GET /authenticator-types  List every available authenticator types.; GET /authenticators  List
+    the authenticators.; AuthenticationTypeService, AuthenticatorMetaDataUrl
+  reason: Manages configured authentication providers (SSO/SAML-style authenticators) for the site, i.e.
+    identity federation configuration. Maps to Identity & Access Management, though part of the surface
+    is debug-log plumbing.

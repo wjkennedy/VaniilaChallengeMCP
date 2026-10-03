@@ -1,0 +1,211 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Themes API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Themes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all themes available.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of `all` will expand all expandable fields. style\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get all themes available."
+        },
+        {
+          "info": {
+            "name": "Create a new theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/themes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new theme."
+        },
+        {
+          "info": {
+            "name": "Get the current theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/current",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of `all` will expand all expandable fields. style\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get the current theme."
+        },
+        {
+          "info": {
+            "name": "Set theme as \"current\".",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/current",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set theme as \"current\"."
+        },
+        {
+          "info": {
+            "name": "Set preview theme. Note: only applies to current user session",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/preview",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set preview theme. Note: only applies to current user session"
+        },
+        {
+          "info": {
+            "name": "Get a theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of `all` will expand all expandable fields. style\n"
+              },
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a theme."
+        },
+        {
+          "info": {
+            "name": "Update theme name.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update theme name."
+        },
+        {
+          "info": {
+            "name": "Delete theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Delete theme."
+        },
+        {
+          "info": {
+            "name": "Get all revisions for a theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/revisions",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get all revisions for a theme."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

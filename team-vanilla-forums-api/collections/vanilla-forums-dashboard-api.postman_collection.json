@@ -1,0 +1,126 @@
+{
+  "item": [
+    {
+      "id": "e17ac69f-4653-4957-9f40-22f52f3034bc",
+      "name": "Dashboard",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c7815ce4-b8c5-4da0-a1ea-f9b41143819d",
+          "name": "List the dashboard menus.",
+          "request": {
+            "name": "List the dashboard menus.",
+            "description": {
+              "content": "This endpoint returns the entire navigation structure of the dashboard. It has three levels:\n\n1. The first level represents main menu sections.\n2. Each section can have children, seperated into groups.\n3. Groups contain the actual menu links.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dashboard",
+                "menus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4629ae11-777e-4563-a24f-905c35904af0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dashboard",
+                    "menus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"id\": \"string\",\n    \"description\": \"string\",\n    \"children\": [\n      {\n        \"children\": [\n          {\n            \"name\": \"string\",\n            \"id\": \"string\",\n            \"parentID\": \"string\",\n            \"url\": \"string\",\n            \"react\": false,\n            \"badge\": {\n              \"text\": \"string\",\n              \"type\": \"text\",\n              \"url\": \"string\"\n            }\n          },\n          {\n            \"name\": \"string\",\n            \"id\": \"string\",\n            \"parentID\": \"string\",\n            \"url\": \"string\",\n            \"react\": true,\n            \"badge\": {\n              \"text\": \"string\",\n              \"type\": \"view\",\n              \"url\": \"string\"\n            }\n          }\n        ],\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"children\": [\n          {\n            \"name\": \"string\",\n            \"id\": \"string\",\n            \"parentID\": \"string\",\n            \"url\": \"string\",\n            \"react\": false,\n            \"badge\": {\n              \"text\": \"string\",\n              \"type\": \"view\",\n              \"url\": \"string\"\n            }\n          },\n          {\n            \"name\": \"string\",\n            \"id\": \"string\",\n            \"parentID\": \"string\",\n            \"url\": \"string\",\n            \"react\": true,\n            \"badge\": {\n              \"text\": \"string\",\n              \"type\": \"text\",\n              \"url\": \"string\"\n            }\n          }\n        ],\n        \"id\": \"str\",\n        \"name\": \"string\"\n      }\n    ],\n    \"url\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"id\": \"string\",\n    \"description\": \"string\",\n    \"children\": [\n      {\n        \"children\": [\n          {\n            \"name\": \"string\",\n            \"id\": \"string\",\n            \"parentID\": \"string\",\n            \"url\": \"string\",\n            \"react\": true,\n            \"badge\": {\n              \"text\": \"string\",\n              \"type\": \"text\",\n              \"url\": \"string\"\n            }\n          },\n          {\n            \"name\": \"string\",\n            \"id\": \"string\",\n            \"parentID\": \"string\",\n            \"url\": \"string\",\n            \"react\": false,\n            \"badge\": {\n              \"text\": \"string\",\n              \"type\": \"view\",\n              \"url\": \"string\"\n            }\n          }\n        ],\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"children\": [\n          {\n            \"name\": \"string\",\n            \"id\": \"string\",\n            \"parentID\": \"string\",\n            \"url\": \"string\",\n            \"react\": false,\n            \"badge\": {\n              \"text\": \"string\",\n              \"type\": \"text\",\n              \"url\": \"string\"\n            }\n          },\n          {\n            \"name\": \"string\",\n            \"id\": \"string\",\n            \"parentID\": \"string\",\n            \"url\": \"string\",\n            \"react\": true,\n            \"badge\": {\n              \"text\": \"string\",\n              \"type\": \"view\",\n              \"url\": \"string\"\n            }\n          }\n        ],\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    ],\n    \"url\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d57b1e34-6fbe-4ef1-a0cc-f62b467b0254",
+    "name": "Vanilla Addons Dashboard API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

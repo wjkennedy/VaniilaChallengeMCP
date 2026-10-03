@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Rich API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rich",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a rich-compatible HTML representation of a string for quoting.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/rich/quote",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a rich-compatible HTML representation of a string for quoting."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

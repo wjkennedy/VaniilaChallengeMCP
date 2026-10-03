@@ -1,0 +1,919 @@
+{
+  "item": [
+    {
+      "id": "d25fe4f2-c318-43db-8801-3cb4576979cf",
+      "name": "Themes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd422f4e-cc3f-430a-98ac-4c84a61d5143",
+          "name": "Get all themes available.",
+          "request": {
+            "name": "Get all themes available.",
+            "description": {},
+            "url": {
+              "path": [
+                "themes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of `all` will expand all expandable fields. style\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of `all` will expand all expandable fields. style\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29d3fbbc-5389-49e8-93a7-ca5d9e47b8ab",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"assets\": {\n      \"header\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"footer\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"javascript\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"scripts\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": [\n          {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"styles\": {\n        \"data\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      },\n      \"variables\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": {}\n      },\n      \"logo\": {\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      },\n      \"mobileLogo\": {\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      }\n    },\n    \"type\": \"themeFile\",\n    \"themeID\": 906,\n    \"version\": \"string\",\n    \"preview\": {\n      \"preset\": \"string\",\n      \"globalPrimary\": \"string\",\n      \"globalBg\": \"string\",\n      \"globalFg\": \"string\",\n      \"titleBarBg\": \"string\",\n      \"titleBarFg\": \"string\",\n      \"backgroundImage\": \"string\"\n    }\n  },\n  {\n    \"assets\": {\n      \"header\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"footer\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"javascript\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"scripts\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": [\n          {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"styles\": {\n        \"data\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      },\n      \"variables\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": {}\n      },\n      \"logo\": {\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      },\n      \"mobileLogo\": {\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      }\n    },\n    \"type\": \"themeFile\",\n    \"themeID\": 9790,\n    \"version\": \"string\",\n    \"preview\": {\n      \"preset\": \"string\",\n      \"globalPrimary\": \"string\",\n      \"globalBg\": \"string\",\n      \"globalFg\": \"string\",\n      \"titleBarBg\": \"string\",\n      \"titleBarFg\": \"string\",\n      \"backgroundImage\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88c54689-96c1-4887-8efe-d26e7feec3f0",
+          "name": "Create a new theme.",
+          "request": {
+            "name": "Create a new theme.",
+            "description": {},
+            "url": {
+              "path": [
+                "themes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"revisionName\": \"<string>\",\n  \"assets\": {\n    \"header\": {\n      \"type\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    \"footer\": {\n      \"type\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    \"variables\": {\n      \"type\": \"<string>\",\n      \"data\": \"<object>\"\n    },\n    \"scripts\": {\n      \"type\": \"<string>\",\n      \"data\": \"<object>\"\n    },\n    \"styles\": {\n      \"type\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    \"javascript\": {\n      \"type\": \"<string>\",\n      \"data\": \"<string>\"\n    }\n  },\n  \"parentTheme\": \"<string>\",\n  \"parentVersion\": \"<string>\",\n  \"active\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c62bcab-35c0-48a9-aca4-860e1db67248",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": {\n    \"header\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"footer\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"javascript\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"scripts\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": [\n        {\n          \"url\": \"string\"\n        },\n        {\n          \"url\": \"string\"\n        }\n      ]\n    },\n    \"styles\": {\n      \"data\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"variables\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": {}\n    },\n    \"logo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"mobileLogo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    }\n  },\n  \"themeID\": \"string\",\n  \"version\": \"string\",\n  \"name\": \"string\",\n  \"parentTheme\": \"string\",\n  \"parentVersion\": \"string\",\n  \"revisionID\": 4349,\n  \"revisionName\": \"string\",\n  \"preview\": {\n    \"preset\": \"string\",\n    \"globalPrimary\": \"string\",\n    \"globalBg\": \"string\",\n    \"globalFg\": \"string\",\n    \"titleBarBg\": \"string\",\n    \"titleBarFg\": \"string\",\n    \"backgroundImage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d12cccc-3e2d-4064-ac44-b05cb9b7d3b7",
+          "name": "Get the current theme.",
+          "request": {
+            "name": "Get the current theme.",
+            "description": {},
+            "url": {
+              "path": [
+                "themes",
+                "current"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of `all` will expand all expandable fields. style\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of `all` will expand all expandable fields. style\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be9da2df-e924-4539-b7f8-07d28688dd78",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": {\n    \"header\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"footer\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"javascript\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"scripts\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": [\n        {\n          \"url\": \"string\"\n        },\n        {\n          \"url\": \"string\"\n        }\n      ]\n    },\n    \"styles\": {\n      \"data\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"variables\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": {}\n    },\n    \"logo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"mobileLogo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    }\n  },\n  \"themeID\": \"string\",\n  \"version\": \"string\",\n  \"name\": \"string\",\n  \"parentTheme\": \"string\",\n  \"parentVersion\": \"string\",\n  \"revisionID\": 4349,\n  \"revisionName\": \"string\",\n  \"preview\": {\n    \"preset\": \"string\",\n    \"globalPrimary\": \"string\",\n    \"globalBg\": \"string\",\n    \"globalFg\": \"string\",\n    \"titleBarBg\": \"string\",\n    \"titleBarFg\": \"string\",\n    \"backgroundImage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3c09ad3-ae53-4866-8efe-98f41a1df9a6",
+          "name": "Set theme as \"current\".",
+          "request": {
+            "name": "Set theme as \"current\".",
+            "description": {},
+            "url": {
+              "path": [
+                "themes",
+                "current"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"themeID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "552071bc-3b49-49ca-ac2a-141013bfbd70",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"themeID\": 3\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": {\n    \"header\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"footer\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"javascript\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"scripts\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": [\n        {\n          \"url\": \"string\"\n        },\n        {\n          \"url\": \"string\"\n        }\n      ]\n    },\n    \"styles\": {\n      \"data\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"variables\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": {}\n    },\n    \"logo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"mobileLogo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    }\n  },\n  \"themeID\": \"string\",\n  \"version\": \"string\",\n  \"name\": \"string\",\n  \"parentTheme\": \"string\",\n  \"parentVersion\": \"string\",\n  \"revisionID\": 4349,\n  \"revisionName\": \"string\",\n  \"preview\": {\n    \"preset\": \"string\",\n    \"globalPrimary\": \"string\",\n    \"globalBg\": \"string\",\n    \"globalFg\": \"string\",\n    \"titleBarBg\": \"string\",\n    \"titleBarFg\": \"string\",\n    \"backgroundImage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2b259e0-7e8b-4721-80b7-33d9f17040ed",
+          "name": "Set preview theme. Note: only applies to current user session",
+          "request": {
+            "name": "Set preview theme. Note: only applies to current user session",
+            "description": {},
+            "url": {
+              "path": [
+                "themes",
+                "preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"themeID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8287d35-5266-4fb5-84f4-5b59d920f0b7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"themeID\": 3\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": {\n    \"header\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"footer\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"javascript\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"scripts\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": [\n        {\n          \"url\": \"string\"\n        },\n        {\n          \"url\": \"string\"\n        }\n      ]\n    },\n    \"styles\": {\n      \"data\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"variables\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": {}\n    },\n    \"logo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"mobileLogo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    }\n  },\n  \"themeID\": \"string\",\n  \"version\": \"string\",\n  \"name\": \"string\",\n  \"parentTheme\": \"string\",\n  \"parentVersion\": \"string\",\n  \"revisionID\": 4349,\n  \"revisionName\": \"string\",\n  \"preview\": {\n    \"preset\": \"string\",\n    \"globalPrimary\": \"string\",\n    \"globalBg\": \"string\",\n    \"globalFg\": \"string\",\n    \"titleBarBg\": \"string\",\n    \"titleBarFg\": \"string\",\n    \"backgroundImage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71cee17c-8e52-4702-9112-99d9165119f8",
+          "name": "Get a theme.",
+          "request": {
+            "name": "Get a theme.",
+            "description": {},
+            "url": {
+              "path": [
+                "themes",
+                ":themeID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of `all` will expand all expandable fields. style\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of `all` will expand all expandable fields. style\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "themeID",
+                  "description": "(Required) Unique theme slug."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95b7a09f-3168-4616-8ff0-a1bc53a50e82",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    ":themeID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeID",
+                      "description": "(Required) Unique theme slug."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": {\n    \"header\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"footer\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"javascript\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"scripts\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": [\n        {\n          \"url\": \"string\"\n        },\n        {\n          \"url\": \"string\"\n        }\n      ]\n    },\n    \"styles\": {\n      \"data\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"variables\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": {}\n    },\n    \"logo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"mobileLogo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    }\n  },\n  \"themeID\": \"string\",\n  \"version\": \"string\",\n  \"name\": \"string\",\n  \"parentTheme\": \"string\",\n  \"parentVersion\": \"string\",\n  \"revisionID\": 4349,\n  \"revisionName\": \"string\",\n  \"preview\": {\n    \"preset\": \"string\",\n    \"globalPrimary\": \"string\",\n    \"globalBg\": \"string\",\n    \"globalFg\": \"string\",\n    \"titleBarBg\": \"string\",\n    \"titleBarFg\": \"string\",\n    \"backgroundImage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8f8c3dd-f1df-41a8-b56d-a13200faa911",
+          "name": "Update theme name.",
+          "request": {
+            "name": "Update theme name.",
+            "description": {},
+            "url": {
+              "path": [
+                "themes",
+                ":themeID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "themeID",
+                  "description": "(Required) Unique themeID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"revisionName\": \"<string>\",\n  \"assets\": {\n    \"header\": {\n      \"type\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    \"footer\": {\n      \"type\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    \"variables\": {\n      \"type\": \"<string>\",\n      \"data\": \"<object>\"\n    },\n    \"scripts\": {\n      \"type\": \"<string>\",\n      \"data\": \"<object>\"\n    },\n    \"styles\": {\n      \"type\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    \"javascript\": {\n      \"type\": \"<string>\",\n      \"data\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3966f8cd-3978-4f5f-b89c-29c0f4de8196",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    ":themeID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "themeID",
+                      "description": "(Required) Unique themeID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": {\n    \"header\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"footer\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"javascript\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": \"string\"\n    },\n    \"scripts\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": [\n        {\n          \"url\": \"string\"\n        },\n        {\n          \"url\": \"string\"\n        }\n      ]\n    },\n    \"styles\": {\n      \"data\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"variables\": {\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"content-type\": \"application/json\",\n      \"data\": {}\n    },\n    \"logo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    },\n    \"mobileLogo\": {\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"content-type\": \"application/json\"\n    }\n  },\n  \"themeID\": \"string\",\n  \"version\": \"string\",\n  \"name\": \"string\",\n  \"parentTheme\": \"string\",\n  \"parentVersion\": \"string\",\n  \"revisionID\": 4349,\n  \"revisionName\": \"string\",\n  \"preview\": {\n    \"preset\": \"string\",\n    \"globalPrimary\": \"string\",\n    \"globalBg\": \"string\",\n    \"globalFg\": \"string\",\n    \"titleBarBg\": \"string\",\n    \"titleBarFg\": \"string\",\n    \"backgroundImage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2718f7a-c0fb-460a-a303-2852c43743b2",
+          "name": "Delete theme.",
+          "request": {
+            "name": "Delete theme.",
+            "description": {},
+            "url": {
+              "path": [
+                "themes",
+                ":themeID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "themeID",
+                  "description": "(Required) Unique themeID."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25e338f3-67c4-4b37-b2c3-702dc11905ca",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    ":themeID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "themeID",
+                      "description": "(Required) Unique themeID."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a5b13a7-e88f-4868-9b52-a1a54d8d1da4",
+          "name": "Get all revisions for a theme.",
+          "request": {
+            "name": "Get all revisions for a theme.",
+            "description": {},
+            "url": {
+              "path": [
+                "themes",
+                ":themeID",
+                "revisions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "themeID",
+                  "description": "(Required) Unique themeID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "068c55fc-132d-4025-ae91-58bc2879adff",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    ":themeID",
+                    "revisions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "themeID",
+                      "description": "(Required) Unique themeID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"assets\": {\n      \"header\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"footer\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"javascript\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"scripts\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": [\n          {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"styles\": {\n        \"data\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      },\n      \"variables\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": {}\n      },\n      \"logo\": {\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      },\n      \"mobileLogo\": {\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      }\n    },\n    \"themeID\": \"string\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"parentTheme\": \"string\",\n    \"parentVersion\": \"string\",\n    \"revisionID\": 6911,\n    \"revisionName\": \"string\",\n    \"preview\": {\n      \"preset\": \"string\",\n      \"globalPrimary\": \"string\",\n      \"globalBg\": \"string\",\n      \"globalFg\": \"string\",\n      \"titleBarBg\": \"string\",\n      \"titleBarFg\": \"string\",\n      \"backgroundImage\": \"string\"\n    }\n  },\n  {\n    \"assets\": {\n      \"header\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"footer\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"javascript\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": \"string\"\n      },\n      \"scripts\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": [\n          {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"styles\": {\n        \"data\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      },\n      \"variables\": {\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"content-type\": \"application/json\",\n        \"data\": {}\n      },\n      \"logo\": {\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      },\n      \"mobileLogo\": {\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"content-type\": \"application/json\"\n      }\n    },\n    \"themeID\": \"string\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"parentTheme\": \"string\",\n    \"parentVersion\": \"string\",\n    \"revisionID\": 197,\n    \"revisionName\": \"string\",\n    \"preview\": {\n      \"preset\": \"string\",\n      \"globalPrimary\": \"string\",\n      \"globalBg\": \"string\",\n      \"globalFg\": \"string\",\n      \"titleBarBg\": \"string\",\n      \"titleBarFg\": \"string\",\n      \"backgroundImage\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "82a22bad-9b13-465f-bb6a-7a5170a77285",
+    "name": "Vanilla Addons Themes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

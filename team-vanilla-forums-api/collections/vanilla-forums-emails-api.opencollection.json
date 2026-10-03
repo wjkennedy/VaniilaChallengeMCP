@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Emails API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Emails",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate and Email Preview",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/emails/preview",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate and Email Preview"
+        },
+        {
+          "info": {
+            "name": "Send out a test email to a specified address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/emails/send-test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send out a test email to a specified address"
+        },
+        {
+          "info": {
+            "name": "Send out an email digest for a particular user to a particular email. The original user will not receive the email.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/emails/send-test-digest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send out an email digest for a particular user to a particular email. The original user will not receive the email."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

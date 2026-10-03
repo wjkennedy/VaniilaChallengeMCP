@@ -1,0 +1,1965 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Theme Assets API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Theme Assets
+paths:
+  /themes/{themeID}/assets/footer:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeFooterAsset'
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get the footer HTML of a theme
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsFooter
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: An asset to be inserted.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: Contents of an asset.
+                type: object
+                properties:
+                  type:
+                    description: The type of the asset.
+                    type: string
+                    example: html
+                    enum:
+                    - html
+                    - css
+                    - js
+                  data:
+                    type: string
+                    example: <header>Hello Footer<footer />
+                    description: Contents of the asset. May require an expand parameter to retreive.
+                  content-type:
+                    description: The content-type of the asset.
+                    type: string
+                    example: text/html
+                  url:
+                    type: string
+                    description: Absolute URL of the resource.
+                    example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsFooter
+      x-operation-id-source: derived
+    delete:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Delete theme asset
+      x-addon: themingapi
+      operationId: deleteThemesByThemeIDAssetsFooter
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/footer.html:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            text/html:
+              schema:
+                type: string
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get the footer HTML of a theme
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsFooterHtml
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+      responses:
+        '200':
+          content:
+            text/html:
+              schema:
+                type: string
+                description: HTML contents.
+                example: <div>Hello HTML Asset!</div>
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsFooterHtml
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/header:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeHeaderAsset'
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get the header HTML of a theme
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsHeader
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: An asset to be inserted.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: Contents of an asset.
+                type: object
+                properties:
+                  type:
+                    description: The type of the asset.
+                    type: string
+                    example: html
+                    enum:
+                    - html
+                    - css
+                    - js
+                  data:
+                    type: string
+                    example: <header>Hello Footer<footer />
+                    description: Contents of the asset. May require an expand parameter to retreive.
+                  content-type:
+                    description: The content-type of the asset.
+                    type: string
+                    example: text/html
+                  url:
+                    type: string
+                    description: Absolute URL of the resource.
+                    example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsHeader
+      x-operation-id-source: derived
+    delete:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Delete theme asset
+      x-addon: themingapi
+      operationId: deleteThemesByThemeIDAssetsHeader
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/header.html:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            text/html:
+              schema:
+                type: string
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get the header HTML of a theme
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsHeaderHtml
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+      responses:
+        '200':
+          content:
+            text/html:
+              schema:
+                type: string
+                description: HTML contents.
+                example: <div>Hello HTML Asset!</div>
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsHeaderHtml
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/javascript:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeJavascriptAsset'
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get JavaScript to be used as part of a theme
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsJavascript
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: An asset to be inserted.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: Contents of an asset.
+                type: object
+                properties:
+                  type:
+                    description: The type of the asset.
+                    type: string
+                    example: html
+                    enum:
+                    - html
+                    - css
+                    - js
+                  data:
+                    type: string
+                    example: <header>Hello Footer<footer />
+                    description: Contents of the asset. May require an expand parameter to retreive.
+                  content-type:
+                    description: The content-type of the asset.
+                    type: string
+                    example: text/html
+                  url:
+                    type: string
+                    description: Absolute URL of the resource.
+                    example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsJavascript
+      x-operation-id-source: derived
+    delete:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Delete theme asset
+      x-addon: themingapi
+      operationId: deleteThemesByThemeIDAssetsJavascript
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/javascript.js:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/javascript:
+              schema:
+                type: string
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get JavaScript to be used as part of a theme
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsJavascriptJs
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+      responses:
+        '200':
+          content:
+            application/javascript:
+              schema:
+                type: string
+                description: HTML contents.
+                example: console.log('Hello Javascript')
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsJavascriptJs
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/scripts:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeScriptsAsset'
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get additional script files of a theme
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsScripts
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: An asset to be inserted.
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: json
+                  data:
+                    type: object
+                    description: JSON content of the asset.
+                    example:
+                      global:
+                        mainColors:
+                          primary: '#5cc530'
+                  content-type:
+                    description: The content-type of the asset.
+                    type: string
+                    example: application/json
+                  url:
+                    type: string
+                    description: Absolute URL of the resource.
+                    example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsScripts
+      x-operation-id-source: derived
+    delete:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Delete theme asset
+      x-addon: themingapi
+      operationId: deleteThemesByThemeIDAssetsScripts
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/scripts.json:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ThemeScript'
+                type: array
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get additional script files of a theme
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsScriptsJson
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: JSON contents of the asset.
+                example:
+                  hello:
+                    json:
+                      asset: true
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsScriptsJson
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/styles:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeCssAsset'
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get theme styles
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsStyles
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: An asset to be inserted.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: Contents of an asset.
+                type: object
+                properties:
+                  type:
+                    description: The type of the asset.
+                    type: string
+                    example: html
+                    enum:
+                    - html
+                    - css
+                    - js
+                  data:
+                    type: string
+                    example: <header>Hello Footer<footer />
+                    description: Contents of the asset. May require an expand parameter to retreive.
+                  content-type:
+                    description: The content-type of the asset.
+                    type: string
+                    example: text/html
+                  url:
+                    type: string
+                    description: Absolute URL of the resource.
+                    example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsStyles
+      x-operation-id-source: derived
+    delete:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Delete theme asset
+      x-addon: themingapi
+      operationId: deleteThemesByThemeIDAssetsStyles
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/styles.css:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            text/css:
+              schema:
+                type: string
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get theme styles
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsStylesCss
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+      responses:
+        '200':
+          content:
+            text/css:
+              schema:
+                type: string
+                description: HTML contents.
+                example: ".class {\n   color: orange;\n}\n"
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsStylesCss
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/variables:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeVariablesAsset'
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get theme variables
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsVariables
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: An asset to be inserted.
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: json
+                  data:
+                    type: object
+                    description: JSON content of the asset.
+                    example:
+                      global:
+                        mainColors:
+                          primary: '#5cc530'
+                  content-type:
+                    description: The content-type of the asset.
+                    type: string
+                    example: application/json
+                  url:
+                    type: string
+                    description: Absolute URL of the resource.
+                    example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsVariables
+      x-operation-id-source: derived
+    patch:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: An asset to be inserted.
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: json
+                  data:
+                    type: object
+                    description: JSON content of the asset.
+                    example:
+                      global:
+                        mainColors:
+                          primary: '#5cc530'
+                  content-type:
+                    description: The content-type of the asset.
+                    type: string
+                    example: application/json
+                  url:
+                    type: string
+                    description: Absolute URL of the resource.
+                    example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Merge some new variables into existing ones
+      x-addon: themingapi
+      operationId: patchThemesByThemeIDAssetsVariables
+      x-operation-id-source: derived
+    delete:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Delete theme asset
+      x-addon: themingapi
+      operationId: deleteThemesByThemeIDAssetsVariables
+      x-operation-id-source: derived
+  /themes/{themeID}/assets/variables.json:
+    get:
+      parameters:
+      - description: Unique theme slug.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Success
+        '404':
+          description: JavaScript could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    description: Verbose description of the error.
+                    type:
+                    - string
+                    - 'null'
+                  message:
+                    description: Short description of the error.
+                    type: string
+                  status:
+                    description: Status code of the error response.
+                    type: integer
+                required:
+                - description
+                - message
+                - status
+      tags:
+      - Theme Assets
+      summary: Get theme variables
+      x-addon: dashboard
+      operationId: getThemesByThemeIDAssetsVariablesJson
+      x-operation-id-source: derived
+    put:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: JSON contents of the asset.
+                example:
+                  hello:
+                    json:
+                      asset: true
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Set theme asset or replace if already exists
+      x-addon: themingapi
+      operationId: putThemesByThemeIDAssetsVariablesJson
+      x-operation-id-source: derived
+    patch:
+      parameters:
+      - description: Unique themeID.
+        in: path
+        name: themeID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: JSON contents of the asset.
+                example:
+                  hello:
+                    json:
+                      asset: true
+          description: Success
+      tags:
+      - Theme Assets
+      summary: Merge some new variables into existing ones
+      x-addon: themingapi
+      operationId: patchThemesByThemeIDAssetsVariablesJson
+      x-operation-id-source: derived
+components:
+  schemas:
+    ThemeScript:
+      properties:
+        url:
+          type: string
+      required:
+      - url
+      type: object
+      x-addon: dashboard
+    ThemeFooterAsset:
+      description: Custom footer HTML.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: string
+          description: Contents of the asset. May require an expand parameter to retreive.
+      required:
+      - url
+      - type
+      type: object
+      x-addon: dashboard
+    ThemeScriptsAsset:
+      description: External script files to be included.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThemeScript'
+      required:
+      - url
+      - type
+      type: object
+      x-addon: dashboard
+    ThemeVariablesAsset:
+      description: A collection of variables intended to be used by theme.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: object
+          description: JSON contents of the asset.
+      required:
+      - url
+      - type
+      type: object
+      x-addon: dashboard
+    ThemeJavascriptAsset:
+      description: Javascript for the theme.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: string
+          description: Contents of the asset. May require an expand parameter to retreive.
+      required:
+      - url
+      - type
+      type: object
+      x-addon: dashboard
+    ThemeHeaderAsset:
+      description: Custom header HTML.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: string
+          description: Contents of the asset. May require an expand parameter to retreive.
+      required:
+      - url
+      - type
+      type: object
+      x-addon: dashboard
+    ThemeCssAsset:
+      description: CSS for the theme.
+      properties:
+        type:
+          description: The type of the asset.
+          type: string
+        url:
+          type: string
+          description: Absolute URL of the asset.
+        content-type:
+          description: The content-type of the asset.
+          type: string
+          example: application/json
+        data:
+          type: string
+          description: Contents of the asset. May require an expand parameter to retreive.
+      required:
+      - data
+      - type
+      type: object
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

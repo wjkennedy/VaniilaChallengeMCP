@@ -1,0 +1,360 @@
+{
+  "item": [
+    {
+      "id": "53529aff-9d6e-4023-bd38-a6d933145986",
+      "name": "Product Messages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f3b9786-60f4-40f7-8ee4-c3649198080a",
+          "name": "Get a product message by ID.",
+          "request": {
+            "name": "Get a product message by ID.",
+            "description": {},
+            "url": {
+              "path": [
+                "product-message",
+                ":productMessageID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "productMessageID",
+                  "description": "(Required) ID of the product message to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f609f35-3e10-4f7e-a601-3cab40f4773d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product-message",
+                    ":productMessageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "productMessageID",
+                      "description": "(Required) ID of the product message to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"productMessageID\": \"string\",\n  \"productMessageType\": \"announcement\",\n  \"announcementType\": \"Direct\",\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"foreignInsertUser\": {\n    \"userID\": 9892,\n    \"name\": \"string\",\n    \"url\": \"https://cadNnGkwEFavIZhQcg.egdNzxnOb,2ZhYDBHG7AnxbPH13y\",\n    \"photoUrl\": \"http://rUOdEvlaKP.nzcyC7Tss.uZpmfb\",\n    \"title\": \"string\"\n  },\n  \"dateInserted\": \"2022-04-24T05:13:47.092Z\",\n  \"isDismissed\": true,\n  \"countViewers\": 2807,\n  \"ctaLabel\": \"string\",\n  \"ctaUrl\": \"http://yYxDVADKyZWPzapBTvpaFVtpkKLvV.lykqpOwgNDTr9VEMwTg-UlSqLdbrk3i2QPvN-cSRDSamxazL-bm,fI8aHU07IxwQk.I5WQ5\",\n  \"dateDismissed\": \"1987-10-17T16:30:21.821Z\",\n  \"insertUserID\": 2882,\n  \"dateUpdated\": \"1960-03-03T17:27:03.566Z\",\n  \"updateUserID\": 8585\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64589b3c-f17d-4108-85f9-4b0590ff326d",
+          "name": "List product messages",
+          "request": {
+            "name": "List product messages",
+            "description": {},
+            "url": {
+              "path": [
+                "product-messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ed692d2-c45c-4472-9746-0553ec36eb68",
+              "name": "A list of product messages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product-messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"productMessageID\": \"string\",\n      \"productMessageType\": \"announcement\",\n      \"announcementType\": \"None\",\n      \"name\": \"string\",\n      \"body\": \"string\",\n      \"foreignInsertUser\": {\n        \"userID\": 6504,\n        \"name\": \"string\",\n        \"url\": \"https://DpGXcudAlHA.puB\",\n        \"photoUrl\": \"https://TeeujGIuKrbkbBhhDgXnEohObRDLyqy.kofSYPzcvHxiHLRS4z0aud\",\n        \"title\": \"string\"\n      },\n      \"dateInserted\": \"1993-07-10T11:58:13.515Z\",\n      \"isDismissed\": false,\n      \"countViewers\": 863,\n      \"ctaLabel\": \"string\",\n      \"ctaUrl\": \"https://EneLxgCDm.ijI.qtsI6CTe5ifLRseesQjgAYpka9jtFTjZWnGzrfCffUehXoSBw\",\n      \"dateDismissed\": \"1991-10-08T11:47:47.221Z\",\n      \"insertUserID\": 7046,\n      \"dateUpdated\": \"2025-07-30T01:30:14.508Z\",\n      \"updateUserID\": 5956\n    },\n    {\n      \"productMessageID\": \"string\",\n      \"productMessageType\": \"personal\",\n      \"announcementType\": \"None\",\n      \"name\": \"string\",\n      \"body\": \"string\",\n      \"foreignInsertUser\": {\n        \"userID\": 7708,\n        \"name\": \"string\",\n        \"url\": \"http://bAQDTxlOidbJDKKYGIZcc.ghquYTBSGp\",\n        \"photoUrl\": \"https://uMGDFBHDiqziCKHQsWjMEdDw.lnmSznCgbSSflY.+bg+kiph\",\n        \"title\": \"string\"\n      },\n      \"dateInserted\": \"1960-10-31T14:14:33.719Z\",\n      \"isDismissed\": false,\n      \"countViewers\": 4592,\n      \"ctaLabel\": \"string\",\n      \"ctaUrl\": \"https://AvOhbAgkNjAyXVkmOvRmbg.ivlDoH,jOzmWvs6KsX8JB57Hm8JoNbAPkDlywbXn3CadpR.ompEW3KHef6Ll3ScxIsnmQTz.q-X.GTHpqKnmsc\",\n      \"dateDismissed\": \"1956-08-06T00:57:14.408Z\",\n      \"insertUserID\": 4813,\n      \"dateUpdated\": \"1998-01-22T19:21:06.270Z\",\n      \"updateUserID\": 9992\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d1c73e2-dde0-4d85-947a-9f3831d0eee1",
+          "name": "Dismiss all product messages",
+          "request": {
+            "name": "Dismiss all product messages",
+            "description": {},
+            "url": {
+              "path": [
+                "product-messages",
+                "dismiss-all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46616a4b-e27d-4656-af2f-bdc9d8cfb155",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product-messages",
+                    "dismiss-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74b81956-e816-4729-a4d3-a00a33c1031b",
+          "name": "Dismiss a product message",
+          "request": {
+            "name": "Dismiss a product message",
+            "description": {},
+            "url": {
+              "path": [
+                "product-messages",
+                ":productMessageID",
+                "dismiss"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "productMessageID",
+                  "description": "(Required) ID of the product message to dismiss."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffc009db-ceb6-4ceb-b813-bf07ee707a11",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product-messages",
+                    ":productMessageID",
+                    "dismiss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "productMessageID",
+                      "description": "(Required) ID of the product message to dismiss."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "71491843-2989-4e24-b293-986b504aa9d1",
+    "name": "Vanilla Addons Product Messages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

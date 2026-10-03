@@ -1,0 +1,826 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Data Source API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Data Source
+paths:
+  /data-sources:
+    get:
+      summary: List all data sources for widgets
+      tags:
+      - Data Source
+      parameters:
+      - name: name
+        in: query
+        description: Filter by name
+        required: false
+        schema:
+          type: string
+      - name: baseUrl
+        in: query
+        description: Filter by base URL
+        required: false
+        schema:
+          type: string
+      - name: authenticationType
+        in: query
+        description: Filter by authentication type
+        required: false
+        schema:
+          $ref: '#/components/schemas/DataSourceAuthenticationType'
+      - name: sort
+        in: query
+        description: Sort by field
+        required: false
+        schema:
+          type: string
+          default: -dateUpdated
+          enum:
+          - dateUpdated
+          - -dateUpdated
+          - name
+          - -name
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: List of fragments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataSource'
+      x-addon: dashboard
+      operationId: getDataSources
+      x-operation-id-source: derived
+    post:
+      summary: Create a new data source
+      tags:
+      - Data Source
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSourcePost'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+      x-addon: dashboard
+      operationId: postDataSources
+      x-operation-id-source: derived
+  /data-sources/proxy-call:
+    post:
+      summary: Make a proxy call to a data source
+      description: 'Executes an HTTP request through a data source. You must provide either a `dataSourceID`
+
+        to use an existing data source, or a `dataSource` object to define an inline data source.
+
+        You cannot provide both.'
+      tags:
+      - Data Source
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSourceProxyCallPost'
+      responses:
+        '200':
+          description: The response body from the proxied HTTP request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  body:
+                    description: The response from the data source endpoint
+                    type: object
+                  headers:
+                    type: object
+                    description: The headers from the response
+                    example:
+                      Content-Type: application/json
+                  statusCode:
+                    type: integer
+                    description: The status code from the response
+                    example: 200
+        '403':
+          description: User does not have access to this data source
+      x-addon: dashboard
+      operationId: postDataSourcesProxyCall
+      x-operation-id-source: derived
+  /data-sources/{dataSourceID}:
+    get:
+      summary: Get a fragment
+      tags:
+      - Data Source
+      parameters:
+      - name: dataSourceID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+      x-addon: dashboard
+      operationId: getDataSourcesByDataSourceID
+      x-operation-id-source: derived
+    delete:
+      summary: Delete a data source
+      tags:
+      - Data Source
+      parameters:
+      - name: dataSourceID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Data source deleted successfully
+      x-addon: dashboard
+      operationId: deleteDataSourcesByDataSourceID
+      x-operation-id-source: derived
+    patch:
+      summary: Update a data source
+      description: Updates a data source.
+      tags:
+      - Data Source
+      parameters:
+      - name: dataSourceID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSourcePatch'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+      x-addon: dashboard
+      operationId: patchDataSourcesByDataSourceID
+      x-operation-id-source: derived
+components:
+  schemas:
+    DataSourcePost:
+      allOf:
+      - $ref: '#/components/schemas/DataSourceMutableFields'
+      - type: object
+        description: Create a data source
+        properties:
+          dataSourceID:
+            type: string
+            description: Named identifier for the data source
+            example: my-data-source
+        required:
+        - dataSourceID
+        - name
+        - authenticationType
+        - accessControlType
+        - baseUrl
+        - accessControl
+      x-addon: dashboard
+    DataSourceProxyCallPost:
+      type: object
+      description: Request body for making a proxy call through a data source. Either dataSourceID or dataSource must be provided, but not both.
+      properties:
+        dataSourceID:
+          type: string
+          description: ID of an existing data source to use
+          example: my-data-source
+        dataSource:
+          $ref: '#/components/schemas/DataSourcePost'
+        call:
+          $ref: '#/components/schemas/DataSourceCall'
+      required:
+      - call
+      x-addon: dashboard
+    DataSourcePatch:
+      allOf:
+      - $ref: '#/components/schemas/DataSourceMutableFields'
+      description: Patchable fields for a data source (dataSourceID is not patchable)
+      x-addon: dashboard
+    DataSource:
+      allOf:
+      - $ref: '#/components/schemas/DataSourcePost'
+      - type: object
+        description: A widget fragment
+        properties:
+          dateInserted:
+            type: string
+            format: date-time
+            description: Date the object was inserted
+            example: '2025-03-05T06:56:04+00:00'
+          insertUserID:
+            type: string
+            description: User who inserted the object
+            example: '2025-03-05T06:56:04+00:00'
+          dateUpdated:
+            type: string
+            format: date-time
+            description: Date the revision was updated
+            example: '2025-03-05T06:56:04+00:00'
+          updateUserID:
+            type: string
+            description: User who updated the object
+            example: '2025-03-05T06:56:04+00:00'
+        required:
+        - insertUserID
+        - dateInserted
+      x-addon: dashboard
+    DataSourceCallMethod:
+      type: string
+      description: HTTP method for the proxy call
+      enum:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+      x-addon: dashboard
+    DataSourceAuthenticationType:
+      type: string
+      description: Authentication Type of the data source
+      enum:
+      - none
+      - vanilla
+      x-addon: dashboard
+    DataSourceAllowedPath:
+      type: string
+      description: Allowed Path of the data source
+      example: /api/the-thing*
+      default: '*'
+      x-addon: dashboard
+    DataSourceAccessControlType:
+      type: string
+      description: Access Control Type of the data source
+      enum:
+      - none
+      - restricted
+      x-addon: dashboard
+    DataSourceAllowedMethod:
+      type: string
+      description: Allowed Method of the data source
+      enum:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+      x-addon: dashboard
+    DataSourceCall:
+      type: object
+      description: Configuration for an HTTP request to be made through a data source
+      properties:
+        path:
+          type: string
+          minLength: 1
+          description: The path to call on the data source (appended to baseUrl)
+          example: /api/v1/items
+        method:
+          $ref: '#/components/schemas/DataSourceCallMethod'
+        queryParams:
+          type: object
+          description: 'Query parameters to send with the request Supports nested param references if the values are object in the format of `{ $refType: "param", key: "path.to.key" }` or a reference to the current user in the format of `{ $refType: "user", key: "name" }` or for profile fields in the format of `{ $refType: "profile", key: "profileFeilds.myProfileFieldApiName" }`
+
+            '
+        queryParamsSerialization:
+          type: string
+          description: Serialization type for the query parameters
+          enum:
+          - brackets
+          - comma
+          - indices
+          - repeat
+          default: brackets
+        body:
+          type: object
+          description: Request body for POST/PUT/PATCH requests
+      required:
+      - path
+      - method
+      x-addon: dashboard
+    DataSourceMutableFields:
+      type: object
+      description: Mutable fields for data sources
+      properties:
+        name:
+          type: string
+          description: Name of the data source
+          example: My Call to Action
+        description:
+          type: string
+          description: Description of the data source
+        authenticationType:
+          $ref: '#/components/schemas/DataSourceAuthenticationType'
+        baseUrl:
+          type: string
+          description: Base Url of the data source
+        documentationUrl:
+          type: string
+          description: Base Url of the data source
+        headers:
+          type: object
+          description: Default Headers to apply on requests to the data source.
+        secretHeaders:
+          type: object
+          description: Secret headers to apply on requests to the data source. Stored values are encrypted and will not returned over the API.
+        allowedPaths:
+          type: array
+          description: List of paths that have access to the data source with wildcard support.
+          items:
+            $ref: '#/components/schemas/DataSourceAllowedPath'
+          example:
+          - /api/the-thing*
+          default:
+          - '*'
+        allowedMethods:
+          type: array
+          description: List of methods that have access to the data source
+          items:
+            $ref: '#/components/schemas/DataSourceAllowedMethod'
+          default:
+          - GET
+        accessControl:
+          type: object
+          description: Access control configuration for the data source.
+          properties:
+            type:
+              $ref: '#/components/schemas/DataSourceAccessControlType'
+            roleIDs:
+              type: array
+              description: List of role IDs that have access to the data source
+              items:
+                type: integer
+            rankIDs:
+              type: array
+              description: List of rank IDs that have access to the data source
+              items:
+                type: integer
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

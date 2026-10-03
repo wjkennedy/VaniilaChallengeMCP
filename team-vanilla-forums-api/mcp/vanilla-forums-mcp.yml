@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://success.vanillaforums.com/kb/articles/1955-model-context-protocol-mcp-in-vanilla + https://www.higherlogic.com/news/higher-logic-vanilla-launches-mcp-server/
+description: 'Higher Logic Vanilla operates an official MCP server ("Vanilla MCP"), announced May 26,
+  2026. It gives customers a native Model Context Protocol connection between their Vanilla community
+  and AI tools (ChatGPT, Claude, Cursor, and custom agents): query live community data conversationally,
+  take approved actions, and drive AI automation. Vanilla positions it as a secure pass-through to the
+  existing Vanilla API v2 — no new data or permissions are exposed; access is governed by existing Vanilla
+  roles/permissions. Rollout is via a customer beta program; the server endpoint and connection details
+  are distributed to customers (the configuration guides live behind the success community login), so
+  no public endpoint URL is recorded here. Companion resources published: Vanilla MCP Customer FAQ and
+  a Vanilla MCP Security Datasheet (architecture, authentication and access controls, data handling and
+  retention).'
+server:
+  name: vanilla-mcp
+  vendor: Higher Logic Vanilla
+  transport: http
+  url: null
+  access: customer beta program (contact Vanilla Support / see success community)
+  announced: '2026-05-26'
+docs:
+- https://success.vanillaforums.com/kb/articles/1955-model-context-protocol-mcp-in-vanilla
+- https://www.higherlogic.com/news/higher-logic-vanilla-launches-mcp-server/
+- https://success.vanillaforums.com/discussion/4254/try-these-first-mcp-beta-starter-use-cases
+- https://success.vanillaforums.com/discussion/4291/introducing-the-higher-logic-vanilla-mcp
+- https://success.vanillaforums.com/discussion/4261/configuring-mcp-with-claude
+notes: 'Tool list is not publicly documented (member-only beta discussions); the KB describes capability
+  areas rather than named tools: retrieve community content, answer questions over live community data,
+  surface community activity / content performance / product feedback / moderation queues / unresolved
+  questions / member behavior, and take approved actions (follow up with members, organize content, send
+  reminders, automate workflows).'
+deployment:
+  mode: remote
+  verified: searched
+  checked: '2026-08-12'
+  source: catalog MCP census

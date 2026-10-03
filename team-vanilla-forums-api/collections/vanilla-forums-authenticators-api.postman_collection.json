@@ -1,0 +1,1131 @@
+{
+  "item": [
+    {
+      "id": "5dae0781-da6c-438d-ab88-9f3eb91d60e3",
+      "name": "Authenticators",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4e9519b2-c5e7-4c98-959c-7bec45c1e792",
+          "name": "List every available authenticator types.",
+          "request": {
+            "name": "List every available authenticator types.",
+            "description": {},
+            "url": {
+              "path": [
+                "authenticator-types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "279f9d59-80e8-4483-a11d-9387b7d0dc14",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticator-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"authenticatorType\": \"string\",\n    \"nameCode\": \"string\",\n    \"descriptionCode\": \"string\",\n    \"entityClass\": \"string\",\n    \"schema\": {},\n    \"metadataUrls\": [\n      {\n        \"labelCode\": \"string\",\n        \"url\": \"https://jYMMGXgiNYFowhNkFZCuttN.qsQ+ebaYiIagO\"\n      },\n      {\n        \"labelCode\": \"string\",\n        \"url\": \"http://RTtMexrEbvjmHawsdrTYiuIT.ltC8sVd+hQxmGPL4MekfvRX-ZLXWyXzVTVt-zGlaP\"\n      }\n    ]\n  },\n  {\n    \"authenticatorType\": \"string\",\n    \"nameCode\": \"string\",\n    \"descriptionCode\": \"string\",\n    \"entityClass\": \"string\",\n    \"schema\": {},\n    \"metadataUrls\": [\n      {\n        \"labelCode\": \"string\",\n        \"url\": \"https://jlTBK.yolo66HfhrtkhfZPIUvc\"\n      },\n      {\n        \"labelCode\": \"string\",\n        \"url\": \"https://eyzSFVlNCas.fdhblQX-V0mQ9KcR6AeMx\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c8c6c8f-7bc9-4669-96ed-b967cf8ec7ec",
+          "name": "List the authenticators.",
+          "request": {
+            "name": "List the authenticators.",
+            "description": {},
+            "url": {
+              "path": [
+                "authenticators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by one or more authenticator types."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by one or more authenticator types."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of items to be included in the response. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fed0f606-3565-43ce-a77e-12ee38c7deed",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"authenticatorID\": 4597,\n    \"name\": \"string\",\n    \"type\": \"oauth2\",\n    \"clientID\": \"string\",\n    \"default\": true,\n    \"active\": true,\n    \"visible\": true,\n    \"metadataUrls\": [\n      {\n        \"labelCode\": \"string\",\n        \"url\": \"https://mjjARfGQKrI.mahOLzbuwSjkd\"\n      },\n      {\n        \"labelCode\": \"string\",\n        \"url\": \"https://uLDPJjRztxxvVINFXWYHx.vhbuGFld.FWr9hrR,oGRwG3OzFQJzSZjm.XA+vGPfEJJ7tagGiV3t0WxVi,--rcMBw\"\n      }\n    ],\n    \"authenticationKey\": \"string\",\n    \"isOidc\": false,\n    \"markVerified\": false,\n    \"urls\": {\n      \"signInUrl\": \"http://YxCYaNhyQuICRlKAQlEhdCLtTrjp.nfbvgEyBwNgev4MxeeEuh5UXK+eELNbk\",\n      \"signOutUrl\": \"https://mprMGNkNzGQCAyojmT.oxjiEMNhq6fLzqcC6BmaRvFwA,i43iZKPHQMFILf\",\n      \"authenticateUrl\": \"http://ygpfHNIivyvhjxCxrrDlZHMBPAm.xotKaHwI96Pmr1qU-E,kEvx42YBSZvjoM.bSdTqMBU2y21th\",\n      \"registerUrl\": \"https://TcmVncsoFjzcQpZP.djhyscE8IBzgDjACeDuGgy,H.dw9NZOD3daFqfN-5WvGnYoOK8o\",\n      \"passwordUrl\": \"https://NLatdG.ohErQgXAMjzO5AlIASwcQ\",\n      \"profileUrl\": \"https://mEAgCuXktmwdDbDlYdWdWoarFJKDotGQQ.wtggkmgkj-O1.ClMvuH09aiz3\"\n    },\n    \"isDebugEnabled\": false,\n    \"dateDebugExpires\": \"2004-02-11T18:06:22.487Z\"\n  },\n  {\n    \"authenticatorID\": 8508,\n    \"name\": \"string\",\n    \"type\": \"oauth2\",\n    \"clientID\": \"string\",\n    \"default\": true,\n    \"active\": true,\n    \"visible\": true,\n    \"metadataUrls\": [\n      {\n        \"labelCode\": \"string\",\n        \"url\": \"https://TnCkAnScBJDGRPNjGtLZzsjhZWqRDgq.eimvXbXirLEZGgkHPMPgatZQz-YAcB4AMFCf\"\n      },\n      {\n        \"labelCode\": \"string\",\n        \"url\": \"https://bvXEXTmQyygo.bqhoZ\"\n      }\n    ],\n    \"authenticationKey\": \"string\",\n    \"isOidc\": false,\n    \"markVerified\": false,\n    \"urls\": {\n      \"signInUrl\": \"http://qyriBplMJDHeiHSkH.ckcZ-tnALMTEfW8,cLW,3F2+akonpL7tsz84ofydDyY4tib\",\n      \"signOutUrl\": \"https://nekXAhSxMacdXRUmShvWlv.lyzjvFjTLXEfUDWn36mQYocdp1IhHrB7pKsOlK0y61,MOqVgnnOOUXhlft-Cy-RWnvRUvr\",\n      \"authenticateUrl\": \"http://DyCnqYFgQzwaBgbKhfQVVSU.aduvi9yoFFK4HVs2QKME.nhBZulvt4T.ggPL8xv49PR2Q\",\n      \"registerUrl\": \"http://IsDTpPagsKwKhoc.uwdCDFxQqZcrnfvCvSIAKGndXSav.W9ZkGY9,UhDmUqdvWUWJIHOH\",\n      \"passwordUrl\": \"https://urKBCexuLeoKOZrEJ.iyH\",\n      \"profileUrl\": \"http://ySZTPPJOebFYtBzJGdmr.otm3rw3ANl6-kL9BBnjMyj0CwAzP0sJoeK4qLU3fYP.8\"\n    },\n    \"isDebugEnabled\": false,\n    \"dateDebugExpires\": \"1993-04-13T01:01:25.733Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddc2e847-f6ee-478f-87db-3f09ab0f961b",
+          "name": "Delete an authenticator.",
+          "request": {
+            "name": "Delete an authenticator.",
+            "description": {},
+            "url": {
+              "path": [
+                "authenticators",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) An authenticatorID or an authenticationKey."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e16d1fef-8957-4f3d-aed1-00ab72cdd453",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af9da99e-37be-43fd-810c-9e941f86c040",
+          "name": "Get a single authenticator.",
+          "request": {
+            "name": "Get a single authenticator.",
+            "description": {},
+            "url": {
+              "path": [
+                "authenticators",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) An authenticatorID or an authenticationKey."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b2ae6cd-f582-4662-8a87-75a22771f27b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authenticatorID\": 4555,\n  \"name\": \"string\",\n  \"type\": \"oauth2\",\n  \"clientID\": \"string\",\n  \"default\": false,\n  \"active\": true,\n  \"visible\": true,\n  \"metadataUrls\": [\n    {\n      \"labelCode\": \"string\",\n      \"url\": \"https://GjFjGzCwopaGoFqOWKMNsLLUqSD.hcvVHIAspQ4hl,eJphjcLESd,8zrrblkWX3+ttMV,9cwVrIC\"\n    },\n    {\n      \"labelCode\": \"string\",\n      \"url\": \"https://ksiCNZHns.cldTTH8UtosbICheWsKIaNnaX1nDFbUuY9+a4kQpMB8oWKkNnW4w\"\n    }\n  ],\n  \"authenticationKey\": \"string\",\n  \"isOidc\": false,\n  \"markVerified\": false,\n  \"urls\": {\n    \"signInUrl\": \"http://XskxEcUPjPyKVbVnAxlMwmvuzR.cxbZjd15qXCyL\",\n    \"signOutUrl\": \"http://CUhNvAIoVf.khbckCwQZnA\",\n    \"authenticateUrl\": \"http://mjcMugDRRAOIQsR.clmmrMZaXvE5+xXkNfKLS3mWuuQDcLp7I2FlGAaJUcJtwWNDivU3q3mhwhyDE.jaoQ-uouiITp.AF\",\n    \"registerUrl\": \"http://UFfkEnNxICrZYh.lpm8Qq.tSJY+wemZtRTcUOxmQMZEP1AsIauFhxYKR81ULq,3U\",\n    \"passwordUrl\": \"http://LsDcjZab.ehcKPx8pyOGkfUPD1u-cZrb1cnPuSvMLhgwGKgEer9RBbjHk,htW8tJsZlcH+YSV6dxzDLe\",\n    \"profileUrl\": \"http://QxfOjPLBagWzoFIfVkOaPphWzE.rboyfU-bnrV4q\"\n  },\n  \"isDebugEnabled\": false,\n  \"dateDebugExpires\": \"1998-02-17T14:21:43.538Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7abba89e-2530-4613-a785-348f9822b870",
+          "name": "Update an authenticator.",
+          "request": {
+            "name": "Update an authenticator.",
+            "description": {},
+            "url": {
+              "path": [
+                "authenticators",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) An authenticatorID or an authenticationKey."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"default\": false,\n  \"active\": false,\n  \"visible\": false,\n  \"urls\": {\n    \"signInUrl\": \"<uri>\",\n    \"signOutUrl\": \"<uri>\",\n    \"authenticateUrl\": \"<uri>\",\n    \"registerUrl\": \"<uri>\",\n    \"passwordUrl\": \"<uri>\",\n    \"profileUrl\": \"<uri>\"\n  },\n  \"authenticatorConfig\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95e502b0-7995-4981-b95c-39e908e3a994",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"default\": false,\n  \"active\": true,\n  \"visible\": false,\n  \"urls\": {\n    \"signInUrl\": \"<uri>\",\n    \"signOutUrl\": \"<uri>\",\n    \"authenticateUrl\": \"<uri>\",\n    \"registerUrl\": \"<uri>\",\n    \"passwordUrl\": \"<uri>\",\n    \"profileUrl\": \"<uri>\"\n  },\n  \"authenticatorConfig\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authenticatorID\": 8895,\n  \"name\": \"string\",\n  \"type\": \"oauth2\",\n  \"clientID\": \"string\",\n  \"default\": true,\n  \"active\": true,\n  \"visible\": true,\n  \"metadataUrls\": [\n    {\n      \"labelCode\": \"string\",\n      \"url\": \"http://WL.tzbnzDgU+8,sNK3NnvRdo\"\n    },\n    {\n      \"labelCode\": \"string\",\n      \"url\": \"https://duYpulTMcKwBZjBeE.cyptMiHYS.M\"\n    }\n  ],\n  \"authenticationKey\": \"string\",\n  \"isOidc\": false,\n  \"markVerified\": false,\n  \"urls\": {\n    \"signInUrl\": \"<uri>\",\n    \"signOutUrl\": \"<uri>\",\n    \"authenticateUrl\": \"<uri>\",\n    \"registerUrl\": \"<uri>\",\n    \"passwordUrl\": \"<uri>\",\n    \"profileUrl\": \"<uri>\"\n  },\n  \"isDebugEnabled\": false,\n  \"dateDebugExpires\": \"2009-12-05T03:29:05.374Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e475e3dc-dbb3-4428-95a4-4f6d1c1b2abc",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"default\": false,\n  \"active\": true,\n  \"visible\": false,\n  \"urls\": {\n    \"signInUrl\": \"<uri>\",\n    \"signOutUrl\": \"<uri>\",\n    \"authenticateUrl\": \"<uri>\",\n    \"registerUrl\": \"<uri>\",\n    \"passwordUrl\": \"<uri>\",\n    \"profileUrl\": \"<uri>\"\n  },\n  \"authenticatorConfig\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "caf6c60f-2eff-4525-a434-fbe748147575",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"default\": false,\n  \"active\": true,\n  \"visible\": false,\n  \"urls\": {\n    \"signInUrl\": \"<uri>\",\n    \"signOutUrl\": \"<uri>\",\n    \"authenticateUrl\": \"<uri>\",\n    \"registerUrl\": \"<uri>\",\n    \"passwordUrl\": \"<uri>\",\n    \"profileUrl\": \"<uri>\"\n  },\n  \"authenticatorConfig\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35e959ac-0ce6-4e33-909c-dfe53c5c1729",
+          "name": "Enable or disable debug logging for an authenticator.",
+          "request": {
+            "name": "Enable or disable debug logging for an authenticator.",
+            "description": {
+              "content": "Enable or disable debug logging for the specified authenticator.\nWhen enabled, debug logs will be recorded for 24 hours.\nWhen disabled, all existing debug logs for the authenticator are deleted.\n\n**Requires sysAdmin permission in addition to Garden.Settings.Manage.**\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authenticators",
+                ":id",
+                "debug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) An authenticatorID or an authenticationKey."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c5b3b61-e7c6-4e78-a38a-19faa0a498ab",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id",
+                    "debug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"enabled\": false,\n  \"dateDebugExpires\": \"2021-12-23T16:14:07.735Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a288b620-4eef-40a8-8d23-6379c9e3a89a",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id",
+                    "debug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9aacf479-4c82-4124-8c80-4a0c9ceae4fe",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id",
+                    "debug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28a3228a-aea6-4ecd-9992-eb8e9ead786c",
+          "name": "Get debug log attempts for an authenticator.",
+          "request": {
+            "name": "Get debug log attempts for an authenticator.",
+            "description": {
+              "content": "Retrieve debug log attempts for the specified authenticator with pagination.\n\nEach attempt groups multiple log messages from a single authentication flow,\nidentified by a shared debugAttemptUUID. The wasSuccessful flag indicates\nwhether any message in the attempt has type \"connect_success\" or \"logout_success\".\n\n**Requires sysAdmin permission in addition to Garden.Settings.Manage.**\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authenticators",
+                ":id",
+                "debug-logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "wasSuccessful",
+                  "value": "<boolean>",
+                  "description": "Filter by whether the attempt was successful."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) An authenticatorID or an authenticationKey."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb588997-87c0-4692-9a84-f8c2aee85529",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id",
+                    "debug-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "wasSuccessful",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"debugAttemptUUID\": \"14f772ff-2e63-0ffd-3b7d-d2b60982111a\",\n    \"foreignType\": \"string\",\n    \"foreignID\": 8598,\n    \"countMessages\": 1169,\n    \"wasSuccessful\": false,\n    \"attemptFlow\": \"login\",\n    \"dateInserted\": \"1986-02-22T19:27:48.868Z\",\n    \"messages\": [\n      {\n        \"debugLogUUID\": \"880d9960-d465-d116-f228-145fad63ed8f\",\n        \"debugAttemptUUID\": \"d2b145ca-f653-aab9-db70-7077c8def610\",\n        \"foreignType\": \"string\",\n        \"foreignID\": 6008,\n        \"type\": \"string\",\n        \"message\": \"string\",\n        \"requestMethod\": \"string\",\n        \"requestPath\": \"string\",\n        \"context\": {},\n        \"dateExpires\": \"2013-12-06T05:11:24.408Z\",\n        \"dateInserted\": \"2019-04-16T12:44:05.758Z\",\n        \"insertUserID\": 312,\n        \"requestID\": \"string\"\n      },\n      {\n        \"debugLogUUID\": \"c7d5b095-11f9-896b-3dc8-9c8a8717279c\",\n        \"debugAttemptUUID\": \"999b685b-33d5-d196-8099-a3d569da3920\",\n        \"foreignType\": \"string\",\n        \"foreignID\": 6293,\n        \"type\": \"string\",\n        \"message\": \"string\",\n        \"requestMethod\": \"string\",\n        \"requestPath\": \"string\",\n        \"context\": {},\n        \"dateExpires\": \"1965-04-03T14:31:56.020Z\",\n        \"dateInserted\": \"1948-02-21T13:21:47.766Z\",\n        \"insertUserID\": 7106,\n        \"requestID\": \"string\"\n      }\n    ],\n    \"insertUserID\": 8685,\n    \"insertUser\": {\n      \"userID\": 3718,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://vWZouogLLyrzN.vztzSEMlQd3z+iVBIcZRrBgcJjN8xVLb-G.AggsbqvaZ62TwwiQ\",\n      \"dateLastActive\": \"1991-08-11T02:20:08.865Z\",\n      \"url\": \"http://NUxKVAfWUh.ovgtbjoG1,2u4EyewJClEu5ByIwEzObV52QX8rEBTESePNNW-8UpLYC.Nozfjp\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  },\n  {\n    \"debugAttemptUUID\": \"0ff4c14e-a90b-68dc-6a51-f8ae2fdd4428\",\n    \"foreignType\": \"string\",\n    \"foreignID\": 9435,\n    \"countMessages\": 7849,\n    \"wasSuccessful\": true,\n    \"attemptFlow\": \"logout\",\n    \"dateInserted\": \"1997-05-01T01:10:03.038Z\",\n    \"messages\": [\n      {\n        \"debugLogUUID\": \"00806193-0151-5260-efd0-27b594c674d2\",\n        \"debugAttemptUUID\": \"72211245-19c2-78f3-1dd2-43227f5bb9cb\",\n        \"foreignType\": \"string\",\n        \"foreignID\": 241,\n        \"type\": \"string\",\n        \"message\": \"string\",\n        \"requestMethod\": \"string\",\n        \"requestPath\": \"string\",\n        \"context\": {},\n        \"dateExpires\": \"1992-12-25T02:16:24.916Z\",\n        \"dateInserted\": \"2025-10-21T06:57:06.448Z\",\n        \"insertUserID\": 6997,\n        \"requestID\": \"string\"\n      },\n      {\n        \"debugLogUUID\": \"aab67658-65a4-03f8-09e9-d31c5487f79a\",\n        \"debugAttemptUUID\": \"8482e2dc-ef26-8e0a-8f88-5bf01e998a6d\",\n        \"foreignType\": \"string\",\n        \"foreignID\": 8347,\n        \"type\": \"string\",\n        \"message\": \"string\",\n        \"requestMethod\": \"string\",\n        \"requestPath\": \"string\",\n        \"context\": {},\n        \"dateExpires\": \"1954-02-20T10:26:16.638Z\",\n        \"dateInserted\": \"1952-11-15T15:14:54.255Z\",\n        \"insertUserID\": 3117,\n        \"requestID\": \"string\"\n      }\n    ],\n    \"insertUserID\": 2856,\n    \"insertUser\": {\n      \"userID\": 3470,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://fGblWzaJynUoekfvLPCKHtpWiIcFzgZX.rhgHMf+xRZw1UDz-lSOIqugTKLjCJ\",\n      \"dateLastActive\": \"1957-06-12T11:51:35.174Z\",\n      \"url\": \"http://BxcMLhKjWEDzRaNKpsa.smplPjld95hipaTW+EkjjYIHuBbi9Bi.nks\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c637f77-e824-4455-b44a-368ff57fd3a6",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id",
+                    "debug-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "wasSuccessful",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb5f45f1-3e53-409c-b5e0-989f711a1daf",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticators",
+                    ":id",
+                    "debug-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "wasSuccessful",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) An authenticatorID or an authenticationKey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0d1daa67-78fb-46be-a628-aeb760e951b5",
+    "name": "Vanilla Addons Authenticators API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

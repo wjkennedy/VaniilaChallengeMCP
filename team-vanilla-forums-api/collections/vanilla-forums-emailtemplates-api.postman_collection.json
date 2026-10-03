@@ -1,0 +1,677 @@
+{
+  "item": [
+    {
+      "id": "7237a756-8ded-4ea6-bfb9-81f5bd40e6b3",
+      "name": "emailTemplates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "643cd627-6ce2-455f-b86b-2efca6863217",
+          "name": "List active email templates in a given knowledge category.",
+          "request": {
+            "name": "List active email templates in a given knowledge category.",
+            "description": {},
+            "url": {
+              "path": [
+                "email-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "<p>Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.</p>\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "<p>Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.</p>\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "emailTemplateID",
+                  "value": "<integer>",
+                  "description": "Filter by email template IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "statuses",
+                  "value": "<string>",
+                  "description": "Filter by particular statuses. Deleted email templates require mod  permission."
+                },
+                {
+                  "disabled": false,
+                  "key": "statuses",
+                  "value": "<string>",
+                  "description": "Filter by particular statuses. Deleted email templates require mod  permission."
+                },
+                {
+                  "disabled": false,
+                  "key": "emailType",
+                  "value": "<string>",
+                  "description": "Filter by email type."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort the output."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination\">Pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e5fad9e-6de5-41cd-abcc-ee465f9ae22a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "emailTemplateID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "emailType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"footer\": \"string\",\n    \"subject\": \"string\",\n    \"emailLogo\": \"string\",\n    \"insertUserID\": 7720,\n    \"dateInserted\": \"1946-12-20T20:50:33.630Z\",\n    \"updateUserID\": 9177,\n    \"dateUpdated\": \"1988-11-13T18:52:35.600Z\",\n    \"status\": \"inactive\",\n    \"emailTemplatesID\": 531,\n    \"insertUser\": {\n      \"userID\": 6365,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://bnAthHjmnrZfwz.dkhHWkIY-1iNVwI.5RTM0Me7abbltlRZov.hhKZIuLRN,j-8wbBxtbn3gJwmIB9m\",\n      \"dateLastActive\": \"1961-08-09T11:50:35.808Z\",\n      \"url\": \"http://yebGsXlQO.gwvSabyuS1G9+riakUHA1sJNp4MISoWc.L-Th9ofu\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"emailConfig\": {},\n    \"updateUser\": {\n      \"userID\": 1468,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://wo.wzI8SlCLCrVmmcnt,vVVf.,KkGi7EvOFXMK8aEQM6p4raBkh8zXAVG7vsN\",\n      \"dateLastActive\": \"2010-06-12T10:42:07.839Z\",\n      \"url\": \"https://GuTPCe.jetgDTutvFM2Uirv\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    }\n  },\n  {\n    \"name\": \"str\",\n    \"body\": \"string\",\n    \"footer\": \"string\",\n    \"subject\": \"string\",\n    \"emailLogo\": \"string\",\n    \"insertUserID\": 103,\n    \"dateInserted\": \"1953-05-08T23:04:09.178Z\",\n    \"updateUserID\": 2922,\n    \"dateUpdated\": \"2014-07-16T09:49:16.094Z\",\n    \"status\": \"active\",\n    \"emailTemplatesID\": 1664,\n    \"insertUser\": {\n      \"userID\": 948,\n      \"name\": \"stri\",\n      \"photoUrl\": \"https://ukdDzXuEOocRiVxOKO.evkrv1TnjWI1mbYzuO+20KMT2SGTGbrUbJoZJH6E.iMeLTHa01qivLENqUBjyYJQkHD62JLZns\",\n      \"dateLastActive\": \"1975-12-13T19:06:02.930Z\",\n      \"url\": \"http://eRtbzFkIuklG.tsfsA1gTD-ztpJo1eOVGdyo0.-YpU-UjQOvLsqnrqpyq4-Ubpe7a+CUlspfjjk\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"emailConfig\": {},\n    \"updateUser\": {\n      \"userID\": 3854,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://pQvFHtQUMn.evxLnNbtaJDqsF.KNIyR\",\n      \"dateLastActive\": \"1949-05-28T12:17:00.788Z\",\n      \"url\": \"http://e.wstcDXRl8H-ZY,KM6C77q99xA5WBe-aQLEkX\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21e76bbe-e483-44a5-a907-d4d6cf4d5d94",
+          "name": "Create a new email Templates .",
+          "request": {
+            "name": "Create a new email Templates .",
+            "description": {},
+            "url": {
+              "path": [
+                "email-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"body\": \"<string>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"footer\": \"<string>\",\n  \"emailLogo\": \"<string>\",\n  \"emailConfig\": \"<object>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1617d21-b5c2-48f2-bbba-3e5691704a36",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"footer\": \"string\",\n  \"subject\": \"string\",\n  \"emailLogo\": \"string\",\n  \"insertUserID\": 5527,\n  \"dateInserted\": \"1993-10-01T18:00:24.233Z\",\n  \"updateUserID\": 3547,\n  \"dateUpdated\": \"1971-04-22T04:50:57.269Z\",\n  \"status\": \"inactive\",\n  \"emailTemplatesID\": 9896,\n  \"insertUser\": {\n    \"userID\": 603,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://fYkaGFotueabChBtSDPT.eroR1Bgbj+CgJyG80ec,,8FsUy\",\n    \"dateLastActive\": \"1991-06-16T13:52:01.758Z\",\n    \"url\": \"http://ZgrXyRapPVFFBMSZuLlyGJasEXig.wcaF.g3eaznkVsDyTn4Xc9cwgLv0R0LmazjYmhMZ5QQN\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"emailConfig\": {},\n  \"updateUser\": {\n    \"userID\": 4367,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://HIHfFbeTtDxJeybT.tzqzSWwUo3nwniLCITwrJqb\",\n    \"dateLastActive\": \"1975-07-09T07:18:26.927Z\",\n    \"url\": \"http://HfsglWLckFKGHBnGkxfBsbptBt.nxfpGnrb.SyZ.Qmof.g\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fea48b01-8fc4-403f-b3b8-ac2fe0284819",
+          "name": "Update an existing email Templates .",
+          "request": {
+            "name": "Update an existing email Templates .",
+            "description": {},
+            "url": {
+              "path": [
+                "email-templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"body\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"footer\": \"<string>\",\n  \"emailLogo\": \"<string>\",\n  \"emailConfig\": \"<object>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "401ca150-627b-4673-b940-a285e1185ad7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"body\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"footer\": \"<string>\",\n  \"emailLogo\": \"<string>\",\n  \"emailConfig\": \"<object>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"footer\": \"string\",\n  \"subject\": \"string\",\n  \"emailLogo\": \"string\",\n  \"insertUserID\": 5527,\n  \"dateInserted\": \"1993-10-01T18:00:24.233Z\",\n  \"updateUserID\": 3547,\n  \"dateUpdated\": \"1971-04-22T04:50:57.269Z\",\n  \"status\": \"inactive\",\n  \"emailTemplatesID\": 9896,\n  \"insertUser\": {\n    \"userID\": 603,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://fYkaGFotueabChBtSDPT.eroR1Bgbj+CgJyG80ec,,8FsUy\",\n    \"dateLastActive\": \"1991-06-16T13:52:01.758Z\",\n    \"url\": \"http://ZgrXyRapPVFFBMSZuLlyGJasEXig.wcaF.g3eaznkVsDyTn4Xc9cwgLv0R0LmazjYmhMZ5QQN\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"emailConfig\": {},\n  \"updateUser\": {\n    \"userID\": 4367,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://HIHfFbeTtDxJeybT.tzqzSWwUo3nwniLCITwrJqb\",\n    \"dateLastActive\": \"1975-07-09T07:18:26.927Z\",\n    \"url\": \"http://HfsglWLckFKGHBnGkxfBsbptBt.nxfpGnrb.SyZ.Qmof.g\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87ff76e8-dc46-417c-b99b-576c7b441370",
+          "name": "Delete an email template.",
+          "request": {
+            "name": "Delete an email template.",
+            "description": {},
+            "url": {
+              "path": [
+                "email-templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a91a7401-25e6-4ac0-82bb-0b7ed36d3778",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b01b2c15-2f92-4413-972d-5eb954e369b7",
+          "name": "Send email Templates as preview.",
+          "request": {
+            "name": "Send email Templates as preview.",
+            "description": {},
+            "url": {
+              "path": [
+                "email-templates",
+                ":id",
+                "preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f97b39c0-07cb-41f3-92e0-06aa57e3bfaa",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-templates",
+                    ":id",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "<html>Email Content Here</html>",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "669b652b-d7f5-4190-b90f-241f7b9d850c",
+          "name": "Send email Templates as preview.",
+          "request": {
+            "name": "Send email Templates as preview.",
+            "description": {},
+            "url": {
+              "path": [
+                "email-templates",
+                ":id",
+                "send-test-email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationAddress\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9837b929-d785-4530-8f14-3e8b6a913e0d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-templates",
+                    ":id",
+                    "send-test-email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationAddress\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "141d63f8-f5a0-4818-838e-1d060423b243",
+    "name": "Vanilla Addons emailTemplates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

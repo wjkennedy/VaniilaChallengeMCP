@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons email-templates API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "email-templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an email Templates .",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/email-templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "<p>The email Templates ID.</p>\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get an email Templates ."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

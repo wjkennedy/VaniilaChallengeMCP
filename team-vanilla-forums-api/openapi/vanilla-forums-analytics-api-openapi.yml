@@ -1,0 +1,1816 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Analytics API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Analytics
+paths:
+  /analytics/analysis:
+    post:
+      responses:
+        '201':
+          $ref: '#/components/responses/AnalyticsQueryResponse'
+        '400':
+          $ref: '#/components/responses/AnalyticsExtractTooLargeResponse'
+      tags:
+      - Analytics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                analysisType:
+                  $ref: '#/components/schemas/AnalysisType'
+                eventCollection:
+                  $ref: '#/components/schemas/EventCollection'
+                timeframe:
+                  $ref: '#/components/schemas/Timeframe'
+                targetProperty:
+                  $ref: '#/components/schemas/TargetProperty'
+                groupBy:
+                  $ref: '#/components/schemas/GroupByArray'
+                filters:
+                  description: Array of filter conditions to apply to the query.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/StandardQueryFilter'
+                interval:
+                  $ref: '#/components/schemas/QueryInterval'
+                limit:
+                  $ref: '#/components/schemas/AnalyticsLimit'
+                orderBy:
+                  description: Array of ordering specifications.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/StandardOrderBy'
+                timezone:
+                  description: Timezone to use for the query. Only impacts interval calculation (interval boundaries will be calculated in this timezone, then converted to UTC for results). Must be a valid IANA timezone identifier such as "America/New_York". Alternatively if the end of the timeframe has a timezone offset that will be used.
+                  type: string
+                extractionFields:
+                  $ref: '#/components/schemas/ExtractionFields'
+                extractionFormat:
+                  $ref: '#/components/schemas/ExtractionFormat'
+                scope:
+                  $ref: '#/components/schemas/QueryScope'
+              required:
+              - analysisType
+              - eventCollection
+              - timeframe
+              example:
+                analysisType: count
+                eventCollection: page
+                timeframe:
+                  start: '2025-01-01'
+                  end: '2025-06-31'
+                interval: monthly
+        required: true
+      summary: Get the results of an analytics query
+      x-addon: vanillaanalytics
+      operationId: postAnalyticsAnalysis
+      x-operation-id-source: derived
+  /analytics/catalog:
+    get:
+      description: Get the data catlog meta data for analytics.
+      tags:
+      - Analytics
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsCatalog'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+      x-addon: vanillaanalytics
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      summary: Get analytics catalog
+      x-summary-source: derived
+      operationId: getAnalyticsCatalog
+      x-operation-id-source: derived
+  /analytics/catalog/data-sources:
+    get:
+      description: List the catalog's data sources.
+      tags:
+      - Analytics
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/AnalyticsDataSourceFragment'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+      x-addon: vanillaanalytics
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      summary: Get analytics catalog data sources
+      x-summary-source: derived
+      operationId: getAnalyticsCatalogDataSources
+      x-operation-id-source: derived
+  /analytics/catalog/data-sources/{key}:
+    parameters:
+    - name: key
+      description: The key of the data source.
+      in: path
+      required: true
+      schema:
+        type: string
+      x-addon: vanillaanalytics
+    get:
+      description: Get a single data source.
+      tags:
+      - Analytics
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsDataSource'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: vanillaanalytics
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      summary: Get analytics catalog data sources by key
+      x-summary-source: derived
+      operationId: getAnalyticsCatalogDataSourcesByKey
+      x-operation-id-source: derived
+  /analytics/dashboard-navigation:
+    get:
+      summary: Get all of the available analytics dashboards
+      tags:
+      - Analytics
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnalyticsDashboardSection'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+      x-addon: vanillaanalytics
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getAnalyticsDashboardNavigation
+      x-operation-id-source: derived
+  /analytics/dashboards:
+    post:
+      summary: Add a new dashboard
+      tags:
+      - Analytics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyticsDashboard'
+      responses:
+        '201':
+          $ref: '#/components/responses/AnalyticsDashboardResponse'
+      x-addon: vanillaanalytics
+      operationId: postAnalyticsDashboards
+      x-operation-id-source: derived
+    get:
+      summary: List all dashboards
+      tags:
+      - Analytics
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnalyticsDashboardFragment'
+      x-addon: vanillaanalytics
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getAnalyticsDashboards
+      x-operation-id-source: derived
+  /analytics/dashboards/{id}:
+    parameters:
+    - name: id
+      description: The ID of the dashboard.
+      in: path
+      schema:
+        oneOf:
+        - type: string
+        - type: integer
+      required: true
+      x-addon: vanillaanalytics
+    get:
+      summary: Get a dashboard
+      tags:
+      - Analytics
+      responses:
+        '200':
+          $ref: '#/components/responses/AnalyticsDashboardResponse'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: vanillaanalytics
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getAnalyticsDashboardsById
+      x-operation-id-source: derived
+    patch:
+      summary: Update an existing dashboard
+      tags:
+      - Analytics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyticsDashboard'
+      responses:
+        '200':
+          $ref: '#/components/responses/AnalyticsDashboardResponse'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: vanillaanalytics
+      operationId: patchAnalyticsDashboardsById
+      x-operation-id-source: derived
+    delete:
+      summary: Delete a dashboard
+      tags:
+      - Analytics
+      responses:
+        '204':
+          description: Success.
+        '400':
+          description: You tried to delete a dashboard that isn't editable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: vanillaanalytics
+      operationId: deleteAnalyticsDashboardsById
+      x-operation-id-source: derived
+  /analytics/keen-query/{analysisType}:
+    parameters:
+    - name: analysisType
+      description: Type of analytics analysis to perform.
+      in: path
+      required: true
+      example: count
+      schema:
+        $ref: '#/components/schemas/AnalysisType'
+      x-addon: vanillaanalytics
+    post:
+      responses:
+        '201':
+          $ref: '#/components/responses/AnalyticsQueryResponse'
+        '400':
+          $ref: '#/components/responses/AnalyticsExtractTooLargeResponse'
+      tags:
+      - Analytics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event_collection:
+                  $ref: '#/components/schemas/EventCollection'
+                timeframe:
+                  $ref: '#/components/schemas/Timeframe'
+                target_property:
+                  $ref: '#/components/schemas/TargetProperty'
+                group_by:
+                  $ref: '#/components/schemas/GroupByArray'
+                filters:
+                  description: Array of filter conditions to apply to the query.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/KeenQueryFilter'
+                interval:
+                  $ref: '#/components/schemas/QueryInterval'
+                timezone:
+                  description: Local timezone offset in seconds.
+                  type: integer
+                limit:
+                  $ref: '#/components/schemas/AnalyticsLimit'
+                order_by:
+                  description: Array of ordering specifications.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/KeenOrderBy'
+                property_names:
+                  $ref: '#/components/schemas/ExtractionFields'
+                extractionFormat:
+                  $ref: '#/components/schemas/ExtractionFormat'
+                scope:
+                  $ref: '#/components/schemas/QueryScope'
+              required:
+              - event_collection
+              - timeframe
+              example:
+                event_collection: page
+                timeframe:
+                  start: '2025-01-01'
+                  end: '2025-06-31'
+                interval: monthly
+        required: true
+      summary: Get the result of an analytics query
+      x-addon: vanillaanalytics
+      operationId: postAnalyticsKeenQueryByAnalysisType
+      x-operation-id-source: derived
+  /analytics/leaderboard:
+    get:
+      parameters:
+      - description: The leaderboard to query.
+        in: query
+        name: board
+        required: true
+        schema:
+          enum:
+          - top-posters
+          - top-discussion-starters
+          - top-question-answerers
+          - top-best-answerers
+          - top-viewed-discussions
+          - top-viewed-qna-discussions
+          - top-commented-discussions
+          - top-positive-discussions
+          - top-negative-discussions
+          - top-member-by-total-reputation
+          - top-member-by-reputation
+          - top-helpful-articles
+          - top-users-helpful-votes
+          - top-users-articles
+          minLength: 1
+          type: string
+      - description: The number of rows to return.
+        in: query
+        name: limit
+        required: true
+        schema:
+          type: integer
+          default: 10
+          maximum: 100
+          minimum: 1
+      - description: Start of the time frame.
+        in: query
+        name: start
+        required: true
+        schema:
+          format: date-time
+          type: string
+      - description: End of the time frame.
+        in: query
+        name: end
+        required: true
+        schema:
+          format: date-time
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Leaderboard'
+                type: array
+          description: Success
+      tags:
+      - Analytics
+      summary: Retrieve data for a leaderboard
+      x-addon: vanillaanalytics
+      operationId: getAnalyticsLeaderboard
+      x-operation-id-source: derived
+  /analytics/query:
+    post:
+      responses:
+        '201':
+          $ref: '#/components/responses/AnalyticsQueryResponse'
+        '400':
+          $ref: '#/components/responses/AnalyticsExtractTooLargeResponse'
+      tags:
+      - Analytics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  $ref: '#/components/schemas/AnalysisType'
+                collection:
+                  $ref: '#/components/schemas/EventCollection'
+                start:
+                  description: Start of the time frame.
+                  format: date-time
+                  type: string
+                end:
+                  description: End of the time frame.
+                  format: date-time
+                  type: string
+                property:
+                  $ref: '#/components/schemas/TargetProperty'
+                group:
+                  $ref: '#/components/schemas/GroupByArray'
+                filters:
+                  description: Array of filter conditions to apply to the query.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/LegacyQueryFilter'
+                interval:
+                  $ref: '#/components/schemas/QueryInterval'
+                limit:
+                  $ref: '#/components/schemas/AnalyticsLimit'
+                order:
+                  description: Array of ordering specifications.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/LegacyOrderBy'
+                extractionFields:
+                  $ref: '#/components/schemas/ExtractionFields'
+                extractionFormat:
+                  $ref: '#/components/schemas/ExtractionFormat'
+                scope:
+                  $ref: '#/components/schemas/QueryScope'
+              required:
+              - type
+              - collection
+              - start
+              - end
+              example:
+                type: count
+                collection: page
+                start: '2025-01-01'
+                end: '2025-06-31'
+                interval: monthly
+        required: true
+      summary: Get the result of an analytics query. (legacy)
+      x-addon: vanillaanalytics
+      operationId: postAnalyticsQuery
+      x-operation-id-source: derived
+components:
+  schemas:
+    AnalyticsExtractCsv:
+      description: CSV data returned when extracting CSV data.
+      type: string
+      format: text/csv
+      example: 'type,urlParsed.path,user.name
+
+        page,/page,John Doe
+
+        page,/page,Jane Doe
+
+        page,/page,Jim Doe
+
+        '
+      x-addon: vanillaanalytics
+    EventCollection:
+      description: Analytics event collection. Different types of events are stored in different collections.
+      enum:
+      - aiConversation
+      - article
+      - article_modify
+      - article_reaction
+      - attachmentDownload
+      - cmdEscalation
+      - communityEvent
+      - escalation
+      - group
+      - keyword
+      - moderation
+      - page
+      - point
+      - post
+      - postEscalations
+      - post-modify
+      - qna
+      - reaction
+      - registration
+      - report
+      - reports
+      - search
+      - subscriptionChange
+      - tag
+      - userBadge
+      minLength: 1
+      type: string
+      x-addon: vanillaanalytics
+    SortDirection:
+      description: The sort direction for ordering results.
+      type: string
+      enum:
+      - ASC
+      - DESC
+      default: DESC
+      x-addon: vanillaanalytics
+    AnalyticsDashboard:
+      description: An analytics dashboard.
+      allOf:
+      - $ref: '#/components/schemas/AnalyticsDashboardFragment'
+      - type: object
+        properties:
+          attributes:
+            description: The dashboard definition.
+            type: object
+        required:
+        - attributes
+      - $ref: '#/components/schemas/InsertInfo'
+      - $ref: '#/components/schemas/UpdateInfo'
+      x-addon: vanillaanalytics
+    AnalysisType:
+      description: Type of analysis to perform on the data.
+      type: string
+      enum:
+      - average
+      - count
+      - count_unique
+      - minimum
+      - maximum
+      - median
+      - sum
+      - extraction
+      - export
+      minLength: 1
+      example: count
+      x-addon: vanillaanalytics
+    AnalyticsDashboardFragment:
+      description: Basic information about an analytics dashboard.
+      type: object
+      properties:
+        dashboardID:
+          type: integer
+          description: The ID of the dasboard.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the dashboard.
+        description:
+          description: The dashboard's description.
+          type: string
+          minLength: 1
+          default: ''
+        editable:
+          type: boolean
+          description: Whether or not the dashboard can be edited by a user.
+          readOnly: true
+        copyable:
+          type: boolean
+          description: Whether or not the dashboard can be copied by a user.
+          default: 1
+      x-addon: vanillaanalytics
+    KeenOrderBy:
+      description: Ordering specification for Keen-compatible analytics queries.
+      type: object
+      properties:
+        property_name:
+          description: The property name to order by.
+          minLength: 1
+          type: string
+        direction:
+          $ref: '#/components/schemas/SortDirection'
+      x-addon: vanillaanalytics
+    AnalyticsDataSource:
+      allOf:
+      - $ref: '#/components/schemas/AnalyticsDataSourceFragment'
+      - type: object
+        properties:
+          properties:
+            description: The data source's columns.
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/AnalyticsDataSourceProperty'
+        required:
+        - properties
+        example:
+          properties:
+            dateTime.day: 10
+            dateTime.timestamp: 1615398283
+            dateTime.year: 2021
+      x-addon: vanillaanalytics
+    BasicError:
+      type: object
+      properties:
+        message:
+          description: Verbose description of the error.
+          type: string
+        status:
+          description: Response status code.
+          type: integer
+      required:
+      - message
+      - status
+      x-addon: dashboard
+    ExtractionFormat:
+      description: The format to extract the data in.
+      type: string
+      enum:
+      - json
+      - csv
+      default: json
+      x-addon: vanillaanalytics
+    QueryInterval:
+      description: Time interval for grouping results. If your specified interval and date range produce more than 500 intervals, the interval will be automatically bumped up to the next largest interval.
+      type: string
+      enum:
+      - hourly
+      - daily
+      - weekly
+      - monthly
+      - yearly
+      x-addon: vanillaanalytics
+    AnalyticsGroupedResult:
+      description: Array of grouped results returned when groupBy is specified without interval.
+      type: object
+      properties:
+        resultType:
+          description: The type of result.
+          type: string
+          enum:
+          - grouped
+          default: grouped
+        result:
+          description: Array of results grouped by the specified fields.
+          type: array
+          items:
+            type: object
+            properties:
+              result:
+                description: The aggregated value for this group.
+                type: number
+            additionalProperties: true
+      required:
+      - resultType
+      - result
+      example:
+        resultType: grouped
+        result:
+        - category.name: Product Ideas
+          result: 428
+        - category.name: General Discussion
+          result: 312
+      x-addon: vanillaanalytics
+    AnalyticsGroupedIntervalResult:
+      description: Time-series results with grouping returned when both interval and groupBy are specified.
+      type: object
+      properties:
+        resultType:
+          description: The type of result.
+          type: string
+          enum:
+          - grouped_interval
+          default: grouped_interval
+        result:
+          description: Array of time-bucketed results, each containing grouped values.
+          type: array
+          items:
+            type: object
+            properties:
+              timeframe:
+                type: object
+                properties:
+                  start:
+                    description: Start of this time bucket.
+                    type: string
+                    format: date-time
+                  end:
+                    description: End of this time bucket.
+                    type: string
+                    format: date-time
+                required:
+                - start
+                - end
+              value:
+                description: Array of grouped results for this time bucket.
+                type: array
+                items:
+                  type: object
+                  properties:
+                    result:
+                      description: The aggregated value for this group in this time bucket.
+                      type: number
+                  additionalProperties: true
+            required:
+            - timeframe
+            - value
+      required:
+      - resultType
+      - result
+      example:
+        resultType: grouped_interval
+        result:
+        - timeframe:
+            start: '2025-04-01T04:00:00.000Z'
+            end: '2025-05-01T04:00:00.000Z'
+          value:
+          - category.name: Product Ideas
+            result: 108
+          - category.name: General Discussion
+            result: 82
+        - timeframe:
+            start: '2025-05-01T04:00:00.000Z'
+            end: '2025-06-01T04:00:00.000Z'
+          value:
+          - category.name: Product Ideas
+            result: 124
+          - category.name: General Discussion
+            result: 95
+      x-addon: vanillaanalytics
+    AnalyticsLimit:
+      description: Maximum number of results to return. Requires at least one group field.
+      type: integer
+      minimum: 1
+      x-addon: vanillaanalytics
+    AnalyticsExtractJson:
+      description: JSON data returned when extracting JSON data.
+      type: array
+      items:
+        type: object
+      example:
+      - type: page
+        urlParsed:
+          path: /page
+        user:
+          name: John Doe
+      x-addon: vanillaanalytics
+    FilterOperator:
+      type: string
+      default: eq
+      description: The comparison or logical operation for analytics filters.
+      enum:
+      - eq
+      - ne
+      - gt
+      - gte
+      - lt
+      - lte
+      - in
+      - contains
+      - not_contains
+      - exists
+      - and
+      - or
+      minLength: 1
+      x-addon: vanillaanalytics
+    Timeframe:
+      description: Time range for analytics queries.
+      type: object
+      properties:
+        start:
+          description: Start of the time frame.
+          format: date-time
+          type: string
+        end:
+          description: End of the time frame.
+          format: date-time
+          type: string
+      required:
+      - start
+      - end
+      x-addon: vanillaanalytics
+    ExtractionFields:
+      description: Select specific fields to extract during an extraction query. Wildcard patterns are supported.
+      type: array
+      items:
+        type: string
+        minLength: 1
+      example:
+      - type
+      - urlParsed.*
+      - user.*
+      x-addon: vanillaanalytics
+    AnalyticsDataSourceFragment:
+      description: Represents a data source that can be queried.
+      type: object
+      properties:
+        aliases:
+          type: object
+          description: Defines an alternate names for properties.
+        name:
+          description: The human-readable name of the data source.
+          type: string
+        description:
+          description: More information about the data source.
+          type: string
+      example:
+        name: Page Views
+        description: Contains all of the page view events from the site.
+      required:
+      - name
+      - description
+      x-addon: vanillaanalytics
+    AnalyticsCatalog:
+      description: Contains meta information about analytics data sources.
+      type: object
+      properties:
+        dataSources:
+          description: All of the data sources that can be queried for analytics.
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/AnalyticsDataSource'
+      required:
+      - dataSources
+      x-addon: vanillaanalytics
+    GroupByArray:
+      description: An array of event properties to group results by. When used with interval, only one group field is allowed.
+      type: array
+      items:
+        type: string
+        minLength: 1
+      x-addon: vanillaanalytics
+    Leaderboard:
+      properties:
+        count:
+          description: Associated total for this row.
+          type: integer
+        id:
+          description: ID of the record.
+          type: integer
+        position:
+          description: Current leaderboard position.
+          type: integer
+        positionChange:
+          description: Progression status of the record.
+          enum:
+          - Fall
+          - New
+          - Rise
+          - Same
+          minLength: 1
+          type: string
+        previous:
+          description: Previous position of the record
+          type:
+          - integer
+          - 'null'
+        title:
+          description: Title for the row.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        url:
+          description: Full URL to the record.
+          minLength: 1
+          type: string
+      required:
+      - id
+      - position
+      - positionChange
+      - previous
+      - url
+      - title
+      - count
+      type: object
+      x-addon: vanillaanalytics
+    AnalyticsDataSourceProperty:
+      description: Represents a column in a data source.
+      type: object
+      properties:
+        name:
+          description: The human-readable name of the column.
+          type: string
+        type:
+          description: The data type of the column.
+          type: string
+          enum:
+          - string
+          - integer
+          - number
+          - boolean
+        format:
+          description: The format of the the column if it must be massaged.
+          type: string
+          enum:
+          - date-time
+          - timestamp
+      required:
+      - name
+      - type
+      x-addon: vanillaanalytics
+    LegacyQueryFilter:
+      description: Filter condition for legacy analytics queries. Supports nested filters using 'and'/'or' operators with operands array, or field filters with prop/op/val.
+      type: object
+      properties:
+        op:
+          $ref: '#/components/schemas/FilterOperator'
+        prop:
+          description: The property name. Required for field filters (when op is not 'and'/'or').
+          minLength: 1
+          type: string
+        val:
+          description: The target value for comparison. Required for most operators except 'exists', 'and', and 'or'.
+        operands:
+          description: Array of nested filter conditions. Required when op is 'and' or 'or'.
+          type: array
+          items:
+            $ref: '#/components/schemas/LegacyQueryFilter'
+      required:
+      - op
+      x-addon: vanillaanalytics
+    AnalyticsIntervalResult:
+      description: Time-series results returned when interval is specified without groupBy.
+      type: object
+      properties:
+        result:
+          description: Array of time-bucketed results.
+          type: array
+          items:
+            type: object
+            properties:
+              timeframe:
+                type: object
+                properties:
+                  start:
+                    description: Start of this time bucket.
+                    type: string
+                    format: date-time
+                  end:
+                    description: End of this time bucket.
+                    type: string
+                    format: date-time
+                required:
+                - start
+                - end
+              value:
+                description: The aggregated value for this time bucket.
+                type: number
+            required:
+            - timeframe
+            - value
+      required:
+      - resultType
+      - result
+      example:
+        resultType: interval
+        result:
+        - timeframe:
+            start: '2025-04-01T04:00:00.000Z'
+            end: '2025-05-01T04:00:00.000Z'
+          value: 359
+        - timeframe:
+            start: '2025-05-01T04:00:00.000Z'
+            end: '2025-06-01T04:00:00.000Z'
+          value: 421
+      x-addon: vanillaanalytics
+    Export:
+      type: object
+      properties:
+        exportUUID:
+          type: string
+          format: uuid
+          description: The unique identifier of the export.
+        exportStatus:
+          $ref: '#/components/schemas/ExportStatus'
+        name:
+          type: string
+          description: The name of the export.
+        query:
+          type: object
+          description: The query that was used to extract the data.
+        queryHash:
+          type: string
+          description: The hash of the query that was used to extract the data.
+        error:
+          type: string
+          description: The error that may have occurred while creating the export.
+        dateExpires:
+          type: string
+          format: date-time
+          description: The date the export will expire.
+        dateInserted:
+          type: string
+          format: date-time
+          description: The date the export was created.
+        insertUserID:
+          type: integer
+          description: The user that created the export.
+        dateUpdated:
+          type: string
+          format: date-time
+          description: The date the export was last updated.
+        updateUserID:
+          type: integer
+          description: The last user that updated the export.
+        fileSizeBytes:
+          type: integer
+          description: The size of the export in bytes.
+        contentType:
+          type: string
+          description: The content type of the export.
+        jobID:
+          type: string
+          description: The ID of the job that was used to create the export.
+        s3Key:
+          type: string
+          description: The key of the export in the S3 bucket.
+        url:
+          type: string
+          format: uri
+          description: The web URL where the export can be viewed.
+        apiUrl:
+          type: string
+          format: uri
+          description: The web URL where the export can be accessed via the API.
+        downloadUrl:
+          type: string
+          format: uri
+          description: The web URL where the export can be downloaded.
+        countDownloads:
+          type: integer
+          description: The number of times the export has been downloaded.
+      required:
+      - exportUUID
+      - exportStatus
+      - url
+      - apiUrl
+      - countDownloads
+      - fileSizeBytes
+      - contentType
+      - jobID
+      - s3Key
+      - name
+      - query
+      - dateExpires
+      - dateInserted
+      - insertUserID
+      - dateUpdated
+      - updateUserID
+      - mediaID
+      x-addon: dashboard
+    KeenQueryFilter:
+      description: Filter condition for Keen-compatible analytics queries. Supports nested filters using 'and'/'or' operators with operands array, or field filters with property_name/operator/property_value.
+      type: object
+      properties:
+        operator:
+          $ref: '#/components/schemas/FilterOperator'
+        property_name:
+          description: The property name. Required for field filters (when operator is not 'and'/'or').
+          minLength: 1
+          type: string
+        property_value:
+          description: The target value for comparison. Required for most operators except 'exists', 'and', and 'or'.
+        operands:
+          description: Array of nested filter conditions. Required when operator is 'and' or 'or'.
+          type: array
+          items:
+            $ref: '#/components/schemas/KeenQueryFilter'
+      required:
+      - operator
+      x-addon: vanillaanalytics
+    UpdateInfo:
+      type: object
+      properties:
+        dateUpdated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date the record was updateed.
+          readOnly: true
+        updateUserID:
+          type:
+          - integer
+          - 'null'
+          description: The user that updateed the record.
+          readOnly: true
+        updateIPAddress:
+          type:
+          - string
+          - 'null'
+          format: ipv4
+          description: The IP address the record was updateed from.
+          readOnly: true
+      x-addon: dashboard
+    StandardQueryFilter:
+      description: Filter condition for standard analytics queries. Supports nested filters using 'and'/'or' operators with operands array, or field filters with propertyName/operator/propertyValue.
+      type: object
+      properties:
+        operator:
+          $ref: '#/components/schemas/FilterOperator'
+        propertyName:
+          description: The property name. Required for field filters (when operator is not 'and'/'or').
+          minLength: 1
+          type: string
+        propertyValue:
+          description: The target value for comparison. Required for most operators except 'exists', 'and', and 'or'.
+        operands:
+          description: Array of nested filter conditions. Required when operator is 'and' or 'or'.
+          type: array
+          items:
+            $ref: '#/components/schemas/StandardQueryFilter'
+      required:
+      - operator
+      x-addon: vanillaanalytics
+    LegacyOrderBy:
+      description: Ordering specification for legacy analytics queries.
+      type: object
+      properties:
+        prop:
+          description: The property name to order by.
+          minLength: 1
+          type: string
+        direction:
+          $ref: '#/components/schemas/SortDirection'
+      x-addon: vanillaanalytics
+    TargetProperty:
+      description: An event property to perform the analysis on. Required for count_unique, minimum, maximum, median and sum query types.
+      x-addon: vanillaanalytics
+    ExportStatus:
+      type: string
+      enum:
+      - pending
+      - created
+      - failed
+      - timeout
+      description: The status of the export.
+      x-addon: dashboard
+    QueryScope:
+      description: Should the query be scoped to the single site or the hub.
+      type: string
+      enum:
+      - site
+      - hub
+      default: site
+      x-addon: vanillaanalytics
+    AnalyticsSingleResult:
+      description: Single numeric result returned when neither grouping nor intervals are specified.
+      type: object
+      properties:
+        resultType:
+          description: The type of result.
+          type: string
+          enum:
+          - single
+          default: single
+        result:
+          description: The single aggregated value.
+          type: number
+      required:
+      - resultType
+      - result
+      example:
+        resultType: single
+        result: 38
+      x-addon: vanillaanalytics
+    AnalyticsDashboardSection:
+      description: A section that groups similar analytics dashboards together.
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the section.
+        dashboards:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsDashboardFragment'
+      required:
+      - name
+      - dashboards
+      x-addon: vanillaanalytics
+    StandardOrderBy:
+      description: Ordering specification for standard analytics queries.
+      type: object
+      properties:
+        propertyName:
+          description: The property name to order by.
+          minLength: 1
+          type: string
+        direction:
+          $ref: '#/components/schemas/SortDirection'
+      x-addon: vanillaanalytics
+    InsertInfo:
+      type: object
+      properties:
+        dateInserted:
+          type: string
+          format: date-time
+          description: The date the record was inserted.
+          readOnly: true
+        insertUserID:
+          type: integer
+          description: The user that inserted the record.
+          readOnly: true
+        insertIPAddress:
+          type: string
+          format: ipv4
+          description: The IP address the record was inserted from.
+          readOnly: true
+      required:
+      - dateInserted
+      - insertUserID
+      - insertIPAddress
+      x-addon: dashboard
+  responses:
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+    AnalyticsExtractTooLargeResponse:
+      description: Error returned when data is too large to extract. When this error is returned, your timeframe and filters are likely returning too much data. You can either switch to using the "export" analysis type, add filters to your query to reduce the amount of data returned, or use a shorter timeframe.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: The error message.
+              code:
+                type: number
+                description: Error code
+                format: int
+            required:
+            - message
+            - status
+      x-addon: vanillaanalytics
+    AnalyticsDashboardResponse:
+      description: Success.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AnalyticsDashboard'
+      x-addon: vanillaanalytics
+    AnalyticsQueryResponse:
+      description: 'Success. The response format depends on query parameters:
+
+        - **AnalyticsSingleResult**: When neither grouping nor interval parameters are specified
+
+        - **AnalyticsGroupedResult**: When grouping is specified without interval
+
+        - **AnalyticsIntervalResult**: When interval is specified without grouping
+
+        - **AnalyticsGroupedIntervalResult**: When both grouping and interval are specified
+
+        - **AnalyticsExtractCsv**: When extracting CSV data.
+
+        - **AnalyticsExtractJson**: When extracting JSON data.
+
+        - **Export**: When exporting data. This is the same data returned from the /api/v2/exports/{exportUUID} endpoint.
+
+        '
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - $ref: '#/components/schemas/AnalyticsSingleResult'
+            - $ref: '#/components/schemas/AnalyticsGroupedResult'
+            - $ref: '#/components/schemas/AnalyticsIntervalResult'
+            - $ref: '#/components/schemas/AnalyticsGroupedIntervalResult'
+            - $ref: '#/components/schemas/AnalyticsExtractCsv'
+            - $ref: '#/components/schemas/AnalyticsExtractJson'
+            - $ref: '#/components/schemas/Export'
+      x-addon: vanillaanalytics
+    NotFound:
+      description: The record does not exist or was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: More information about the error.
+              status:
+                type: number
+                description: The HTTP status code for the error.
+                format: int32
+            required:
+            - message
+          example:
+            status: 404
+            message: Page Not Found
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

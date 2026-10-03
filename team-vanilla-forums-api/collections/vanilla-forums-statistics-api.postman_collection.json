@@ -1,0 +1,110 @@
+{
+  "item": [
+    {
+      "id": "9dad390f-886b-43c6-8b0d-828542e8768d",
+      "name": "Statistics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ea9a2bc5-919b-44d5-876f-f469247ba166",
+          "name": "Register a page view for statistical and analytical purpose.",
+          "request": {
+            "name": "Register a page view for statistical and analytical purpose.",
+            "description": {},
+            "url": {
+              "path": [
+                "tick"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\",\n  \"type\": \"<string>\",\n  \"discussionID\": \"<integer>\",\n  \"articleID\": \"<integer>\",\n  \"knowledgeCategoryID\": \"<integer>\",\n  \"knowledgeBaseID\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf3a639a-c99e-497b-be91-f343f6cb83b4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tick"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\",\n  \"type\": \"<string>\",\n  \"discussionID\": \"<integer>\",\n  \"articleID\": \"<integer>\",\n  \"knowledgeCategoryID\": \"<integer>\",\n  \"knowledgeBaseID\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "af02db7d-0e11-47db-a392-e3867b3a4d88",
+    "name": "Vanilla Addons Statistics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,570 @@
+{
+  "item": [
+    {
+      "id": "48a0b0d4-6148-431e-a37c-7b4f7e6a676b",
+      "name": "Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df9e7ff6-926d-4122-bf77-09e24ccae2c1",
+          "name": "Search for records matching specific criteria.",
+          "request": {
+            "name": "Search for records matching specific criteria.",
+            "description": {},
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Filter the records using the supplied terms.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordTypes",
+                  "value": "<string>",
+                  "description": "Restrict the search to the specified main type(s) of records.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordTypes",
+                  "value": "<string>",
+                  "description": "Restrict the search to the specified main type(s) of records.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "types",
+                  "value": "<string>",
+                  "description": "Restrict the search to the specified type(s) of records.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "types",
+                  "value": "<string>",
+                  "description": "Restrict the search to the specified type(s) of records.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "discussionID",
+                  "value": "<integer>",
+                  "description": "Set the scope of the search to the comments of a discussion. Incompatible with recordType and type.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryID",
+                  "value": "<integer>",
+                  "description": "Set the scope of the search to a specific category (includes results from the social group category).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryIDs",
+                  "value": "<integer>",
+                  "description": "Set the scope of the search to specific categories.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryIDs",
+                  "value": "<integer>",
+                  "description": "Set the scope of the search to specific categories.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "followedCategories",
+                  "value": "false",
+                  "description": "Set the scope of the search to followed categories only.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeChildCategories",
+                  "value": "false",
+                  "description": "Search the specified category's subtree. Works with categoryID\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeArchivedCategories",
+                  "value": "false",
+                  "description": "Allow search in archived categories.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "knowledgeBaseID",
+                  "value": "<integer>",
+                  "description": "Filter the records by KnowledgeBase ID\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "knowledgeCategoryIDs",
+                  "value": "<integer>",
+                  "description": "Filter the records by KnowledgeCategory ID\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "knowledgeCategoryIDs",
+                  "value": "<integer>",
+                  "description": "Filter the records by KnowledgeCategory ID\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter the records by matching part of their name.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "featured",
+                  "value": "<boolean>",
+                  "description": "Filter the records by their featured status.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "<string>",
+                  "description": "Filter the records by their locale.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "siteSiteSectionGroup",
+                  "value": "<string>",
+                  "description": "Filter the records by their site-section-group.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserNames",
+                  "value": "<string>",
+                  "description": "Filter the records by inserted user names.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserNames",
+                  "value": "<string>",
+                  "description": "Filter the records by inserted user names.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserIDs",
+                  "value": "<integer>",
+                  "description": "Filter the records by inserted userIDs.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserIDs",
+                  "value": "<integer>",
+                  "description": "Filter the records by inserted userIDs.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateInserted",
+                  "value": "<date-filter>",
+                  "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filter discussions by matching tags.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filter discussions by matching tags.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "tagOperator",
+                  "value": "or",
+                  "description": "Tags search condition.\nMust be one of: \"and\", \"or\".\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "queryOperator",
+                  "value": "and",
+                  "description": "Set the default search type.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expandBody",
+                  "value": "true",
+                  "description": "Expand the results to include a rendered body field.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeTypeaheads",
+                  "value": "<boolean>",
+                  "description": "BETA: Include typeahead results in the search response.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeResults",
+                  "value": "<boolean>",
+                  "description": "BETA: Include search results in the search response.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "matchMode",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "statusID",
+                  "value": "<integer>",
+                  "description": "Filter the records statusID"
+                },
+                {
+                  "disabled": false,
+                  "key": "statusID",
+                  "value": "<integer>",
+                  "description": "Filter the records statusID"
+                },
+                {
+                  "disabled": false,
+                  "key": "answerStatusID",
+                  "value": "<string>",
+                  "description": "Filter answer-type comments by answer statusID. Be sure it add a `types` filter if you only want answers."
+                },
+                {
+                  "disabled": false,
+                  "key": "answerStatusID",
+                  "value": "<string>",
+                  "description": "Filter answer-type comments by answer statusID. Be sure it add a `types` filter if you only want answers."
+                },
+                {
+                  "disabled": false,
+                  "key": "postTypeID",
+                  "value": "<string>",
+                  "description": "Filter the records postTypeID"
+                },
+                {
+                  "disabled": false,
+                  "key": "postTypeID",
+                  "value": "<string>",
+                  "description": "Filter the records postTypeID"
+                },
+                {
+                  "disabled": false,
+                  "key": "internal-data",
+                  "value": "<string>",
+                  "description": "Post meta values to filter posts"
+                },
+                {
+                  "disabled": false,
+                  "key": "private-data",
+                  "value": "<string>",
+                  "description": "Post meta values to filter posts"
+                },
+                {
+                  "disabled": false,
+                  "key": "public-data",
+                  "value": "<string>",
+                  "description": "Post meta values to filter posts"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "742ed251-1ffb-40d3-a245-3f5797504e49",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recordTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recordTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "discussionID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "categoryID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "categoryIDs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "categoryIDs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "followedCategories",
+                      "value": "false"
+                    },
+                    {
+                      "key": "includeChildCategories",
+                      "value": "false"
+                    },
+                    {
+                      "key": "includeArchivedCategories",
+                      "value": "false"
+                    },
+                    {
+                      "key": "knowledgeBaseID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "knowledgeCategoryIDs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "knowledgeCategoryIDs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "featured",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "locale",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "siteSiteSectionGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "insertUserNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "insertUserNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "insertUserIDs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "insertUserIDs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dateInserted",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagOperator",
+                      "value": "or"
+                    },
+                    {
+                      "key": "queryOperator",
+                      "value": "and"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "expandBody",
+                      "value": "true"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeTypeaheads",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeResults",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "matchMode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statusID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "statusID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "answerStatusID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "answerStatusID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postTypeID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postTypeID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "internal-data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "private-data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "public-data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"recordID\": 5548,\n    \"recordType\": \"discussion\",\n    \"type\": \"question\",\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"score\": 1576,\n    \"insertUserID\": 3135,\n    \"dateInserted\": \"1981-05-03T17:47:49.083Z\",\n    \"updateUserID\": 1368,\n    \"dateUpdated\": \"1967-05-01T04:10:07.073Z\",\n    \"url\": \"string\",\n    \"excerpt\": \"string\",\n    \"categoryID\": 7414,\n    \"commentID\": 8673,\n    \"discussionID\": 8521,\n    \"groupID\": 1159,\n    \"insertUser\": {\n      \"userID\": 9469,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://rNcPQHgbGe.ofBbw.YhESQtl6UhYvePMcqDR7YTaBEVRah3zgge.6g\",\n      \"dateLastActive\": \"2010-10-18T04:56:36.161Z\",\n      \"url\": \"http://sHGFmFgcaocHKxuuOMSLblxhSeruIy.jwhrodeLGdcaQiE5yGrhbsaVpLzEz5ZQgDYXxdL7,Bkp2dmDGbhyiaxPf95PIMF2\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"image\": \"string\",\n    \"breadcrumbs\": [\n      {\n        \"name\": \"User Feedback\",\n        \"url\": \"https://vanilla.com/forum/user-feedback/\"\n      },\n      {\n        \"name\": \"User Feedback\",\n        \"url\": \"https://vanilla.com/forum/user-feedback/\"\n      }\n    ]\n  },\n  {\n    \"recordID\": 2828,\n    \"recordType\": \"group\",\n    \"type\": \"group\",\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"score\": 6928,\n    \"insertUserID\": 8780,\n    \"dateInserted\": \"1949-04-06T12:51:09.255Z\",\n    \"updateUserID\": 4750,\n    \"dateUpdated\": \"1964-05-28T13:16:45.123Z\",\n    \"url\": \"string\",\n    \"excerpt\": \"string\",\n    \"categoryID\": 179,\n    \"commentID\": 4266,\n    \"discussionID\": 6389,\n    \"groupID\": 9465,\n    \"insertUser\": {\n      \"userID\": 7404,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://IMxhupOHtQoMXAdQtCoepSUWbxhP.dnkxvbTxXlQhio5OvhA0tBzLc9fes\",\n      \"dateLastActive\": \"1951-09-14T14:33:03.186Z\",\n      \"url\": \"http://LqqSdrpxzBoSsHtvTxGNwWkQzJSLVlS.niHaVT6BdsU+QKZf3B2+OEbS,PNOcBKoA4GoAYNrWofPjcSIUooptpykWYW\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"image\": \"string\",\n    \"breadcrumbs\": [\n      {\n        \"name\": \"User Feedback\",\n        \"url\": \"https://vanilla.com/forum/user-feedback/\"\n      },\n      {\n        \"name\": \"User Feedback\",\n        \"url\": \"https://vanilla.com/forum/user-feedback/\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fcbfb15e-89e4-43e2-8adb-8f87f64a2903",
+    "name": "Vanilla Addons Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

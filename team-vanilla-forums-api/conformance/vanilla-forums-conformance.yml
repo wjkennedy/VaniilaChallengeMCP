@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vanilla-api-openapi-original.json + success.vanillaforums.com API docs (auth, pagination, rate limits, webhooks)
+description: >-
+  Standards conformance assertions for the Vanilla (Higher Logic Vanilla) API
+  v2, derived from the harvested OpenAPI and the provider's own documentation.
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: Platform serves its own OpenAPI 3.0.3 at /api/v2/open-api/v3 on every community (harvested from open.vanillaforums.com).
+  - id: rfc6750-bearer-token
+    conforms: true
+    evidence: Docs specify RFC 6750 bearer usage in the Authorization header for personal access tokens and JWTs.
+  - id: rfc7519-jwt
+    conforms: true
+    evidence: JWT auth addon (HS256) and short-lived role tokens are signed JWTs per RFC 7519.
+  - id: rfc8288-web-linking-pagination
+    conforms: true
+    evidence: Pagination metadata is delivered in the Link response header with rel="first/last/prev/next" (API v2 overview).
+  - id: rfc3339-dates
+    conforms: true
+    evidence: Date filters require RFC 3339 date/date-time values (date filters article).
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securitySchemes in the OpenAPI and no OAuth authorization-server flow documented for API access.
+  - id: oidc
+    conforms: false
+    evidence: No /.well-known/openid-configuration published (404/403 on all probed hosts).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom BasicError JSON envelope {message, status, description}, not application/problem+json.
+  - id: json-api
+    conforms: false
+    evidence: Responses are plain JSON arrays/objects, not JSON:API documents.
+  - id: rate-limiting-429
+    conforms: true
+    evidence: Documented per-IP limits signal HTTP 429 Too Many Requests (rate limits article).
+  - id: cors
+    conforms: true
+    evidence: CORS is supported and documented (kb/articles/42-cors-cross-origin-resource-sharing).
+  - id: webhook-hmac-signing
+    conforms: true
+    evidence: Webhook deliveries are signed with HMAC-SHA1 in the X-Vanilla-Signature header (webhooks article).
+  - id: idempotency-key
+    conforms: false
+    evidence: No idempotency-key mechanism documented or present in the OpenAPI.

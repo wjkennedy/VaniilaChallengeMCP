@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://success.vanillaforums.com/kb/articles/262-webhooks
+type: Webhooks
+description: >-
+  Higher Logic Vanilla publishes no AsyncAPI document, but ships a first-class
+  Webhooks addon (enabled by Vanilla staff on request) that delivers HTTPS POST
+  notifications about community events. Webhooks are managed in the Dashboard
+  under Settings > API Integrations > Webhooks; each webhook has a name,
+  delivery URL, signing secret, an active toggle, and can subscribe to all
+  events or a selected subset. Optional settings include user email addresses
+  and private/internal profile fields in user fragments. The dashboard retains
+  the fifty most recent delivery records (delivery ID, date, duration, HTTP
+  status, raw request/response).
+signing:
+  header: X-Vanilla-Signature
+  algorithm: HMAC-SHA1 over the raw request body using the webhook's configured Secret
+  guidance: recompute the signature and compare against the header; reject events that do not match
+event_families:
+  - family: article
+    fires_on: [added, edited, deleted (as article_update), restored (as article_update), marked helpful/unhelpful]
+  - family: answer
+    fires_on: [rejected, accepted]
+  - family: comment
+    fires_on: [added, edited, deleted]
+  - family: community event
+    fires_on: [added, updated, deleted, RSVP created or updated]
+  - family: discussion
+    fires_on: [added, edited, deleted, tagged]
+    notes: applies to discussions, questions, polls, and ideas
+  - family: escalation
+    fires_on: [post escalated, escalation assigned, escalation updated (post removed/restored, status change)]
+  - family: group
+    fires_on: [created, edited, deleted, user joins, user leaves]
+  - family: notification
+    fires_on: [user receives a new notification]
+  - family: reaction
+    fires_on: [reaction added, reaction removed]
+    notes: includes ideation votes
+  - family: report
+    fires_on: [post reported, report updated (dismissed, approved, rejected)]
+  - family: user
+    fires_on: [registered/added, profile updated, deleted, banned/unbanned (as user_update), badge earned, rank changed, points earned]
+  - family: warnings & notes
+    fires_on: [user warned, note added to profile]
+docs: https://success.vanillaforums.com/kb/articles/262-webhooks

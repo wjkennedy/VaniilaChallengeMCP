@@ -1,0 +1,955 @@
+{
+  "item": [
+    {
+      "id": "77b07970-06ba-4814-8391-323766c0ed18",
+      "name": "Appeals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d02989fa-2b07-401a-b8cb-401810a3df35",
+          "name": "Create an appeal.",
+          "request": {
+            "name": "Create an appeal.",
+            "description": {
+              "content": "Create a new appeal for a ban or content removal decision.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appeals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jwt\": \"<string>\",\n  \"appealText\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da075c78-eebb-4508-a29a-06fd4a6eb177",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jwt\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...\",\n  \"appealText\": \"I believe this ban was unjust because I was following community guidelines.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"appealID\": 2199,\n  \"type\": \"ban\",\n  \"status\": \"pending\",\n  \"insertUserID\": 1212,\n  \"appealingUserID\": 9271,\n  \"dateInserted\": \"1958-08-30T16:31:45.502Z\",\n  \"appealText\": \"string\",\n  \"appealingUserInfo\": {\n    \"userID\": 5811,\n    \"name\": \"string\",\n    \"email\": \"string\"\n  },\n  \"appealEventInfo\": {\n    \"userNoteID\": 3361,\n    \"moderatorUserID\": 5579,\n    \"moderatorName\": \"string\",\n    \"reasons\": [\n      \"string\",\n      \"string\"\n    ],\n    \"moderatorMessage\": \"string\",\n    \"dateOfEvent\": \"2002-03-09T07:02:21.030Z\",\n    \"recordType\": \"discussion\",\n    \"recordID\": 3007,\n    \"decisionMessage\": \"string\"\n  },\n  \"assignedUserID\": 9555,\n  \"escalationID\": 6364,\n  \"escalationLogID\": 1837,\n  \"dateUpdated\": \"1994-09-11T17:17:33.448Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da992fa6-4eb3-41c2-a15d-bc059e725761",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jwt\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...\",\n  \"appealText\": \"I believe this ban was unjust because I was following community guidelines.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07296b06-fe72-4374-9f73-018700df8362",
+              "name": "Forbidden - User not banned, invalid token, or token user mismatch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jwt\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...\",\n  \"appealText\": \"I believe this ban was unjust because I was following community guidelines.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2c196801-dec1-4b45-926f-8c776ee0f7b7",
+              "name": "Not Found - Referenced record does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jwt\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...\",\n  \"appealText\": \"I believe this ban was unjust because I was following community guidelines.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82687526-6f36-4e4c-b022-99e2f6d90ce9",
+          "name": "List appeals.",
+          "request": {
+            "name": "List appeals.",
+            "description": {
+              "content": "Get a list of appeals with optional filtering. Requires community.manage permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appeals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appealingUserID",
+                  "value": "<integer>",
+                  "description": "Filter by the user who created the appeal."
+                },
+                {
+                  "disabled": false,
+                  "key": "assignedUserID",
+                  "value": "<integer>",
+                  "description": "Filter by the user assigned to the appeal."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by appeal type."
+                },
+                {
+                  "disabled": false,
+                  "key": "escalationID",
+                  "value": "<integer>",
+                  "description": "Filter by escalation ID (for content-removal appeals)."
+                },
+                {
+                  "disabled": false,
+                  "key": "escalationLogID",
+                  "value": "<integer>",
+                  "description": "Filter by escalation log ID (for content-removal appeals)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by appeal status."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateInserted",
+                  "value": "<date-filter>",
+                  "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "-dateInserted",
+                  "description": "Sort the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f34796e9-e708-4891-829e-464cd64e6ce2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appealingUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "assignedUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "escalationID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "escalationLogID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateInserted",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateInserted"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"appealID\": 4454,\n    \"type\": \"content-removal\",\n    \"status\": \"rejected\",\n    \"insertUserID\": 6672,\n    \"appealingUserID\": 309,\n    \"dateInserted\": \"2007-01-20T19:05:34.906Z\",\n    \"appealText\": \"string\",\n    \"appealingUserInfo\": {\n      \"userID\": 2099,\n      \"name\": \"string\",\n      \"email\": \"string\"\n    },\n    \"appealEventInfo\": {\n      \"userNoteID\": 2320,\n      \"moderatorUserID\": 8738,\n      \"moderatorName\": \"string\",\n      \"reasons\": [\n        \"string\",\n        \"string\"\n      ],\n      \"moderatorMessage\": \"string\",\n      \"dateOfEvent\": \"2002-08-18T01:51:14.751Z\",\n      \"recordType\": \"discussion\",\n      \"recordID\": 3133,\n      \"decisionMessage\": \"string\"\n    },\n    \"assignedUserID\": 6935,\n    \"escalationID\": 3020,\n    \"escalationLogID\": 7019,\n    \"dateUpdated\": \"2018-09-05T03:12:20.457Z\"\n  },\n  {\n    \"appealID\": 723,\n    \"type\": \"content-removal\",\n    \"status\": \"pending\",\n    \"insertUserID\": 3649,\n    \"appealingUserID\": 7449,\n    \"dateInserted\": \"1974-11-06T03:41:35.141Z\",\n    \"appealText\": \"string\",\n    \"appealingUserInfo\": {\n      \"userID\": 2325,\n      \"name\": \"string\",\n      \"email\": \"string\"\n    },\n    \"appealEventInfo\": {\n      \"userNoteID\": 1265,\n      \"moderatorUserID\": 2513,\n      \"moderatorName\": \"string\",\n      \"reasons\": [\n        \"string\",\n        \"string\"\n      ],\n      \"moderatorMessage\": \"string\",\n      \"dateOfEvent\": \"1961-01-21T06:34:03.897Z\",\n      \"recordType\": \"discussion\",\n      \"recordID\": 5931,\n      \"decisionMessage\": \"string\"\n    },\n    \"assignedUserID\": 7063,\n    \"escalationID\": 9962,\n    \"escalationLogID\": 6903,\n    \"dateUpdated\": \"1963-12-07T22:28:27.906Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40d26740-8b59-4b79-8244-a65ee02b5cc2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appealingUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "assignedUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "escalationID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "escalationLogID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateInserted",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateInserted"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b200f2c1-cffe-4f2d-bb71-31bd9180ae36",
+          "name": "Get a single appeal.",
+          "request": {
+            "name": "Get a single appeal.",
+            "description": {
+              "content": "Get an appeal by ID. Users can view their own appeals, or moderators with community.manage can view all appeals.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appeals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the appeal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad4e7a49-67b1-4510-8c98-a2e614981225",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the appeal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"appealID\": 1958,\n  \"type\": \"ban\",\n  \"status\": \"rejected\",\n  \"insertUserID\": 3746,\n  \"appealingUserID\": 2264,\n  \"dateInserted\": \"1995-04-22T23:06:31.657Z\",\n  \"appealText\": \"string\",\n  \"appealingUserInfo\": {\n    \"userID\": 842,\n    \"name\": \"string\",\n    \"email\": \"string\"\n  },\n  \"appealEventInfo\": {\n    \"userNoteID\": 3900,\n    \"moderatorUserID\": 8660,\n    \"moderatorName\": \"string\",\n    \"reasons\": [\n      \"string\",\n      \"string\"\n    ],\n    \"moderatorMessage\": \"string\",\n    \"dateOfEvent\": \"2005-05-22T23:45:03.513Z\",\n    \"recordType\": \"comment\",\n    \"recordID\": 9005,\n    \"decisionMessage\": \"string\"\n  },\n  \"assignedUserID\": 8468,\n  \"escalationID\": 2343,\n  \"escalationLogID\": 610,\n  \"dateUpdated\": \"1960-06-07T17:40:41.970Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91f1cc02-1396-4d08-95f0-1744fc06ca4a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the appeal."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3aad46b2-87a3-4eb7-ac4b-a21b294578da",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the appeal."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4ad2879-a9a3-4faf-94f8-a6b6608435a3",
+          "name": "Update an appeal.",
+          "request": {
+            "name": "Update an appeal.",
+            "description": {
+              "content": "Update an appeal's status or assignment. Requires community.manage permission.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appeals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the appeal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"assignedUserID\": \"<integer>\",\n  \"appealEventInfo\": {\n    \"decisionMessage\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9afcbca3-7229-4d29-955d-17c0cf038888",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the appeal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"assignedUserID\": \"<integer>\",\n  \"appealEventInfo\": {\n    \"decisionMessage\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"appealID\": 1958,\n  \"type\": \"ban\",\n  \"status\": \"rejected\",\n  \"insertUserID\": 3746,\n  \"appealingUserID\": 2264,\n  \"dateInserted\": \"1995-04-22T23:06:31.657Z\",\n  \"appealText\": \"string\",\n  \"appealingUserInfo\": {\n    \"userID\": 842,\n    \"name\": \"string\",\n    \"email\": \"string\"\n  },\n  \"appealEventInfo\": {\n    \"userNoteID\": 3900,\n    \"moderatorUserID\": 8660,\n    \"moderatorName\": \"string\",\n    \"reasons\": [\n      \"string\",\n      \"string\"\n    ],\n    \"moderatorMessage\": \"string\",\n    \"dateOfEvent\": \"2005-05-22T23:45:03.513Z\",\n    \"recordType\": \"comment\",\n    \"recordID\": 9005,\n    \"decisionMessage\": \"string\"\n  },\n  \"assignedUserID\": 8468,\n  \"escalationID\": 2343,\n  \"escalationLogID\": 610,\n  \"dateUpdated\": \"1960-06-07T17:40:41.970Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00fee9a1-289f-4d78-8c98-98dedf5a879f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the appeal."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"assignedUserID\": \"<integer>\",\n  \"appealEventInfo\": {\n    \"decisionMessage\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe6de4c9-891c-4132-ba99-5580142c3409",
+              "name": "Forbidden - No permission, assigning to ban creator, or non-assigned user changing status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the appeal."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"assignedUserID\": \"<integer>\",\n  \"appealEventInfo\": {\n    \"decisionMessage\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee27e202-6a70-491d-a119-10b7e9297fd0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the appeal."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"assignedUserID\": \"<integer>\",\n  \"appealEventInfo\": {\n    \"decisionMessage\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "89daa38a-d6a1-404d-9141-40784318fd38",
+    "name": "Vanilla Addons Appeals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

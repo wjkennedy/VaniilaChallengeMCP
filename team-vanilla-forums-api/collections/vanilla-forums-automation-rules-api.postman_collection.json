@@ -1,0 +1,820 @@
+{
+  "item": [
+    {
+      "id": "8622b4ae-481b-435b-ad73-9b9aab9e8a09",
+      "name": "Automation Rules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7c5d1273-c0cb-447e-ba81-d6601065f9b4",
+          "name": "Get automation rule execution history.",
+          "request": {
+            "name": "Get automation rule execution history.",
+            "description": {},
+            "url": {
+              "path": [
+                "automation-rules",
+                "dispatches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "automationRuleID",
+                  "value": "<integer>",
+                  "description": "The automation Rule ID.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "automationRuleDispatchUUID",
+                  "value": "<string>",
+                  "description": "Filter by automationRuleDispatchUUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "actionType",
+                  "value": "<string>",
+                  "description": "Filter by actionType"
+                },
+                {
+                  "disabled": false,
+                  "key": "dispatchStatus",
+                  "value": "<string>",
+                  "description": "Filter by automation rule dispatch status."
+                },
+                {
+                  "disabled": false,
+                  "key": "dispatchStatus",
+                  "value": "<string>",
+                  "description": "Filter by automation rule dispatch status."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateUpdated",
+                  "value": "<date-filter>",
+                  "description": "Filter by dateUpdated. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateLastRun",
+                  "value": "<date-filter>",
+                  "description": "Filter by dateLastRun. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateFinished",
+                  "value": "<date-filter>",
+                  "description": "Filter by dateFinished. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand fields on the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand fields on the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The results' sort order."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The results' sort order."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67c00657-9a07-4e32-bde3-6cd5661e710c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "automation-rules",
+                    "dispatches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "automationRuleID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "automationRuleDispatchUUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "actionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dispatchStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dispatchStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateUpdated",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateLastRun",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateFinished",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateDispatched"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateDispatched"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d176120-faf3-4b33-8614-93647cd79560",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "automation-rules",
+                    "dispatches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "automationRuleID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "automationRuleDispatchUUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "actionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dispatchStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dispatchStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateUpdated",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateLastRun",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateFinished",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateDispatched"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateDispatched"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2a64961-720a-48ca-9e15-86e57b2741e4",
+          "name": "Get automation rule execution history.",
+          "request": {
+            "name": "Get automation rule execution history.",
+            "description": {},
+            "url": {
+              "path": [
+                "automation-rules",
+                ":automationRuleID",
+                "dispatches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "automationRuleDispatchUUID",
+                  "value": "<string>",
+                  "description": "Filter by automationRuleDispatchUUID"
+                },
+                {
+                  "disabled": false,
+                  "key": "actionType",
+                  "value": "<string>",
+                  "description": "Filter by actionType"
+                },
+                {
+                  "disabled": false,
+                  "key": "dispatchStatus",
+                  "value": "<string>",
+                  "description": "Filter by automation rule dispatch status."
+                },
+                {
+                  "disabled": false,
+                  "key": "dispatchStatus",
+                  "value": "<string>",
+                  "description": "Filter by automation rule dispatch status."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateUpdated",
+                  "value": "<date-filter>",
+                  "description": "Filter by dateUpdated. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateLastRun",
+                  "value": "<date-filter>",
+                  "description": "Filter by dateLastRun. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand fields on the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand fields on the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The results' sort order."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The results' sort order."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "automationRuleID",
+                  "description": "(Required) The automation Rule ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39e03409-dce1-4bd4-afbd-c3acb611e763",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "automation-rules",
+                    ":automationRuleID",
+                    "dispatches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "automationRuleDispatchUUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "actionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dispatchStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dispatchStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateUpdated",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateLastRun",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateDispatched"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateDispatched"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "automationRuleID",
+                      "description": "(Required) The automation Rule ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc564fef-183d-40a7-aece-6e8a06513b40",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "automation-rules",
+                    ":automationRuleID",
+                    "dispatches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "automationRuleDispatchUUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "actionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dispatchStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dispatchStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateUpdated",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateLastRun",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateDispatched"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-dateDispatched"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "automationRuleID",
+                      "description": "(Required) The automation Rule ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e711b736-f6f7-4edb-b73a-a3f4ccb2318b",
+          "name": "Get a specific dispatch execution record.",
+          "request": {
+            "name": "Get a specific dispatch execution record.",
+            "description": {},
+            "url": {
+              "path": [
+                "automation-rules",
+                ":automationRuleID",
+                "dispatches",
+                ":ruleDispatchID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "automationRuleID",
+                  "description": "(Required) The Automation Rule ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleDispatchID",
+                  "description": "(Required) Unique dispatch ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bff8fd36-b4f3-4026-93f0-46f4ce4c7e22",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "automation-rules",
+                    ":automationRuleID",
+                    "dispatches",
+                    ":ruleDispatchID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "automationRuleID",
+                      "description": "(Required) The Automation Rule ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleDispatchID",
+                      "description": "(Required) Unique dispatch ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"automationRuleDispatchUUID\": \"string\",\n  \"automationRuleId\": 5532,\n  \"automationRuleRevisionId\": 4402,\n  \"name\": \"string\",\n  \"dateInserted\": \"1998-05-28T14:03:08.708Z\",\n  \"dateUpdated\": \"2025-08-08T19:38:24.101Z\",\n  \"dateDispatched\": \"2024-10-28T08:12:10.008Z\",\n  \"status\": \"string\",\n  \"queuedJobStatus\": \"string\",\n  \"trigger\": {},\n  \"action\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "141e9749-6cd0-4a86-9b11-aa55ac8a5e10",
+    "name": "Vanilla Addons Automation Rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

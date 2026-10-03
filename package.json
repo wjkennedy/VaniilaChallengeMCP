@@ -1,0 +1,20 @@
+{
+  "name": "atlassian-community-challenges-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MCP server for Atlassian Community challenge automation over Higher Logic Vanilla.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "check": "node --check src/index.js && node --check src/vanilla-client.js && node --check src/challenges.js && node --check scripts/create-jwt.mjs",
+    "test": "node --test",
+    "jwt:self-test": "node scripts/create-jwt.mjs --self-test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.2",
+    "zod": "^3.25.76"
+  }
+}

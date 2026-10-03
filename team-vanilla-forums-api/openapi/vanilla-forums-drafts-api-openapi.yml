@@ -1,0 +1,1024 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Drafts API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Drafts
+paths:
+  /drafts:
+    get:
+      parameters:
+      - description: 'Filter drafts by record type.
+
+          '
+        in: query
+        name: recordType
+        schema:
+          enum:
+          - comment
+          - discussion
+          type: string
+      - description: 'Filter drafts by parent record type.
+
+          '
+        in: query
+        name: parentRecordType
+        schema:
+          enum:
+          - comment
+          - discussion
+          - category
+          type: string
+      - description: 'Filter by the unique ID of the parent for a draft. Used with recordType.
+
+          '
+        in: query
+        name: parentRecordID
+        schema:
+          type: integer
+        allowEmptyValue: true
+      - $ref: '#/components/parameters/DraftStatus'
+      - $ref: '#/components/parameters/DateUpdated'
+      - $ref: '#/components/parameters/DateScheduled'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Expand'
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    attributes:
+                      description: A free-form object containing all custom data for this draft.
+                      type: object
+                    dateInserted:
+                      description: When the draft was created.
+                      format: date-time
+                      type: string
+                    dateUpdated:
+                      description: When the draft was updated.
+                      format: date-time
+                      type:
+                      - string
+                      - 'null'
+                    draftID:
+                      description: The unique ID of the draft.
+                      type: integer
+                    insertUserID:
+                      description: The unique ID of the user who created this draft.
+                      type: integer
+                    parentRecordID:
+                      description: The unique ID of the intended parent to this record.
+                      type:
+                      - integer
+                      - 'null'
+                    recordType:
+                      description: The type of record associated with this draft.
+                      enum:
+                      - comment
+                      - discussion
+                      minLength: 1
+                      type: string
+                    updateUserID:
+                      description: The unique ID of the user who updated this draft.
+                      type:
+                      - integer
+                      - 'null'
+                    editUrl:
+                      description: The url to edit the draft
+                      type:
+                      - string
+                      - 'null'
+                    breadcrumbs:
+                      description: The breadcrumbs for the draft
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: object
+                        properties:
+                          label:
+                            description: The label for the breadcrumb
+                            type: string
+                          url:
+                            description: The url for the breadcrumb
+                            type: string
+                    permaLink:
+                      description: the permanent url to look for the content when the draft is published
+                      type: string
+                    dateScheduled:
+                      description: The datetime the draft has been scheduled to be published
+                      format: date-time
+                      type:
+                      - string
+                      - 'null'
+                    draftStatus:
+                      description: the status of the draft
+                      type: string
+                      default: draft
+                    failedReason:
+                      description: Error sting that shows the failed reason to publish
+                      type:
+                      - string
+                      - 'null'
+                  required:
+                  - draftID
+                  - recordType
+                  - parentRecordID
+                  - attributes
+                  - insertUserID
+                  - dateInserted
+                  - updateUserID
+                  - dateUpdated
+                  type: object
+                type: array
+          description: Success
+      tags:
+      - Drafts
+      summary: List drafts created by the current user
+      x-addon: dashboard
+      operationId: getDrafts
+      x-operation-id-source: derived
+    post:
+      summary: Create a draft
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  attributes:
+                    description: 'A free-form object containing all custom data for this draft.
+
+                      '
+                    type: object
+                  dateInserted:
+                    description: When the draft was created.
+                    format: date-time
+                    type: string
+                  dateUpdated:
+                    description: When the draft was updated.
+                    format: date-time
+                    type:
+                    - string
+                    - 'null'
+                  draftID:
+                    description: The unique ID of the draft.
+                    type: integer
+                  insertUserID:
+                    description: The unique ID of the user who created this draft.
+                    type: integer
+                  parentRecordID:
+                    description: The unique ID of the intended parent to this record.
+                    type:
+                    - integer
+                    - 'null'
+                  recordType:
+                    description: The type of record associated with this draft.
+                    enum:
+                    - comment
+                    - discussion
+                    minLength: 1
+                    type: string
+                  updateUserID:
+                    description: The unique ID of the user who updated this draft.
+                    type:
+                    - integer
+                    - 'null'
+                  dateScheduled:
+                    description: The datetime the draft has been scheduled to be published
+                    format: date-time
+                    type:
+                    - string
+                    - 'null'
+                  draftStatus:
+                    description: the status of the draft
+                    type: string
+                    default: draft
+                  recordID:
+                    description: The permanent id for the draft
+                    type:
+                    - integer
+                    - 'null'
+                required:
+                - draftID
+                - recordType
+                - parentRecordID
+                - attributes
+                - insertUserID
+                - dateInserted
+                - updateUserID
+                - dateUpdated
+                - draftStatus
+                type: object
+          description: Success
+      tags:
+      - Drafts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DraftPostPatchSchedule'
+        required: true
+      x-addon: dashboard
+      operationId: postDrafts
+      x-operation-id-source: derived
+  /drafts/{id}:
+    delete:
+      parameters:
+      - description: 'The draft ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Drafts
+      summary: Delete a draft
+      x-addon: dashboard
+      operationId: deleteDraftsById
+      x-operation-id-source: derived
+    get:
+      parameters:
+      - description: 'The draft ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  attributes:
+                    description: 'A free-form object containing all custom data for this draft.
+
+                      '
+                    type: object
+                  dateInserted:
+                    description: When the draft was created.
+                    format: date-time
+                    type: string
+                  dateUpdated:
+                    description: When the draft was updated.
+                    format: date-time
+                    type:
+                    - string
+                    - 'null'
+                  draftID:
+                    description: The unique ID of the draft.
+                    type: integer
+                  insertUserID:
+                    description: The unique ID of the user who created this draft.
+                    type: integer
+                  parentRecordID:
+                    description: The unique ID of the intended parent to this record.
+                    type:
+                    - integer
+                    - 'null'
+                  recordType:
+                    description: The type of record associated with this draft.
+                    enum:
+                    - comment
+                    - discussion
+                    minLength: 1
+                    type: string
+                  updateUserID:
+                    description: The unique ID of the user who updated this draft.
+                    type:
+                    - integer
+                    - 'null'
+                  dateScheduled:
+                    description: The datetime the draft has been scheduled to be published
+                    format: date-time
+                    type:
+                    - string
+                    - 'null'
+                  draftStatus:
+                    description: the status of the draft
+                    type: string
+                    default: draft
+                  recordID:
+                    description: The permanent id for the draft
+                    type:
+                    - integer
+                    - 'null'
+                required:
+                - draftID
+                - recordType
+                - parentRecordID
+                - attributes
+                - insertUserID
+                - dateInserted
+                - updateUserID
+                - dateUpdated
+                - draftStatus
+                type: object
+          description: Success
+      tags:
+      - Drafts
+      summary: Get a draft
+      x-addon: dashboard
+      operationId: getDraftsById
+      x-operation-id-source: derived
+    patch:
+      parameters:
+      - description: The draft ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  attributes:
+                    description: 'A free-form object containing all custom data for this draft.
+
+                      '
+                    type: object
+                  draftID:
+                    description: The unique ID of the draft.
+                    type: integer
+                  parentRecordID:
+                    description: The unique ID of the intended parent to this record.
+                    type:
+                    - integer
+                    - 'null'
+                  dateScheduled:
+                    description: The datetime the draft has been scheduled to be published
+                    format: date-time
+                    type:
+                    - string
+                    - 'null'
+                  draftStatus:
+                    description: the status of the draft
+                    type: string
+                    default: draft
+                  recordID:
+                    description: The permanent id for the draft
+                    type:
+                    - integer
+                    - 'null'
+                required:
+                - draftID
+                - parentRecordID
+                - attributes
+                - draftStatus
+                type: object
+          description: Success
+      tags:
+      - Drafts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DraftPostPatchSchedule'
+        required: true
+      summary: Update a draft
+      x-addon: dashboard
+      operationId: patchDraftsById
+      x-operation-id-source: derived
+  /drafts/{id}/edit:
+    get:
+      parameters:
+      - description: 'The draft ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  attributes:
+                    description: 'A free-form object containing all custom data for this draft.
+
+                      '
+                    type: object
+                  draftID:
+                    description: The unique ID of the draft.
+                    type: integer
+                  parentRecordID:
+                    description: The unique ID of the intended parent to this record.
+                    type:
+                    - integer
+                    - 'null'
+                  dateScheduled:
+                    description: The datetime the draft has been scheduled to be published
+                    format: date-time
+                    type:
+                    - string
+                    - 'null'
+                  draftStatus:
+                    description: the status of the draft
+                    type: string
+                    default: draft
+                required:
+                - draftID
+                - parentRecordID
+                - attributes
+                - draftStatus
+                - dateScheduled
+                type: object
+          description: Success
+      tags:
+      - Drafts
+      summary: Get a draft for editing
+      x-addon: dashboard
+      operationId: getDraftsByIdEdit
+      x-operation-id-source: derived
+components:
+  parameters:
+    DateScheduled:
+      name: dateScheduled
+      in: query
+      description: 'Filter by date scheduled
+
+        '
+      schema:
+        format: date-filter
+        type: string
+      x-addon: dashboard
+    DraftStatus:
+      name: draftStatus
+      in: query
+      description: 'Filter by draft status
+
+        '
+      schema:
+        type: string
+        default: draft
+        enum:
+        - draft
+        - scheduled
+        - deleted
+      x-addon: dashboard
+    Expand:
+      name: expand
+      in: query
+      description: 'Expand the response with additional data.
+
+        '
+      schema:
+        type: boolean
+      x-addon: dashboard
+    DateUpdated:
+      name: dateUpdated
+      in: query
+      description: 'Filter by update date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+
+        '
+      schema:
+        format: date-filter
+        type: string
+      x-addon: dashboard
+    Sort:
+      name: sort
+      in: query
+      description: 'Sort the response by a specific field.
+
+        '
+      schema:
+        type: string
+        default: -dateUpdated
+        enum:
+        - dateUpdated
+        - dateInserted
+        - dateScheduled
+        - -dateUpdated
+        - -dateInserted
+        - -dateScheduled
+      x-addon: dashboard
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+  schemas:
+    DraftPostPatchSchedule:
+      type: object
+      properties:
+        attributes:
+          description: A free-form object containing all custom data for this draft.
+          type: object
+        parentRecordType:
+          description: The type of record associated with this draft.
+          minLength: 1
+          type: string
+        parentRecordID:
+          description: The unique ID of the intended parent to this record.
+          type:
+          - integer
+          - 'null'
+        recordType:
+          description: The type of record associated with this draft.
+          minLength: 1
+          type: string
+        dateScheduled:
+          description: The datetime the draft has been scheduled to be published
+          format: date-time
+          type:
+          - string
+          - 'null'
+        draftStatus:
+          description: the status of the draft
+          type: string
+          default: draft
+      required:
+      - recordType
+      - attributes
+      - dateScheduled
+      - draftStatus
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

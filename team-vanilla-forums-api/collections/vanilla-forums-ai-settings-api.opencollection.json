@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons AI Settings API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AI Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Bot Shield Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/ai-settings/bot-shield",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get Bot Shield Settings"
+        },
+        {
+          "info": {
+            "name": "Update Bot Shield Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/ai-settings/bot-shield",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Bot Shield Settings"
+        },
+        {
+          "info": {
+            "name": "Get AI feature notification status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/ai-settings/feature-notification-status",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get AI feature notification status"
+        },
+        {
+          "info": {
+            "name": "Send AI feature disclosure notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/ai-settings/feature-notifications",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send AI feature disclosure notifications"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

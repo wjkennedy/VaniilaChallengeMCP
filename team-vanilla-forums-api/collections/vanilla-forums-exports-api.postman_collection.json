@@ -1,0 +1,576 @@
+{
+  "item": [
+    {
+      "id": "ad8f9188-7100-4d41-871b-a34101c872de",
+      "name": "Exports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad165c16-9670-416b-83f0-346621e8a103",
+          "name": "List Exports.",
+          "request": {
+            "name": "List Exports.",
+            "description": {},
+            "url": {
+              "path": [
+                "exports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "exportStatus",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "exportStatus",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8ac204e-0fbe-4a09-ac00-d86316a7d8e3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "exportStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exportStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"exportUUID\": \"0cf7554f-ac12-ed3a-b973-15965d7644e3\",\n    \"exportStatus\": \"<string>\",\n    \"url\": \"http://OtaDosfOsyvCxWtuWIV.ogusONvc54SAFNaxwchxemMxMZXseo2hTIIotMaZOwNK\",\n    \"apiUrl\": \"https://OprVUEHvdAfQ.ufZWczdycr6jhhwkV0qRAzge.ApYNmMByKBS\",\n    \"countDownloads\": 1212,\n    \"fileSizeBytes\": 3830,\n    \"contentType\": \"string\",\n    \"jobID\": \"string\",\n    \"s3Key\": \"string\",\n    \"name\": \"string\",\n    \"query\": {},\n    \"dateExpires\": \"2014-02-04T00:49:37.971Z\",\n    \"dateInserted\": \"1971-07-05T00:43:51.923Z\",\n    \"insertUserID\": 8762,\n    \"dateUpdated\": \"2010-01-04T01:01:11.787Z\",\n    \"updateUserID\": 7268,\n    \"queryHash\": \"string\",\n    \"error\": \"string\",\n    \"downloadUrl\": \"http://kkQWgerxLKMqfAzISfHMmkVcSTM.wordcDiKYZTYr5WT+my6Q4.COoC,VwBq7UG0JKRGKxVDAdn3\"\n  },\n  {\n    \"exportUUID\": \"67872443-24ba-a7b7-a37f-3758be63ce86\",\n    \"exportStatus\": \"<string>\",\n    \"url\": \"https://pveTyoApDwjyZtEurrgGXaJG.kcsbpOPJePEKEiQJ,RBJ5CDHtTH1Sehff9FdNSa,XIID+SltUJ.SH.QZ\",\n    \"apiUrl\": \"https://znhYYybDAKXkzSjj.qqdRN,UrBZxpnw+Vll0bNWRAQfk0gLNimI-lHZ\",\n    \"countDownloads\": 7702,\n    \"fileSizeBytes\": 57,\n    \"contentType\": \"string\",\n    \"jobID\": \"string\",\n    \"s3Key\": \"string\",\n    \"name\": \"string\",\n    \"query\": {},\n    \"dateExpires\": \"2007-03-24T18:09:51.875Z\",\n    \"dateInserted\": \"2004-07-22T13:18:48.804Z\",\n    \"insertUserID\": 8570,\n    \"dateUpdated\": \"2000-08-29T07:00:27.886Z\",\n    \"updateUserID\": 9295,\n    \"queryHash\": \"string\",\n    \"error\": \"string\",\n    \"downloadUrl\": \"https://MmwLqWqcGaUlTbIxtGDUOM.dgdzXLbK6vfmFSgiYa0h-flVizDdEmHog\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a7e565b-1814-4f79-8125-410bce28af52",
+          "name": "Get a export.",
+          "request": {
+            "name": "Get a export.",
+            "description": {},
+            "url": {
+              "path": [
+                "exports",
+                ":exportUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "exportUUID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "002424b3-6ae9-4560-8b0f-51b1c8f90472",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exports",
+                    ":exportUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exportUUID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exportUUID\": \"306b5c4b-d7e5-f37f-2bba-3c1aaed434c6\",\n  \"exportStatus\": \"<string>\",\n  \"url\": \"https://YBBUWdWUgAebzkJk.gicIvw-SWBoNLFPsbT6NbR+w2Xqj9PsuUqnjn8ft3lRe6fgAusnrz07o\",\n  \"apiUrl\": \"https://sfjwrhrXNkfKvRI.asbeW-h,IZG,xCd+wyAL8SDYXf3no\",\n  \"countDownloads\": 4095,\n  \"fileSizeBytes\": 2364,\n  \"contentType\": \"string\",\n  \"jobID\": \"string\",\n  \"s3Key\": \"string\",\n  \"name\": \"string\",\n  \"query\": {},\n  \"dateExpires\": \"1968-11-28T06:09:08.506Z\",\n  \"dateInserted\": \"1953-02-03T22:38:30.863Z\",\n  \"insertUserID\": 7840,\n  \"dateUpdated\": \"2009-11-29T13:48:04.373Z\",\n  \"updateUserID\": 5281,\n  \"queryHash\": \"string\",\n  \"error\": \"string\",\n  \"downloadUrl\": \"http://T.fnngmhMQTQoXHm+3DiMdmEsUOA4kxou\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "422bb6ba-edf6-46b5-9531-513740964d06",
+              "name": "export not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exports",
+                    ":exportUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exportUUID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41f31fd4-3407-4153-a975-6b1ca4d21b41",
+          "name": "Delete a export.",
+          "request": {
+            "name": "Delete a export.",
+            "description": {},
+            "url": {
+              "path": [
+                "exports",
+                ":exportUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "exportUUID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5611a025-bcc1-428a-8838-f5608d9e934b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exports",
+                    ":exportUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exportUUID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07ccf33b-be51-41f2-9040-bc30a2f606e9",
+              "name": "export not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exports",
+                    ":exportUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exportUUID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46099587-119c-41ef-9fe5-add273533d32",
+          "name": "Download a export.",
+          "request": {
+            "name": "Download a export.",
+            "description": {},
+            "url": {
+              "path": [
+                "exports",
+                ":exportUUID",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "exportUUID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9abca1ef-5227-48a1-a42d-0441a6a6725e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exports",
+                    ":exportUUID",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exportUUID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75cfb504-0a9c-42ad-b99d-dc17e9bcb331",
+              "name": "export not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exports",
+                    ":exportUUID",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exportUUID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9a14cecb-a68d-4223-b674-db62efbc9876",
+    "name": "Vanilla Addons Exports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

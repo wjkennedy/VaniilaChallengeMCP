@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons User Mentions API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Mentions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the user mentions of a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/user-mentions/users/:userID",
+            "params": [
+              {
+                "name": "userID",
+                "value": "",
+                "type": "path",
+                "description": "The user ID."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination). This parameter is incompatible with a tree structure."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page. This parameter is incompatible with a tree structure."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List the user mentions of a user."
+        },
+        {
+          "info": {
+            "name": "Anonymize a user's mentions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/user-mentions/:id/anonymize",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The userID of the user to anonymize."
+              }
+            ]
+          },
+          "docs": "Anonymize a user's mentions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

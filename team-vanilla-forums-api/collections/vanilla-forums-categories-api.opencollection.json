@@ -1,0 +1,410 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Categories API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List categories.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/categories",
+            "params": [
+              {
+                "name": "categoryID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of category IDs."
+              },
+              {
+                "name": "parentCategoryID",
+                "value": "",
+                "type": "query",
+                "description": "Parent category ID."
+              },
+              {
+                "name": "parentCategoryCode",
+                "value": "",
+                "type": "query",
+                "description": "Parent category URL code."
+              },
+              {
+                "name": "followed",
+                "value": "",
+                "type": "query",
+                "description": "Only list categories followed by the current user."
+              },
+              {
+                "name": "followedUserID",
+                "value": "",
+                "type": "query",
+                "description": "List the categories followed by the given UserID"
+              },
+              {
+                "name": "maxDepth",
+                "value": "",
+                "type": "query",
+                "description": "The maximum tree depth to return when getting a tree structure. This parameter is incompatible with a flat structure."
+              },
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query",
+                "description": "Filter by archived status of a category. True for archived only. False for no archived categories.\n"
+              },
+              {
+                "name": "featured",
+                "value": "",
+                "type": "query",
+                "description": "Only list featured categories."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination). This parameter is incompatible with a tree structure."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page. This parameter is incompatible with a tree structure."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort the results."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "siteSectionID",
+                "value": "",
+                "type": "query",
+                "description": "Filter categories by site section ID (ex. subcommunity).\nThe subcommunity ID or folder can be used if you use [smart IDs](https://success.vanillaforums.com/kb/articles/46-smart-ids).\nThe query looks like:\n\n```\nsiteSectionID=$subcommunityID:{id|folder}\n```\nexample: \"$subcommunityID:en\"."
+              },
+              {
+                "name": "includeParentCategory",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include the parent category when used with parentCategoryID, parentCategoryCode, or siteSectionID."
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query",
+                "description": "Format of the output as flat or tree."
+              },
+              {
+                "name": "layoutViewType",
+                "value": "",
+                "type": "query",
+                "description": "Layout View Type.\n"
+              },
+              {
+                "name": "postTypeID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by allowed post type ID"
+              },
+              {
+                "name": "postTypeStatus",
+                "value": "",
+                "type": "query",
+                "description": "Allowed status for the post type ID filter."
+              },
+              {
+                "name": "filterDiscussionsAdd",
+                "value": "",
+                "type": "query",
+                "description": "Filter out categories that cannot be posted into"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List categories."
+        },
+        {
+          "info": {
+            "name": "Add a category.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a category."
+        },
+        {
+          "info": {
+            "name": "Search categories.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/categories/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Category name filter.\n"
+              },
+              {
+                "name": "displayAs",
+                "value": "",
+                "type": "query",
+                "description": "The display style of the category."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names (all, parent, breadcrumbs).\nA value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "layoutViewType",
+                "value": "",
+                "type": "query",
+                "description": "Layout View Type.\n"
+              },
+              {
+                "name": "filterDiscussionsAdd",
+                "value": "",
+                "type": "query",
+                "description": "Filter out categories that cannot be posted into"
+              },
+              {
+                "name": "siteSectionID",
+                "value": "",
+                "type": "query",
+                "description": "Filter categories by site section ID (ex. subcommunity)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Search categories."
+        },
+        {
+          "info": {
+            "name": "Get a category.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The category ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names (all, parent, breadcrumbs).\nA value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a category."
+        },
+        {
+          "info": {
+            "name": "Update a category.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The category ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a category."
+        },
+        {
+          "info": {
+            "name": "Delete a category.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The category ID.\n"
+              }
+            ]
+          },
+          "docs": "Delete a category."
+        },
+        {
+          "info": {
+            "name": "Get a category for editing.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/categories/:id/edit",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The category ID.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a category for editing."
+        },
+        {
+          "info": {
+            "name": "PUT /categories/{id}/follow",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/categories/:id/follow",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "List a user's category preferences.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/categories/:id/preferences/:userID",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The category ID."
+              },
+              {
+                "name": "userID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List a user's category preferences."
+        },
+        {
+          "info": {
+            "name": "Set a user's category preferences.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/categories/:id/preferences/:userID",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The category ID."
+              },
+              {
+                "name": "userID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a user's category preferences."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

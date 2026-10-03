@@ -1,0 +1,1273 @@
+{
+  "item": [
+    {
+      "id": "bd2a969e-f130-4daf-bad4-a5e72d29ce30",
+      "name": "Comments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6116579c-19c0-4713-8c51-e94ba9eb98f2",
+          "name": "List comments.",
+          "request": {
+            "name": "List comments.",
+            "description": {},
+            "url": {
+              "path": [
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "commentID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of comment IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateInserted",
+                  "value": "<date-filter>",
+                  "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateUpdated",
+                  "value": "<date-filter>",
+                  "description": "Filter by update date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "discussionID",
+                  "value": "<integer>",
+                  "description": "The discussion ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentRecordType",
+                  "value": "<string>",
+                  "description": "The type of the parent record. Must be used with parentRecordID."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentRecordID",
+                  "value": "<integer>",
+                  "description": "The ID of the parent record. Must be used with parentRecordType."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<integer>",
+                  "description": "Filter by author.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "qna",
+                  "value": "<string>",
+                  "description": "Filter comment by answer status."
+                },
+                {
+                  "disabled": false,
+                  "key": "quoteParent",
+                  "value": "<boolean>",
+                  "description": "Quote the parent comment as part of the body."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "159d9eec-9e8a-48d7-8432-79dd0bb1cbb1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "commentID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "dateInserted",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateUpdated",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "discussionID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "parentRecordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentRecordID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qna",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "quoteParent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"commentID\": 6375,\n    \"categoryID\": 798,\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"parentRecordID\": 5794,\n    \"parentRecordType\": \"discussion\",\n    \"dateInserted\": \"1976-05-31T14:28:42.887Z\",\n    \"dateUpdated\": \"2008-12-15T17:37:20.973Z\",\n    \"insertUserID\": 2432,\n    \"score\": 9157,\n    \"attributes\": {},\n    \"image\": {\n      \"url\": \"string\",\n      \"urlSrcSet\": {\n        \"10\": \"string\",\n        \"300\": \"string\",\n        \"800\": \"string\",\n        \"1200\": \"string\"\n      },\n      \"alt\": \"string\"\n    },\n    \"groupID\": 1185,\n    \"discussionID\": 9707,\n    \"isLivePost\": true,\n    \"parentCommentID\": 6872,\n    \"insertUser\": {\n      \"userID\": 591,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://GLBKttFBvoAVsxGksZYrGZcsqqkRFTie.fnJm1fzCg6bzLQn.9HdjX79i.xNCg-DDm\",\n      \"dateLastActive\": \"1987-05-20T02:37:52.029Z\",\n      \"url\": \"http://XrrOHXQuyihURRNsgOB.njqeOmdB17uWS\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"scoreChildComments\": 4101,\n    \"countChildComments\": 1097,\n    \"depth\": 1,\n    \"url\": \"string\",\n    \"contentLocale\": \"string\",\n    \"reportMeta\": {\n      \"reportsReasons\": [\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 24,\n          \"deleted\": false,\n          \"reportID\": 957\n        },\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 9732,\n          \"deleted\": false,\n          \"reportID\": 8984\n        }\n      ],\n      \"reportUserIDs\": [\n        4971,\n        7246\n      ],\n      \"reportUsers\": [\n        {\n          \"userID\": 847,\n          \"name\": \"string\",\n          \"photoUrl\": \"https://OIsCKufsidQMwmcPNNjtzHURXOY.spukhSu,M6IOkQiLF-1uCuN\",\n          \"dateLastActive\": \"1967-08-21T16:17:11.095Z\",\n          \"url\": \"http://Cb.dqlzJ6JROSLv,a\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": true\n        },\n        {\n          \"userID\": 9743,\n          \"name\": \"s\",\n          \"photoUrl\": \"https://KaKiBgFtVkzBKiWaLGnPDE.lbqpeZZy0Xmdyvs7FapHyf-JLcl6poYJAZHKLfaEXpySZlexSx1cnVUfCiSjiUJkkcMvWCK0p\",\n          \"dateLastActive\": \"1986-08-24T13:17:15.431Z\",\n          \"url\": \"https://KjMygrDEnqHPIqsFQYvGAwCMvIUUjVgYH.ijrOvjzTLjIpb7MnwMmRSw.X\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": true\n        }\n      ],\n      \"countReportUsers\": 6367.965658308127,\n      \"reportGuestUsers\": [\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        },\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        }\n      ],\n      \"dateLastReport\": \"1994-04-12T12:10:54.777Z\",\n      \"countReports\": 0\n    },\n    \"suggestion\": {\n      \"format\": \"string\",\n      \"sourceIcon\": \"string\",\n      \"type\": \"string\",\n      \"id\": 1251,\n      \"url\": \"string\",\n      \"title\": \"string\"\n    }\n  },\n  {\n    \"commentID\": 9234,\n    \"categoryID\": 7280,\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"parentRecordID\": 9394,\n    \"parentRecordType\": \"event\",\n    \"dateInserted\": \"1993-10-14T15:16:32.796Z\",\n    \"dateUpdated\": \"2001-05-07T23:21:36.670Z\",\n    \"insertUserID\": 2653,\n    \"score\": 8983,\n    \"attributes\": {},\n    \"image\": {\n      \"url\": \"string\",\n      \"urlSrcSet\": {\n        \"10\": \"string\",\n        \"300\": \"string\",\n        \"800\": \"string\",\n        \"1200\": \"string\"\n      },\n      \"alt\": \"string\"\n    },\n    \"groupID\": 6678,\n    \"discussionID\": 480,\n    \"isLivePost\": false,\n    \"parentCommentID\": 5371,\n    \"insertUser\": {\n      \"userID\": 7538,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://vSbjcLNWANfGvOBupyaUfuOwVvwMKkKq.uocYVMvLwWWlHPgrMhpCzCIsYYNs9peg4ci3uoZRmLabP8Sm9WM0YeBibZOc+9D6o8u\",\n      \"dateLastActive\": \"1962-12-06T20:14:00.272Z\",\n      \"url\": \"http://SkSlOk.hypnQWHZ.QiLkbR1Kkw,HMZntI1FWw\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"scoreChildComments\": 1694,\n    \"countChildComments\": 9310,\n    \"depth\": 1,\n    \"url\": \"string\",\n    \"contentLocale\": \"string\",\n    \"reportMeta\": {\n      \"reportsReasons\": [\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 3848,\n          \"deleted\": true,\n          \"reportID\": 1467\n        },\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 2450,\n          \"deleted\": true,\n          \"reportID\": 1988\n        }\n      ],\n      \"reportUserIDs\": [\n        3358,\n        6954\n      ],\n      \"reportUsers\": [\n        {\n          \"userID\": 2675,\n          \"name\": \"st\",\n          \"photoUrl\": \"http://pqQQOXNMYcMpHqrkXHgLQVNRWvNwmtM.gogstEjNwmvK6YhFaxNvBXya4fQPBDMKdmY+oh5lvrpgw.2ljVoG-AZ\",\n          \"dateLastActive\": \"2012-01-26T11:03:10.769Z\",\n          \"url\": \"http://aGzD.qvxrTo4bol9UfOmuCeF.O3Z25HjNXs30ytnPXI20Jj1Km\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": true\n        },\n        {\n          \"userID\": 6765,\n          \"name\": \"string\",\n          \"photoUrl\": \"https://eaSudxcxzr.ktdZ9nSLI7YkUZF35FLKcj7oLIYgDoMqD6-\",\n          \"dateLastActive\": \"1992-05-16T03:24:06.590Z\",\n          \"url\": \"https://LOyPJeQuoppOblwqtRdxrbseriz.tiqhI5Dy46Gj8lO36-rgDa-DQ5MFyl9bT\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": true\n        }\n      ],\n      \"countReportUsers\": 6156.7336180447855,\n      \"reportGuestUsers\": [\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        },\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        }\n      ],\n      \"dateLastReport\": \"2022-06-15T16:17:02.160Z\",\n      \"countReports\": 0\n    },\n    \"suggestion\": {\n      \"format\": \"string\",\n      \"sourceIcon\": \"string\",\n      \"type\": \"string\",\n      \"id\": 5331,\n      \"url\": \"string\",\n      \"title\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59f229cd-34b9-4b43-9f54-df3c2878c709",
+          "name": "Add a comment.",
+          "request": {
+            "name": "Add a comment.",
+            "description": {},
+            "url": {
+              "path": [
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"<string>\",\n  \"discussionID\": \"<integer>\",\n  \"parentRecordType\": \"<string>\",\n  \"parentRecordID\": \"<integer>\",\n  \"format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d0257336-baee-4b1a-87d5-39905c523de4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commentID\": 1945,\n  \"categoryID\": 9299,\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"parentRecordID\": 1636,\n  \"parentRecordType\": \"event\",\n  \"dateInserted\": \"1953-07-28T15:04:53.771Z\",\n  \"dateUpdated\": \"2025-05-03T13:34:11.881Z\",\n  \"insertUserID\": 9026,\n  \"score\": 8664,\n  \"attributes\": {},\n  \"image\": {\n    \"url\": \"string\",\n    \"urlSrcSet\": {\n      \"10\": \"string\",\n      \"300\": \"string\",\n      \"800\": \"string\",\n      \"1200\": \"string\"\n    },\n    \"alt\": \"string\"\n  },\n  \"groupID\": 9083,\n  \"discussionID\": 4279,\n  \"isLivePost\": true,\n  \"parentCommentID\": 6366,\n  \"insertUser\": {\n    \"userID\": 7973,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://vNsIFzUePtwKfzaAfJbOyEJa.nyBfWQuRS4+k8jbiHiGMI3NyIpvoLCXTeMhmAMSSgip4D1.S4-v-ajTLexnKXu\",\n    \"dateLastActive\": \"2010-12-07T01:40:57.150Z\",\n    \"url\": \"http://zl.qiikw3,6RPFAa2ywMaO1V4Iixsf6by6+KLRppffggU9m5flz\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"scoreChildComments\": 6542,\n  \"countChildComments\": 3586,\n  \"depth\": 1,\n  \"url\": \"string\",\n  \"contentLocale\": \"string\",\n  \"reportMeta\": {\n    \"reportsReasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 7263,\n        \"deleted\": true,\n        \"reportID\": 9054\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 2661,\n        \"deleted\": true,\n        \"reportID\": 696\n      }\n    ],\n    \"reportUserIDs\": [\n      7346,\n      6508\n    ],\n    \"reportUsers\": [\n      {\n        \"userID\": 9832,\n        \"name\": \"stri\",\n        \"photoUrl\": \"https://LHzbr.zmszJSsRUJmyYJZ5fenT5FGxzB3Wp2Mdmci78moQikeLu2gCRlB1Twu0mJPo\",\n        \"dateLastActive\": \"1978-05-06T20:55:52.207Z\",\n        \"url\": \"http://mTe.kfdxucLvbEAYtV3BjOMdubhGc9ErvMsqVXnh\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      },\n      {\n        \"userID\": 6869,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://ufRNxyyOCTQpFdDAmkagjP.sppbcmZNMBLrWICXa7YqKnu,5zusaIq5QCu-m+IFHvN4-0z2dsK4KbyGOKZwij\",\n        \"dateLastActive\": \"1983-08-05T11:07:28.927Z\",\n        \"url\": \"https://ZlaoaQ.boL2GgbZVx6CvMjfNli\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      }\n    ],\n    \"countReportUsers\": 6753.772823528799,\n    \"reportGuestUsers\": [\n      {\n        \"reporterEmail\": \"string\",\n        \"reporterName\": \"string\"\n      },\n      {\n        \"reporterEmail\": \"string\",\n        \"reporterName\": \"string\"\n      }\n    ],\n    \"dateLastReport\": \"2016-05-13T16:56:38.687Z\",\n    \"countReports\": 0\n  },\n  \"suggestion\": {\n    \"format\": \"string\",\n    \"sourceIcon\": \"string\",\n    \"type\": \"string\",\n    \"id\": 9533,\n    \"url\": \"string\",\n    \"title\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd79718d-27e2-4eda-889a-d4a697348a8f",
+              "name": "Premoderation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"message\": \"string\",\n  \"reportID\": \"string\",\n  \"premoderatinReasons\": [\n    {\n      \"premoderationType\": \"premoderatedKeyword\"\n    },\n    {\n      \"premoderationType\": \"premoderatedCategory\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d20bb451-32d3-4150-a5ad-7dddcb5e1119",
+          "name": "Search comments.",
+          "request": {
+            "name": "Search comments.",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "categoryID",
+                  "value": "<integer>",
+                  "description": "The numeric ID of a category.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Search terms.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "false",
+                  "description": "Expand associated records.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0de2c90f-bf8c-4581-ba0b-40996223b62b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "categoryID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"commentID\": 3199,\n    \"categoryID\": 4333,\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"parentRecordID\": 7738,\n    \"parentRecordType\": \"event\",\n    \"dateInserted\": \"2006-02-02T06:02:41.764Z\",\n    \"dateUpdated\": \"2016-06-14T10:45:38.912Z\",\n    \"insertUserID\": 7974,\n    \"score\": 912,\n    \"attributes\": {},\n    \"image\": {\n      \"url\": \"string\",\n      \"urlSrcSet\": {\n        \"10\": \"string\",\n        \"300\": \"string\",\n        \"800\": \"string\",\n        \"1200\": \"string\"\n      },\n      \"alt\": \"string\"\n    },\n    \"groupID\": 9288,\n    \"discussionID\": 6235,\n    \"isLivePost\": true,\n    \"parentCommentID\": 8857,\n    \"insertUser\": {\n      \"userID\": 975,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://kRNKoiSk.jssSgx2mo50rbV+dzJ7Y,NGuavErcPySjWy6AjL95AJ3inbK-sNUnd\",\n      \"dateLastActive\": \"1956-10-05T15:14:02.782Z\",\n      \"url\": \"https://rgKeIvbipYXSwxyGyBg.cgiMsTWnG3xyv+ZtwG,4.H1eKz9I0r6.6C3.whJbGlDP5Q173JhTWu449E.\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"scoreChildComments\": 4389,\n    \"countChildComments\": 7821,\n    \"depth\": 1,\n    \"url\": \"string\",\n    \"contentLocale\": \"string\",\n    \"reportMeta\": {\n      \"reportsReasons\": [\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 8359,\n          \"deleted\": false,\n          \"reportID\": 6936\n        },\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 5093,\n          \"deleted\": true,\n          \"reportID\": 7277\n        }\n      ],\n      \"reportUserIDs\": [\n        3771,\n        1177\n      ],\n      \"reportUsers\": [\n        {\n          \"userID\": 3428,\n          \"name\": \"string\",\n          \"photoUrl\": \"https://MqNvcRLGUnEplFOnXCIRpaeXY.dpa67WVpVeS6QRjrx7EpR1+WsrMQRDzIn0Ip1xIk.E\",\n          \"dateLastActive\": \"1988-03-05T09:36:35.853Z\",\n          \"url\": \"https://PdrfVXdJthvteW.ryfaWzaeVpalSLW+b9PKT+zrZOEN3N-wSX\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": false\n        },\n        {\n          \"userID\": 4414,\n          \"name\": \"string\",\n          \"photoUrl\": \"http://LWURNfflfOPXymvBCLx.chedNC+nZzTUIC,suq,PocKCyX\",\n          \"dateLastActive\": \"1946-11-04T16:37:20.969Z\",\n          \"url\": \"https://vPgdixiBBUTdsQqYZmbYdUNpClp.xrbxhabN5bgJwA6o5ULSpuhu,79CF,NCV.ouXqf,b7cSdOGdSkbjG0\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": false\n        }\n      ],\n      \"countReportUsers\": 9318.325813326106,\n      \"reportGuestUsers\": [\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        },\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        }\n      ],\n      \"dateLastReport\": \"2014-12-23T09:24:01.026Z\",\n      \"countReports\": 0\n    },\n    \"suggestion\": {\n      \"format\": \"string\",\n      \"sourceIcon\": \"string\",\n      \"type\": \"string\",\n      \"id\": 3291,\n      \"url\": \"string\",\n      \"title\": \"string\"\n    }\n  },\n  {\n    \"commentID\": 6348,\n    \"categoryID\": 9268,\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"parentRecordID\": 2958,\n    \"parentRecordType\": \"escalation\",\n    \"dateInserted\": \"1981-11-28T07:19:38.673Z\",\n    \"dateUpdated\": \"2012-05-06T21:57:47.947Z\",\n    \"insertUserID\": 7310,\n    \"score\": 7169,\n    \"attributes\": {},\n    \"image\": {\n      \"url\": \"string\",\n      \"urlSrcSet\": {\n        \"10\": \"string\",\n        \"300\": \"string\",\n        \"800\": \"string\",\n        \"1200\": \"string\"\n      },\n      \"alt\": \"string\"\n    },\n    \"groupID\": 2980,\n    \"discussionID\": 4896,\n    \"isLivePost\": true,\n    \"parentCommentID\": 839,\n    \"insertUser\": {\n      \"userID\": 3754,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://W.yqsQcx3RsUZZNa\",\n      \"dateLastActive\": \"2005-05-07T09:59:33.871Z\",\n      \"url\": \"https://QlXWsbFfYwowzJghUIMQEwbRLjpRHZS.qoozBoGs+kvb.FqTH8tp3cSMcQjtTOY-XEQMF5,-.bPnAVRL3,kqZeIiBZLhem7\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"scoreChildComments\": 1178,\n    \"countChildComments\": 4099,\n    \"depth\": 1,\n    \"url\": \"string\",\n    \"contentLocale\": \"string\",\n    \"reportMeta\": {\n      \"reportsReasons\": [\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 9912,\n          \"deleted\": false,\n          \"reportID\": 8737\n        },\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 4994,\n          \"deleted\": true,\n          \"reportID\": 5900\n        }\n      ],\n      \"reportUserIDs\": [\n        1416,\n        6418\n      ],\n      \"reportUsers\": [\n        {\n          \"userID\": 8305,\n          \"name\": \"string\",\n          \"photoUrl\": \"http://tRE.ajrCGxW2zEbNLRt4KvK6s\",\n          \"dateLastActive\": \"1955-11-10T04:28:44.713Z\",\n          \"url\": \"https://WzLAcJFTujbkAlYwnmtUujR.htm1Av4uVUC3.+mleFfsMwBl\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": true\n        },\n        {\n          \"userID\": 9417,\n          \"name\": \"string\",\n          \"photoUrl\": \"https://GYHWMFiguwYuZmkLSRsqGXaWXZDHDY.gvKtkAet6Zb+WgFCPL1Luku3B3RSVLOIYJ+rdjhx\",\n          \"dateLastActive\": \"1992-06-15T07:19:48.965Z\",\n          \"url\": \"http://qSKsWHCapQeJDInqtXjYDzBEeye.dhrxcsi.eZO5XHgdHcSdYIgGsamQD31ftCLmbv5QR5X4ui2qJZMXULTb\",\n          \"ssoID\": \"string\",\n          \"label\": \"string\",\n          \"labelHtml\": \"string\",\n          \"private\": true\n        }\n      ],\n      \"countReportUsers\": 3673.19634508357,\n      \"reportGuestUsers\": [\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        },\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        }\n      ],\n      \"dateLastReport\": \"1958-06-07T22:47:31.025Z\",\n      \"countReports\": 0\n    },\n    \"suggestion\": {\n      \"format\": \"string\",\n      \"sourceIcon\": \"string\",\n      \"type\": \"string\",\n      \"id\": 4577,\n      \"url\": \"string\",\n      \"title\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "744fe1ae-8d37-4934-b6b6-9804ff1b0395",
+          "name": "Delete a comment.",
+          "request": {
+            "name": "Delete a comment.",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The comment ID.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "358267f0-fa6b-4801-b8d1-05b8b2c05bb5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The comment ID.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "617b5e0b-923c-4d59-a33f-4c7f0eb46685",
+          "name": "Get a comment.",
+          "request": {
+            "name": "Get a comment.",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "quoteParent",
+                  "value": "<boolean>",
+                  "description": "Quote the parent comment as part of the body."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The comment ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4c7f47f-7152-46fb-82ab-a393ee2f1d21",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "quoteParent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The comment ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commentID\": 1945,\n  \"categoryID\": 9299,\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"parentRecordID\": 1636,\n  \"parentRecordType\": \"event\",\n  \"dateInserted\": \"1953-07-28T15:04:53.771Z\",\n  \"dateUpdated\": \"2025-05-03T13:34:11.881Z\",\n  \"insertUserID\": 9026,\n  \"score\": 8664,\n  \"attributes\": {},\n  \"image\": {\n    \"url\": \"string\",\n    \"urlSrcSet\": {\n      \"10\": \"string\",\n      \"300\": \"string\",\n      \"800\": \"string\",\n      \"1200\": \"string\"\n    },\n    \"alt\": \"string\"\n  },\n  \"groupID\": 9083,\n  \"discussionID\": 4279,\n  \"isLivePost\": true,\n  \"parentCommentID\": 6366,\n  \"insertUser\": {\n    \"userID\": 7973,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://vNsIFzUePtwKfzaAfJbOyEJa.nyBfWQuRS4+k8jbiHiGMI3NyIpvoLCXTeMhmAMSSgip4D1.S4-v-ajTLexnKXu\",\n    \"dateLastActive\": \"2010-12-07T01:40:57.150Z\",\n    \"url\": \"http://zl.qiikw3,6RPFAa2ywMaO1V4Iixsf6by6+KLRppffggU9m5flz\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"scoreChildComments\": 6542,\n  \"countChildComments\": 3586,\n  \"depth\": 1,\n  \"url\": \"string\",\n  \"contentLocale\": \"string\",\n  \"reportMeta\": {\n    \"reportsReasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 7263,\n        \"deleted\": true,\n        \"reportID\": 9054\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 2661,\n        \"deleted\": true,\n        \"reportID\": 696\n      }\n    ],\n    \"reportUserIDs\": [\n      7346,\n      6508\n    ],\n    \"reportUsers\": [\n      {\n        \"userID\": 9832,\n        \"name\": \"stri\",\n        \"photoUrl\": \"https://LHzbr.zmszJSsRUJmyYJZ5fenT5FGxzB3Wp2Mdmci78moQikeLu2gCRlB1Twu0mJPo\",\n        \"dateLastActive\": \"1978-05-06T20:55:52.207Z\",\n        \"url\": \"http://mTe.kfdxucLvbEAYtV3BjOMdubhGc9ErvMsqVXnh\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      },\n      {\n        \"userID\": 6869,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://ufRNxyyOCTQpFdDAmkagjP.sppbcmZNMBLrWICXa7YqKnu,5zusaIq5QCu-m+IFHvN4-0z2dsK4KbyGOKZwij\",\n        \"dateLastActive\": \"1983-08-05T11:07:28.927Z\",\n        \"url\": \"https://ZlaoaQ.boL2GgbZVx6CvMjfNli\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      }\n    ],\n    \"countReportUsers\": 6753.772823528799,\n    \"reportGuestUsers\": [\n      {\n        \"reporterEmail\": \"string\",\n        \"reporterName\": \"string\"\n      },\n      {\n        \"reporterEmail\": \"string\",\n        \"reporterName\": \"string\"\n      }\n    ],\n    \"dateLastReport\": \"2016-05-13T16:56:38.687Z\",\n    \"countReports\": 0\n  },\n  \"suggestion\": {\n    \"format\": \"string\",\n    \"sourceIcon\": \"string\",\n    \"type\": \"string\",\n    \"id\": 9533,\n    \"url\": \"string\",\n    \"title\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c75af53-4117-4543-9a59-a23d736ba4b1",
+          "name": "Update a comment.",
+          "request": {
+            "name": "Update a comment.",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The comment ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"<string>\",\n  \"discussionID\": \"<integer>\",\n  \"parentRecordType\": \"<string>\",\n  \"parentRecordID\": \"<integer>\",\n  \"format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f5ea2dd-572f-4fd0-bf33-024f0c7542fa",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The comment ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"<string>\",\n  \"discussionID\": \"<integer>\",\n  \"parentRecordType\": \"<string>\",\n  \"parentRecordID\": \"<integer>\",\n  \"format\": \"markdown\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commentID\": 1945,\n  \"categoryID\": 9299,\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"parentRecordID\": 1636,\n  \"parentRecordType\": \"event\",\n  \"dateInserted\": \"1953-07-28T15:04:53.771Z\",\n  \"dateUpdated\": \"2025-05-03T13:34:11.881Z\",\n  \"insertUserID\": 9026,\n  \"score\": 8664,\n  \"attributes\": {},\n  \"image\": {\n    \"url\": \"string\",\n    \"urlSrcSet\": {\n      \"10\": \"string\",\n      \"300\": \"string\",\n      \"800\": \"string\",\n      \"1200\": \"string\"\n    },\n    \"alt\": \"string\"\n  },\n  \"groupID\": 9083,\n  \"discussionID\": 4279,\n  \"isLivePost\": true,\n  \"parentCommentID\": 6366,\n  \"insertUser\": {\n    \"userID\": 7973,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://vNsIFzUePtwKfzaAfJbOyEJa.nyBfWQuRS4+k8jbiHiGMI3NyIpvoLCXTeMhmAMSSgip4D1.S4-v-ajTLexnKXu\",\n    \"dateLastActive\": \"2010-12-07T01:40:57.150Z\",\n    \"url\": \"http://zl.qiikw3,6RPFAa2ywMaO1V4Iixsf6by6+KLRppffggU9m5flz\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"scoreChildComments\": 6542,\n  \"countChildComments\": 3586,\n  \"depth\": 1,\n  \"url\": \"string\",\n  \"contentLocale\": \"string\",\n  \"reportMeta\": {\n    \"reportsReasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 7263,\n        \"deleted\": true,\n        \"reportID\": 9054\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 2661,\n        \"deleted\": true,\n        \"reportID\": 696\n      }\n    ],\n    \"reportUserIDs\": [\n      7346,\n      6508\n    ],\n    \"reportUsers\": [\n      {\n        \"userID\": 9832,\n        \"name\": \"stri\",\n        \"photoUrl\": \"https://LHzbr.zmszJSsRUJmyYJZ5fenT5FGxzB3Wp2Mdmci78moQikeLu2gCRlB1Twu0mJPo\",\n        \"dateLastActive\": \"1978-05-06T20:55:52.207Z\",\n        \"url\": \"http://mTe.kfdxucLvbEAYtV3BjOMdubhGc9ErvMsqVXnh\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      },\n      {\n        \"userID\": 6869,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://ufRNxyyOCTQpFdDAmkagjP.sppbcmZNMBLrWICXa7YqKnu,5zusaIq5QCu-m+IFHvN4-0z2dsK4KbyGOKZwij\",\n        \"dateLastActive\": \"1983-08-05T11:07:28.927Z\",\n        \"url\": \"https://ZlaoaQ.boL2GgbZVx6CvMjfNli\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      }\n    ],\n    \"countReportUsers\": 6753.772823528799,\n    \"reportGuestUsers\": [\n      {\n        \"reporterEmail\": \"string\",\n        \"reporterName\": \"string\"\n      },\n      {\n        \"reporterEmail\": \"string\",\n        \"reporterName\": \"string\"\n      }\n    ],\n    \"dateLastReport\": \"2016-05-13T16:56:38.687Z\",\n    \"countReports\": 0\n  },\n  \"suggestion\": {\n    \"format\": \"string\",\n    \"sourceIcon\": \"string\",\n    \"type\": \"string\",\n    \"id\": 9533,\n    \"url\": \"string\",\n    \"title\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0af7816e-5890-44ee-99f5-5511c1824a98",
+              "name": "Premoderation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The comment ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"<string>\",\n  \"discussionID\": \"<integer>\",\n  \"parentRecordType\": \"<string>\",\n  \"parentRecordID\": \"<integer>\",\n  \"format\": \"markdown\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"message\": \"string\",\n  \"reportID\": \"string\",\n  \"premoderatinReasons\": [\n    {\n      \"premoderationType\": \"premoderatedKeyword\"\n    },\n    {\n      \"premoderationType\": \"premoderatedRole\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7045f98e-3dab-4c43-a761-198371b01834",
+          "name": "/comments/:id/answer",
+          "request": {
+            "name": "/comments/:id/answer",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                ":id",
+                "answer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"expand\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4588919e-9abc-4707-b03d-ad2114820876",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    ":id",
+                    "answer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"expand\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commentID\": 1945,\n  \"categoryID\": 9299,\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"parentRecordID\": 1636,\n  \"parentRecordType\": \"event\",\n  \"dateInserted\": \"1953-07-28T15:04:53.771Z\",\n  \"dateUpdated\": \"2025-05-03T13:34:11.881Z\",\n  \"insertUserID\": 9026,\n  \"score\": 8664,\n  \"attributes\": {},\n  \"image\": {\n    \"url\": \"string\",\n    \"urlSrcSet\": {\n      \"10\": \"string\",\n      \"300\": \"string\",\n      \"800\": \"string\",\n      \"1200\": \"string\"\n    },\n    \"alt\": \"string\"\n  },\n  \"groupID\": 9083,\n  \"discussionID\": 4279,\n  \"isLivePost\": true,\n  \"parentCommentID\": 6366,\n  \"insertUser\": {\n    \"userID\": 7973,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://vNsIFzUePtwKfzaAfJbOyEJa.nyBfWQuRS4+k8jbiHiGMI3NyIpvoLCXTeMhmAMSSgip4D1.S4-v-ajTLexnKXu\",\n    \"dateLastActive\": \"2010-12-07T01:40:57.150Z\",\n    \"url\": \"http://zl.qiikw3,6RPFAa2ywMaO1V4Iixsf6by6+KLRppffggU9m5flz\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"scoreChildComments\": 6542,\n  \"countChildComments\": 3586,\n  \"depth\": 1,\n  \"url\": \"string\",\n  \"contentLocale\": \"string\",\n  \"reportMeta\": {\n    \"reportsReasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 7263,\n        \"deleted\": true,\n        \"reportID\": 9054\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 2661,\n        \"deleted\": true,\n        \"reportID\": 696\n      }\n    ],\n    \"reportUserIDs\": [\n      7346,\n      6508\n    ],\n    \"reportUsers\": [\n      {\n        \"userID\": 9832,\n        \"name\": \"stri\",\n        \"photoUrl\": \"https://LHzbr.zmszJSsRUJmyYJZ5fenT5FGxzB3Wp2Mdmci78moQikeLu2gCRlB1Twu0mJPo\",\n        \"dateLastActive\": \"1978-05-06T20:55:52.207Z\",\n        \"url\": \"http://mTe.kfdxucLvbEAYtV3BjOMdubhGc9ErvMsqVXnh\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      },\n      {\n        \"userID\": 6869,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://ufRNxyyOCTQpFdDAmkagjP.sppbcmZNMBLrWICXa7YqKnu,5zusaIq5QCu-m+IFHvN4-0z2dsK4KbyGOKZwij\",\n        \"dateLastActive\": \"1983-08-05T11:07:28.927Z\",\n        \"url\": \"https://ZlaoaQ.boL2GgbZVx6CvMjfNli\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      }\n    ],\n    \"countReportUsers\": 6753.772823528799,\n    \"reportGuestUsers\": [\n      {\n        \"reporterEmail\": \"string\",\n        \"reporterName\": \"string\"\n      },\n      {\n        \"reporterEmail\": \"string\",\n        \"reporterName\": \"string\"\n      }\n    ],\n    \"dateLastReport\": \"2016-05-13T16:56:38.687Z\",\n    \"countReports\": 0\n  },\n  \"suggestion\": {\n    \"format\": \"string\",\n    \"sourceIcon\": \"string\",\n    \"type\": \"string\",\n    \"id\": 9533,\n    \"url\": \"string\",\n    \"title\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad6f81b9-d1c9-4077-adaa-e180689cc2e2",
+          "name": "Get a comment for editing.",
+          "request": {
+            "name": "Get a comment for editing.",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                ":id",
+                "edit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The comment ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3aa009b5-4c5f-43e1-95d8-188c5cd15949",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    ":id",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The comment ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commentID\": 5003,\n  \"discussionID\": 3036,\n  \"body\": \"string\",\n  \"format\": \"markdown\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19169a53-bf2e-4ba8-97e9-759f46b8a639",
+          "name": "/comments/:id/quote",
+          "request": {
+            "name": "/comments/:id/quote",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                ":id",
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The comment ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "242cb7a6-0a2c-41b5-bb72-67b6b7da6f50",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    ":id",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The comment ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commentID\": 5611,\n  \"bodyRaw\": \"string\",\n  \"dateInserted\": \"1978-11-25T17:51:20.951Z\",\n  \"dateUpdated\": \"1990-10-22T15:48:32.244Z\",\n  \"insertUser\": {\n    \"userID\": 4443,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://Lwh.wsnsT7kpqiVbzUgHOS5rlJ78Zrd,mrh3e6cv6SavZUG+v4HZXOVbcs7eD\",\n    \"dateLastActive\": \"1958-09-29T00:54:56.165Z\",\n    \"url\": \"https://lrNnsHsMkCSxGZQxaxW.pvx3SAnUnGGdM4vGy5dRRWTGb6HlupRoy64Ke,x5LvNB8-6DT\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"url\": \"string\",\n  \"format\": \"markdown\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b13a49cb-8c17-4dae-88b0-945fd27b408d",
+    "name": "Vanilla Addons Comments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

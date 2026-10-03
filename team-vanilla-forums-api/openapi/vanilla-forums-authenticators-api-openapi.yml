@@ -1,0 +1,1093 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Authenticators API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Authenticators
+paths:
+  /authenticator-types:
+    get:
+      summary: List every available authenticator types
+      tags:
+      - Authenticators
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthenticatorTypeInfo'
+      x-addon: dashboard
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getAuthenticatorTypes
+      x-operation-id-source: derived
+  /authenticators:
+    get:
+      summary: List the authenticators
+      tags:
+      - Authenticators
+      parameters:
+      - name: type
+        description: Filter by one or more authenticator types.
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+          format: form
+      - $ref: '#/components/parameters/Page'
+      - name: limit
+        in: query
+        description: 'Maximum number of items to be included in the response. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+          '
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthenticatorFragment'
+      x-addon: dashboard
+      operationId: getAuthenticators
+      x-operation-id-source: derived
+  /authenticators/{id}:
+    parameters:
+    - $ref: '#/components/parameters/AuthenticationKeyOrID'
+      x-addon: dashboard
+    delete:
+      summary: Delete an authenticator
+      tags:
+      - Authenticators
+      responses:
+        '204':
+          description: Success
+      x-addon: dashboard
+      operationId: deleteAuthenticatorsById
+      x-operation-id-source: derived
+    get:
+      summary: Get a single authenticator
+      tags:
+      - Authenticators
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorFragment'
+      x-addon: dashboard
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getAuthenticatorsById
+      x-operation-id-source: derived
+    patch:
+      summary: Update an authenticator
+      tags:
+      - Authenticators
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticatorPatchSchema'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorFragment'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      operationId: patchAuthenticatorsById
+      x-operation-id-source: derived
+  /authenticators/{id}/debug:
+    parameters:
+    - $ref: '#/components/parameters/AuthenticationKeyOrID'
+      x-addon: dashboard
+    put:
+      summary: Enable or disable debug logging for an authenticator
+      description: 'Enable or disable debug logging for the specified authenticator.
+
+        When enabled, debug logs will be recorded for 24 hours.
+
+        When disabled, all existing debug logs for the authenticator are deleted.
+
+
+        **Requires sysAdmin permission in addition to Garden.Settings.Manage.**'
+      tags:
+      - Authenticators
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticatorDebugInput'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorDebugStatus'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      operationId: putAuthenticatorsByIdDebug
+      x-operation-id-source: derived
+  /authenticators/{id}/debug-logs:
+    parameters:
+    - $ref: '#/components/parameters/AuthenticationKeyOrID'
+      x-addon: dashboard
+    get:
+      summary: Get debug log attempts for an authenticator
+      description: 'Retrieve debug log attempts for the specified authenticator with pagination.
+
+
+        Each attempt groups multiple log messages from a single authentication flow,
+
+        identified by a shared debugAttemptUUID. The wasSuccessful flag indicates
+
+        whether any message in the attempt has type "connect_success" or "logout_success".
+
+
+        **Requires sysAdmin permission in addition to Garden.Settings.Manage.**'
+      tags:
+      - Authenticators
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        schema:
+          type: integer
+          default: 30
+          minimum: 1
+          maximum: 100
+      - name: wasSuccessful
+        in: query
+        description: Filter by whether the attempt was successful.
+        schema:
+          type: boolean
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DebugLogAttempt'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      operationId: getAuthenticatorsByIdDebugLogs
+      x-operation-id-source: derived
+components:
+  parameters:
+    AuthenticationKeyOrID:
+      name: id
+      in: path
+      description: An authenticatorID or an authenticationKey.
+      required: true
+      schema:
+        oneOf:
+        - type: integer
+        - type: string
+      x-addon: dashboard
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+  schemas:
+    UserFragment:
+      oneOf:
+      - type: object
+        properties:
+          userID:
+            description: The ID of the user.
+            type: integer
+          name:
+            description: The username of the user.
+            minLength: 1
+            type: string
+          url:
+            description: The URL of the user's profile.
+            type: string
+            format: uri
+          photoUrl:
+            description: The URL of the user's avatar picture.
+            type: string
+            format: uri
+          dateLastActive:
+            description: Time the user was last active.
+            format: date-time
+            type:
+            - string
+            - 'null'
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+          label:
+            description: The label of the user as plaintext.
+            type: string
+          labelHtml:
+            description: The label of the user in HTML format.
+            type: string
+          private:
+            description: Whether the user profile is private or not.
+            type: boolean
+        required:
+        - userID
+        - name
+        - photoUrl
+        - dateLastActive
+      - type: object
+        description: A user fragment when only expanding by ssoID.
+        properties:
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+        required:
+        - ssoID
+      x-addon: dashboard
+    DebugLogAttempt:
+      type: object
+      description: A grouped authentication attempt containing multiple log messages.
+      properties:
+        debugAttemptUUID:
+          type: string
+          format: uuid
+          description: Unique identifier for the authentication attempt.
+        foreignType:
+          type: string
+          description: The owning resource type for this attempt.
+        foreignID:
+          type: integer
+          description: The owning resource ID for this attempt.
+        countMessages:
+          type: integer
+          description: Number of log messages in this attempt.
+        wasSuccessful:
+          type: boolean
+          description: Whether this attempt resulted in a successful connection or logout.
+        attemptFlow:
+          type: string
+          enum:
+          - login
+          - logout
+          description: Whether this attempt is a login or logout flow.
+        dateInserted:
+          type: string
+          format: date-time
+          description: When the most recent log in this attempt was created.
+        insertUserID:
+          type:
+          - integer
+          - 'null'
+          description: User ID associated with this attempt (if any).
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        messages:
+          type: array
+          description: The individual log messages for this attempt.
+          items:
+            $ref: '#/components/schemas/DebugLog'
+      required:
+      - debugAttemptUUID
+      - foreignType
+      - foreignID
+      - countMessages
+      - wasSuccessful
+      - attemptFlow
+      - dateInserted
+      - messages
+      x-addon: dashboard
+    AuthenticatorTypeInfo:
+      type: object
+      description: Information about an authenticator type.
+      properties:
+        authenticatorType:
+          type: string
+          description: The unique key for the authenticator.
+        nameCode:
+          type: string
+          description: User readable name for the authenticator.
+        descriptionCode:
+          type: string
+          description: Description of the authenticator. Markdown supported.
+        entityClass:
+          type: string
+          description: The entity class for the authenticator.
+        schema:
+          type: object
+          description: JSON schema for the authenticator configuration.
+        metadataUrls:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthenticatorMetaDataUrl'
+      required:
+      - authenticatorType
+      - nameCode
+      - descriptionCode
+      - entityClass
+      - schema
+      - metadataUrls
+      x-addon: dashboard
+    AuthenticatorMetaDataUrl:
+      type: object
+      description: A URL for a metadata file for the authenticator.
+      properties:
+        labelCode:
+          type: string
+          description: The translation code for the label of the metadata URL.
+        url:
+          type: string
+          description: The URL.
+          format: uri
+      required:
+      - labelCode
+      - url
+      x-addon: dashboard
+    AuthenticatorDebugStatus:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether debug logging is enabled.
+        dateDebugExpires:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When debug logging will be automatically disabled.
+      required:
+      - enabled
+      x-addon: dashboard
+    AuthenticatorDebugInput:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether to enable debug logging for this authenticator.
+      required:
+      - enabled
+      x-addon: dashboard
+    DebugLog:
+      type: object
+      properties:
+        debugLogUUID:
+          type: string
+          format: uuid
+          description: Unique identifier for the debug log entry.
+        debugAttemptUUID:
+          type: string
+          format: uuid
+          description: UUID grouping all logs from a single auth attempt.
+        foreignType:
+          type: string
+          description: The owning resource type for this log.
+        foreignID:
+          type: integer
+          description: The owning resource ID for this log.
+        type:
+          type: string
+          description: The type/category of debug log.
+        message:
+          type: string
+          description: A human-readable debug message.
+        requestMethod:
+          type: string
+          description: The HTTP request method when the log was generated.
+        requestPath:
+          type: string
+          description: The request path when the log was generated.
+        requestID:
+          type: string
+          description: The ID of the http request that the log was generated during.
+        context:
+          type: object
+          description: The debug context payload (sensitive data is sanitized).
+        dateExpires:
+          type: string
+          format: date-time
+          description: When this debug log expires.
+        dateInserted:
+          type: string
+          format: date-time
+          description: When the debug log was created.
+        insertUserID:
+          type: integer
+          description: User who created the debug log.
+      required:
+      - debugLogUUID
+      - debugAttemptUUID
+      - foreignType
+      - foreignID
+      - type
+      - message
+      - requestMethod
+      - requestPath
+      - context
+      - dateExpires
+      - dateInserted
+      - insertUserID
+      x-addon: dashboard
+    AuthenticatorPatchSchema:
+      type: object
+      properties:
+        default:
+          type: boolean
+          default: false
+        active:
+          type: boolean
+          default: false
+          example: true
+        visible:
+          type: boolean
+          default: false
+        urls:
+          $ref: '#/components/schemas/AuthenticatorUrlSchema'
+        authenticatorConfig:
+          $ref: '#/components/schemas/AuthenticationTypeService'
+      x-addon: dashboard
+    AuthenticationTypeService:
+      description: Authentication types configuration attributes.
+      x-addon: dashboard
+    AuthenticatorUrlSchema:
+      type: object
+      properties:
+        signInUrl:
+          format: uri
+          type:
+          - string
+          - 'null'
+        signOutUrl:
+          format: uri
+          type:
+          - string
+          - 'null'
+        authenticateUrl:
+          format: uri
+          type:
+          - string
+          - 'null'
+        registerUrl:
+          format: uri
+          type:
+          - string
+          - 'null'
+        passwordUrl:
+          format: uri
+          type:
+          - string
+          - 'null'
+        profileUrl:
+          format: uri
+          type:
+          - string
+          - 'null'
+      x-addon: dashboard
+    AuthenticatorFragment:
+      type: object
+      properties:
+        authenticatorID:
+          type: integer
+          description: The authenticator's ID.
+        authenticationKey:
+          type: string
+          description: The authenticator's unique authentication key.
+        name:
+          type: string
+          description: A human readible name for the authenticator.
+        type:
+          type: string
+          description: The type of authenticator
+          example: oauth2
+        clientID:
+          type: string
+        default:
+          type: boolean
+        active:
+          type: boolean
+          example: true
+        visible:
+          type: boolean
+        isOidc:
+          type: boolean
+          default: false
+        markVerified:
+          type: boolean
+          default: false
+        urls:
+          $ref: '#/components/schemas/AuthenticatorUrlSchema'
+        isDebugEnabled:
+          type: boolean
+          description: Whether debug logging is enabled for this authenticator.
+          default: false
+        dateDebugExpires:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When debug logging will be automatically disabled.
+        metadataUrls:
+          type: array
+          description: The metadata URLs for the authenticator.
+          items:
+            $ref: '#/components/schemas/AuthenticatorMetaDataUrl'
+      required:
+      - authenticatorID
+      - name
+      - type
+      - clientID
+      - default
+      - active
+      - visible
+      - metadataUrls
+      x-addon: dashboard
+  responses:
+    NotFound:
+      description: The record does not exist or was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: More information about the error.
+              status:
+                type: number
+                description: The HTTP status code for the error.
+                format: int32
+            required:
+            - message
+          example:
+            status: 404
+            message: Page Not Found
+      x-addon: dashboard
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

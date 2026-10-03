@@ -1,0 +1,219 @@
+{
+  "item": [
+    {
+      "id": "9e26d738-a3b2-467e-8373-f1d65ce5eb3f",
+      "name": "Config",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa8da1b0-c7d8-486b-ac37-8c54e6d61ce6",
+          "name": "Get the site's config.",
+          "request": {
+            "name": "Get the site's config.",
+            "description": {},
+            "url": {
+              "path": [
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "<string>",
+                  "description": "A CSV of config key names to select a sparse set of items. Use * as a wildcard to match multiple keys.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "select",
+                  "value": "<string>",
+                  "description": "A CSV of config key names to select a sparse set of items. Use * as a wildcard to match multiple keys.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "543a59f0-627c-4c05-8f67-3c11d919fc69",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"configUUID\": \"string\",\n  \"branding.addressBarColor\": \"#C0FFEE\",\n  \"branding.bannerImage\": \"\",\n  \"branding.favicon\": \"\",\n  \"branding.logo\": \"\",\n  \"branding.mobileLogo\": \"\",\n  \"branding.shareImage\": \"\",\n  \"branding.touchIcon\": \"\",\n  \"forum.disabled\": true,\n  \"garden.cookie.name\": \"Vanilla\",\n  \"garden.cookie.path\": \"Vanilla\",\n  \"garden.description\": \"\",\n  \"garden.externalUrlFormat\": \"https://example.com/community/%s\",\n  \"garden.homepageTitle\": \"Welcome To Our Support Community\",\n  \"garden.locale\": \"en\",\n  \"machineTranslation.maxLocale\": 5,\n  \"machineTranslation.wordsNotToTranslate\": \"\",\n  \"machineTranslation.locales\": [\n    \"string\",\n    \"string\"\n  ],\n  \"machineTranslation.translatableContent\": {\n    \"posts\": false,\n    \"comments\": false,\n    \"widgetText\": false,\n    \"articles\": false,\n    \"categoryNames\": false,\n    \"roleNames\": false,\n    \"ranks\": false,\n    \"badges\": false\n  },\n  \"machineTranslation.advancedPrompts\": \"\",\n  \"machineTranslation.kbTranslationMode\": \"manual\",\n  \"garden.orgName\": \"\",\n  \"garden.privacy.ips\": \"\",\n  \"garden.title\": \"Support Community\",\n  \"customLayout.home\": false,\n  \"customLayout.discussionList\": false,\n  \"customLayout.post\": false,\n  \"customLayout.createPost\": false,\n  \"customLayout.categoryList\": false,\n  \"customLayout.nestedCategoryList\": false,\n  \"customLayout.discussionCategoryPage\": false,\n  \"customLayout.event\": false,\n  \"customLayout.group\": false,\n  \"hideLegacyLayouts\": false,\n  \"labs.deferredLegacyScripts\": true,\n  \"labs.automationRules\": true,\n  \"labs.newAnalytics\": true,\n  \"labs.userCards\": true,\n  \"labs.useCustomLayout\": true,\n  \"labs.newSearchPage\": true,\n  \"labs.newQuickLinks\": true,\n  \"labs.newPostMenu\": true,\n  \"labs.newUserManagement\": true,\n  \"labs.newEmbedSystem\": true,\n  \"labs.customProfileFields\": true,\n  \"labs.sentimentAnalysis\": true,\n  \"labs.aiSuggestions\": true,\n  \"embed.enabled\": true,\n  \"embed.remoteUrl\": \"https://my-site.com/forum\",\n  \"embed.forceEmbed\": true,\n  \"discussions.layout\": \"foundation\",\n  \"discussionThread.layout\": \"foundation\",\n  \"categories.layout\": \"modern\",\n  \"routes.defaultController\": [\n    \"string\",\n    \"string\"\n  ],\n  \"vanilla.siteID\": 0,\n  \"redirectURL.profile\": \"\",\n  \"redirectURL.message\": \"\",\n  \"password.minLength\": \"\",\n  \"registration.method\": \"Captcha\",\n  \"profile.editEmails\": true,\n  \"seo.metaHtml\": \"\",\n  \"debug\": false,\n  \"plugins.qna\": false,\n  \"plugins.ideation\": false,\n  \"plugins.polls\": false,\n  \"plugins.resolved\": false,\n  \"preferences.categoryFollowed.defaults\": \"[]\",\n  \"Search.AiConversation.ExcludedCategoryIDs\": [\n    1,\n    2,\n    3\n  ],\n  \"Search.AiConversation.IncludedPostTypeIDs\": [\n    \"discussion\",\n    \"question\"\n  ],\n  \"Search.AiConversation.IncludedStatusIDs\": [\n    1,\n    2,\n    3\n  ],\n  \"emailStyles.format\": \"html\",\n  \"emailStyles.image\": \"\",\n  \"emailStyles.textColor\": \"#333333\",\n  \"emailStyles.backgroundColor\": \"#eeeeee\",\n  \"emailStyles.containerBackgroundColor\": \"#ffffff\",\n  \"emailStyles.buttonTextColor\": \"#ffffff\",\n  \"emailStyles.buttonBackgroundColor\": \"#38abe3\",\n  \"outgoingEmails.supportName\": \"\",\n  \"outgoingEmails.supportAddress\": \"\",\n  \"outgoingEmails.footer\": \"[{\\\"children\\\":[{\\\"text\\\":\\\"\\\"}],\\\"type\\\":\\\"p\\\"}]\",\n  \"emailNotifications.disabled\": false,\n  \"emailNotifications.fullPost\": true,\n  \"emailDigest.enabled\": false,\n  \"emailDigest.autosubscribe.enabled\": false,\n  \"emailDigest.logo\": \"\",\n  \"emailDigest.defaultFrequency\": \"weekly\",\n  \"emailDigest.dayOfWeek\": 1,\n  \"emailDigest.monthly.dayOfWeek\": 1,\n  \"emailDigest.monthly.setPosition\": \"first\",\n  \"emailDigest.postCount\": 5,\n  \"emailDigest.title\": \"\",\n  \"emailDigest.includeCommunityName\": true,\n  \"emailDigest.introduction\": \"[{\\\"children\\\":[{\\\"text\\\":\\\"\\\"}],\\\"type\\\":\\\"p\\\"}]\",\n  \"emailDigest.footer\": \"[{\\\"children\\\":[{\\\"text\\\":\\\"\\\"}],\\\"type\\\":\\\"p\\\"}]\",\n  \"emailDigest.imageEnabled\": false,\n  \"emailDigest.authorEnabled\": true,\n  \"emailDigest.viewCountEnabled\": true,\n  \"emailDigest.commentCountEnabled\": true,\n  \"emailDigest.scoreCountEnabled\": true,\n  \"externalSearch.query\": \"\",\n  \"externalSearch.resultsInNewTab\": false,\n  \"escalations.enabled\": false,\n  \"triage.enabled\": false,\n  \"enforceDSACompliance.enabled\": false,\n  \"premoderation.categoryIDs\": [\n    4313,\n    3484\n  ],\n  \"premoderation.discussions\": false,\n  \"premoderation.comments\": false,\n  \"premoderation.keywords\": \"\",\n  \"premoderation.challengeNewUsers\": false,\n  \"premoderation.challengeAgeCutoffInDays\": 7,\n  \"personalInfo.disclosure\": \"\",\n  \"tagging.enabled\": false,\n  \"tagging.scopedTagging.enabled\": false,\n  \"labs.aiConversation\": true,\n  \"aiAssistant.name\": \"AI Assistant\",\n  \"aiAssistant.icon\": \"https://example.com/icon.png\",\n  \"emailDigest.groupsPostCount\": 5,\n  \"leadersCanModerateContent\": false,\n  \"leadersCanAccessCMD\": false,\n  \"membersCanAddEvents\": false,\n  \"promotedGroupsLimit\": 3,\n  \"memberDirectoryColumnsConfig\": \"\",\n  \"analytics.anonymize\": false,\n  \"ideation.scopedStatuses.enabled\": false,\n  \"hubspot.appID\": \"123456\",\n  \"hubspot.clientID\": \"a8boe0ki3n4t8e0r0a8boe0ki3n4t8e0r\",\n  \"hubspot.clientSecret\": \"a8boe0ki3n4t8e0r0a8boe0ki3n4t8e0r\",\n  \"hubspot.enabled\": false,\n  \"hubspot.activitySync.enabled\": false,\n  \"machineTranslation.enabled\": true,\n  \"customLayout.knowledgeBase\": false,\n  \"preferences.KnowledgeBaseFollowed.Defaults\": \"[]\",\n  \"Search.AiConversation.ExcludedKnowledgeBaseIDs\": [\n    1,\n    2,\n    3\n  ],\n  \"search.contextualSearchByCategory.enabled\": false,\n  \"salesforce.dashboardConnection.enabled\": false,\n  \"salesforce.applicationID\": \"\",\n  \"salesforce.secret\": \"\",\n  \"salesforce.authenticationUrl\": \"https://login.salesforce.com\",\n  \"salesforce.syncUsers\": false,\n  \"salesforce.profileOpenCases\": false,\n  \"search.salesforce-official.enabled\": false,\n  \"search.salesforce-official.endpoint\": \"http://I.guSLNodem8CeBGqyAaTI83aA4nF\",\n  \"search.salesforce-official.label\": \"string\",\n  \"search.salesforce-official.clientID\": \"string\",\n  \"search.salesforce-official.clientSecret\": \"string\",\n  \"search.salesforce-official.accessToken\": \"string\",\n  \"search.salesforce-official.allowedRoleIDs\": [\n    2972,\n    5236\n  ],\n  \"search.zendesk.enabled\": false,\n  \"search.zendesk.endpoint\": \"http://fczdsnLpChntEBThrOhJHArEMH.rrxBP+ddrNJADo8E2c1CdtN0v-vOAzqr-4KD,Y9Qaz\",\n  \"search.zendesk.label\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3ff20eb-43ea-459a-9984-f42fbf4f590c",
+          "name": "Update one or more config settings.",
+          "request": {
+            "name": "Update one or more config settings.",
+            "description": {},
+            "url": {
+              "path": [
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"configUUID\": \"<string>\",\n  \"branding.addressBarColor\": \"\",\n  \"branding.bannerImage\": \"\",\n  \"branding.favicon\": \"\",\n  \"branding.logo\": \"\",\n  \"branding.mobileLogo\": \"\",\n  \"branding.shareImage\": \"\",\n  \"branding.touchIcon\": \"\",\n  \"forum.disabled\": false,\n  \"garden.cookie.name\": \"Vanilla\",\n  \"garden.cookie.path\": \"Vanilla\",\n  \"garden.description\": \"\",\n  \"garden.externalUrlFormat\": \"\",\n  \"garden.homepageTitle\": \"\",\n  \"garden.locale\": \"en\",\n  \"machineTranslation.maxLocale\": 5,\n  \"machineTranslation.wordsNotToTranslate\": \"\",\n  \"machineTranslation.locales\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"machineTranslation.translatableContent\": {\n    \"posts\": false,\n    \"comments\": false,\n    \"widgetText\": false,\n    \"articles\": false,\n    \"categoryNames\": false,\n    \"roleNames\": false,\n    \"ranks\": false,\n    \"badges\": false\n  },\n  \"machineTranslation.advancedPrompts\": \"\",\n  \"machineTranslation.kbTranslationMode\": \"manual\",\n  \"garden.orgName\": \"\",\n  \"garden.privacy.ips\": \"\",\n  \"garden.title\": \"Vanilla\",\n  \"customLayout.home\": false,\n  \"customLayout.discussionList\": false,\n  \"customLayout.post\": false,\n  \"customLayout.createPost\": false,\n  \"customLayout.categoryList\": false,\n  \"customLayout.nestedCategoryList\": false,\n  \"customLayout.discussionCategoryPage\": false,\n  \"customLayout.event\": false,\n  \"customLayout.group\": false,\n  \"hideLegacyLayouts\": false,\n  \"labs.deferredLegacyScripts\": true,\n  \"labs.automationRules\": false,\n  \"labs.newAnalytics\": false,\n  \"labs.userCards\": false,\n  \"labs.useCustomLayout\": false,\n  \"labs.newSearchPage\": false,\n  \"labs.newQuickLinks\": false,\n  \"labs.newPostMenu\": false,\n  \"labs.newUserManagement\": false,\n  \"labs.newEmbedSystem\": false,\n  \"labs.customProfileFields\": false,\n  \"labs.sentimentAnalysis\": false,\n  \"labs.aiSuggestions\": false,\n  \"embed.enabled\": false,\n  \"embed.remoteUrl\": \"\",\n  \"embed.forceEmbed\": false,\n  \"discussions.layout\": \"foundation\",\n  \"discussionThread.layout\": \"foundation\",\n  \"categories.layout\": \"modern\",\n  \"routes.defaultController\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vanilla.siteID\": 0,\n  \"redirectURL.profile\": \"\",\n  \"redirectURL.message\": \"\",\n  \"password.minLength\": \"\",\n  \"registration.method\": \"Captcha\",\n  \"profile.editEmails\": true,\n  \"seo.metaHtml\": \"\",\n  \"debug\": false,\n  \"plugins.qna\": false,\n  \"plugins.ideation\": false,\n  \"plugins.polls\": false,\n  \"plugins.resolved\": false,\n  \"preferences.categoryFollowed.defaults\": \"[]\",\n  \"Search.AiConversation.ExcludedCategoryIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"Search.AiConversation.IncludedPostTypeIDs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Search.AiConversation.IncludedStatusIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"emailStyles.format\": \"html\",\n  \"emailStyles.image\": \"\",\n  \"emailStyles.textColor\": \"#333333\",\n  \"emailStyles.backgroundColor\": \"#eeeeee\",\n  \"emailStyles.containerBackgroundColor\": \"#ffffff\",\n  \"emailStyles.buttonTextColor\": \"#ffffff\",\n  \"emailStyles.buttonBackgroundColor\": \"#38abe3\",\n  \"outgoingEmails.supportName\": \"\",\n  \"outgoingEmails.supportAddress\": \"\",\n  \"outgoingEmails.footer\": \"[{\\\"children\\\":[{\\\"text\\\":\\\"\\\"}],\\\"type\\\":\\\"p\\\"}]\",\n  \"emailNotifications.disabled\": false,\n  \"emailNotifications.fullPost\": true,\n  \"emailDigest.enabled\": false,\n  \"emailDigest.autosubscribe.enabled\": false,\n  \"emailDigest.logo\": \"\",\n  \"emailDigest.defaultFrequency\": \"weekly\",\n  \"emailDigest.dayOfWeek\": 1,\n  \"emailDigest.monthly.dayOfWeek\": 1,\n  \"emailDigest.monthly.setPosition\": \"first\",\n  \"emailDigest.postCount\": 5,\n  \"emailDigest.title\": \"\",\n  \"emailDigest.includeCommunityName\": true,\n  \"emailDigest.introduction\": \"[{\\\"children\\\":[{\\\"text\\\":\\\"\\\"}],\\\"type\\\":\\\"p\\\"}]\",\n  \"emailDigest.footer\": \"[{\\\"children\\\":[{\\\"text\\\":\\\"\\\"}],\\\"type\\\":\\\"p\\\"}]\",\n  \"emailDigest.imageEnabled\": false,\n  \"emailDigest.authorEnabled\": true,\n  \"emailDigest.viewCountEnabled\": true,\n  \"emailDigest.commentCountEnabled\": true,\n  \"emailDigest.scoreCountEnabled\": true,\n  \"externalSearch.query\": \"\",\n  \"externalSearch.resultsInNewTab\": false,\n  \"escalations.enabled\": false,\n  \"triage.enabled\": false,\n  \"enforceDSACompliance.enabled\": false,\n  \"premoderation.categoryIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"premoderation.discussions\": false,\n  \"premoderation.comments\": false,\n  \"premoderation.keywords\": \"\",\n  \"premoderation.challengeNewUsers\": false,\n  \"premoderation.challengeAgeCutoffInDays\": 7,\n  \"personalInfo.disclosure\": \"\",\n  \"tagging.enabled\": false,\n  \"tagging.scopedTagging.enabled\": false,\n  \"labs.aiConversation\": false,\n  \"aiAssistant.name\": \"\",\n  \"aiAssistant.icon\": \"\",\n  \"emailDigest.groupsPostCount\": 5,\n  \"leadersCanModerateContent\": false,\n  \"leadersCanAccessCMD\": false,\n  \"membersCanAddEvents\": false,\n  \"promotedGroupsLimit\": 3,\n  \"memberDirectoryColumnsConfig\": \"\",\n  \"analytics.anonymize\": false,\n  \"ideation.scopedStatuses.enabled\": false,\n  \"hubspot.appID\": \"\",\n  \"hubspot.clientID\": \"\",\n  \"hubspot.clientSecret\": \"\",\n  \"hubspot.enabled\": false,\n  \"hubspot.activitySync.enabled\": false,\n  \"machineTranslation.enabled\": false,\n  \"customLayout.knowledgeBase\": false,\n  \"preferences.KnowledgeBaseFollowed.Defaults\": \"[]\",\n  \"Search.AiConversation.ExcludedKnowledgeBaseIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"search.contextualSearchByCategory.enabled\": false,\n  \"salesforce.dashboardConnection.enabled\": false,\n  \"salesforce.applicationID\": \"\",\n  \"salesforce.secret\": \"\",\n  \"salesforce.authenticationUrl\": \"https://login.salesforce.com\",\n  \"salesforce.syncUsers\": false,\n  \"salesforce.profileOpenCases\": false,\n  \"search.salesforce-official.enabled\": false,\n  \"search.salesforce-official.endpoint\": \"<uri>\",\n  \"search.salesforce-official.label\": \"<string>\",\n  \"search.salesforce-official.clientID\": \"<string>\",\n  \"search.salesforce-official.clientSecret\": \"<string>\",\n  \"search.salesforce-official.accessToken\": \"<string>\",\n  \"search.salesforce-official.allowedRoleIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"search.zendesk.enabled\": false,\n  \"search.zendesk.endpoint\": \"<uri>\",\n  \"search.zendesk.label\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0376abb3-d285-4db2-92c9-1327d1de76e1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configUUID\": \"<string>\",\n  \"branding.addressBarColor\": \"#C0FFEE\",\n  \"branding.bannerImage\": \"\",\n  \"branding.favicon\": \"\",\n  \"branding.logo\": \"\",\n  \"branding.mobileLogo\": \"\",\n  \"branding.shareImage\": \"\",\n  \"branding.touchIcon\": \"\",\n  \"forum.disabled\": true,\n  \"garden.cookie.name\": \"Vanilla\",\n  \"garden.cookie.path\": \"Vanilla\",\n  \"garden.description\": \"\",\n  \"garden.externalUrlFormat\": \"https://example.com/community/%s\",\n  \"garden.homepageTitle\": \"Welcome To Our Support Community\",\n  \"garden.locale\": \"en\",\n  \"machineTranslation.maxLocale\": 5,\n  \"machineTranslation.wordsNotToTranslate\": \"\",\n  \"machineTranslation.locales\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"machineTranslation.translatableContent\": {\n    \"posts\": false,\n    \"comments\": false,\n    \"widgetText\": false,\n    \"articles\": false,\n    \"categoryNames\": false,\n    \"roleNames\": false,\n    \"ranks\": false,\n    \"badges\": false\n  },\n  \"machineTranslation.advancedPrompts\": \"\",\n  \"machineTranslation.kbTranslationMode\": \"manual\",\n  \"garden.orgName\": \"\",\n  \"garden.privacy.ips\": \"\",\n  \"garden.title\": \"Support Community\",\n  \"customLayout.home\": false,\n  \"customLayout.discussionList\": false,\n  \"customLayout.post\": false,\n  \"customLayout.createPost\": false,\n  \"customLayout.categoryList\": false,\n  \"customLayout.nestedCategoryList\": false,\n  \"customLayout.discussionCategoryPage\": false,\n  \"customLayout.event\": false,\n  \"customLayout.group\": false,\n  \"hideLegacyLayouts\": false,\n  \"labs.deferredLegacyScripts\": true,\n  \"labs.automationRules\": true,\n  \"labs.newAnalytics\": true,\n  \"labs.userCards\": true,\n  \"labs.useCustomLayout\": true,\n  \"labs.newSearchPage\": true,\n  \"labs.newQuickLinks\": true,\n  \"labs.newPostMenu\": true,\n  \"labs.newUserManagement\": true,\n  \"labs.newEmbedSystem\": true,\n  \"labs.customProfileFields\": true,\n  \"labs.sentimentAnalysis\": true,\n  \"labs.aiSuggestions\": true,\n  \"embed.enabled\": true,\n  \"embed.remoteUrl\": \"https://my-site.com/forum\",\n  \"embed.forceEmbed\": true,\n  \"discussions.layout\": \"foundation\",\n  \"discussionThread.layout\": \"foundation\",\n  \"categories.layout\": \"modern\",\n  \"routes.defaultController\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vanilla.siteID\": 0,\n  \"redirectURL.profile\": \"\",\n  \"redirectURL.message\": \"\",\n  \"password.minLength\": \"\",\n  \"registration.method\": \"Captcha\",\n  \"profile.editEmails\": true,\n  \"seo.metaHtml\": \"\",\n  \"debug\": false,\n  \"plugins.qna\": false,\n  \"plugins.ideation\": false,\n  \"plugins.polls\": false,\n  \"plugins.resolved\": false,\n  \"preferences.categoryFollowed.defaults\": \"[]\",\n  \"Search.AiConversation.ExcludedCategoryIDs\": [\n    1,\n    2,\n    3\n  ],\n  \"Search.AiConversation.IncludedPostTypeIDs\": [\n    \"discussion\",\n    \"question\"\n  ],\n  \"Search.AiConversation.IncludedStatusIDs\": [\n    1,\n    2,\n    3\n  ],\n  \"emailStyles.format\": \"html\",\n  \"emailStyles.image\": \"\",\n  \"emailStyles.textColor\": \"#333333\",\n  \"emailStyles.backgroundColor\": \"#eeeeee\",\n  \"emailStyles.containerBackgroundColor\": \"#ffffff\",\n  \"emailStyles.buttonTextColor\": \"#ffffff\",\n  \"emailStyles.buttonBackgroundColor\": \"#38abe3\",\n  \"outgoingEmails.supportName\": \"\",\n  \"outgoingEmails.supportAddress\": \"\",\n  \"outgoingEmails.footer\": \"[{\\\"children\\\":[{\\\"text\\\":\\\"\\\"}],\\\"type\\\":\\\"p\\\"}]\",\n  \"emailNotifications.disabled\": false,\n  \"emailNotifications.fullPost\": true,\n  \"emailDigest.enabled\": false,\n  \"emailDigest.autosubscribe.enabled\": false,\n  \"emailDigest.logo\": \"\",\n  \"emailDigest.defaultFrequency\": \"weekly\",\n  \"emailDigest.dayOfWeek\": 1,\n  \"emailDigest.monthly.dayOfWeek\": 1,\n  \"emailDigest.monthly.setPosition\": \"first\",\n  \"emailDigest.postCount\": 5,\n  \"emailDigest.title\": \"\",\n  \"emailDigest.includeCommunityName\": true,\n  \"emailDigest.introduction\": \"[{\\\"children\\\":[{\\\"text\\\":\\\"\\\"}],\\\"type\\\":\\\"p\\\"}]\",\n  \"emailDigest.footer\": \"[{\\\"children\\\":[{\\\"text\\\":\\\"\\\"}],\\\"type\\\":\\\"p\\\"}]\",\n  \"emailDigest.imageEnabled\": false,\n  \"emailDigest.authorEnabled\": true,\n  \"emailDigest.viewCountEnabled\": true,\n  \"emailDigest.commentCountEnabled\": true,\n  \"emailDigest.scoreCountEnabled\": true,\n  \"externalSearch.query\": \"\",\n  \"externalSearch.resultsInNewTab\": false,\n  \"escalations.enabled\": false,\n  \"triage.enabled\": false,\n  \"enforceDSACompliance.enabled\": false,\n  \"premoderation.categoryIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"premoderation.discussions\": false,\n  \"premoderation.comments\": false,\n  \"premoderation.keywords\": \"\",\n  \"premoderation.challengeNewUsers\": false,\n  \"premoderation.challengeAgeCutoffInDays\": 7,\n  \"personalInfo.disclosure\": \"\",\n  \"tagging.enabled\": false,\n  \"tagging.scopedTagging.enabled\": false,\n  \"labs.aiConversation\": true,\n  \"aiAssistant.name\": \"AI Assistant\",\n  \"aiAssistant.icon\": \"https://example.com/icon.png\",\n  \"emailDigest.groupsPostCount\": 5,\n  \"leadersCanModerateContent\": false,\n  \"leadersCanAccessCMD\": false,\n  \"membersCanAddEvents\": false,\n  \"promotedGroupsLimit\": 3,\n  \"memberDirectoryColumnsConfig\": \"\",\n  \"analytics.anonymize\": false,\n  \"ideation.scopedStatuses.enabled\": false,\n  \"hubspot.appID\": \"123456\",\n  \"hubspot.clientID\": \"a8boe0ki3n4t8e0r0a8boe0ki3n4t8e0r\",\n  \"hubspot.clientSecret\": \"a8boe0ki3n4t8e0r0a8boe0ki3n4t8e0r\",\n  \"hubspot.enabled\": false,\n  \"hubspot.activitySync.enabled\": false,\n  \"machineTranslation.enabled\": true,\n  \"customLayout.knowledgeBase\": false,\n  \"preferences.KnowledgeBaseFollowed.Defaults\": \"[]\",\n  \"Search.AiConversation.ExcludedKnowledgeBaseIDs\": [\n    1,\n    2,\n    3\n  ],\n  \"search.contextualSearchByCategory.enabled\": false,\n  \"salesforce.dashboardConnection.enabled\": false,\n  \"salesforce.applicationID\": \"\",\n  \"salesforce.secret\": \"\",\n  \"salesforce.authenticationUrl\": \"https://login.salesforce.com\",\n  \"salesforce.syncUsers\": false,\n  \"salesforce.profileOpenCases\": false,\n  \"search.salesforce-official.enabled\": false,\n  \"search.salesforce-official.endpoint\": \"<uri>\",\n  \"search.salesforce-official.label\": \"<string>\",\n  \"search.salesforce-official.clientID\": \"<string>\",\n  \"search.salesforce-official.clientSecret\": \"<string>\",\n  \"search.salesforce-official.accessToken\": \"<string>\",\n  \"search.salesforce-official.allowedRoleIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"search.zendesk.enabled\": false,\n  \"search.zendesk.endpoint\": \"<uri>\",\n  \"search.zendesk.label\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2a0f2b20-264c-4f54-a7ca-9a3932448630",
+    "name": "Vanilla Addons Config API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

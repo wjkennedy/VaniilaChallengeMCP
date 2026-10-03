@@ -1,0 +1,2061 @@
+{
+  "item": [
+    {
+      "id": "8f0368d5-9358-45a1-ac2c-bfe404aee6c5",
+      "name": "Analytics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf7851b4-1623-4299-9754-b8e6219dcdcf",
+          "name": "Get the results of an analytics query.",
+          "request": {
+            "name": "Get the results of an analytics query.",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics",
+                "analysis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"analysisType\": \"<string>\",\n  \"eventCollection\": \"<string>\",\n  \"timeframe\": {\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\"\n  },\n  \"targetProperty\": {},\n  \"groupBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": [\n    {\n      \"operator\": \"eq\",\n      \"propertyName\": \"<string>\",\n      \"propertyValue\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        }\n      ]\n    },\n    {\n      \"operator\": \"eq\",\n      \"propertyName\": \"<string>\",\n      \"propertyValue\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        }\n      ]\n    }\n  ],\n  \"interval\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"orderBy\": [\n    {\n      \"propertyName\": \"<string>\",\n      \"direction\": \"DESC\"\n    },\n    {\n      \"propertyName\": \"<string>\",\n      \"direction\": \"DESC\"\n    }\n  ],\n  \"timezone\": \"<string>\",\n  \"extractionFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"extractionFormat\": \"json\",\n  \"scope\": \"site\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4586a6f6-6b4a-4651-8769-6ba9a37c0fe0",
+              "name": "Success. The response format depends on query parameters:\n- **AnalyticsSingleResult**: When neither grouping nor interval parameters are specified\n- **AnalyticsGroupedResult**: When grouping is specified without interval\n- **AnalyticsIntervalResult**: When interval is specified without grouping\n- **AnalyticsGroupedIntervalResult**: When both grouping and interval are specified\n- **AnalyticsExtractCsv**: When extracting CSV data.\n- **AnalyticsExtractJson**: When extracting JSON data.\n- **Export**: When exporting data. This is the same data returned from the /api/v2/exports/{exportUUID} endpoint.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "analysis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analysisType\": \"count\",\n  \"eventCollection\": \"<string>\",\n  \"timeframe\": {\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\"\n  },\n  \"targetProperty\": {},\n  \"groupBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": [\n    {\n      \"operator\": \"eq\",\n      \"propertyName\": \"<string>\",\n      \"propertyValue\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        }\n      ]\n    },\n    {\n      \"operator\": \"eq\",\n      \"propertyName\": \"<string>\",\n      \"propertyValue\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        }\n      ]\n    }\n  ],\n  \"interval\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"orderBy\": [\n    {\n      \"propertyName\": \"<string>\",\n      \"direction\": \"DESC\"\n    },\n    {\n      \"propertyName\": \"<string>\",\n      \"direction\": \"DESC\"\n    }\n  ],\n  \"timezone\": \"<string>\",\n  \"extractionFields\": [\n    \"type\",\n    \"urlParsed.*\",\n    \"user.*\"\n  ],\n  \"extractionFormat\": \"json\",\n  \"scope\": \"site\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultType\": \"single\",\n  \"result\": 38\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8ddd3c4-52b9-4c32-adc8-21976c718e78",
+              "name": "Error returned when data is too large to extract. When this error is returned, your timeframe and filters are likely returning too much data. You can either switch to using the \"export\" analysis type, add filters to your query to reduce the amount of data returned, or use a shorter timeframe.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "analysis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analysisType\": \"count\",\n  \"eventCollection\": \"<string>\",\n  \"timeframe\": {\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\"\n  },\n  \"targetProperty\": {},\n  \"groupBy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": [\n    {\n      \"operator\": \"eq\",\n      \"propertyName\": \"<string>\",\n      \"propertyValue\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        }\n      ]\n    },\n    {\n      \"operator\": \"eq\",\n      \"propertyName\": \"<string>\",\n      \"propertyValue\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/StandardQueryFilter detected>\"\n        }\n      ]\n    }\n  ],\n  \"interval\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"orderBy\": [\n    {\n      \"propertyName\": \"<string>\",\n      \"direction\": \"DESC\"\n    },\n    {\n      \"propertyName\": \"<string>\",\n      \"direction\": \"DESC\"\n    }\n  ],\n  \"timezone\": \"<string>\",\n  \"extractionFields\": [\n    \"type\",\n    \"urlParsed.*\",\n    \"user.*\"\n  ],\n  \"extractionFormat\": \"json\",\n  \"scope\": \"site\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 2551.07450238152\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dac15a9e-d9c5-4b28-9578-473b893c60f1",
+          "name": "Get the data catlog meta data for analytics.",
+          "request": {
+            "name": "Get the data catlog meta data for analytics.",
+            "description": {
+              "content": "Get the data catlog meta data for analytics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9514dcf-d5a5-4bd5-baa7-9b7811ca2ed9",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataSources\": {\n    \"key_0\": {\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"properties\": {\n        \"key_0\": {\n          \"name\": \"string\",\n          \"type\": \"integer\",\n          \"format\": \"date-time\"\n        }\n      },\n      \"aliases\": {}\n    },\n    \"key_1\": {\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"properties\": {\n        \"key_0\": {\n          \"name\": \"string\",\n          \"type\": \"boolean\",\n          \"format\": \"timestamp\"\n        },\n        \"key_1\": {\n          \"name\": \"string\",\n          \"type\": \"number\",\n          \"format\": \"timestamp\"\n        }\n      },\n      \"aliases\": {}\n    },\n    \"key_2\": {\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"properties\": {\n        \"key_0\": {\n          \"name\": \"string\",\n          \"type\": \"number\",\n          \"format\": \"timestamp\"\n        },\n        \"key_1\": {\n          \"name\": \"string\",\n          \"type\": \"integer\",\n          \"format\": \"date-time\"\n        }\n      },\n      \"aliases\": {}\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0006090-cedb-4f2f-911e-1a48fc87258d",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c56c711-4ef1-4504-8344-516d9586784c",
+          "name": "List the catalog's data sources.",
+          "request": {
+            "name": "List the catalog's data sources.",
+            "description": {
+              "content": "List the catalog's data sources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "catalog",
+                "data-sources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3eb7a5c-8fff-4895-89d5-2d1fc55e14fc",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "catalog",
+                    "data-sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"name\": \"Page Views\",\n    \"description\": \"Contains all of the page view events from the site.\"\n  },\n  \"key_1\": {\n    \"name\": \"Page Views\",\n    \"description\": \"Contains all of the page view events from the site.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13f1ad1b-8206-4487-ad2b-4f6bfd1f2c5f",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "catalog",
+                    "data-sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5def0da9-f2de-4425-a8a1-c64ad4255e19",
+          "name": "Get a single data source.",
+          "request": {
+            "name": "Get a single data source.",
+            "description": {
+              "content": "Get a single data source.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "catalog",
+                "data-sources",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) The key of the data source."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14599267-ad01-40bf-90c3-8412b8f7ddef",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "catalog",
+                    "data-sources",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The key of the data source."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"properties\": {\n    \"key_0\": {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"format\": \"date-time\"\n    },\n    \"key_1\": {\n      \"name\": \"string\",\n      \"type\": \"number\",\n      \"format\": \"date-time\"\n    },\n    \"key_2\": {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"format\": \"date-time\"\n    }\n  },\n  \"aliases\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c53f349b-a105-4008-8cb6-418fcdbf052d",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "catalog",
+                    "data-sources",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The key of the data source."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5314a26-3929-45b2-b1dd-8e01eef7be66",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "catalog",
+                    "data-sources",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The key of the data source."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbb04ad3-0cc0-40b8-8e8b-1d520c1f00de",
+          "name": "Get all of the available analytics dashboards.",
+          "request": {
+            "name": "Get all of the available analytics dashboards.",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics",
+                "dashboard-navigation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e15ec0fb-4693-456d-8a2c-0e436c0ace7d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboard-navigation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"dashboards\": [\n      {\n        \"dashboardID\": 2952,\n        \"name\": \"string\",\n        \"description\": \"\",\n        \"editable\": true,\n        \"copyable\": 1\n      },\n      {\n        \"dashboardID\": 4838,\n        \"name\": \"string\",\n        \"description\": \"\",\n        \"editable\": true,\n        \"copyable\": 1\n      }\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"dashboards\": [\n      {\n        \"dashboardID\": 4606,\n        \"name\": \"string\",\n        \"description\": \"\",\n        \"editable\": true,\n        \"copyable\": 1\n      },\n      {\n        \"dashboardID\": 7171,\n        \"name\": \"string\",\n        \"description\": \"\",\n        \"editable\": true,\n        \"copyable\": 1\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "783d6e50-b583-469f-bc71-cdcbc15f0cfe",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboard-navigation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21dbecbb-5a15-46f9-9f5c-b3ef3b0c1a42",
+          "name": "Add a new dashboard.",
+          "request": {
+            "name": "Add a new dashboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics",
+                "dashboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"attributes\": \"<object>\",\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"copyable\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5e98c47-de3d-40e6-8ef6-c5f3b6127cc7",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attributes\": \"<object>\",\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"copyable\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"attributes\": \"<object>\",\n  \"dashboardID\": 1345,\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"editable\": true,\n  \"copyable\": 1,\n  \"dateInserted\": \"1957-09-15T19:21:19.018Z\",\n  \"insertUserID\": 672,\n  \"insertIPAddress\": \"215.199.181.84\",\n  \"dateUpdated\": \"1967-02-06T18:06:12.128Z\",\n  \"updateUserID\": 2394,\n  \"updateIPAddress\": \"65.56.25.141\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c31ccc07-ab0a-4f29-aeee-355c80e7eac8",
+          "name": "List all dashboards.",
+          "request": {
+            "name": "List all dashboards.",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics",
+                "dashboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c270e285-82b5-4183-806e-220901663b06",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"dashboardID\": 6201,\n    \"name\": \"<string>\",\n    \"description\": \"\",\n    \"editable\": true,\n    \"copyable\": 1\n  },\n  {\n    \"dashboardID\": 6835,\n    \"name\": \"<string>\",\n    \"description\": \"\",\n    \"editable\": true,\n    \"copyable\": 1\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "087ed0c8-0a79-40ad-a425-d330c3d1eb91",
+          "name": "Get a dashboard",
+          "request": {
+            "name": "Get a dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics",
+                "dashboards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the dashboard."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93826db5-5f59-4cd6-851c-6a0b65432063",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the dashboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"attributes\": \"<object>\",\n  \"dashboardID\": 1345,\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"editable\": true,\n  \"copyable\": 1,\n  \"dateInserted\": \"1957-09-15T19:21:19.018Z\",\n  \"insertUserID\": 672,\n  \"insertIPAddress\": \"215.199.181.84\",\n  \"dateUpdated\": \"1967-02-06T18:06:12.128Z\",\n  \"updateUserID\": 2394,\n  \"updateIPAddress\": \"65.56.25.141\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08249b8a-c01f-45b0-99d9-39da99fcbb71",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the dashboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1333968a-0337-4acb-b764-7cb53f6889e1",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the dashboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93faf5b2-0039-44cf-bedd-771ca9c7f414",
+          "name": "Update an existing dashboard.",
+          "request": {
+            "name": "Update an existing dashboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics",
+                "dashboards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the dashboard."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"attributes\": \"<object>\",\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"copyable\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b45ef78-dce1-4d5f-a679-87212f3041e0",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the dashboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attributes\": \"<object>\",\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"copyable\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"attributes\": \"<object>\",\n  \"dashboardID\": 1345,\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"editable\": true,\n  \"copyable\": 1,\n  \"dateInserted\": \"1957-09-15T19:21:19.018Z\",\n  \"insertUserID\": 672,\n  \"insertIPAddress\": \"215.199.181.84\",\n  \"dateUpdated\": \"1967-02-06T18:06:12.128Z\",\n  \"updateUserID\": 2394,\n  \"updateIPAddress\": \"65.56.25.141\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e170fc65-daeb-4c55-ac21-0c3e213ec051",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the dashboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attributes\": \"<object>\",\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"copyable\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9a0c7a4-b0eb-407a-bbd8-5cec9306407a",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the dashboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attributes\": \"<object>\",\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"copyable\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ee6b7b5-fc8f-4acb-ab5e-15c961cda5a8",
+          "name": "Delete a dashboard.",
+          "request": {
+            "name": "Delete a dashboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics",
+                "dashboards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the dashboard."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d93df805-822d-4ab7-a4da-808e5ef9ec0d",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the dashboard."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63ac5ac3-271f-46ca-8970-39ddc715cd4a",
+              "name": "You tried to delete a dashboard that isn't editable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the dashboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 1270\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aed5cda3-627f-47cb-af1d-d613cefa3eba",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the dashboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9618b882-e0ab-4747-b5d8-64940d384354",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the dashboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "783152e6-b670-4156-b035-95dc3e410507",
+          "name": "Get the result of an analytics query.",
+          "request": {
+            "name": "Get the result of an analytics query.",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics",
+                "keen-query",
+                ":analysisType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "analysisType",
+                  "description": "(Required) Type of analytics analysis to perform."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_collection\": \"<string>\",\n  \"timeframe\": {\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\"\n  },\n  \"target_property\": {},\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": [\n    {\n      \"operator\": \"eq\",\n      \"property_name\": \"<string>\",\n      \"property_value\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        }\n      ]\n    },\n    {\n      \"operator\": \"eq\",\n      \"property_name\": \"<string>\",\n      \"property_value\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        }\n      ]\n    }\n  ],\n  \"interval\": \"<string>\",\n  \"timezone\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"order_by\": [\n    {\n      \"property_name\": \"<string>\",\n      \"direction\": \"DESC\"\n    },\n    {\n      \"property_name\": \"<string>\",\n      \"direction\": \"DESC\"\n    }\n  ],\n  \"property_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"extractionFormat\": \"json\",\n  \"scope\": \"site\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8bf30dc-c37b-4854-8a32-408b3854f85e",
+              "name": "Success. The response format depends on query parameters:\n- **AnalyticsSingleResult**: When neither grouping nor interval parameters are specified\n- **AnalyticsGroupedResult**: When grouping is specified without interval\n- **AnalyticsIntervalResult**: When interval is specified without grouping\n- **AnalyticsGroupedIntervalResult**: When both grouping and interval are specified\n- **AnalyticsExtractCsv**: When extracting CSV data.\n- **AnalyticsExtractJson**: When extracting JSON data.\n- **Export**: When exporting data. This is the same data returned from the /api/v2/exports/{exportUUID} endpoint.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "keen-query",
+                    ":analysisType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "analysisType",
+                      "description": "(Required) Type of analytics analysis to perform."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_collection\": \"<string>\",\n  \"timeframe\": {\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\"\n  },\n  \"target_property\": {},\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": [\n    {\n      \"operator\": \"eq\",\n      \"property_name\": \"<string>\",\n      \"property_value\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        }\n      ]\n    },\n    {\n      \"operator\": \"eq\",\n      \"property_name\": \"<string>\",\n      \"property_value\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        }\n      ]\n    }\n  ],\n  \"interval\": \"<string>\",\n  \"timezone\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"order_by\": [\n    {\n      \"property_name\": \"<string>\",\n      \"direction\": \"DESC\"\n    },\n    {\n      \"property_name\": \"<string>\",\n      \"direction\": \"DESC\"\n    }\n  ],\n  \"property_names\": [\n    \"type\",\n    \"urlParsed.*\",\n    \"user.*\"\n  ],\n  \"extractionFormat\": \"json\",\n  \"scope\": \"site\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultType\": \"single\",\n  \"result\": 38\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7f93cfc-c9d0-4951-a696-36533f49461b",
+              "name": "Error returned when data is too large to extract. When this error is returned, your timeframe and filters are likely returning too much data. You can either switch to using the \"export\" analysis type, add filters to your query to reduce the amount of data returned, or use a shorter timeframe.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "keen-query",
+                    ":analysisType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "analysisType",
+                      "description": "(Required) Type of analytics analysis to perform."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_collection\": \"<string>\",\n  \"timeframe\": {\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\"\n  },\n  \"target_property\": {},\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": [\n    {\n      \"operator\": \"eq\",\n      \"property_name\": \"<string>\",\n      \"property_value\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        }\n      ]\n    },\n    {\n      \"operator\": \"eq\",\n      \"property_name\": \"<string>\",\n      \"property_value\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/KeenQueryFilter detected>\"\n        }\n      ]\n    }\n  ],\n  \"interval\": \"<string>\",\n  \"timezone\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"order_by\": [\n    {\n      \"property_name\": \"<string>\",\n      \"direction\": \"DESC\"\n    },\n    {\n      \"property_name\": \"<string>\",\n      \"direction\": \"DESC\"\n    }\n  ],\n  \"property_names\": [\n    \"type\",\n    \"urlParsed.*\",\n    \"user.*\"\n  ],\n  \"extractionFormat\": \"json\",\n  \"scope\": \"site\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 2551.07450238152\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "683d8dd0-9e47-4435-8b57-d4850bd9bdb5",
+          "name": "Retrieve data for a leaderboard.",
+          "request": {
+            "name": "Retrieve data for a leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics",
+                "leaderboard"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "board",
+                  "value": "<string>",
+                  "description": "(Required) The leaderboard to query."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "(Required) The number of rows to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>",
+                  "description": "(Required) Start of the time frame."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>",
+                  "description": "(Required) End of the time frame."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b948716-293d-4de1-b2e7-cb00bbf593e2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "leaderboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "board",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9386,\n    \"position\": 7481,\n    \"positionChange\": \"Fall\",\n    \"previous\": 9245,\n    \"url\": \"string\",\n    \"title\": \"string\",\n    \"count\": 3286\n  },\n  {\n    \"id\": 714,\n    \"position\": 5020,\n    \"positionChange\": \"Rise\",\n    \"previous\": 2414,\n    \"url\": \"string\",\n    \"title\": \"string\",\n    \"count\": 5337\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b14a9933-7694-4c9e-bf50-d5f7d2ba3268",
+          "name": "Get the result of an analytics query. (legacy)",
+          "request": {
+            "name": "Get the result of an analytics query. (legacy)",
+            "description": {},
+            "url": {
+              "path": [
+                "analytics",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"collection\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"property\": {},\n  \"group\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": [\n    {\n      \"op\": \"eq\",\n      \"prop\": \"<string>\",\n      \"val\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        }\n      ]\n    },\n    {\n      \"op\": \"eq\",\n      \"prop\": \"<string>\",\n      \"val\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        }\n      ]\n    }\n  ],\n  \"interval\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"order\": [\n    {\n      \"prop\": \"<string>\",\n      \"direction\": \"DESC\"\n    },\n    {\n      \"prop\": \"<string>\",\n      \"direction\": \"DESC\"\n    }\n  ],\n  \"extractionFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"extractionFormat\": \"json\",\n  \"scope\": \"site\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b92827a0-1cd9-44ba-9d0e-464a4cb4b5f8",
+              "name": "Success. The response format depends on query parameters:\n- **AnalyticsSingleResult**: When neither grouping nor interval parameters are specified\n- **AnalyticsGroupedResult**: When grouping is specified without interval\n- **AnalyticsIntervalResult**: When interval is specified without grouping\n- **AnalyticsGroupedIntervalResult**: When both grouping and interval are specified\n- **AnalyticsExtractCsv**: When extracting CSV data.\n- **AnalyticsExtractJson**: When extracting JSON data.\n- **Export**: When exporting data. This is the same data returned from the /api/v2/exports/{exportUUID} endpoint.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"count\",\n  \"collection\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"property\": {},\n  \"group\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": [\n    {\n      \"op\": \"eq\",\n      \"prop\": \"<string>\",\n      \"val\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        }\n      ]\n    },\n    {\n      \"op\": \"eq\",\n      \"prop\": \"<string>\",\n      \"val\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        }\n      ]\n    }\n  ],\n  \"interval\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"order\": [\n    {\n      \"prop\": \"<string>\",\n      \"direction\": \"DESC\"\n    },\n    {\n      \"prop\": \"<string>\",\n      \"direction\": \"DESC\"\n    }\n  ],\n  \"extractionFields\": [\n    \"type\",\n    \"urlParsed.*\",\n    \"user.*\"\n  ],\n  \"extractionFormat\": \"json\",\n  \"scope\": \"site\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultType\": \"single\",\n  \"result\": 38\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa73a7b8-5f29-4914-9d26-0ddb05b9ae6d",
+              "name": "Error returned when data is too large to extract. When this error is returned, your timeframe and filters are likely returning too much data. You can either switch to using the \"export\" analysis type, add filters to your query to reduce the amount of data returned, or use a shorter timeframe.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"count\",\n  \"collection\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"property\": {},\n  \"group\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": [\n    {\n      \"op\": \"eq\",\n      \"prop\": \"<string>\",\n      \"val\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        }\n      ]\n    },\n    {\n      \"op\": \"eq\",\n      \"prop\": \"<string>\",\n      \"val\": {},\n      \"operands\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/LegacyQueryFilter detected>\"\n        }\n      ]\n    }\n  ],\n  \"interval\": \"<string>\",\n  \"limit\": \"<integer>\",\n  \"order\": [\n    {\n      \"prop\": \"<string>\",\n      \"direction\": \"DESC\"\n    },\n    {\n      \"prop\": \"<string>\",\n      \"direction\": \"DESC\"\n    }\n  ],\n  \"extractionFields\": [\n    \"type\",\n    \"urlParsed.*\",\n    \"user.*\"\n  ],\n  \"extractionFormat\": \"json\",\n  \"scope\": \"site\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 2551.07450238152\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5763ddc1-1ce9-4a43-a1c9-0b13354d5706",
+    "name": "Vanilla Addons Analytics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

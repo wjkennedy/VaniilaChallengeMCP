@@ -1,0 +1,38 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Vanilla Forums
+providerId: vanilla-forums
+created: '2026-07-21'
+modified: '2026-07-21'
+generated: '2026-07-21'
+method: searched
+tags:
+  - Rate Limiting
+  - Community
+description: >-
+  Vanilla (Higher Logic Vanilla) API v2 rate limits are enforced per IP
+  address. Exceeding a limit triggers a temporary block during which the
+  service responds HTTP 429 Too Many Requests; the block lifts automatically
+  after 1 minute. Sending more than 250 requests within 10 seconds can trigger
+  a hard block that requires manual removal by Vanilla Support.
+sources:
+  - https://success.vanillaforums.com/kb/articles/44-rate-limits
+responseCodes:
+  throttled: 429
+limits:
+  - name: GET requests
+    scope: ip
+    metric: requests_per_minute
+    limit: 300
+    timeFrame: minute
+  - name: POST / PUT / PATCH / DELETE requests
+    scope: ip
+    metric: requests_per_minute
+    limit: 120
+    timeFrame: minute
+  - name: Hard limit (manual unblock required)
+    scope: ip
+    metric: requests_per_10_seconds
+    limit: 250
+    timeFrame: 10 seconds

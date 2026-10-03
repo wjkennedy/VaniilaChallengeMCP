@@ -1,0 +1,937 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Profile Fields API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Profile Fields
+paths:
+  /profile-fields:
+    get:
+      summary: List profile fields
+      parameters:
+      - name: dataType
+        description: Filter by the dataType.
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - text
+            - boolean
+            - date
+            - number
+            - string[]
+            - number[]
+        style: form
+      - name: formType
+        description: Filter by the formType.
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - text
+            - text-multiline
+            - dropdown
+            - tokens
+            - checkbox
+            - date
+            - number
+      - name: visibility
+        description: Filter by the visibility.
+        in: query
+        schema:
+          type: string
+          enum:
+          - public
+          - private
+          - internal
+      - name: mutability
+        description: Filter by the mutability.
+        in: query
+        schema:
+          type: string
+          enum:
+          - all
+          - restricted
+          - none
+      - name: registrationOptions
+        description: Filter by registrationOptions.
+        in: query
+        schema:
+          type: string
+          enum:
+          - required
+          - optional
+          - hidden
+      - name: enabled
+        description: Filter by enabled state.
+        in: query
+        schema:
+          type: boolean
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ProfileField'
+                type: array
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '500':
+          description: Server Error
+      tags:
+      - Profile Fields
+      x-addon: dashboard
+      operationId: getProfileFields
+      x-operation-id-source: derived
+    post:
+      summary: Create a profile field
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileFieldPost'
+      tags:
+      - Profile Fields
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileField'
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '500':
+          description: Server Error
+      x-addon: dashboard
+      operationId: postProfileFields
+      x-operation-id-source: derived
+  /profile-fields/sorts:
+    put:
+      tags:
+      - Profile Fields
+      summary: Update profile fields' sort values
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: integer
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '500':
+          description: Server Error
+      x-addon: dashboard
+      operationId: putProfileFieldsSorts
+      x-operation-id-source: derived
+  /profile-fields/{apiName}:
+    get:
+      summary: Get a profile field by its api name
+      tags:
+      - Profile Fields
+      parameters:
+      - description: The ID of the profile field
+        in: path
+        name: apiName
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileField'
+        '404':
+          description: Not Found
+      x-addon: dashboard
+      operationId: getProfileFieldsByApiName
+      x-operation-id-source: derived
+    patch:
+      summary: Update a profile field
+      tags:
+      - Profile Fields
+      parameters:
+      - description: The ID of the profile field
+        in: path
+        name: apiName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileFieldPatch'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileField'
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Server Error
+      x-addon: dashboard
+      operationId: patchProfileFieldsByApiName
+      x-operation-id-source: derived
+    delete:
+      summary: Delete a profile field
+      parameters:
+      - description: The ID of the profile field
+        in: path
+        name: apiName
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Server Error
+      tags:
+      - Profile Fields
+      x-addon: dashboard
+      operationId: deleteProfileFieldsByApiName
+      x-operation-id-source: derived
+components:
+  schemas:
+    ProfileField:
+      properties:
+        apiName:
+          description: The ID of the profile field.
+          type: string
+        label:
+          description: The name of the profile field.
+          type: string
+        description:
+          description: The description of the profile field.
+          type: string
+        dataType:
+          description: The data type of the profile field.
+          enum:
+          - text
+          - boolean
+          - date
+          - number
+          - string[]
+          - number[]
+          type: string
+        formType:
+          description: The form type of the profile field.
+          enum:
+          - text
+          - text-multiline
+          - dropdown
+          - tokens
+          - checkbox
+          - date
+          - number
+          type: string
+        visibility:
+          description: The visibility of the profile field.
+          enum:
+          - public
+          - private
+          - internal
+          type: string
+        mutability:
+          description: The mutability of the profile field.
+          enum:
+          - all
+          - restricted
+          - none
+          type: string
+        displayOptions:
+          description: The display options of the profile field.
+          properties:
+            userCards:
+              description: The field appears on user cards.
+              type: boolean
+            posts:
+              description: The field appears on user posts.
+              type: boolean
+            search:
+              description: The field appears in the member search directory.
+              type: boolean
+          type: object
+        dropdownOptions:
+          description: The list of availible options for a dropdown field. All dropdown options must be of the specified dataType.
+          type:
+          - array
+          - 'null'
+          items:
+            oneOf:
+            - type: string
+            - type: number
+        registrationOptions:
+          type: string
+          enum:
+          - required
+          - optional
+          - hidden
+        enabled:
+          description: Is the profile field enabled?
+          type: boolean
+        salesforceID:
+          type:
+          - string
+          - 'null'
+      required:
+      - apiName
+      - label
+      - description
+      - dataType
+      - formType
+      - visibility
+      - mutability
+      - displayOptions
+      - registrationOptions
+      type: object
+      x-addon: dashboard
+    ProfileFieldPatch:
+      properties:
+        label:
+          description: The name of the profile field.
+          minLength: 1
+          type: string
+        description:
+          description: The description of the profile field.
+          type: string
+        formType:
+          description: The form type of the profile field.
+          enum:
+          - text
+          - text-multiline
+          - dropdown
+          - tokens
+          - checkbox
+          - date
+          - number
+          type: string
+        visibility:
+          description: The visibility of the profile field.
+          enum:
+          - public
+          - private
+          - internal
+          type: string
+        mutability:
+          description: The mutability of the profile field.
+          enum:
+          - all
+          - restricted
+          - none
+          type: string
+        displayOptions:
+          description: The display options of the profile field.
+          properties:
+            userCards:
+              description: The field appears on user cards.
+              type: boolean
+            posts:
+              description: The field appears on user posts.
+              type: boolean
+            search:
+              description: The field appears in the member search directory.
+              type: boolean
+          type: object
+        dropdownOptions:
+          description: The list of availible options for a dropdown field.
+          type:
+          - array
+          - 'null'
+          items:
+            oneOf:
+            - type: string
+            - type: number
+            - type: integer
+        registrationOptions:
+          type: string
+          enum:
+          - required
+          - optional
+          - hidden
+        enabled:
+          description: Is the profile field enabled?
+          type: boolean
+        salesforceID:
+          type:
+          - string
+          - 'null'
+      type: object
+      x-addon: dashboard
+    ProfileFieldPost:
+      properties:
+        apiName:
+          description: The ID of the profile field.
+          minLength: 1
+          type: string
+        label:
+          description: The name of the profile field.
+          minLength: 1
+          type: string
+        description:
+          description: The description of the profile field.
+          type: string
+        dataType:
+          description: The data type of the profile field.
+          enum:
+          - text
+          - boolean
+          - date
+          - number
+          - string[]
+          - number[]
+          type: string
+        formType:
+          description: The form type of the profile field.
+          enum:
+          - text
+          - text-multiline
+          - dropdown
+          - tokens
+          - checkbox
+          - date
+          - number
+          type: string
+        visibility:
+          description: The visibility of the profile field.
+          enum:
+          - public
+          - private
+          - internal
+          type: string
+        mutability:
+          description: The mutability of the profile field.
+          enum:
+          - all
+          - restricted
+          - none
+          type: string
+        displayOptions:
+          description: The display options of the profile field.
+          properties:
+            userCards:
+              description: The field appears on user cards.
+              type: boolean
+            posts:
+              description: The field appears on user posts.
+              type: boolean
+            search:
+              description: The field appears in the member search directory.
+              type: boolean
+          type: object
+        dropdownOptions:
+          description: The list of availible options for a dropdown field.
+          type:
+          - array
+          - 'null'
+          items:
+            oneOf:
+            - type: string
+            - type: number
+            - type: integer
+        registrationOptions:
+          type: string
+          enum:
+          - required
+          - optional
+          - hidden
+        enabled:
+          description: Is the profile field enabled?
+          type: boolean
+        salesforceID:
+          type:
+          - string
+          - 'null'
+      required:
+      - apiName
+      - label
+      - description
+      - dataType
+      - formType
+      - visibility
+      - mutability
+      - displayOptions
+      - registrationOptions
+      type: object
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

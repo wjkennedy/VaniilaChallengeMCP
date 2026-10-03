@@ -1,0 +1,1130 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla User Notes API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: User Notes
+paths:
+  /user-notes:
+    get:
+      summary: Get a list of user notes and warnings
+      tags:
+      - User Notes
+      parameters:
+      - name: userNoteID
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: type
+        in: query
+        description: Filter by note type.
+        schema:
+          type: string
+          enum:
+          - warning
+          - note
+      - name: userID
+        in: query
+        schema:
+          type: integer
+      - name: insertUserID
+        in: query
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserNote'
+      x-addon: warnings2
+      operationId: getUserNotes
+      x-operation-id-source: derived
+  /user-notes/notes:
+    get:
+      summary: Get a list of user notes
+      tags:
+      - User Notes
+      parameters:
+      - name: userNoteID
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: userID
+        in: query
+        schema:
+          type: integer
+      - name: insertUserID
+        in: query
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserNote'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: warnings2
+      operationId: getUserNotesNotes
+      x-operation-id-source: derived
+    post:
+      summary: Post a user note
+      tags:
+      - User Notes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserNotePost'
+        required: true
+      responses:
+        '201':
+          $ref: '#/components/responses/UserNoteResponse'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+      x-addon: warnings2
+      operationId: postUserNotesNotes
+      x-operation-id-source: derived
+  /user-notes/notes/{id}:
+    get:
+      summary: Get a single user note by ID
+      tags:
+      - User Notes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/UserNoteResponse'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: User note does not have a type of "note".
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+      x-addon: warnings2
+      operationId: getUserNotesNotesById
+      x-operation-id-source: derived
+    patch:
+      summary: Patch a user note
+      tags:
+      - User Notes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserNotePatch'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserNoteResponse'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: User note does not have a type of "note".
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+      x-addon: warnings2
+      operationId: patchUserNotesNotesById
+      x-operation-id-source: derived
+    delete:
+      summary: Delete a user note
+      tags:
+      - User Notes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: User note does not have a type of "note".
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+      x-addon: warnings2
+      operationId: deleteUserNotesNotesById
+      x-operation-id-source: derived
+  /user-notes/warningform:
+    get:
+      summary: Get the warning form Schema
+      tags:
+      - User Notes
+      parameters:
+      - name: recordType
+        in: query
+        schema:
+          type: string
+          enum:
+          - discussion
+          - comment
+      - name: recordID
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  warningTypeID:
+                    type: integer
+                    description: The warning's typeID.
+                  body:
+                    type: string
+                    description: The warning's body.
+                  moderatorNote:
+                    type: string
+                    description: The moderator's note.
+                  attachRecord:
+                    type: boolean
+                    description: Whether to attach the warning to the record, or not.
+                required:
+                - warningTypeID
+                - body
+      x-addon: warnings2
+      operationId: getUserNotesWarningform
+      x-operation-id-source: derived
+  /user-notes/warnings:
+    get:
+      summary: Get a list of warnings
+      tags:
+      - User Notes
+      parameters:
+      - name: userNoteID
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - name: userID
+        in: query
+        schema:
+          type: integer
+      - name: insertUserID
+        in: query
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserNote'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: warnings2
+      operationId: getUserNotesWarnings
+      x-operation-id-source: derived
+    post:
+      summary: Warn a user
+      tags:
+      - User Notes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WarningPost'
+        required: true
+      responses:
+        '201':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserNote'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+      x-addon: warnings2
+      operationId: postUserNotesWarnings
+      x-operation-id-source: derived
+  /user-notes/warnings/{id}:
+    get:
+      summary: Get a single warning by ID
+      tags:
+      - User Notes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/UserNoteResponse'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: User note does not have a type of "warning".
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+      x-addon: warnings2
+      operationId: getUserNotesWarningsById
+      x-operation-id-source: derived
+    patch:
+      summary: Reverse a warning
+      tags:
+      - User Notes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reversed:
+                  type: boolean
+                  enum:
+                  - true
+      responses:
+        '200':
+          $ref: '#/components/responses/UserNoteResponse'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: User note does not have a type of "warning".
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+      x-addon: warnings2
+      operationId: patchUserNotesWarningsById
+      x-operation-id-source: derived
+  /user-notes/{id}:
+    get:
+      summary: Get a single user note or warning by ID,
+      tags:
+      - User Notes
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/UserNoteResponse'
+        '401':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: warnings2
+      operationId: getUserNotesById
+      x-operation-id-source: derived
+components:
+  schemas:
+    UserWarning:
+      allOf:
+      - $ref: '#/components/schemas/BasicUserNote'
+      - type: object
+        properties:
+          warningTypeID:
+            type: integer
+          ruleID:
+            type: integer
+          moderatorNote:
+            type: string
+          points:
+            type: integer
+            readOnly: true
+          expiresString:
+            type: string
+            readOnly: true
+          expiresTimespan:
+            type: integer
+            format: timestamp
+            readOnly: true
+          reversed:
+            type: boolean
+          recordID:
+            type:
+            - integer
+            - 'null'
+          recordType:
+            type: string
+            enum:
+            - comment
+            - discussion
+        required:
+        - warningTypeID
+        - points
+      x-addon: warnings2
+    BasicUserNote:
+      allOf:
+      - type: object
+        properties:
+          userNoteID:
+            type: integer
+            readOnly: true
+          type:
+            type: string
+            readOnly: true
+          userID:
+            type: integer
+            description: The user the note is attached to.
+          body:
+            type: string
+          format:
+            $ref: '#/components/schemas/Format'
+      - $ref: '#/components/schemas/InsertInfo'
+      - $ref: '#/components/schemas/UpdateInfo'
+        required:
+        - userNoteID
+        - type
+        - userID
+        - body
+        - format
+      x-addon: warnings2
+    Format:
+      description: The format of the body used to convert it to HTML.
+      type: string
+      enum:
+      - rich
+      - markdown
+      - text
+      - textex
+      - wysiwyg
+      - bbcode
+      example: markdown
+      x-addon: dashboard
+    RangeExpression:
+      description: Specify a range or CSV of values.
+      type: string
+      format: range-expression
+      externalDocs:
+        url: https://success.vanillaforums.com/kb/articles/308-range-expressions
+      x-addon: dashboard
+    UserNote:
+      oneOf:
+      - $ref: '#/components/schemas/BasicUserNote'
+      - $ref: '#/components/schemas/UserWarning'
+      x-addon: warnings2
+    UserNotePost:
+      type: object
+      description: Post a user note.
+      properties:
+        userID:
+          type: integer
+        body:
+          type: string
+        format:
+          type: string
+      required:
+      - userID
+      - body
+      - format
+      x-addon: warnings2
+    UserNotePatch:
+      type: object
+      description: Post a user note.
+      properties:
+        userID:
+          type: integer
+        body:
+          type: string
+        format:
+          type: string
+      x-addon: warnings2
+    UpdateInfo:
+      type: object
+      properties:
+        dateUpdated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date the record was updateed.
+          readOnly: true
+        updateUserID:
+          type:
+          - integer
+          - 'null'
+          description: The user that updateed the record.
+          readOnly: true
+        updateIPAddress:
+          type:
+          - string
+          - 'null'
+          format: ipv4
+          description: The IP address the record was updateed from.
+          readOnly: true
+      x-addon: dashboard
+    WarningPost:
+      type: object
+      description: Warn a user.
+      properties:
+        body:
+          type: string
+        format:
+          type: string
+        recordType:
+          type: string
+          enum:
+          - comment
+          - discussion
+        recordID:
+          type: integer
+        recordIDs:
+          type: array
+          items:
+            type: integer
+        userID:
+          type: integer
+        warningTypeID:
+          type: integer
+        moderatorNote:
+          type: string
+        ruleID:
+          type: integer
+      required:
+      - body
+      - format
+      - userID
+      - warningTypeID
+      x-addon: warnings2
+    BasicError:
+      type: object
+      properties:
+        message:
+          description: Verbose description of the error.
+          type: string
+        status:
+          description: Response status code.
+          type: integer
+      required:
+      - message
+      - status
+      x-addon: dashboard
+    InsertInfo:
+      type: object
+      properties:
+        dateInserted:
+          type: string
+          format: date-time
+          description: The date the record was inserted.
+          readOnly: true
+        insertUserID:
+          type: integer
+          description: The user that inserted the record.
+          readOnly: true
+        insertIPAddress:
+          type: string
+          format: ipv4
+          description: The IP address the record was inserted from.
+          readOnly: true
+      required:
+      - dateInserted
+      - insertUserID
+      - insertIPAddress
+      x-addon: dashboard
+  responses:
+    NotFound:
+      description: The record does not exist or was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: More information about the error.
+              status:
+                type: number
+                description: The HTTP status code for the error.
+                format: int32
+            required:
+            - message
+          example:
+            status: 404
+            message: Page Not Found
+      x-addon: dashboard
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+    UserNoteResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserNote'
+      description: Success
+      x-addon: warnings2
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

@@ -1,0 +1,935 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Email Templates API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Email Templates
+paths:
+  /email-templates/{id}:
+    get:
+      parameters:
+      - description: '<p>The email Templates ID.</p>
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/emailTemplates'
+          description: Success
+      tags:
+      - Email Templates
+      summary: Get an email Templates
+      x-addon: dashboard
+      operationId: getEmailTemplatesById
+      x-operation-id-source: derived
+    patch:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/emailTemplates'
+          description: Success
+      tags:
+      - Email Templates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/emailTemplatesPatch'
+        required: true
+      summary: Update an existing email Templates
+      x-addon: dashboard
+      operationId: patchEmailTemplatesById
+      x-operation-id-source: derived
+    delete:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Email Templates
+      summary: Delete an email template
+      x-addon: dashboard
+      operationId: deleteEmailTemplatesById
+      x-operation-id-source: derived
+  /email-templates:
+    get:
+      parameters:
+      - description: '<p>Expand associated records using one or more valid field names. A value of "all" will expand all expandable fields.</p>
+
+          '
+        in: query
+        name: expand
+        schema:
+          items:
+            enum:
+            - -updateUser
+            - -insertUser
+            - all
+            type: string
+          type: array
+        style: form
+      - name: emailTemplateID
+        description: Filter by email template IDs.
+        in: query
+        schema:
+          type: integer
+      - in: query
+        name: limit
+        required: true
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+          minimum: 1
+      - name: statuses
+        description: Filter by particular statuses. Deleted email templates require mod  permission.
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - active
+            - inactive
+            - deleted
+        style: form
+      - name: emailType
+        description: Filter by email type.
+        in: query
+        schema:
+          type: string
+          enum:
+          - system
+          - custom
+      - name: sort
+        description: Sort the output.
+        in: query
+        schema:
+          type: string
+          enum:
+          - name
+          - -name
+          - dateInserted
+          - dateUpdated
+          - -dateInserted
+          - -dateUpdated
+      - description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination">Pagination).
+
+          '
+        in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+          maximum: 100
+          minimum: 1
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/emailTemplates'
+                type: array
+          description: Success
+      tags:
+      - Email Templates
+      summary: List active email templates in a given knowledge category
+      x-addon: dashboard
+      operationId: getEmailTemplates
+      x-operation-id-source: derived
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/emailTemplates'
+          description: Success
+      tags:
+      - Email Templates
+      requestBody:
+        $ref: '#/components/requestBodies/emailTemplatesPost'
+      summary: Create a new email Templates
+      x-addon: dashboard
+      operationId: postEmailTemplates
+      x-operation-id-source: derived
+  /email-templates/{id}/preview:
+    get:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            text/html:
+              example: <html>Email Content Here</html>
+              schema:
+                type: string
+          description: Success
+      tags:
+      - Email Templates
+      summary: Send email Templates as preview
+      x-addon: dashboard
+      operationId: getEmailTemplatesByIdPreview
+      x-operation-id-source: derived
+  /email-templates/{id}/send-test-email:
+    post:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '201':
+          description: Success
+      tags:
+      - Email Templates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destinationAddress:
+                  description: Where the email should be sent.
+                  type: string
+              required:
+              - destinationAddress
+        required: true
+      summary: Send email Templates as preview
+      x-addon: dashboard
+      operationId: postEmailTemplatesByIdSendTestEmail
+      x-operation-id-source: derived
+components:
+  schemas:
+    emailTemplates:
+      properties:
+        emailTemplatesID:
+          description: Unique email Templates ID.
+          type: integer
+        dateInserted:
+          description: When the email template was created.
+          format: date-time
+          type: string
+        dateUpdated:
+          description: When the email template was last updated.
+          format: date-time
+          type: string
+        emailLogo:
+          description: Logo to be used in email template.
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        insertUserID:
+          description: Unique ID of the user who originally created the email templates .
+          type: integer
+        name:
+          description: Title of the email templates .
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        subject:
+          description: Subject of the email Templates .
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        body:
+          description: Body of the email Templates .
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        footer:
+          description: Footer of the email Templates .
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        emailConfig:
+          description: Email config configuration.
+          type: object
+        status:
+          description: ''
+          enum:
+          - active
+          - inactive
+          - deleted
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        updateUser:
+          $ref: '#/components/schemas/UserFragment'
+        updateUserID:
+          description: Unique ID of the last user to update the email Templates .
+          type: integer
+      required:
+      - name
+      - body
+      - footer
+      - subject
+      - emailLogo
+      - insertUserID
+      - dateInserted
+      - updateUserID
+      - dateUpdated
+      - status
+      type: object
+      x-addon: dashboard
+    UserFragment:
+      oneOf:
+      - type: object
+        properties:
+          userID:
+            description: The ID of the user.
+            type: integer
+          name:
+            description: The username of the user.
+            minLength: 1
+            type: string
+          url:
+            description: The URL of the user's profile.
+            type: string
+            format: uri
+          photoUrl:
+            description: The URL of the user's avatar picture.
+            type: string
+            format: uri
+          dateLastActive:
+            description: Time the user was last active.
+            format: date-time
+            type:
+            - string
+            - 'null'
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+          label:
+            description: The label of the user as plaintext.
+            type: string
+          labelHtml:
+            description: The label of the user in HTML format.
+            type: string
+          private:
+            description: Whether the user profile is private or not.
+            type: boolean
+        required:
+        - userID
+        - name
+        - photoUrl
+        - dateLastActive
+      - type: object
+        description: A user fragment when only expanding by ssoID.
+        properties:
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+        required:
+        - ssoID
+      x-addon: dashboard
+    emailTemplatesPatch:
+      properties:
+        name:
+          description: Name of the email Template.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        body:
+          description: Body content of the email template.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        subject:
+          description: Subject of the email Templates.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        footer:
+          description: Footer of the email Templates.
+          type:
+          - string
+          - 'null'
+        emailLogo:
+          description: Title of the email templates.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        emailConfig:
+          description: Email configuration of the email templates.
+          type:
+          - object
+          - 'null'
+        fromName:
+          description: Title of the email templates.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        fromEmail:
+          description: Title of the email templates.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        status:
+          description: Status of the email templates.
+          enum:
+          - active
+          - inactive
+          - deleted
+          minLength: 1
+          type:
+          - string
+          - 'null'
+      type: object
+      x-addon: dashboard
+    emailTemplatesPost:
+      properties:
+        body:
+          description: Body content of the email template.
+          minLength: 1
+          type: string
+        name:
+          description: Title of the email templates.
+          minLength: 1
+          type: string
+        subject:
+          description: Subject of the email templates.
+          minLength: 1
+          type: string
+        footer:
+          description: Footer of the email templates.
+          minLength: 1
+          type: string
+        emailLogo:
+          description: Title of the email templates.
+          minLength: 1
+          type: string
+        emailConfig:
+          description: Email configuration of the email templates.
+          type: object
+        fromName:
+          description: Title of the email templates.
+          minLength: 1
+          type: string
+        fromEmail:
+          description: Title of the email templates.
+          minLength: 1
+          type: string
+        status:
+          description: Status of the email templates.
+          enum:
+          - active
+          - inactive
+          - deleted
+          minLength: 1
+          type:
+          - string
+          - 'null'
+      required:
+      - knowledgeCategoryID
+      - name
+      - subject
+      - body
+      - fromName
+      - fromEmail
+      type: object
+      x-addon: dashboard
+  requestBodies:
+    emailTemplatesPost:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/emailTemplatesPost'
+      required: true
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

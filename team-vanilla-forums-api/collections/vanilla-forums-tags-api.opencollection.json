@@ -1,0 +1,279 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Tags API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tags.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/tags",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The search term to find a tag."
+              },
+              {
+                "name": "tagID",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the tag to find."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of tags to list."
+              },
+              {
+                "name": "parentID",
+                "value": "",
+                "type": "query",
+                "description": "ID of parent to filter results."
+              },
+              {
+                "name": "excludeNoCountDiscussion",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by tagged discussion"
+              },
+              {
+                "name": "replacingTagID",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to only show valid replacement candidates for the specified tag ID. Excludes the tag being replaced and applies scope compatibility rules."
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by scope type. Can include 'global', 'scoped', or both."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of tags per page."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List tags."
+        },
+        {
+          "info": {
+            "name": "Add a tag.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/tags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a tag."
+        },
+        {
+          "info": {
+            "name": "Get a single tag.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/tags/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the tag."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names (all, lastPost, preferences).\nA value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a single tag."
+        },
+        {
+          "info": {
+            "name": "Update a tag.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/tags/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the tag."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a tag."
+        },
+        {
+          "info": {
+            "name": "Delete a tag.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/tags/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the tag."
+              },
+              {
+                "name": "replacementTagID",
+                "value": "",
+                "type": "query",
+                "description": "Optional tag ID to reassign discussions to before deletion."
+              }
+            ]
+          },
+          "docs": "Delete a tag. Optionally provide a replacementTagID to reassign all discussions\nto another tag before deletion. If no replacement is provided, the tag associations\nare simply removed from all discussions.\n"
+        },
+        {
+          "info": {
+            "name": "Get information about the impact of deleting a tag.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/tags/:id/delete-info",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the tag."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Returns information about what would happen if this tag is deleted,\nincluding the number of discussions using this tag and any categories\nthat would fall below minimum tag requirements.\n"
+        },
+        {
+          "info": {
+            "name": "List a user's tag preferences.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/tags/:id/preferences/:userID",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The tag ID."
+              },
+              {
+                "name": "userID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List a user's tag preferences."
+        },
+        {
+          "info": {
+            "name": "Set a user's tag preferences.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/tags/:id/preferences/:userID",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The tag ID."
+              },
+              {
+                "name": "userID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a user's tag preferences."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

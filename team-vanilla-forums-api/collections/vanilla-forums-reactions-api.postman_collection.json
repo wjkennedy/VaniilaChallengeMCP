@@ -1,0 +1,463 @@
+{
+  "item": [
+    {
+      "id": "c78c8a04-7e81-495d-b112-d058a1110c8d",
+      "name": "Reactions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5a0c92d9-dbe5-4dfe-8b2f-18c4824860b5",
+          "name": "Get a list of reaction types.",
+          "request": {
+            "name": "Get a list of reaction types.",
+            "description": {},
+            "url": {
+              "path": [
+                "reactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac8a37ce-f679-4909-aab1-755b59d94eee",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"urlCode\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"points\": 2398,\n    \"class\": \"string\",\n    \"tagID\": 7519,\n    \"attributes\": {},\n    \"sort\": 7660,\n    \"active\": false,\n    \"custom\": true,\n    \"hidden\": true,\n    \"photoUrl\": \"http://tyaxacHG.zgh.HEr.Qw2Z.9oL3raMG7WQ02yq0TUpclwsFdspRrH7qLcvuIFltGCe4nxP2R3YkqdvKxPI+,6rF\",\n    \"reactionValue\": 5191\n  },\n  {\n    \"urlCode\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"points\": 8765,\n    \"class\": \"string\",\n    \"tagID\": 1128,\n    \"attributes\": {},\n    \"sort\": 1783,\n    \"active\": false,\n    \"custom\": false,\n    \"hidden\": false,\n    \"photoUrl\": \"https://jJfjllTrY.hycuaGGYNJHLBX1iZ-f9pPZgLUI\",\n    \"reactionValue\": 799\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "978bff97-3694-4ee6-be3a-6930e7f109b9",
+          "name": "Get a reaction type for editing.",
+          "request": {
+            "name": "Get a reaction type for editing.",
+            "description": {},
+            "url": {
+              "path": [
+                "reactions",
+                "edit",
+                ":urlCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) The reaction type ID.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "urlCode",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17f5282f-6eb7-421d-8708-ad2add363218",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reactions",
+                    "edit",
+                    ":urlCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "urlCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"urlCode\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"points\": 9300,\n  \"class\": \"string\",\n  \"tagID\": 787,\n  \"attributes\": {},\n  \"sort\": 1870,\n  \"active\": true,\n  \"custom\": true,\n  \"hidden\": false,\n  \"photoUrl\": \"http://nFuqbmCziqHcj.peoQzcU,TP1kO3Digz6mMFvhNjuEMKUkZzgdlzqhinbTH1\",\n  \"reactionValue\": 465\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "158e7a2a-500b-47c4-9c5a-b925a0ef81c9",
+          "name": "Get a single reaction type.",
+          "request": {
+            "name": "Get a single reaction type.",
+            "description": {},
+            "url": {
+              "path": [
+                "reactions",
+                ":urlCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) The reaction type ID.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "urlCode",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb403c29-7fb6-4d66-9d35-be91493914b7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reactions",
+                    ":urlCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "urlCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"urlCode\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"points\": 9300,\n  \"class\": \"string\",\n  \"tagID\": 787,\n  \"attributes\": {},\n  \"sort\": 1870,\n  \"active\": true,\n  \"custom\": true,\n  \"hidden\": false,\n  \"photoUrl\": \"http://nFuqbmCziqHcj.peoQzcU,TP1kO3Digz6mMFvhNjuEMKUkZzgdlzqhinbTH1\",\n  \"reactionValue\": 465\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ead512c-89a8-4dfc-9224-44c13b8f9b50",
+          "name": "Update a reaction type.",
+          "request": {
+            "name": "Update a reaction type.",
+            "description": {},
+            "url": {
+              "path": [
+                "reactions",
+                ":urlCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "urlCode",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"urlCode\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"class\": \"<string>\",\n  \"tagID\": \"<integer>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\",\n  \"active\": \"<boolean>\",\n  \"custom\": \"<boolean>\",\n  \"hidden\": \"<boolean>\",\n  \"photoUrl\": \"<uri>\",\n  \"reactionValue\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "055ea3b9-6ca8-4d69-a2c9-c7e25c483bd3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reactions",
+                    ":urlCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "urlCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"urlCode\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"class\": \"<string>\",\n  \"tagID\": \"<integer>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\",\n  \"active\": \"<boolean>\",\n  \"custom\": \"<boolean>\",\n  \"hidden\": \"<boolean>\",\n  \"photoUrl\": \"<uri>\",\n  \"reactionValue\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"urlCode\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"class\": \"<string>\",\n  \"tagID\": \"<integer>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\",\n  \"active\": \"<boolean>\",\n  \"custom\": \"<boolean>\",\n  \"hidden\": \"<boolean>\",\n  \"photoUrl\": \"<uri>\",\n  \"reactionValue\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "da9fed0e-3355-433b-afff-0e0ddc98ab39",
+    "name": "Vanilla Addons Reactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

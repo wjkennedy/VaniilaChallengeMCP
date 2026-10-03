@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Features API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Features",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List plan and usage feature settings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/features",
+            "params": [
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query",
+                "description": "Filter features by whether they are in use on the site.\nOnly applied when `expand` includes `usage`.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Returns lightweight settings for all registered plan and usage features.\nUsage fields (`isInUse`, `currentCount`) are omitted unless `expand=usage` is requested.\n"
+        },
+        {
+          "info": {
+            "name": "Get plan or usage feature settings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/features/:featureID",
+            "params": [
+              {
+                "name": "featureID",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the feature."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Returns settings for a single registered feature.\nUsage fields (`isInUse`, `currentCount`) are omitted unless `expand=usage` is requested.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

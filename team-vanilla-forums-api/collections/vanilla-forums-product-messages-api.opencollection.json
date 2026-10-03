@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Product Messages API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a product message by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/product-message/:productMessageID",
+            "params": [
+              {
+                "name": "productMessageID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the product message to retrieve."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a product message by ID."
+        },
+        {
+          "info": {
+            "name": "List product messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/product-messages",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List product messages"
+        },
+        {
+          "info": {
+            "name": "Dismiss all product messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/product-messages/dismiss-all"
+          },
+          "docs": "Dismiss all product messages"
+        },
+        {
+          "info": {
+            "name": "Dismiss a product message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/product-messages/:productMessageID/dismiss",
+            "params": [
+              {
+                "name": "productMessageID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the product message to dismiss."
+              }
+            ]
+          },
+          "docs": "Dismiss a product message"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

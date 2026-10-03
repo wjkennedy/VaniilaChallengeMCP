@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons emailTemplates API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "emailTemplates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List active email templates in a given knowledge category.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/email-templates",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "<p>Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.</p>\n"
+              },
+              {
+                "name": "emailTemplateID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by email template IDs."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "statuses",
+                "value": "",
+                "type": "query",
+                "description": "Filter by particular statuses. Deleted email templates require mod  permission."
+              },
+              {
+                "name": "emailType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by email type."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort the output."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination\">Pagination).\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List active email templates in a given knowledge category."
+        },
+        {
+          "info": {
+            "name": "Create a new email Templates .",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/email-templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new email Templates ."
+        },
+        {
+          "info": {
+            "name": "Update an existing email Templates .",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/email-templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing email Templates ."
+        },
+        {
+          "info": {
+            "name": "Delete an email template.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/email-templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an email template."
+        },
+        {
+          "info": {
+            "name": "Send email Templates as preview.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/email-templates/:id/preview",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Send email Templates as preview."
+        },
+        {
+          "info": {
+            "name": "Send email Templates as preview.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/email-templates/:id/send-test-email",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send email Templates as preview."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

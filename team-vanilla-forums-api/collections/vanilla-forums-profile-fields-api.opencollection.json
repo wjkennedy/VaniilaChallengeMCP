@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Profile Fields API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Profile Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List profile fields.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/profile-fields",
+            "params": [
+              {
+                "name": "dataType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the dataType."
+              },
+              {
+                "name": "formType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the formType."
+              },
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the visibility."
+              },
+              {
+                "name": "mutability",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the mutability."
+              },
+              {
+                "name": "registrationOptions",
+                "value": "",
+                "type": "query",
+                "description": "Filter by registrationOptions."
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query",
+                "description": "Filter by enabled state."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List profile fields."
+        },
+        {
+          "info": {
+            "name": "Create a profile field.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/profile-fields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a profile field."
+        },
+        {
+          "info": {
+            "name": "Update profile fields' sort values",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/profile-fields/sorts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update profile fields' sort values"
+        },
+        {
+          "info": {
+            "name": "Get a profile field by its api name.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/profile-fields/:apiName",
+            "params": [
+              {
+                "name": "apiName",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the profile field"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a profile field by its api name."
+        },
+        {
+          "info": {
+            "name": "Update a profile field.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/profile-fields/:apiName",
+            "params": [
+              {
+                "name": "apiName",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the profile field"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a profile field."
+        },
+        {
+          "info": {
+            "name": "Delete a profile field.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/profile-fields/:apiName",
+            "params": [
+              {
+                "name": "apiName",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the profile field"
+              }
+            ]
+          },
+          "docs": "Delete a profile field."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

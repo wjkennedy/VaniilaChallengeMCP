@@ -1,0 +1,1206 @@
+{
+  "item": [
+    {
+      "id": "0b461cb3-83d0-4299-9800-6519edd85a4e",
+      "name": "Discussion Statuses",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6293eb82-b885-4832-8116-1a3a1d0bb4dc",
+          "name": "Get known discussion statuses.",
+          "request": {
+            "name": "Get known discussion statuses.",
+            "description": {},
+            "url": {
+              "path": [
+                "discussions",
+                "statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "categoryIDs",
+                  "value": "[\"<integer>\",\"<integer>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "siteSectionIDs",
+                  "value": "[\"<string>\",\"<string>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeType",
+                  "value": "<string>",
+                  "description": "Filter by scope type. Can include 'global', 'scoped', or both."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeType",
+                  "value": "<string>",
+                  "description": "Filter by scope type. Can include 'global', 'scoped', or both."
+                },
+                {
+                  "disabled": false,
+                  "key": "subType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1175198-3118-49d4-802a-7015cc8596aa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "categoryIDs",
+                      "value": "<integer>,<integer>"
+                    },
+                    {
+                      "key": "siteSectionIDs",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"statusID\": \"string\",\n    \"name\": \"string\",\n    \"state\": \"open\",\n    \"recordType\": \"string\",\n    \"recordSubtype\": \"string\",\n    \"isDefault\": false,\n    \"isSystem\": false,\n    \"isIntenral\": false,\n    \"scopeType\": \"scoped\",\n    \"scope\": {\n      \"categoryIDs\": [\n        4477,\n        5655\n      ],\n      \"siteSectionIDs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"defaults\": {\n        \"categoryIDs\": [\n          2242,\n          9626\n        ],\n        \"siteSectionIDs\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    }\n  },\n  {\n    \"statusID\": \"string\",\n    \"name\": \"string\",\n    \"state\": \"open\",\n    \"recordType\": \"string\",\n    \"recordSubtype\": \"string\",\n    \"isDefault\": false,\n    \"isSystem\": false,\n    \"isIntenral\": false,\n    \"scopeType\": \"scoped\",\n    \"scope\": {\n      \"categoryIDs\": [\n        8241,\n        3501\n      ],\n      \"siteSectionIDs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"defaults\": {\n        \"categoryIDs\": [\n          5555,\n          2574\n        ],\n        \"siteSectionIDs\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64e2becf-18de-470d-9b16-b699b1c552b9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "categoryIDs",
+                      "value": "<integer>,<integer>"
+                    },
+                    {
+                      "key": "siteSectionIDs",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 8505\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bc334ff-33a4-4cb9-b82a-b8ae243c969b",
+          "name": "Create a new discussion status.",
+          "request": {
+            "name": "Create a new discussion status.",
+            "description": {},
+            "url": {
+              "path": [
+                "discussions",
+                "statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"isDefault\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"recordSubtype\": \"<string>\",\n  \"isInternal\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11bf1643-46ba-4e2a-a81f-eb6bce1731ca",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isDefault\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"recordSubtype\": \"<string>\",\n  \"isInternal\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusID\": \"string\",\n  \"name\": \"string\",\n  \"state\": \"open\",\n  \"recordType\": \"string\",\n  \"recordSubtype\": \"string\",\n  \"isDefault\": false,\n  \"isSystem\": false,\n  \"isIntenral\": false,\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dca56382-779f-46ff-81fc-bcc8cc1f95b5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isDefault\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"recordSubtype\": \"<string>\",\n  \"isInternal\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 8505\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17952615-93cf-4c28-a688-369fb85f6200",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isDefault\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"recordSubtype\": \"<string>\",\n  \"isInternal\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66c8c779-8ae0-4886-a166-8883101f5ec6",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isDefault\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"recordSubtype\": \"<string>\",\n  \"isInternal\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af573549-0b9d-4b74-8273-bb69a792ef32",
+          "name": "Get a discussion status by its ID.",
+          "request": {
+            "name": "Get a discussion status by its ID.",
+            "description": {},
+            "url": {
+              "path": [
+                "discussions",
+                "statuses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca61f57e-ca61-4370-a518-22aad65b00c7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusID\": \"string\",\n  \"name\": \"string\",\n  \"state\": \"open\",\n  \"recordType\": \"string\",\n  \"recordSubtype\": \"string\",\n  \"isDefault\": false,\n  \"isSystem\": false,\n  \"isIntenral\": false,\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e7be7b8-d4d1-4e0a-b9b6-ffcffe4169a2",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2593fe32-e036-46f2-8eb1-4b0c4bed5cb5",
+          "name": "Update a discussion status.",
+          "request": {
+            "name": "Update a discussion status.",
+            "description": {},
+            "url": {
+              "path": [
+                "discussions",
+                "statuses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"isDefault\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"recordSubtype\": \"<string>\",\n  \"isInternal\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "739a77bb-43db-4d9f-8ffa-59f6b2d0eddd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isDefault\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"recordSubtype\": \"<string>\",\n  \"isInternal\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusID\": \"string\",\n  \"name\": \"string\",\n  \"state\": \"open\",\n  \"recordType\": \"string\",\n  \"recordSubtype\": \"string\",\n  \"isDefault\": false,\n  \"isSystem\": false,\n  \"isIntenral\": false,\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "780c6c11-6839-415a-ae13-72c64de3ca1e",
+              "name": "Bad Request, e.g. attempting to update a system-defined status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isDefault\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"recordSubtype\": \"<string>\",\n  \"isInternal\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 8505\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec5f7760-77ff-4235-813d-a40a94c8b8e6",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isDefault\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"recordSubtype\": \"<string>\",\n  \"isInternal\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4c1800f-9526-4b10-afe5-b145878bdaa9",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isDefault\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"recordSubtype\": \"<string>\",\n  \"isInternal\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaults\": {\n      \"categoryIDs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"siteSectionIDs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3e48699-332b-427c-a23e-917d0940eec3",
+          "name": "Delete a discussion status.",
+          "request": {
+            "name": "Delete a discussion status.",
+            "description": {},
+            "url": {
+              "path": [
+                "discussions",
+                "statuses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2af80fb-2357-49a5-9ba9-398fbbd4bbe6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9619e69f-c624-48f4-950d-31af65426bcd",
+              "name": "Bad Request, e.g. attempting to delete a system-defined status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 8505\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a580769-2ccd-44d6-aec4-94248c034354",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ab97d43-f462-4975-9e1f-d3cf8e315ef7",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5abc5af0-802e-46c3-a809-15b80472e5fb",
+          "name": "Toggle scoped statuses on or off.",
+          "request": {
+            "name": "Toggle scoped statuses on or off.",
+            "description": {},
+            "url": {
+              "path": [
+                "discussions",
+                "toggle-scoped-statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cc7d9d92-9c68-4e69-b07a-3c81a3dc57df",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discussions",
+                    "toggle-scoped-statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"enabled\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9de6b5e7-c299-4d86-a2a3-78adf02ac6b8",
+    "name": "Vanilla Addons Discussion Statuses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

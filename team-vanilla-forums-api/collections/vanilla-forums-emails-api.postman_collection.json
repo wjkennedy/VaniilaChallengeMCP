@@ -1,0 +1,302 @@
+{
+  "item": [
+    {
+      "id": "712a1572-8b45-4399-a8c8-43d6ce4481c1",
+      "name": "Emails",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e08d409c-1363-48bc-95b2-ee5560c831a8",
+          "name": "Generate and Email Preview",
+          "request": {
+            "name": "Generate and Email Preview",
+            "description": {},
+            "url": {
+              "path": [
+                "emails",
+                "preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailFormat\": \"<string>\",\n  \"templateStyles\": {\n    \"logoUrl\": \"<string>\",\n    \"textColor\": \"<string>\",\n    \"backgroundColor\": \"<string>\",\n    \"containerBackgroundColor\": \"<string>\",\n    \"buttonTextColor\": \"<string>\",\n    \"buttonBackgroundColor\": \"<string>\"\n  },\n  \"footer\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4fee607-eeab-4f92-82ae-e994bae6d804",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailFormat\": \"<string>\",\n  \"templateStyles\": {\n    \"logoUrl\": \"<string>\",\n    \"textColor\": \"<string>\",\n    \"backgroundColor\": \"<string>\",\n    \"containerBackgroundColor\": \"<string>\",\n    \"buttonTextColor\": \"<string>\",\n    \"buttonBackgroundColor\": \"<string>\"\n  },\n  \"footer\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "<html>Email Content Here</html>",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94613354-20ce-4461-8519-6d23367988e4",
+          "name": "Send out a test email to a specified address",
+          "request": {
+            "name": "Send out a test email to a specified address",
+            "description": {},
+            "url": {
+              "path": [
+                "emails",
+                "send-test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationAddress\": \"<string>\",\n  \"from\": {\n    \"supportAddress\": \"<string>\",\n    \"supportName\": \"<string>\"\n  },\n  \"emailFormat\": \"<string>\",\n  \"templateStyles\": {\n    \"logoUrl\": \"<string>\",\n    \"textColor\": \"<string>\",\n    \"backgroundColor\": \"<string>\",\n    \"containerBackgroundColor\": \"<string>\",\n    \"buttonTextColor\": \"<string>\",\n    \"buttonBackgroundColor\": \"<string>\"\n  },\n  \"footer\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fa8bd262-2535-4cf0-b0cc-23c037bd55ec",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "send-test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationAddress\": \"<string>\",\n  \"from\": {\n    \"supportAddress\": \"<string>\",\n    \"supportName\": \"<string>\"\n  },\n  \"emailFormat\": \"<string>\",\n  \"templateStyles\": {\n    \"logoUrl\": \"<string>\",\n    \"textColor\": \"<string>\",\n    \"backgroundColor\": \"<string>\",\n    \"containerBackgroundColor\": \"<string>\",\n    \"buttonTextColor\": \"<string>\",\n    \"buttonBackgroundColor\": \"<string>\"\n  },\n  \"footer\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0174c7e4-05b9-4d66-a774-69a60c395e05",
+          "name": "Send out an email digest for a particular user to a particular email. The original user will not receive the email.",
+          "request": {
+            "name": "Send out an email digest for a particular user to a particular email. The original user will not receive the email.",
+            "description": {},
+            "url": {
+              "path": [
+                "emails",
+                "send-test-digest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationAddress\": \"<string>\",\n  \"destinationUserID\": \"<integer>\",\n  \"deliveryDate\": \"<dateTime>\",\n  \"from\": {\n    \"supportAddress\": \"<string>\",\n    \"supportName\": \"<string>\"\n  },\n  \"emailFormat\": \"<string>\",\n  \"templateStyles\": {\n    \"logoUrl\": \"<string>\",\n    \"textColor\": \"<string>\",\n    \"backgroundColor\": \"<string>\",\n    \"containerBackgroundColor\": \"<string>\",\n    \"buttonTextColor\": \"<string>\",\n    \"buttonBackgroundColor\": \"<string>\"\n  },\n  \"footer\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5cd7d815-177e-46d5-9448-e72441ac8ae2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "send-test-digest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationAddress\": \"<string>\",\n  \"destinationUserID\": \"<integer>\",\n  \"deliveryDate\": \"<dateTime>\",\n  \"from\": {\n    \"supportAddress\": \"<string>\",\n    \"supportName\": \"<string>\"\n  },\n  \"emailFormat\": \"<string>\",\n  \"templateStyles\": {\n    \"logoUrl\": \"<string>\",\n    \"textColor\": \"<string>\",\n    \"backgroundColor\": \"<string>\",\n    \"containerBackgroundColor\": \"<string>\",\n    \"buttonTextColor\": \"<string>\",\n    \"buttonBackgroundColor\": \"<string>\"\n  },\n  \"footer\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3fe6bcf3-66e8-468e-bb81-810aff7a1dbd",
+    "name": "Vanilla Addons Emails API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

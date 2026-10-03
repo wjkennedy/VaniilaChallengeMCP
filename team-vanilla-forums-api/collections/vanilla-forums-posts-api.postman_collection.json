@@ -1,0 +1,323 @@
+{
+  "item": [
+    {
+      "id": "0384e317-48a8-4ff8-ac3e-221a8c803df8",
+      "name": "Posts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2d2fa3a5-6da4-4f83-998b-80367f07bd8b",
+          "name": "Get a list of posts.",
+          "request": {
+            "name": "Get a list of posts.",
+            "description": {},
+            "url": {
+              "path": [
+                "posts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roleIDs",
+                  "value": "<range-expression>",
+                  "description": "(Required) Specify a range or CSV of included role IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination\">Pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort the results according to a specified field.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9cc33d7d-ee4b-4495-ba4f-b6b24c84acc6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roleIDs",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"discussionID\": 3094,\n    \"type\": \"discussion\",\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"categoryID\": 6636,\n    \"dateInserted\": \"2005-05-11T20:37:22.697Z\",\n    \"dateUpdated\": \"2014-02-24T08:55:36.663Z\",\n    \"insertUserID\": 2042,\n    \"pinLocation\": \"recent\",\n    \"closed\": true,\n    \"sink\": false,\n    \"countComments\": 819,\n    \"countViews\": 5316,\n    \"score\": 9770,\n    \"bookmarked\": true,\n    \"muted\": true,\n    \"unread\": false,\n    \"attributes\": {\n      \"idea\": {\n        \"statusNotes\": \"string\",\n        \"statusID\": 4424,\n        \"status\": {\n          \"name\": \"string\",\n          \"state\": \"open\"\n        },\n        \"type\": \"up-down\"\n      }\n    },\n    \"category\": {\n      \"categoryID\": 84,\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    \"isLivePost\": false,\n    \"countUnread\": 5991,\n    \"dateLastComment\": \"2017-01-26T20:45:16.566Z\",\n    \"image\": {\n      \"url\": \"string\",\n      \"urlSrcSet\": {\n        \"10\": \"string\",\n        \"300\": \"string\",\n        \"800\": \"string\",\n        \"1200\": \"string\"\n      },\n      \"alt\": \"string\"\n    },\n    \"images\": {},\n    \"insertUser\": {\n      \"userID\": 8199,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://rwZTlZ.tiqwu-.o\",\n      \"dateLastActive\": \"1972-11-03T19:06:50.981Z\",\n      \"url\": \"https://iOjqyiDvMIrLiUB.tpqSEbqJ8Pi8ABIoZwVX0UJtF\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"lastPost\": {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"dateInserted\": \"2021-11-04T23:52:36.589Z\",\n      \"insertUserID\": 2754,\n      \"discussionID\": 2203,\n      \"commentID\": 8511,\n      \"body\": \"string\",\n      \"insertUser\": {\n        \"userID\": 3436,\n        \"name\": \"string\",\n        \"photoUrl\": \"https://gxap.qjFdvldT5Z4b.f5EXY.WeyEk1.UX,Pt8a2YoGiFEB,t3R+W9FqhhldbzkufKSNMeDZg\",\n        \"dateLastActive\": \"1984-07-06T17:06:17.057Z\",\n        \"url\": \"http://VnIbyzdWLYNbXNco.yjljwRIBcL8Uv5Z-rALJVmx-kacM3UHp\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": true\n      }\n    },\n    \"lastUserID\": 2174,\n    \"lastUser\": {\n      \"userID\": 6232,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://S.crfaeFq,zxAHUBf2quNqAy7+UhagNMecR83vlEYH-6cUWTyQKeIZWEfNejrRr559ZfYDCPO\",\n      \"dateLastActive\": \"1982-06-13T08:40:40.350Z\",\n      \"url\": \"https://sLFeQcghekhJRPQwWkkPRfZLrHfmdSyo.gjbJe0RdnZVVifwBGbY15t8NM2Hb3Qb,VbibMNkA+kWAxV,.GNcI57wwU7\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"pinned\": false,\n    \"publishedSilently\": true,\n    \"contentLocale\": \"string\",\n    \"announce\": true,\n    \"url\": \"string\",\n    \"statusID\": 2928,\n    \"status\": {\n      \"statusID\": 9235,\n      \"name\": \"string\",\n      \"recordType\": \"discussion\",\n      \"state\": \"closed\",\n      \"recordSubType\": \"string\",\n      \"dateUpdated\": \"1955-05-29T10:38:06.451Z\",\n      \"log\": {\n        \"dateUpdated\": \"2013-10-16T08:03:20.976Z\",\n        \"updateUser\": {\n          \"userID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"photoUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"dateLastActive\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"ssoID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"label\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"labelHtml\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"private\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"reasonUpdated\": \"string\"\n      }\n    },\n    \"showSuggestions\": false,\n    \"reportMeta\": {\n      \"reportsReasons\": [\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 6100,\n          \"deleted\": false,\n          \"reportID\": 2850\n        },\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 4981,\n          \"deleted\": false,\n          \"reportID\": 9691\n        }\n      ],\n      \"reportUserIDs\": [\n        4119,\n        763\n      ],\n      \"reportUsers\": [\n        {\n          \"userID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"photoUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"dateLastActive\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"ssoID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"label\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"labelHtml\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"private\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"userID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"photoUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"dateLastActive\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"ssoID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"label\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"labelHtml\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"private\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"countReportUsers\": 1843.6004728858934,\n      \"reportGuestUsers\": [\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        },\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        }\n      ],\n      \"dateLastReport\": \"1950-09-06T17:51:53.635Z\",\n      \"countReports\": 0\n    },\n    \"postTypeID\": \"string\",\n    \"postMeta\": {\n      \"my-field\": \"value1\",\n      \"my-arrayField\": [\n        \"arrVal1\",\n        \"arrVal2\"\n      ]\n    },\n    \"suggestions\": [\n      {\n        \"format\": \"string\",\n        \"sourceIcon\": \"string\",\n        \"type\": \"string\",\n        \"id\": 7540,\n        \"url\": \"string\",\n        \"title\": \"string\",\n        \"summary\": \"string\",\n        \"hidden\": true,\n        \"commentID\": 3198\n      },\n      {\n        \"format\": \"string\",\n        \"sourceIcon\": \"string\",\n        \"type\": \"string\",\n        \"id\": 2771,\n        \"url\": \"string\",\n        \"title\": \"string\",\n        \"summary\": \"string\",\n        \"hidden\": false,\n        \"commentID\": 1082\n      }\n    ],\n    \"permissions\": {\n      \"discussions.view\": true,\n      \"discussions.add\": true,\n      \"discussions.edit\": false,\n      \"discussions.delete\": false,\n      \"discussions.sink\": false,\n      \"comments.add\": true,\n      \"comments.edit\": false,\n      \"comments.delete\": false\n    }\n  },\n  {\n    \"discussionID\": 2205,\n    \"type\": \"question\",\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"categoryID\": 2845,\n    \"dateInserted\": \"1976-02-29T05:41:24.631Z\",\n    \"dateUpdated\": \"1960-08-26T03:14:16.715Z\",\n    \"insertUserID\": 7409,\n    \"pinLocation\": \"category\",\n    \"closed\": false,\n    \"sink\": true,\n    \"countComments\": 9015,\n    \"countViews\": 6569,\n    \"score\": 5401,\n    \"bookmarked\": true,\n    \"muted\": true,\n    \"unread\": true,\n    \"attributes\": {\n      \"idea\": {\n        \"statusNotes\": \"string\",\n        \"statusID\": 3786,\n        \"status\": {\n          \"name\": \"string\",\n          \"state\": \"open\"\n        },\n        \"type\": \"up\"\n      }\n    },\n    \"category\": {\n      \"categoryID\": 8095,\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    \"isLivePost\": true,\n    \"countUnread\": 3383,\n    \"dateLastComment\": \"1998-04-19T07:25:38.265Z\",\n    \"image\": {\n      \"url\": \"string\",\n      \"urlSrcSet\": {\n        \"10\": \"string\",\n        \"300\": \"string\",\n        \"800\": \"string\",\n        \"1200\": \"string\"\n      },\n      \"alt\": \"string\"\n    },\n    \"images\": {},\n    \"insertUser\": {\n      \"userID\": 7385,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://dHkkMmvmRvsqzJcpQhadZfoGw.zzf0X8,5dcUQmNVugPgtusD1sCW161hiOA69GJg0.hpzmYlBPaRKD3l5snDN4sZWSgTG\",\n      \"dateLastActive\": \"2005-12-30T22:12:38.844Z\",\n      \"url\": \"http://xcJtngvkYLTlVjMtQLrHb.tyjylivz1.iJjeccY7uDQJea3qEL5Wtq-kCzia8\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"lastPost\": {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"dateInserted\": \"1950-01-25T09:29:49.288Z\",\n      \"insertUserID\": 5374,\n      \"discussionID\": 6760,\n      \"commentID\": 7860,\n      \"body\": \"string\",\n      \"insertUser\": {\n        \"userID\": 5708,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://ahQkmvuzvZll.srfJUJCDOi2Eb2YrJ\",\n        \"dateLastActive\": \"1991-05-27T01:59:23.111Z\",\n        \"url\": \"http://LlQLBWQpKPRIenPVQSoNUhrwW.xhjMJqX..NIX9dq1b4PInD20UuIQn\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": true\n      }\n    },\n    \"lastUserID\": 5513,\n    \"lastUser\": {\n      \"userID\": 3737,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://sD.oukUMSe,qtH5qKQYSymkBDj8cPGmQBG3qo,iOtO2WNhs4NwmXgK-LzGeLOv\",\n      \"dateLastActive\": \"2014-09-08T18:08:25.064Z\",\n      \"url\": \"http://WVjEfNcbNPUCMpRgqZmOP.gcwlVQHNqp-5,GVdQVaH,QZEsKza,sY8kAviHasuHve\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"pinned\": false,\n    \"publishedSilently\": false,\n    \"contentLocale\": \"string\",\n    \"announce\": true,\n    \"url\": \"string\",\n    \"statusID\": 1184,\n    \"status\": {\n      \"statusID\": 9147,\n      \"name\": \"string\",\n      \"recordType\": \"discussion\",\n      \"state\": \"closed\",\n      \"recordSubType\": \"string\",\n      \"dateUpdated\": \"1986-06-10T15:08:21.311Z\",\n      \"log\": {\n        \"dateUpdated\": \"1956-03-23T07:52:06.847Z\",\n        \"updateUser\": {\n          \"userID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"photoUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"dateLastActive\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"ssoID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"label\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"labelHtml\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"private\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"reasonUpdated\": \"string\"\n      }\n    },\n    \"showSuggestions\": false,\n    \"reportMeta\": {\n      \"reportsReasons\": [\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 8056,\n          \"deleted\": false,\n          \"reportID\": 9335\n        },\n        {\n          \"reportReasonID\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"sort\": 4943,\n          \"deleted\": true,\n          \"reportID\": 18\n        }\n      ],\n      \"reportUserIDs\": [\n        8079,\n        7339\n      ],\n      \"reportUsers\": [\n        {\n          \"userID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"photoUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"dateLastActive\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"ssoID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"label\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"labelHtml\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"private\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"userID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"photoUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"dateLastActive\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"ssoID\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"label\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"labelHtml\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"private\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"countReportUsers\": 8066.117219501656,\n      \"reportGuestUsers\": [\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        },\n        {\n          \"reporterEmail\": \"string\",\n          \"reporterName\": \"string\"\n        }\n      ],\n      \"dateLastReport\": \"1946-09-30T22:06:28.638Z\",\n      \"countReports\": 0\n    },\n    \"postTypeID\": \"string\",\n    \"postMeta\": {\n      \"my-field\": \"value1\",\n      \"my-arrayField\": [\n        \"arrVal1\",\n        \"arrVal2\"\n      ]\n    },\n    \"suggestions\": [\n      {\n        \"format\": \"string\",\n        \"sourceIcon\": \"string\",\n        \"type\": \"string\",\n        \"id\": 716,\n        \"url\": \"string\",\n        \"title\": \"string\",\n        \"summary\": \"string\",\n        \"hidden\": false,\n        \"commentID\": 9148\n      },\n      {\n        \"format\": \"string\",\n        \"sourceIcon\": \"string\",\n        \"type\": \"string\",\n        \"id\": 3848,\n        \"url\": \"string\",\n        \"title\": \"string\",\n        \"summary\": \"string\",\n        \"hidden\": false,\n        \"commentID\": 6436\n      }\n    ],\n    \"permissions\": {\n      \"discussions.view\": true,\n      \"discussions.add\": true,\n      \"discussions.edit\": false,\n      \"discussions.delete\": false,\n      \"discussions.sink\": false,\n      \"comments.add\": true,\n      \"comments.edit\": false,\n      \"comments.delete\": false\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ca4da9b-5e95-408c-8509-01c2e5704bb7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roleIDs",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8cd8e119-6711-4453-afac-e961b5e43c60",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roleIDs",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "635eb280-9f5a-47a1-8449-6cf0c9521ef1",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roleIDs",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dc7fb7d6-560c-479d-9291-2d46ea3739eb",
+    "name": "Vanilla Addons Posts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

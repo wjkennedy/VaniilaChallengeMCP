@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Locales API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locales",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all enabled locales on the site.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/locales",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get all enabled locales on the site."
+        },
+        {
+          "info": {
+            "name": "POST /locales",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/locales",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "path",
+                "description": "The locale code requested."
+              },
+              {
+                "name": "translatable",
+                "value": "",
+                "type": "query",
+                "description": "Whether or not to mark this locale as translatable by machine translations."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Get single locale",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/locales/:locale",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "path",
+                "description": "The locale code requested."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get single locale"
+        },
+        {
+          "info": {
+            "name": "PATCH /locales/{locale}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/locales/:locale",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "path",
+                "description": "The locale code requested."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

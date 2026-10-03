@@ -1,0 +1,569 @@
+{
+  "item": [
+    {
+      "id": "45b9c7e6-41cd-4e37-a3f9-3db66d5e1f48",
+      "name": "Notifications",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48cf7953-2312-4e8f-9af0-0074fc52b11c",
+          "name": "List notifications for the current user.",
+          "request": {
+            "name": "List notifications for the current user.",
+            "description": {},
+            "url": {
+              "path": [
+                "notifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "shouldBatch",
+                  "value": "<boolean>",
+                  "description": "Whether to batch notifications.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand the discussion fragment in the notification.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand the discussion fragment in the notification.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1b56495-91a6-432a-9ea1-08bdf37afc82",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "shouldBatch",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"notificationID\": 4321,\n    \"body\": \"string\",\n    \"photoUrl\": \"string\",\n    \"url\": \"string\",\n    \"dateInserted\": \"1953-10-02T07:48:58.461Z\",\n    \"dateUpdated\": \"1979-07-04T01:54:19.116Z\",\n    \"read\": true,\n    \"activityType\": \"string\",\n    \"reason\": \"string\",\n    \"count\": 4901,\n    \"readUrl\": \"string\",\n    \"recordUrl\": \"string\",\n    \"recordType\": \"group\",\n    \"recordID\": 3284,\n    \"discussionID\": 4553,\n    \"discussion\": {\n      \"discussionID\": 1081,\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"categoryID\": \"string\"\n    }\n  },\n  {\n    \"notificationID\": 5063,\n    \"body\": \"string\",\n    \"photoUrl\": \"string\",\n    \"url\": \"string\",\n    \"dateInserted\": \"1998-03-28T11:45:19.508Z\",\n    \"dateUpdated\": \"1966-03-07T18:15:20.401Z\",\n    \"read\": false,\n    \"activityType\": \"string\",\n    \"reason\": \"string\",\n    \"count\": 2536,\n    \"readUrl\": \"string\",\n    \"recordUrl\": \"string\",\n    \"recordType\": \"comment\",\n    \"recordID\": 5781,\n    \"discussionID\": 6028,\n    \"discussion\": {\n      \"discussionID\": 6441,\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"categoryID\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89a79c89-ec95-4ca5-8b82-c939d33b8575",
+          "name": "Mark all notifications read.",
+          "request": {
+            "name": "Mark all notifications read.",
+            "description": {},
+            "url": {
+              "path": [
+                "notifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"read\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be8bf7d6-2290-40fa-8b6a-5659a0192bc0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"read\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d734e36f-d0cc-4d59-943c-dc13e266fbb4",
+          "name": "Get a single notification.",
+          "request": {
+            "name": "Get a single notification.",
+            "description": {},
+            "url": {
+              "path": [
+                "notifications",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand the discussion fragment in the notification.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand the discussion fragment in the notification.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The notification ID.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a1a1559-f728-4387-adc3-b30bd72ae203",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The notification ID.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notificationID\": 3874,\n  \"body\": \"string\",\n  \"photoUrl\": \"string\",\n  \"url\": \"string\",\n  \"dateInserted\": \"1976-02-04T21:39:58.448Z\",\n  \"dateUpdated\": \"1986-06-30T06:01:09.715Z\",\n  \"read\": true,\n  \"activityType\": \"string\",\n  \"reason\": \"string\",\n  \"count\": 1958,\n  \"readUrl\": \"string\",\n  \"recordUrl\": \"string\",\n  \"recordType\": \"user\",\n  \"recordID\": 5824,\n  \"discussionID\": 7207,\n  \"discussion\": {\n    \"discussionID\": 6397,\n    \"name\": \"string\",\n    \"url\": \"string\",\n    \"categoryID\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59396b8d-d15d-43b3-b1c8-d4f5b789d642",
+          "name": "Mark a notification read.",
+          "request": {
+            "name": "Mark a notification read.",
+            "description": {},
+            "url": {
+              "path": [
+                "notifications",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"read\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a02cdc0-c26c-4f0a-92ed-2c0800f6d468",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"read\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notificationID\": 3874,\n  \"body\": \"string\",\n  \"photoUrl\": \"string\",\n  \"url\": \"string\",\n  \"dateInserted\": \"1976-02-04T21:39:58.448Z\",\n  \"dateUpdated\": \"1986-06-30T06:01:09.715Z\",\n  \"read\": true,\n  \"activityType\": \"string\",\n  \"reason\": \"string\",\n  \"count\": 1958,\n  \"readUrl\": \"string\",\n  \"recordUrl\": \"string\",\n  \"recordType\": \"user\",\n  \"recordID\": 5824,\n  \"discussionID\": 7207,\n  \"discussion\": {\n    \"discussionID\": 6397,\n    \"name\": \"string\",\n    \"url\": \"string\",\n    \"categoryID\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2adf7eaf-bdb9-4309-8d49-5a64b0c10659",
+          "name": "Mark a notification read.",
+          "request": {
+            "name": "Mark a notification read.",
+            "description": {},
+            "url": {
+              "path": [
+                "notifications",
+                ":id",
+                "read"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "877da98b-697b-40d3-ab35-2183d3d1304a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    ":id",
+                    "read"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notificationID\": 3874,\n  \"body\": \"string\",\n  \"photoUrl\": \"string\",\n  \"url\": \"string\",\n  \"dateInserted\": \"1976-02-04T21:39:58.448Z\",\n  \"dateUpdated\": \"1986-06-30T06:01:09.715Z\",\n  \"read\": true,\n  \"activityType\": \"string\",\n  \"reason\": \"string\",\n  \"count\": 1958,\n  \"readUrl\": \"string\",\n  \"recordUrl\": \"string\",\n  \"recordType\": \"user\",\n  \"recordID\": 5824,\n  \"discussionID\": 7207,\n  \"discussion\": {\n    \"discussionID\": 6397,\n    \"name\": \"string\",\n    \"url\": \"string\",\n    \"categoryID\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e30622a3-76a5-4973-9ee1-2be16f4db22a",
+    "name": "Vanilla Addons Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

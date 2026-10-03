@@ -1,0 +1,281 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Collections API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List collections.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/collections",
+            "params": [
+              {
+                "name": "collectionID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by one or more collection IDs."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by collection name"
+              },
+              {
+                "name": "dateUpdated",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updated date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of collections per page."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List collections."
+        },
+        {
+          "info": {
+            "name": "Create new collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/collections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new collection"
+        },
+        {
+          "info": {
+            "name": "List the collections a given record belongs to.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/collections/by-resource",
+            "params": [
+              {
+                "name": "recordID",
+                "value": "",
+                "type": "query",
+                "description": "The id of the record."
+              },
+              {
+                "name": "recordType",
+                "value": "",
+                "type": "query",
+                "description": "The type of the record."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List the collections a given record belongs to."
+        },
+        {
+          "info": {
+            "name": "Add a record to one or more collections.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/collections/by-resource",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a record to one or more collections."
+        },
+        {
+          "info": {
+            "name": "List collections & contents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/collections/contents/:locale",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "path",
+                "description": "Filter the records by their locale."
+              },
+              {
+                "name": "collectionID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by one or more collection IDs."
+              },
+              {
+                "name": "dateAddedToCollection",
+                "value": "",
+                "type": "query",
+                "description": "Filter by date a record has been added to collection. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/)."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of collections per page."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List collections & contents."
+        },
+        {
+          "info": {
+            "name": "Get a single collection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/collections/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The collection id"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a single collection."
+        },
+        {
+          "info": {
+            "name": "Update a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/collections/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The collection id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a collection"
+        },
+        {
+          "info": {
+            "name": "Delete a collection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/collections/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The collection id"
+              }
+            ]
+          },
+          "docs": "Delete a collection."
+        },
+        {
+          "info": {
+            "name": "List collection with the each record expanded",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/collections/:id/content/:locale",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The collection id"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "path",
+                "description": "Filter the records by their locale."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List collection with the each record expanded"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

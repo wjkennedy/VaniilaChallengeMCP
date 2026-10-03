@@ -1,0 +1,1032 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Conversations API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Conversations
+paths:
+  /conversations:
+    get:
+      parameters:
+      - description: 'Filter by author.
+
+          '
+        in: query
+        name: insertUserID
+        schema:
+          type: integer
+      - description: 'Filter by participating user. (Has no effect if insertUserID is used)
+
+          '
+        in: query
+        name: participantUserID
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 50
+          maximum: 100
+          minimum: 1
+      - description: 'Expand associated records using one or more valid field names. A value of "all" will expand all expandable fields.
+
+          '
+        in: query
+        name: expand
+        schema:
+          items:
+            enum:
+            - insertUser
+            - lastInsertUser
+            - all
+            - insertUser.ssoID
+            - insertUser.roles
+            - insertUser.profileFields
+            - insertUser.extended
+            - lastInsertUser.ssoID
+            - lastInsertUser.roles
+            - lastInsertUser.profileFields
+            - lastInsertUser.extended
+            type: string
+          type: array
+        style: form
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Conversation'
+                type: array
+          description: Success
+      tags:
+      - Conversations
+      summary: List user conversations
+      x-addon: conversations
+      operationId: getConversations
+      x-operation-id-source: derived
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+          description: Success
+      tags:
+      - Conversations
+      requestBody:
+        $ref: '#/components/requestBodies/ConversationPost'
+      summary: Add a conversation
+      x-addon: conversations
+      operationId: postConversations
+      x-operation-id-source: derived
+  /conversations/{id}:
+    get:
+      parameters:
+      - description: 'The conversation ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+          description: Success
+      tags:
+      - Conversations
+      summary: Get a conversation
+      x-addon: conversations
+      operationId: getConversationsById
+      x-operation-id-source: derived
+  /conversations/{id}/leave:
+    delete:
+      parameters:
+      - description: 'The conversation ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Conversations
+      summary: Leave a conversation
+      x-addon: conversations
+      operationId: deleteConversationsByIdLeave
+      x-operation-id-source: derived
+  /conversations/{id}/participants:
+    get:
+      parameters:
+      - description: 'The conversation ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - description: 'Filter by participant status.
+
+          '
+        in: query
+        name: status
+        schema:
+          type: string
+          default: participating
+          enum:
+          - all
+          - participating
+          - deleted
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 5
+          maximum: 100
+          minimum: 5
+      - description: 'Expand associated records using one or more valid field names. A value of "all" will expand all expandable fields.
+
+          '
+        in: query
+        name: expand
+        schema:
+          items:
+            enum:
+            - user
+            - all
+            - user.ssoID
+            type: string
+          type: array
+        style: form
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationParticipants'
+          description: List of participants.
+      tags:
+      - Conversations
+      summary: Get participants of a conversation
+      x-addon: conversations
+      operationId: getConversationsByIdParticipants
+      x-operation-id-source: derived
+    post:
+      parameters:
+      - description: The conversation ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationParticipants'
+          description: List of participants.
+      tags:
+      - Conversations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationPost'
+        required: true
+      summary: Add participants to a conversation
+      x-addon: conversations
+      operationId: postConversationsByIdParticipants
+      x-operation-id-source: derived
+  /messages:
+    get:
+      parameters:
+      - description: 'Filter by conversation.
+
+          '
+        in: query
+        name: conversationID
+        schema:
+          type: integer
+      - description: 'Filter by author.
+
+          '
+        in: query
+        name: insertUserID
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Page'
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 50
+          maximum: 100
+          minimum: 1
+      - description: 'Expand associated records using one or more valid field names. A value of "all" will expand all expandable fields.
+
+          '
+        in: query
+        name: expand
+        schema:
+          items:
+            enum:
+            - insertUser
+            - all
+            - insertUser.ssoID
+            - insertUser.roles
+            - insertUser.profileFields
+            - insertUser.extended
+            type: string
+          type: array
+        style: form
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Message'
+                type: array
+          description: Success
+      tags:
+      - Conversations
+      summary: List user messages
+      x-addon: conversations
+      operationId: getMessages
+      x-operation-id-source: derived
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+          description: Success
+      tags:
+      - Conversations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessagePost'
+        required: true
+      summary: Add a message
+      x-addon: conversations
+      operationId: postMessages
+      x-operation-id-source: derived
+  /messages/{id}:
+    get:
+      parameters:
+      - description: 'The message ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+          description: Success
+      tags:
+      - Conversations
+      summary: Get a message
+      x-addon: conversations
+      operationId: getMessagesById
+      x-operation-id-source: derived
+components:
+  schemas:
+    UserFragment:
+      oneOf:
+      - type: object
+        properties:
+          userID:
+            description: The ID of the user.
+            type: integer
+          name:
+            description: The username of the user.
+            minLength: 1
+            type: string
+          url:
+            description: The URL of the user's profile.
+            type: string
+            format: uri
+          photoUrl:
+            description: The URL of the user's avatar picture.
+            type: string
+            format: uri
+          dateLastActive:
+            description: Time the user was last active.
+            format: date-time
+            type:
+            - string
+            - 'null'
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+          label:
+            description: The label of the user as plaintext.
+            type: string
+          labelHtml:
+            description: The label of the user in HTML format.
+            type: string
+          private:
+            description: Whether the user profile is private or not.
+            type: boolean
+        required:
+        - userID
+        - name
+        - photoUrl
+        - dateLastActive
+      - type: object
+        description: A user fragment when only expanding by ssoID.
+        properties:
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+        required:
+        - ssoID
+      x-addon: dashboard
+    Format:
+      description: The format of the body used to convert it to HTML.
+      type: string
+      enum:
+      - rich
+      - markdown
+      - text
+      - textex
+      - wysiwyg
+      - bbcode
+      example: markdown
+      x-addon: dashboard
+    MessagePost:
+      properties:
+        body:
+          description: The body of the message.
+          maxLength: 2000
+          minLength: 1
+          type: string
+        conversationID:
+          description: The ID of the conversation.
+          type: integer
+        format:
+          $ref: '#/components/schemas/Format'
+      required:
+      - conversationID
+      - body
+      type: object
+      x-addon: conversations
+    ConversationParticipants:
+      description: List of participants.
+      items:
+        properties:
+          userID:
+            description: The userID of the participant.
+            type: integer
+          status:
+            description: Participation status of the user.
+            enum:
+            - participating
+            - deleted
+            type: string
+          user:
+            $ref: '#/components/schemas/UserFragment'
+        required:
+        - userID
+        - status
+        type: object
+      type: array
+      x-addon: conversations
+    ConversationPost:
+      properties:
+        participantUserIDs:
+          description: List of userID of the participants.
+          items:
+            type: integer
+          type: array
+        initialBody:
+          description: Initial conversation message body.
+          type: string
+        initialFormat:
+          $ref: '#/components/schemas/Format'
+      required:
+      - participantUserIDs
+      type: object
+      x-addon: conversations
+    Message:
+      properties:
+        body:
+          description: The body of the message.
+          maxLength: 2000
+          minLength: 1
+          type: string
+        conversationID:
+          description: The ID of the conversation.
+          type: integer
+        dateInserted:
+          description: When the message was created.
+          format: date-time
+          type: string
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        insertUserID:
+          description: The user that created the message.
+          type: integer
+        messageID:
+          description: The ID of the message.
+          type: integer
+      required:
+      - messageID
+      - conversationID
+      - body
+      - insertUserID
+      - dateInserted
+      type: object
+      x-addon: conversations
+    Conversation:
+      properties:
+        body:
+          description: The most recent unread message in the conversation.
+          minLength: 1
+          type: string
+        conversationID:
+          description: The ID of the conversation.
+          type: integer
+        countMessages:
+          description: The number of messages on the conversation.
+          type: integer
+        countParticipants:
+          description: The number of participants on the conversation.
+          type: integer
+        countUnread:
+          description: The number of unread messages.
+          type: integer
+        dateInserted:
+          description: When the conversation was created.
+          format: date-time
+          type: string
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        insertUserID:
+          description: The user that created the conversation.
+          type: integer
+        lastMessage:
+          properties:
+            dateInserted:
+              description: The date of the message.
+              format: date-time
+              type: string
+            insertUser:
+              $ref: '#/components/schemas/UserFragment'
+            insertUserID:
+              description: The author of the your most recent message.
+              type: integer
+          required:
+          - insertUserID
+          - dateInserted
+          - insertUser
+          type: object
+        name:
+          description: The name of the conversation.
+          minLength: 1
+          type: string
+        participants:
+          $ref: '#/components/schemas/ConversationParticipants'
+        unread:
+          description: Whether the conversation has an unread indicator.
+          type: boolean
+        url:
+          description: The URL of the conversation.
+          minLength: 1
+          type: string
+      required:
+      - conversationID
+      - name
+      - body
+      - url
+      - dateInserted
+      - insertUserID
+      - countParticipants
+      - countMessages
+      type: object
+      x-addon: conversations
+  requestBodies:
+    ConversationPost:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConversationPost'
+      required: true
+      x-addon: conversations
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

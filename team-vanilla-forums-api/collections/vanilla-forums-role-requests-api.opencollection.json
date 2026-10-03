@@ -1,0 +1,293 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Role Requests API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Role Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List role applicants.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/role-requests/applications",
+            "params": [
+              {
+                "name": "roleID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by role."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status."
+              },
+              {
+                "name": "userID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Similar to a page parameter, but specifies a specific numeric record offset starting at zero.\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort the results."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n\nNote that only community managers can view and expand the `statusUser`."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List role applicants."
+        },
+        {
+          "info": {
+            "name": "Apply to a role.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/role-requests/applications",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply to a role."
+        },
+        {
+          "info": {
+            "name": "Get a single application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/role-requests/applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the request."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n\nNote that only community managers can view and expand the `statusUser`."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a single application."
+        },
+        {
+          "info": {
+            "name": "Update a role application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/role-requests/applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the request."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n\nNote that only community managers can view and expand the `statusUser`."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a role application."
+        },
+        {
+          "info": {
+            "name": "Delete a role application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/role-requests/applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the request."
+              }
+            ]
+          },
+          "docs": "Delete a role application."
+        },
+        {
+          "info": {
+            "name": "List role request meta information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/role-requests/metas",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter on type."
+              },
+              {
+                "name": "roleID",
+                "value": "",
+                "type": "query",
+                "description": "Filter on role."
+              },
+              {
+                "name": "hasRole",
+                "value": "",
+                "type": "query",
+                "description": "Filter on roles the user already has or doesn't have."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand the result."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List role request meta information"
+        },
+        {
+          "info": {
+            "name": "Add or update a role request meta definition.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/role-requests/metas",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add or update a role request meta definition."
+        },
+        {
+          "info": {
+            "name": "Get a meta item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/role-requests/metas/:type/:roleID",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of request."
+              },
+              {
+                "name": "roleID",
+                "value": "",
+                "type": "path",
+                "description": "The role ID."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a meta item."
+        },
+        {
+          "info": {
+            "name": "Delete a meta item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/role-requests/metas/:type/:roleID",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of request."
+              },
+              {
+                "name": "roleID",
+                "value": "",
+                "type": "path",
+                "description": "The role ID."
+              }
+            ]
+          },
+          "docs": "Delete a meta item."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

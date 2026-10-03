@@ -1,0 +1,697 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Users API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List users.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/users",
+            "params": [
+              {
+                "name": "dateInserted",
+                "value": "",
+                "type": "query",
+                "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "dateUpdated",
+                "value": "",
+                "type": "query",
+                "description": "Filter by update date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "dateLastActive",
+                "value": "",
+                "type": "query",
+                "description": "When the user was last active on the community."
+              },
+              {
+                "name": "roleID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the role ID of a user."
+              },
+              {
+                "name": "roleIDs",
+                "value": "",
+                "type": "query",
+                "description": "Filter by one of multiple role IDs."
+              },
+              {
+                "name": "isBanned",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the banned status of a user. Pass true to filter only banned users, and false to exclude banned users."
+              },
+              {
+                "name": "rankIDs",
+                "value": "",
+                "type": "query",
+                "description": "Filter by one of multiple rank IDs."
+              },
+              {
+                "name": "userID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of user IDs."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the user's username."
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the user's email address."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the user's email address or username."
+              },
+              {
+                "name": "ipAddresses",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the user's associated IP addresses"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Token used to fetch next page of results. Cannot be combined with page.\nWarning: May lead to duplicate results if not sorted by primary key.\n"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort the results."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields that will be included in the response.\n"
+              },
+              {
+                "name": "groupID",
+                "value": "",
+                "type": "query",
+                "description": "Filter users by group association"
+              },
+              {
+                "name": "membershipStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter users by group membership status. Depends on groupID."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "followed",
+                "value": "",
+                "type": "query",
+                "description": "Filter by users that the current user is following."
+              }
+            ]
+          },
+          "docs": "List users."
+        },
+        {
+          "info": {
+            "name": "Add a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a user."
+        },
+        {
+          "info": {
+            "name": "Search for users by full or partial name matching.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/users/by-names",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter for username. Supports full or partial matching with appended wildcard (e.g. User*).\n"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort method for results.\nMust be one of: \"countComments\", \"dateLastActive\", \"name\", \"mention\".\n"
+              },
+              {
+                "name": "mentionSettings",
+                "value": "",
+                "type": "query",
+                "description": "Enforce setting to limit results, similar to default settings.\n"
+              },
+              {
+                "name": "recordType",
+                "value": "",
+                "type": "query",
+                "description": "Specified what we are filtering by category/group/discussion/escalation\n"
+              },
+              {
+                "name": "recordID",
+                "value": "",
+                "type": "query",
+                "description": "Specify value of the recordType\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Search for users by full or partial name matching."
+        },
+        {
+          "info": {
+            "name": "Get user's leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/users/leaders",
+            "params": [
+              {
+                "name": "leaderboardType",
+                "value": "",
+                "type": "query",
+                "description": "Leaderboard type (\"reputation\" => \"Reputation points\", \"posts\" => \"Discussion/comment posts\", \"acceptedAnswers\" => \"Accepted Answers count\")."
+              },
+              {
+                "name": "slotType",
+                "value": "",
+                "type": "query",
+                "description": "Slot type (\"d\" = day, \"w\" = week, \"m\" = month, \"y\" = year, \"a\" = all)."
+              },
+              {
+                "name": "categoryID",
+                "value": "",
+                "type": "query",
+                "description": "The numeric ID of a category to limit search results to."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of records to be returned."
+              },
+              {
+                "name": "includedRoleIDs",
+                "value": "",
+                "type": "query",
+                "description": "Specify a range or CSV of included role IDs."
+              },
+              {
+                "name": "excludedRoleIDs",
+                "value": "",
+                "type": "query",
+                "description": "Specify a range or CSV of excluded role IDs."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get user's leaderboard."
+        },
+        {
+          "info": {
+            "name": "Get information about the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/users/me",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get information about the current user."
+        },
+        {
+          "info": {
+            "name": "Get information about menu counts for current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/users/me-counts",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get information about menu counts for current user."
+        },
+        {
+          "info": {
+            "name": "Submit a new user registration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/users/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a new user registration."
+        },
+        {
+          "info": {
+            "name": "POST /users/request-password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/users/request-password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Get a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "role-token",
+                "value": "",
+                "type": "query",
+                "description": "Authenticate using a JWT, [role/token](https://success.vanillaforums.com/kb/articles/436-api-role-tokens).\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a user."
+        },
+        {
+          "info": {
+            "name": "Update a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a user."
+        },
+        {
+          "info": {
+            "name": "Delete a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a user."
+        },
+        {
+          "info": {
+            "name": "Ban a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id/ban",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ban a user."
+        },
+        {
+          "info": {
+            "name": "Confirm a users current email address by using a confirmation code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id/confirm-email",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirm a users current email address by using a confirmation code"
+        },
+        {
+          "info": {
+            "name": "Get a user for editing.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id/edit",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a user for editing."
+        },
+        {
+          "info": {
+            "name": "Get a user's following preferences.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id/follow",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID to get following preferences for."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a user's following preferences."
+        },
+        {
+          "info": {
+            "name": "Follow or unfollow a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id/follow",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID to follow/unfollow."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Follow or unfollow a user."
+        },
+        {
+          "info": {
+            "name": "Adjust a user’s Online privacy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id/hidden",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adjust a user’s Online privacy."
+        },
+        {
+          "info": {
+            "name": "POST /users/{id}/photo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id/photo",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "photo",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Delete a user photo.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id/photo",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              }
+            ]
+          },
+          "docs": "Delete a user photo."
+        },
+        {
+          "info": {
+            "name": "Update the rank of a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id/rank",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the rank of a user."
+        },
+        {
+          "info": {
+            "name": "Get a user's posts that have received a certain reaction.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/users/:id/reacted",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The user ID."
+              },
+              {
+                "name": "reactionUrlcode",
+                "value": "",
+                "type": "query",
+                "description": "The reaction to filter by."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "expand parameters"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a user's posts that have received a certain reaction."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

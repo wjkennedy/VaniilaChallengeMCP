@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vanilla-api-openapi-original.json (4xx/5xx responses across 371 operations)
+format: custom-json-envelope
+description: >-
+  Error catalog for the Vanilla (Higher Logic Vanilla) API v2, derived from the
+  platform-generated OpenAPI. Errors are NOT RFC 9457 problem+json; every error
+  returns the BasicError JSON envelope. Live example observed 2026-07-21 from
+  GET /api/v2/knowledge/search on success.vanillaforums.com: {"message":
+  "/api/v2/knowledge/search not found, you may need to be logged in to view
+  this page!", "status": 404, "description": null}.
+envelope:
+  media_type: application/json
+  schema: components.schemas.BasicError
+  fields:
+    message: Verbose description of the error (required)
+    status: Response status code (required)
+    description: Optional additional detail (nullable)
+problems:
+  - status: 400
+    title: Bad Request
+    occurrences_in_spec: 22
+    remediation: Request body or parameters failed schema validation; check the message field for the failing field.
+  - status: 401
+    title: Unauthorized
+    occurrences_in_spec: 39
+    remediation: Missing or invalid access token; authenticate with a personal access token or JWT bearer token.
+  - status: 403
+    title: Forbidden
+    occurrences_in_spec: 39
+    remediation: The authenticated user's role lacks the required permission for this resource (permissions mirror the Dashboard role matrix).
+  - status: 404
+    title: Not Found
+    occurrences_in_spec: 70
+    remediation: Resource does not exist or is not visible to the current user; smart IDs that resolve to zero rows also produce an error.
+  - status: 408
+    title: Request Timeout
+    occurrences_in_spec: 10
+    remediation: Long-running request timed out; retry with narrower filters (ID range or date-range expressions).
+  - status: 409
+    title: Conflict
+    occurrences_in_spec: 7
+    remediation: The request conflicts with current resource state (e.g. duplicate or stale edit); re-read the resource and retry.
+  - status: 429
+    title: Too Many Requests
+    occurrences_in_spec: 0
+    docs: https://success.vanillaforums.com/kb/articles/44-rate-limits
+    remediation: >-
+      Per-IP rate limit exceeded (300 GET/min or 120 writes/min). The block
+      lifts automatically after 1 minute; more than 250 requests in 10 seconds
+      can trigger a hard block requiring Vanilla Support. Documented in the
+      rate-limits article, not in the OpenAPI.
+  - status: 500
+    title: Internal Server Error
+    occurrences_in_spec: 8
+    remediation: Server-side failure; retry later or contact Vanilla Support with the failing request details.

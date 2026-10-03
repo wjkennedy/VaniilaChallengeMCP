@@ -1,0 +1,749 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Reports & Escalations API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports & Escalations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of escalations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/escalations",
+            "params": [
+              {
+                "name": "escalationID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of discussion escalationIDs."
+              },
+              {
+                "name": "recordType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "recordID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of discussion recordIDs."
+              },
+              {
+                "name": "placeRecordType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "placeRecordID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of category placeRecordIDs."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by one or more statuses (CSV & array supported)."
+              },
+              {
+                "name": "assignedUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of assigned userIDs."
+              },
+              {
+                "name": "removedUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of userIDs who removed the record."
+              },
+              {
+                "name": "recordUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of users who created the content that was escalated."
+              },
+              {
+                "name": "recordUserRoleID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of users' roles who created the content that was escalated."
+              },
+              {
+                "name": "reportReasonID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a report reason. Multiple reasonIDs can be passed in a CSV or array."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "dateInserted",
+                "value": "",
+                "type": "query",
+                "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "dateRemoved",
+                "value": "",
+                "type": "query",
+                "description": "Filter by removed date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "recordIsLive",
+                "value": "",
+                "type": "query",
+                "description": "Whether the record still exists."
+              },
+              {
+                "name": "hasAssociatedAppeal",
+                "value": "",
+                "type": "query",
+                "description": "Whether the escalation has an associated appeal."
+              },
+              {
+                "name": "appealStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by appeal status. Multiple statuses can be passed as CSV or array."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of escalations"
+        },
+        {
+          "info": {
+            "name": "Create an Escalation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/escalations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Escalation"
+        },
+        {
+          "info": {
+            "name": "Get an escalation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/escalations/:escalationID",
+            "params": [
+              {
+                "name": "escalationID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get an escalation"
+        },
+        {
+          "info": {
+            "name": "Update an escalation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/escalations/:escalationID",
+            "params": [
+              {
+                "name": "escalationID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an escalation"
+        },
+        {
+          "info": {
+            "name": "Get a list of escalation Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/escalations/log",
+            "params": [
+              {
+                "name": "escalationID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of discussion escalationIDs."
+              },
+              {
+                "name": "recordType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "recordID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of discussion recordIDs."
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Filter by one or more action (CSV & array supported)."
+              },
+              {
+                "name": "insertUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a user performing the action"
+              },
+              {
+                "name": "recordUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of users who created the content that was acted upon."
+              },
+              {
+                "name": "recordUserRoleID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of users' roles who created the content that was escalated."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "dateInserted",
+                "value": "",
+                "type": "query",
+                "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "recordIsLive",
+                "value": "",
+                "type": "query",
+                "description": "Whether the record still exists."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of escalation Logs"
+        },
+        {
+          "info": {
+            "name": "Get an escalation Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/escalations/log/:escalationLogID",
+            "params": [
+              {
+                "name": "escalationLogID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand additional data. Options are appeal (submitted appeal), record (removed content), or all."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific escalation log entry. Moderators can access any log entry.\nNon-moderators can only access logs where they are the record owner (e.g., for appealing content removal).\n"
+        },
+        {
+          "info": {
+            "name": "Search for users that could be assigned to an escalation by full or partial name matching.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/escalations/lookup-assignee",
+            "params": [
+              {
+                "name": "escalationID",
+                "value": "",
+                "type": "query",
+                "description": "If passed will filter to potential assignees for this specific escalation."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter for username. Supports full or partial matching with appended wildcard (e.g. User*).\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Search for users that could be assigned to an escalation by full or partial name matching."
+        },
+        {
+          "info": {
+            "name": "Get a list of report reasons for the current sessioned user. `community.manage` permission grants permission to all reasons.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/report-reasons",
+            "params": [
+              {
+                "name": "includeDeleted",
+                "value": "",
+                "type": "query",
+                "description": "Allow selecting deleted reports. Requires `moderation.manage` permission."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of report reasons for the current sessioned user. `community.manage` permission grants permission to all reasons."
+        },
+        {
+          "info": {
+            "name": "Create a report reason",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/report-reasons",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a report reason"
+        },
+        {
+          "info": {
+            "name": "Get a report reason if you have permission for it.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/report-reasons/:reportReasonID",
+            "params": [
+              {
+                "name": "reportReasonID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeDeleted",
+                "value": "",
+                "type": "query",
+                "description": "Allow selecting deleted reports. Requires `moderation.manage` permission."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a report reason if you have permission for it."
+        },
+        {
+          "info": {
+            "name": "Update a report reason",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/report-reasons/:reportReasonID",
+            "params": [
+              {
+                "name": "reportReasonID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a report reason"
+        },
+        {
+          "info": {
+            "name": "Delete a report reason. If the report has already been used, the reason will be marked as deleted but still exist in the underyling system for usage when viewing existing reports.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/report-reasons/:reportReasonID",
+            "params": [
+              {
+                "name": "reportID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a report reason. If the report has already been used, the reason will be marked as deleted but still exist in the underyling system for usage when viewing existing reports."
+        },
+        {
+          "info": {
+            "name": "Update the sort order of report reasons",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/report-reasons/sorts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the sort order of report reasons"
+        },
+        {
+          "info": {
+            "name": "Get a list of reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/reports",
+            "params": [
+              {
+                "name": "recordType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reportReasonID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a report reason. Multiple reasonIDs can be passed in a CSV or array."
+              },
+              {
+                "name": "recordID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of discussion recordIDs."
+              },
+              {
+                "name": "placeRecordType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "placeRecordID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of category placeRecordIDs."
+              },
+              {
+                "name": "insertUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of users that made the report."
+              },
+              {
+                "name": "insertUserRoleID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of users' roles that made the report."
+              },
+              {
+                "name": "removedUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of userIDs who removed the record."
+              },
+              {
+                "name": "recordUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of users who's content was reported."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by one or more statuses (CSV & array supported)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "reportID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of recordIDs."
+              },
+              {
+                "name": "dateInserted",
+                "value": "",
+                "type": "query",
+                "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "dateRemoved",
+                "value": "",
+                "type": "query",
+                "description": "Filter by removed date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "reporterEmail",
+                "value": "",
+                "type": "query",
+                "description": "Filter by guest reporter email address."
+              },
+              {
+                "name": "recordIsLive",
+                "value": "",
+                "type": "query",
+                "description": "Whether the record still exists."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of reports"
+        },
+        {
+          "info": {
+            "name": "Create a report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/reports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a report"
+        },
+        {
+          "info": {
+            "name": "Get a report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/reports/:reportID",
+            "params": [
+              {
+                "name": "reportID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a report"
+        },
+        {
+          "info": {
+            "name": "Approve a pending or removed post that was premoderated.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/reports/:reportID/approve-record",
+            "params": [
+              {
+                "name": "reportID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve a pending or removed post that was premoderated."
+        },
+        {
+          "info": {
+            "name": "Dismiss a user's report.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/reports/:reportID/dismiss",
+            "params": [
+              {
+                "name": "reportID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Dismiss a user's report."
+        },
+        {
+          "info": {
+            "name": "Reject a pending or live post that was premoderated and ensure it is deleted.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/reports/:reportID/reject-record",
+            "params": [
+              {
+                "name": "reportID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reject a pending or live post that was premoderated and ensure it is deleted."
+        },
+        {
+          "info": {
+            "name": "List of Posts that where reported set number of times.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/reports/automation",
+            "params": [
+              {
+                "name": "countReports",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reportReasonID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "placeRecordID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of category placeRecordIDs."
+              },
+              {
+                "name": "includeSubcategories",
+                "value": "",
+                "type": "query",
+                "description": "Include reports from subcategories."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List of Posts that where reported set number of times."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

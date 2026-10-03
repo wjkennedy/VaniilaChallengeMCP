@@ -1,0 +1,593 @@
+{
+  "item": [
+    {
+      "id": "d7197fd5-7cbe-493d-a5e6-8906aa194c98",
+      "name": "Icons",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "38988b6d-fed2-437f-ae52-d6ddfcd21304",
+          "name": "Delete an icon variant",
+          "request": {
+            "name": "Delete an icon variant",
+            "description": {},
+            "url": {
+              "path": [
+                "icons",
+                ":iconUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "iconUUID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d26da159-a9ff-4344-a802-2507ba6f7a39",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icons",
+                    ":iconUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "iconUUID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1e9b626-2370-4b6f-9684-ffe876d66ca6",
+          "name": "List the active version of each icon.",
+          "request": {
+            "name": "List the active version of each icon.",
+            "description": {},
+            "url": {
+              "path": [
+                "icons",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2cdff4d-aed8-4de5-a108-7cd8b8f2d4d7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icons",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"iconUUID\": \"45b966d1-5c78-9a1d-9199-044704237dec\",\n    \"iconName\": \"string\",\n    \"isActive\": false,\n    \"isCustom\": false,\n    \"svgRaw\": \"string\",\n    \"svgContents\": \"string\",\n    \"iconSvgViewBox\": \"string\",\n    \"dateInserted\": \"2002-06-29T22:47:53.184Z\",\n    \"insertUserID\": 4213\n  },\n  {\n    \"iconUUID\": \"08b097be-44bd-6540-4483-bebe5aff0353\",\n    \"iconName\": \"string\",\n    \"isActive\": false,\n    \"isCustom\": false,\n    \"svgRaw\": \"string\",\n    \"svgContents\": \"string\",\n    \"iconSvgViewBox\": \"string\",\n    \"dateInserted\": \"1996-02-15T23:54:47.220Z\",\n    \"insertUserID\": 2152\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d203c7eb-287f-477f-9039-ff2192d8e816",
+          "name": "List icon variants by name.",
+          "request": {
+            "name": "List icon variants by name.",
+            "description": {},
+            "url": {
+              "path": [
+                "icons",
+                "by-name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "iconName",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9f25711-d63f-4e6f-a886-d0762ba0594e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icons",
+                    "by-name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "iconName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"iconUUID\": \"45b966d1-5c78-9a1d-9199-044704237dec\",\n    \"iconName\": \"string\",\n    \"isActive\": false,\n    \"isCustom\": false,\n    \"svgRaw\": \"string\",\n    \"svgContents\": \"string\",\n    \"iconSvgViewBox\": \"string\",\n    \"dateInserted\": \"2002-06-29T22:47:53.184Z\",\n    \"insertUserID\": 4213\n  },\n  {\n    \"iconUUID\": \"08b097be-44bd-6540-4483-bebe5aff0353\",\n    \"iconName\": \"string\",\n    \"isActive\": false,\n    \"isCustom\": false,\n    \"svgRaw\": \"string\",\n    \"svgContents\": \"string\",\n    \"iconSvgViewBox\": \"string\",\n    \"dateInserted\": \"1996-02-15T23:54:47.220Z\",\n    \"insertUserID\": 2152\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d01794a0-919e-4993-9b12-45d938b49b14",
+          "name": "Override icons",
+          "request": {
+            "name": "Override icons",
+            "description": {
+              "content": "Create one or more new icon variants and mark them as active.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "icons",
+                "override"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"overrides\": [\n    {\n      \"iconName\": \"<string>\",\n      \"svgRaw\": \"<string>\"\n    },\n    {\n      \"iconName\": \"<string>\",\n      \"svgRaw\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64ddeabf-5c8f-4cc0-9c75-fe1095616833",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icons",
+                    "override"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"overrides\": [\n    {\n      \"iconName\": \"<string>\",\n      \"svgRaw\": \"<string>\"\n    },\n    {\n      \"iconName\": \"<string>\",\n      \"svgRaw\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"iconUUID\": \"6332de29-155f-f3ba-f204-8a5c34225378\",\n  \"iconName\": \"string\",\n  \"isActive\": true,\n  \"isCustom\": true,\n  \"svgRaw\": \"string\",\n  \"svgContents\": \"string\",\n  \"iconSvgViewBox\": \"string\",\n  \"dateInserted\": \"1979-03-24T16:48:54.770Z\",\n  \"insertUserID\": 5940\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6f6606c-0ff1-430f-b613-92504f017ac9",
+          "name": "Restore existing icon revisions",
+          "request": {
+            "name": "Restore existing icon revisions",
+            "description": {
+              "content": "Restore one or more existing icon variants to active status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "icons",
+                "restore"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"restorations\": [\n    {\n      \"iconName\": \"<string>\",\n      \"iconUUID\": \"<uuid>\"\n    },\n    {\n      \"iconName\": \"<string>\",\n      \"iconUUID\": \"<uuid>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "655095d4-3cf0-4adb-9853-e03d83c4b306",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icons",
+                    "restore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"restorations\": [\n    {\n      \"iconName\": \"<string>\",\n      \"iconUUID\": \"<uuid>\"\n    },\n    {\n      \"iconName\": \"<string>\",\n      \"iconUUID\": \"<uuid>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"iconUUID\": \"6332de29-155f-f3ba-f204-8a5c34225378\",\n  \"iconName\": \"string\",\n  \"isActive\": true,\n  \"isCustom\": true,\n  \"svgRaw\": \"string\",\n  \"svgContents\": \"string\",\n  \"iconSvgViewBox\": \"string\",\n  \"dateInserted\": \"1979-03-24T16:48:54.770Z\",\n  \"insertUserID\": 5940\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc51ad08-0359-472c-b675-c43e4df8010d",
+          "name": "List all system icons.",
+          "request": {
+            "name": "List all system icons.",
+            "description": {},
+            "url": {
+              "path": [
+                "icons",
+                "system"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4962e136-880b-421d-ac8e-2e0a3501eae7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "icons",
+                    "system"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"iconUUID\": \"45b966d1-5c78-9a1d-9199-044704237dec\",\n    \"iconName\": \"string\",\n    \"isActive\": false,\n    \"isCustom\": false,\n    \"svgRaw\": \"string\",\n    \"svgContents\": \"string\",\n    \"iconSvgViewBox\": \"string\",\n    \"dateInserted\": \"2002-06-29T22:47:53.184Z\",\n    \"insertUserID\": 4213\n  },\n  {\n    \"iconUUID\": \"08b097be-44bd-6540-4483-bebe5aff0353\",\n    \"iconName\": \"string\",\n    \"isActive\": false,\n    \"isCustom\": false,\n    \"svgRaw\": \"string\",\n    \"svgContents\": \"string\",\n    \"iconSvgViewBox\": \"string\",\n    \"dateInserted\": \"1996-02-15T23:54:47.220Z\",\n    \"insertUserID\": 2152\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d6e5b5e3-6d89-479d-b71c-761230a25831",
+    "name": "Vanilla Addons Icons API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,990 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Polls API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Polls
+paths:
+  /polls:
+    get:
+      parameters:
+      - description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+          '
+        in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+          maximum: 100
+          minimum: 1
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 25
+          maximum: 100
+          minimum: 1
+      - description: 'Filter by author.
+
+          '
+        in: query
+        name: insertUserID
+        schema:
+          type: integer
+      - description: 'Expand associated records using one or more valid field names. A value of "all" will expand all expandable fields.
+
+          '
+        in: query
+        name: expand
+        schema:
+          items:
+            enum:
+            - insertUser
+            - updateUser
+            - all
+            - insertUser.ssoID
+            - insertUser.roles
+            - insertUser.profileFields
+            - insertUser.extended
+            - updateUser.ssoID
+            - updateUser.roles
+            - updateUser.profileFields
+            - updateUser.extended
+            type: string
+          type: array
+        style: form
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    countOptions:
+                      description: The number of options to choose from.
+                      type: integer
+                    countVotes:
+                      description: The number of votes.
+                      type: integer
+                    dateInserted:
+                      description: When the poll was created.
+                      format: date-time
+                      type: string
+                    dateUpdated:
+                      description: When the poll was updated.
+                      format: date-time
+                      type:
+                      - string
+                      - 'null'
+                    discussionID:
+                      description: The discussion the poll is displayed in.
+                      type: integer
+                    insertUser:
+                      $ref: '#/components/schemas/UserFragment'
+                    insertUserID:
+                      description: The unique ID of the user who created this poll.
+                      type: integer
+                    name:
+                      description: The name of the poll.
+                      minLength: 1
+                      type: string
+                    pollID:
+                      description: The unique ID of the poll.
+                      type: integer
+                    updateUser:
+                      $ref: '#/components/schemas/UserFragment'
+                    updateUserID:
+                      description: The unique ID of the user who updated this poll.
+                      type:
+                      - integer
+                      - 'null'
+                  required:
+                  - pollID
+                  - name
+                  - discussionID
+                  - countOptions
+                  - countVotes
+                  - insertUserID
+                  - dateInserted
+                  - updateUserID
+                  - dateUpdated
+                  type: object
+                type: array
+          description: Success
+      tags:
+      - Polls
+      summary: List polls
+      x-addon: polls
+      operationId: getPolls
+      x-operation-id-source: derived
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  countOptions:
+                    description: The number of options to choose from.
+                    type: integer
+                  countVotes:
+                    description: The number of votes.
+                    type: integer
+                  dateInserted:
+                    description: When the poll was created.
+                    format: date-time
+                    type: string
+                  dateUpdated:
+                    description: When the poll was updated.
+                    format: date-time
+                    type:
+                    - string
+                    - 'null'
+                  discussionID:
+                    description: The discussion the poll is displayed in.
+                    type: integer
+                  insertUser:
+                    $ref: '#/components/schemas/UserFragment'
+                  insertUserID:
+                    description: The unique ID of the user who created this poll.
+                    type: integer
+                  name:
+                    description: The name of the poll.
+                    minLength: 1
+                    type: string
+                  pollID:
+                    description: The unique ID of the poll.
+                    type: integer
+                  updateUser:
+                    $ref: '#/components/schemas/UserFragment'
+                  updateUserID:
+                    description: The unique ID of the user who updated this poll.
+                    type:
+                    - integer
+                    - 'null'
+                required:
+                - pollID
+                - name
+                - discussionID
+                - countOptions
+                - countVotes
+                - insertUserID
+                - dateInserted
+                - updateUserID
+                - dateUpdated
+                type: object
+          description: Success
+      tags:
+      - Polls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollPost'
+        required: true
+      summary: Create a poll
+      x-addon: polls
+      operationId: postPolls
+      x-operation-id-source: derived
+  /polls/{id}:
+    delete:
+      parameters:
+      - description: 'The poll ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Polls
+      summary: Delete a poll
+      x-addon: polls
+      operationId: deletePollsById
+      x-operation-id-source: derived
+    get:
+      parameters:
+      - description: 'The poll ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  countOptions:
+                    description: The number of options to choose from.
+                    type: integer
+                  countVotes:
+                    description: The number of votes.
+                    type: integer
+                  dateInserted:
+                    description: When the poll was created.
+                    format: date-time
+                    type: string
+                  dateUpdated:
+                    description: When the poll was updated.
+                    format: date-time
+                    type:
+                    - string
+                    - 'null'
+                  discussionID:
+                    description: The discussion the poll is displayed in.
+                    type: integer
+                  insertUser:
+                    $ref: '#/components/schemas/UserFragment'
+                  insertUserID:
+                    description: The unique ID of the user who created this poll.
+                    type: integer
+                  name:
+                    description: The name of the poll.
+                    minLength: 1
+                    type: string
+                  pollID:
+                    description: The unique ID of the poll.
+                    type: integer
+                  updateUser:
+                    $ref: '#/components/schemas/UserFragment'
+                  updateUserID:
+                    description: The unique ID of the user who updated this poll.
+                    type:
+                    - integer
+                    - 'null'
+                required:
+                - pollID
+                - name
+                - discussionID
+                - countOptions
+                - countVotes
+                - insertUserID
+                - dateInserted
+                - updateUserID
+                - dateUpdated
+                type: object
+          description: Success
+      tags:
+      - Polls
+      summary: Get a poll
+      x-addon: polls
+      operationId: getPollsById
+      x-operation-id-source: derived
+  /polls/{id}/vote:
+    delete:
+      parameters:
+      - description: 'The poll ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - description: 'The user that voted. Defaults to the current user.
+
+          '
+        in: query
+        name: userID
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Polls
+      summary: Delete a poll vote
+      x-addon: polls
+      operationId: deletePollsByIdVote
+      x-operation-id-source: derived
+    post:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  dateInserted:
+                    description: When the poll was created.
+                    format: date-time
+                    type: string
+                  pollOptionID:
+                    description: The unique ID of the option.
+                    type: integer
+                  userID:
+                    description: The user that made the vote
+                    type: integer
+                required:
+                - userID
+                - pollOptionID
+                - dateInserted
+                type: object
+          description: Success
+      tags:
+      - Polls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollVotePost'
+        required: true
+      summary: Vote for a poll option
+      x-addon: polls
+      operationId: postPollsByIdVote
+      x-operation-id-source: derived
+  /polls/{id}/votes:
+    get:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+          '
+        in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+          maximum: 100
+          minimum: 1
+      - description: 'Desired number of items per page.
+
+          '
+        in: query
+        name: limit
+        schema:
+          type: integer
+          default: 25
+          maximum: 100
+          minimum: 1
+      - description: 'Filter by pollOptionID.
+
+          '
+        in: query
+        name: pollOptionID
+        schema:
+          type: integer
+      - description: 'Expand associated records using one or more valid field names. A value of "all" will expand all expandable fields.
+
+          '
+        in: query
+        name: expand
+        schema:
+          items:
+            enum:
+            - user
+            - all
+            - user.ssoID
+            type: string
+          type: array
+        style: form
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    dateInserted:
+                      description: When the poll was created.
+                      format: date-time
+                      type: string
+                    pollOptionID:
+                      description: The unique ID of the option.
+                      type: integer
+                    userID:
+                      description: The user that made the vote
+                      type: integer
+                  required:
+                  - userID
+                  - pollOptionID
+                  - dateInserted
+                  type: object
+                type: array
+          description: Success
+      tags:
+      - Polls
+      summary: List polls' votes
+      x-addon: polls
+      operationId: getPollsByIdVotes
+      x-operation-id-source: derived
+components:
+  schemas:
+    PollVotePost:
+      properties:
+        pollOptionID:
+          description: The unique ID of the option.
+          type: integer
+        userID:
+          description: The user that made the vote
+          type: integer
+      required:
+      - pollOptionID
+      type: object
+      x-addon: polls
+    PollOptionPost:
+      properties:
+        body:
+          description: The name of the option.
+          minLength: 1
+          type: string
+        pollOptionID:
+          description: Poll Option ID to update.
+          type: integer
+      required:
+      - body
+      type: object
+      x-addon: polls
+    UserFragment:
+      oneOf:
+      - type: object
+        properties:
+          userID:
+            description: The ID of the user.
+            type: integer
+          name:
+            description: The username of the user.
+            minLength: 1
+            type: string
+          url:
+            description: The URL of the user's profile.
+            type: string
+            format: uri
+          photoUrl:
+            description: The URL of the user's avatar picture.
+            type: string
+            format: uri
+          dateLastActive:
+            description: Time the user was last active.
+            format: date-time
+            type:
+            - string
+            - 'null'
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+          label:
+            description: The label of the user as plaintext.
+            type: string
+          labelHtml:
+            description: The label of the user in HTML format.
+            type: string
+          private:
+            description: Whether the user profile is private or not.
+            type: boolean
+        required:
+        - userID
+        - name
+        - photoUrl
+        - dateLastActive
+      - type: object
+        description: A user fragment when only expanding by ssoID.
+        properties:
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+        required:
+        - ssoID
+      x-addon: dashboard
+    PollPost:
+      properties:
+        discussionID:
+          description: The description the poll is displayed in.
+          type: integer
+        categoryID:
+          description: The category the poll is displayed in.
+          type: integer
+        name:
+          description: The name of the poll.
+          minLength: 1
+          type: string
+        body:
+          description: The body of the discussion, main poll message.
+          minLength: 1
+          type: string
+        pollOption:
+          type: array
+          items:
+            $ref: '#/components/schemas/PollOptionPost'
+          minItems: 2
+      required:
+      - name
+      type: object
+      x-addon: polls
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

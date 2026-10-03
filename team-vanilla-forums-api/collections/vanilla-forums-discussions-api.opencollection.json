@@ -1,0 +1,1004 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Discussions API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discussions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete a list of comments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/comments/list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a list of comments."
+        },
+        {
+          "info": {
+            "name": "List discussions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions",
+            "params": [
+              {
+                "name": "discussionID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a range or CSV of discussion IDs."
+              },
+              {
+                "name": "categoryID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a category."
+              },
+              {
+                "name": "dateInserted",
+                "value": "",
+                "type": "query",
+                "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "dateUpdated",
+                "value": "",
+                "type": "query",
+                "description": "Filter by update date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "dateLastComment",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the date of the last comment or the original discussion date if it has no comments. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+              },
+              {
+                "name": "slotType",
+                "value": "",
+                "type": "query",
+                "description": "Filter to discussions created within a certain timeframe. Daily, Weekly, Monthly, Yearly, or all time."
+              },
+              {
+                "name": "siteSectionID",
+                "value": "",
+                "type": "query",
+                "description": "Filter discussions by site section ID (ex. subcommunity).\nThe subcommunity ID or folder can be used if you use [smart IDs](https://success.vanillaforums.com/kb/articles/46-smart-ids).\nThe query looks like:\n\n```\nsiteSectionID=$subcommunityID:{id|folder}\n```"
+              },
+              {
+                "name": "tagID",
+                "value": "",
+                "type": "query",
+                "description": "Filter discussion by a range of tag IDs."
+              },
+              {
+                "name": "tagOperator",
+                "value": "",
+                "type": "query",
+                "description": "Either 'and' or 'or'. 'or' logic means a post only needs 1 of the provided tags. 'and' means it needs all of them."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by discussion type, or comma separated list."
+              },
+              {
+                "name": "postTypeID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by one or more postTypeIDs."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter questions by status (accepted, answered, unanswered)."
+              },
+              {
+                "name": "excludeHiddenCategories",
+                "value": "",
+                "type": "query",
+                "description": "Exclude discussions from categories that has the `HideAllDiscussions` option set to true."
+              },
+              {
+                "name": "followed",
+                "value": "",
+                "type": "query",
+                "description": "Only fetch discussions from followed categories. Pinned discussions are mixed in.\n"
+              },
+              {
+                "name": "userFollowed",
+                "value": "",
+                "type": "query",
+                "description": "Only fetch discussions from users the current user is following. Requires authentication. Returns empty array for guest users or users who follow no one.\n"
+              },
+              {
+                "name": "score",
+                "value": "",
+                "type": "query",
+                "description": "Filter by score."
+              },
+              {
+                "name": "pinned",
+                "value": "",
+                "type": "query",
+                "description": "Whether or not to include pinned discussions. If true, only return pinned discussions. Cannot be used with the pinOrder parameter.\n"
+              },
+              {
+                "name": "pinOrder",
+                "value": "",
+                "type": "query",
+                "description": "If including pinned posts, in what order should they be integrated? When \"first\", discussions pinned to a specific category will only be affected if the discussion's category is passed as the categoryID parameter. Cannot be used with the pinned parameter.\nMust be one of: \"first\", \"mixed\".\n"
+              },
+              {
+                "name": "hasComments",
+                "value": "",
+                "type": "query",
+                "description": "Optionally only include discussions that have/doesn't have comments."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page. **Note that you may not get the exact number of records back as specified with the limit unless you also specify pinOrder=mixed**. This is an optimization for pinned (i.e. announcement) discussion handling.\n"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort the results."
+              },
+              {
+                "name": "insertUserID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by author.\n"
+              },
+              {
+                "name": "insertUserRoleID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by author role. One or more roleIDs can be passed in a CSV."
+              },
+              {
+                "name": "insertUserRankID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by author rank. One or more rankIDs can be passed in a CSV."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "resolved",
+                "value": "",
+                "type": "query",
+                "description": "Filter by resolved status."
+              },
+              {
+                "name": "bookmarkUserID",
+                "value": "",
+                "type": "query",
+                "description": "Bookmarked by the UserID."
+              },
+              {
+                "name": "participatedUserID",
+                "value": "",
+                "type": "query",
+                "description": "Commented (participated) on by the UserID."
+              },
+              {
+                "name": "reactionType",
+                "value": "",
+                "type": "query",
+                "description": "Discussions for which the user has given the specified reaction."
+              },
+              {
+                "name": "statusID",
+                "value": "",
+                "type": "query",
+                "description": "List of statusIDs to filter discussion by."
+              },
+              {
+                "name": "internalStatusID",
+                "value": "",
+                "type": "query",
+                "description": "List of internalStatusIDs to filter discussion by."
+              },
+              {
+                "name": "suggested",
+                "value": "",
+                "type": "query",
+                "description": "Filter discussion list based on user interests."
+              },
+              {
+                "name": "excerptLength",
+                "value": "",
+                "type": "query",
+                "description": "Length of excerpts."
+              },
+              {
+                "name": "excludedCategoryIDs",
+                "value": "",
+                "type": "query",
+                "description": "Category IDs to exclude."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List discussions."
+        },
+        {
+          "info": {
+            "name": "Add a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/discussions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a discussion."
+        },
+        {
+          "info": {
+            "name": "Get a list of the current user's bookmarked discussions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/bookmarked",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of the current user's bookmarked discussions."
+        },
+        {
+          "info": {
+            "name": "Close/open a list of discussions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/close",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Close/open a list of discussions."
+        },
+        {
+          "info": {
+            "name": "Add an idea.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/idea",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an idea."
+        },
+        {
+          "info": {
+            "name": "Delete a list of discussions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a list of discussions."
+        },
+        {
+          "info": {
+            "name": "Merge discussions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/merge",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merge discussions."
+        },
+        {
+          "info": {
+            "name": "Move a list of discussions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/move",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move a list of discussions."
+        },
+        {
+          "info": {
+            "name": "Get a list of the current user's muted discussions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/muted",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of the current user's muted discussions."
+        },
+        {
+          "info": {
+            "name": "Add a poll.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/poll",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a poll."
+        },
+        {
+          "info": {
+            "name": "Add a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/question",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a discussion."
+        },
+        {
+          "info": {
+            "name": "Mark all discussions you can triage as resolved.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/resolve-bulk"
+          },
+          "docs": "Mark all discussions you can triage as resolved."
+        },
+        {
+          "info": {
+            "name": "Search discussions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/search",
+            "params": [
+              {
+                "name": "categoryID",
+                "value": "",
+                "type": "query",
+                "description": "The numeric ID of a category to limit search results to.\n"
+              },
+              {
+                "name": "followed",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to those in followed categories. Cannot be used with the categoryID parameter.\n"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search terms.\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Search discussions."
+        },
+        {
+          "info": {
+            "name": "Split comments out into a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/split",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Split comments out into a discussion."
+        },
+        {
+          "info": {
+            "name": "Get a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a discussion."
+        },
+        {
+          "info": {
+            "name": "Update a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a discussion."
+        },
+        {
+          "info": {
+            "name": "Delete a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              }
+            ]
+          },
+          "docs": "Delete a discussion."
+        },
+        {
+          "info": {
+            "name": "Bookmark a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/bookmark",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bookmark a discussion."
+        },
+        {
+          "info": {
+            "name": "Bump a discussion higher in the list by updating the DateLastComment field.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/bump",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID."
+              }
+            ]
+          },
+          "docs": "Bump a discussion higher in the list by updating the DateLastComment field."
+        },
+        {
+          "info": {
+            "name": "Set custom canonical url for a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/canonical-url",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set custom canonical url for a discussion."
+        },
+        {
+          "info": {
+            "name": "Remove custom canonical url for a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/canonical-url",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID."
+              }
+            ]
+          },
+          "docs": "Remove custom canonical url for a discussion."
+        },
+        {
+          "info": {
+            "name": "Dismiss an announcement.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/dismiss",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Dismiss an announcement."
+        },
+        {
+          "info": {
+            "name": "Get a discussion for editing.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/edit",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a discussion for editing."
+        },
+        {
+          "info": {
+            "name": "Update idea metadata on a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/idea",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update idea metadata on a discussion."
+        },
+        {
+          "info": {
+            "name": "PUT /discussions/{id}/mute",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/mute",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Get a poll.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/poll",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Discussion ID.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a poll."
+        },
+        {
+          "info": {
+            "name": "Update a poll.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/poll",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a poll."
+        },
+        {
+          "info": {
+            "name": "GET /discussions/{id}/quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/quote",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID.\n"
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Change a discussion status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change a discussion status."
+        },
+        {
+          "info": {
+            "name": "List of status changes for a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/status-log",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID.\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Desired number of items per page.\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List of status changes for a discussion."
+        },
+        {
+          "info": {
+            "name": "Add tags to a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/tags",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add tags to a discussion."
+        },
+        {
+          "info": {
+            "name": "Set the tags on a discussion.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/tags",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the tags on a discussion."
+        },
+        {
+          "info": {
+            "name": "Change a discussion type.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/discussions/:id/type",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The discussion ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change a discussion type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

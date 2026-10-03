@@ -1,0 +1,843 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Appeals API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Appeals
+paths:
+  /appeals:
+    post:
+      summary: Create an appeal
+      description: Create a new appeal for a ban or content removal decision.
+      tags:
+      - Appeals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppealPost'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appeal'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden - User not banned, invalid token, or token user mismatch
+        '404':
+          description: Not Found - Referenced record does not exist
+      x-addon: dashboard
+      operationId: postAppeals
+      x-operation-id-source: derived
+    get:
+      summary: List appeals
+      description: Get a list of appeals with optional filtering. Requires community.manage permission.
+      tags:
+      - Appeals
+      parameters:
+      - name: appealingUserID
+        description: Filter by the user who created the appeal.
+        in: query
+        schema:
+          type: integer
+      - name: assignedUserID
+        description: Filter by the user assigned to the appeal.
+        in: query
+        schema:
+          type: integer
+      - name: type
+        description: Filter by appeal type.
+        in: query
+        schema:
+          type: string
+          enum:
+          - ban
+          - content-removal
+      - name: escalationID
+        description: Filter by escalation ID (for content-removal appeals).
+        in: query
+        schema:
+          type: integer
+      - name: escalationLogID
+        description: Filter by escalation log ID (for content-removal appeals).
+        in: query
+        schema:
+          type: integer
+      - name: status
+        description: Filter by appeal status.
+        in: query
+        schema:
+          type: string
+      - $ref: '#/components/parameters/DateInserted'
+      - $ref: '#/components/parameters/Page'
+      - name: limit
+        in: query
+        description: Desired number of items per page.
+        schema:
+          type: integer
+          default: 30
+          minimum: 1
+          maximum: 100
+      - name: sort
+        in: query
+        description: Sort the results.
+        schema:
+          type: string
+          default: -dateInserted
+          enum:
+          - appealID
+          - -appealID
+          - dateInserted
+          - -dateInserted
+          - dateUpdated
+          - -dateUpdated
+          - status
+          - -status
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appeal'
+        '403':
+          description: Forbidden
+      x-addon: dashboard
+      operationId: getAppeals
+      x-operation-id-source: derived
+  /appeals/{id}:
+    get:
+      summary: Get a single appeal
+      description: Get an appeal by ID. Users can view their own appeals, or moderators with community.manage can view all appeals.
+      tags:
+      - Appeals
+      parameters:
+      - $ref: '#/components/parameters/AppealID'
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appeal'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      x-addon: dashboard
+      operationId: getAppealsById
+      x-operation-id-source: derived
+    patch:
+      summary: Update an appeal
+      description: Update an appeal's status or assignment. Requires community.manage permission.
+      tags:
+      - Appeals
+      parameters:
+      - $ref: '#/components/parameters/AppealID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppealPatch'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appeal'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden - No permission, assigning to ban creator, or non-assigned user changing status
+        '404':
+          description: Not Found
+      x-addon: dashboard
+      operationId: patchAppealsById
+      x-operation-id-source: derived
+components:
+  parameters:
+    DateInserted:
+      name: dateInserted
+      in: query
+      description: 'Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).
+
+        '
+      schema:
+        format: date-filter
+        type: string
+      x-addon: dashboard
+    AppealID:
+      name: id
+      in: path
+      description: The ID of the appeal.
+      required: true
+      schema:
+        type: integer
+      x-addon: dashboard
+    Page:
+      name: page
+      in: query
+      description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+        '
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+      x-addon: dashboard
+  schemas:
+    Appeal:
+      type: object
+      properties:
+        appealID:
+          type: integer
+          description: The unique ID of the appeal.
+        type:
+          type: string
+          description: The type of appeal.
+          enum:
+          - ban
+          - content-removal
+        status:
+          type: string
+          description: The current status of the appeal.
+          enum:
+          - pending
+          - approved
+          - rejected
+          - in-review
+        insertUserID:
+          type: integer
+          description: The ID of the user who created the appeal record.
+        assignedUserID:
+          type:
+          - integer
+          - 'null'
+          description: The ID of the moderator assigned to review the appeal.
+        appealingUserID:
+          type: integer
+          description: The ID of the user making the appeal.
+        escalationID:
+          type:
+          - integer
+          - 'null'
+          description: The escalation ID for content-removal appeals.
+        escalationLogID:
+          type:
+          - integer
+          - 'null'
+          description: The escalation log ID for content-removal appeals.
+        dateInserted:
+          type: string
+          format: date-time
+          description: When the appeal was created.
+        dateUpdated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the appeal was last updated.
+        appealText:
+          type: string
+          description: The user's appeal message.
+        appealingUserInfo:
+          type: object
+          description: Information about the user making the appeal.
+          properties:
+            userID:
+              type: integer
+              description: The user ID.
+            name:
+              type: string
+              description: The username.
+            email:
+              type:
+              - string
+              - 'null'
+              description: The user's email address.
+          required:
+          - userID
+          - name
+        appealEventInfo:
+          type: object
+          description: 'Information about the moderation event being appealed.
+
+            Fields vary based on appeal type (ban vs content-removal).
+
+            '
+          properties:
+            userNoteID:
+              type:
+              - integer
+              - 'null'
+              description: The ID of the user note (for ban appeals).
+            moderatorUserID:
+              type:
+              - integer
+              - 'null'
+              description: The ID of the moderator who made the decision.
+            moderatorName:
+              type:
+              - string
+              - 'null'
+              description: The name of the moderator who made the decision.
+            reasons:
+              type:
+              - array
+              - 'null'
+              description: The reasons given for the ban or content removal.
+              items:
+                type: string
+            moderatorMessage:
+              type:
+              - string
+              - 'null'
+              description: The message from the moderator at time of ban/removal.
+            dateOfEvent:
+              type:
+              - string
+              - 'null'
+              format: date-time
+              description: When the ban or content removal occurred.
+            recordType:
+              type:
+              - string
+              - 'null'
+              description: The type of record (for content-removal appeals).
+              enum:
+              - discussion
+              - comment
+            recordID:
+              type:
+              - integer
+              - 'null'
+              description: The ID of the record that was removed (for content-removal appeals).
+            decisionMessage:
+              type:
+              - string
+              - 'null'
+              description: The decision message added when resolving the appeal.
+      required:
+      - appealID
+      - type
+      - status
+      - insertUserID
+      - appealingUserID
+      - dateInserted
+      - appealText
+      - appealingUserInfo
+      - appealEventInfo
+      x-addon: dashboard
+    AppealPost:
+      type: object
+      description: 'Schema for creating a new appeal using a JWT token.
+
+        '
+      properties:
+        jwt:
+          type: string
+        appealText:
+          type: string
+          description: The user's appeal message explaining why the decision should be reversed.
+      required:
+      - jwt
+      - appealText
+      example:
+        jwt: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+        appealText: I believe this ban was unjust because I was following community guidelines.
+      x-addon: dashboard
+    AppealPatch:
+      type: object
+      description: 'Schema for updating an appeal. Requires community.manage permission.
+
+        '
+      properties:
+        status:
+          type: string
+          description: 'Update the appeal status. Can only be set by the assigned user.
+
+            '
+          enum:
+          - pending
+          - approved
+          - rejected
+          - in-review
+        assignedUserID:
+          type:
+          - integer
+          - 'null'
+          description: 'Update the moderator assigned to the appeal.
+
+            Cannot assign to the same moderator who created the original ban/removal.
+
+            '
+        appealEventInfo:
+          type: object
+          description: Additional information about the appeal decision.
+          properties:
+            decisionMessage:
+              type:
+              - string
+              - 'null'
+              description: 'Message explaining the decision on the appeal.
+
+                Can only be set by the assigned user.
+
+                '
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

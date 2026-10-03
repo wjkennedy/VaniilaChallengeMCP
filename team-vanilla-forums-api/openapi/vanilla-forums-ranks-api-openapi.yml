@@ -1,0 +1,982 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Ranks API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Ranks
+paths:
+  /ranks:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rank'
+          description: Success
+      tags:
+      - Ranks
+      summary: Get a list of all ranks
+      x-addon: ranks
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getRanks
+      x-operation-id-source: derived
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rank'
+          description: Success
+      tags:
+      - Ranks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RankPost'
+        required: true
+      summary: Add a new rank
+      x-addon: ranks
+      operationId: postRanks
+      x-operation-id-source: derived
+  /ranks/{id}:
+    delete:
+      parameters:
+      - description: 'The rank ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Ranks
+      summary: Delete a rank
+      x-addon: ranks
+      operationId: deleteRanksById
+      x-operation-id-source: derived
+    get:
+      parameters:
+      - description: 'The rank ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rank'
+          description: Success
+      tags:
+      - Ranks
+      summary: Get a single rank
+      x-addon: ranks
+      operationId: getRanksById
+      x-operation-id-source: derived
+    patch:
+      summary: Edit a rank
+      tags:
+      - Ranks
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RankPatch'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rank'
+          description: Success
+      x-addon: ranks
+      operationId: patchRanksById
+      x-operation-id-source: derived
+  /ranks/{id}/edit:
+    get:
+      parameters:
+      - description: 'The rank ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rank'
+          description: Success
+      tags:
+      - Ranks
+      summary: Get a rank for editing
+      x-addon: ranks
+      operationId: getRanksByIdEdit
+      x-operation-id-source: derived
+components:
+  schemas:
+    RankPatch:
+      properties:
+        abilities:
+          properties:
+            avatar:
+              description: Allow user to have a custom avatar.
+              type: boolean
+            commentsAdd:
+              description: Allow adding comments.
+              enum:
+              - false
+              type: boolean
+            conversationsAdd:
+              description: Allow starting conversations.
+              type: boolean
+            curation:
+              description: Allow content curation.
+              type: boolean
+            discussionsAdd:
+              description: Allow starting discussions.
+              enum:
+              - false
+              type: boolean
+            editTimeout:
+              description: Length of time, in seconds, a user can edit their post. -1 for no limit.
+              type: integer
+            format:
+              description: Formatting restrictions.
+              enum:
+              - Text
+              - TextEx
+              type: string
+            linksActivity:
+              description: Allow links in activity feed.
+              enum:
+              - false
+              type: boolean
+            linksConversations:
+              description: Allow links in conversations.
+              enum:
+              - false
+              type: boolean
+            linksPosts:
+              description: Allow links in posts.
+              enum:
+              - false
+              type: boolean
+            location:
+              description: Allow user to have a location.
+              type: boolean
+            meActions:
+              description: Allow usage of "me actions".
+              type: boolean
+            polls:
+              description: Allow creation of polls.
+              type: boolean
+            roleID:
+              description: Permissions of this role are applied to users with the rank.
+              type: integer
+            signature:
+              description: Allow user to have a signature.
+              type: boolean
+            signatureImages:
+              description: Maximum number of images in a signature. -1 for no limit.
+              type: integer
+            signatureLength:
+              description: Maximum length of a signature.
+              type: integer
+            title:
+              description: Allow user to have a title.
+              type: boolean
+            verified:
+              description: Verified status. true is verified. false requires verification.
+              type: boolean
+          type: object
+        criteria:
+          properties:
+            manual:
+              description: Allow manually granting this rank.
+              type: boolean
+            permission:
+              description: Permission slug.
+              enum:
+              - site.manage
+              - community.moderate
+              type: string
+            points:
+              description: User points.
+              type: integer
+            posts:
+              description: Total posts created by the user.
+              type: integer
+            roleID:
+              description: ID of a role required for this rank.
+              type: integer
+            time:
+              description: Age of user account (e.g. 1 day, 3 weeks, 1 month).
+              type: string
+          type: object
+        cssClass:
+          description: Custom CSS class for users of this rank.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        level:
+          description: Level of the rank. Determines the sort order.
+          type: integer
+        name:
+          description: Name of the rank.
+          minLength: 1
+          type: string
+        notificationBody:
+          description: Message for the users when they earn this rank.
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        userTitle:
+          description: Label that will display beside the user.
+          minLength: 1
+          type: string
+      type: object
+      x-addon: ranks
+    Rank:
+      description: A single rank object.
+      type: object
+      properties:
+        abilities:
+          properties:
+            avatar:
+              description: Allow user to have a custom avatar.
+              type: boolean
+            commentsAdd:
+              description: Allow adding comments.
+              enum:
+              - false
+              type: boolean
+            conversationsAdd:
+              description: Allow starting conversations.
+              type: boolean
+            curation:
+              description: Allow content curation.
+              type: boolean
+            discussionsAdd:
+              description: Allow starting discussions.
+              enum:
+              - false
+              type: boolean
+            editTimeout:
+              description: Length of time, in seconds, a user can edit their post. -1 for no limit.
+              type: integer
+            format:
+              description: Formatting restrictions.
+              enum:
+              - Text
+              - TextEx
+              type: string
+            linksActivity:
+              description: Allow links in activity feed.
+              enum:
+              - false
+              type: boolean
+            linksConversations:
+              description: Allow links in conversations.
+              enum:
+              - false
+              type: boolean
+            linksPosts:
+              description: Allow links in posts.
+              enum:
+              - false
+              type: boolean
+            location:
+              description: Allow user to have a location.
+              type: boolean
+            meActions:
+              description: Allow usage of "me actions".
+              type: boolean
+            polls:
+              description: Allow creation of polls.
+              type: boolean
+            roleID:
+              description: Permissions of this role are applied to users with the rank.
+              type: integer
+            signature:
+              description: Allow user to have a signature.
+              type: boolean
+            signatureImages:
+              description: Maximum number of images in a signature. -1 for no limit.
+              type: integer
+            signatureLength:
+              description: Maximum length of a signature.
+              type: integer
+            title:
+              description: Allow user to have a title.
+              type: boolean
+            verified:
+              description: Verified status. true is verified. false requires verification.
+              type: boolean
+          type: object
+        criteria:
+          properties:
+            manual:
+              description: Allow manually granting this rank.
+              type: boolean
+            permission:
+              description: Permission slug.
+              enum:
+              - site.manage
+              - community.moderate
+              type: string
+            points:
+              description: User points.
+              type: integer
+            posts:
+              description: Total posts created by the user.
+              type: integer
+            roleID:
+              description: ID of a role required for this rank.
+              type: integer
+            time:
+              description: Age of user account (e.g. 1 day, 3 weeks, 1 month).
+              type: string
+          type: object
+        cssClass:
+          description: Custom CSS class for users of this rank.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        level:
+          description: Level of the rank. Determines the sort order.
+          type: integer
+        name:
+          description: Name of the rank.
+          minLength: 1
+          type: string
+        notificationBody:
+          description: Message for the users when they earn this rank.
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        rankID:
+          description: Rank ID.
+        userTitle:
+          description: Label that will display beside the user.
+          minLength: 1
+          type: string
+      required:
+      - rankID
+      - name
+      - userTitle
+      - level
+      - notificationBody
+      - cssClass
+      x-addon: ranks
+    RankPost:
+      properties:
+        abilities:
+          properties:
+            avatar:
+              description: Allow user to have a custom avatar.
+              type: boolean
+            commentsAdd:
+              description: Allow adding comments.
+              enum:
+              - false
+              type: boolean
+            conversationsAdd:
+              description: Allow starting conversations.
+              type: boolean
+            curation:
+              description: Allow content curation.
+              type: boolean
+            discussionsAdd:
+              description: Allow starting discussions.
+              enum:
+              - false
+              type: boolean
+            editTimeout:
+              description: Length of time, in seconds, a user can edit their post. -1 for no limit.
+              type: integer
+            format:
+              description: Formatting restrictions.
+              enum:
+              - Text
+              - TextEx
+              type: string
+            linksActivity:
+              description: Allow links in activity feed.
+              enum:
+              - false
+              type: boolean
+            linksConversations:
+              description: Allow links in conversations.
+              enum:
+              - false
+              type: boolean
+            linksPosts:
+              description: Allow links in posts.
+              enum:
+              - false
+              type: boolean
+            location:
+              description: Allow user to have a location.
+              type: boolean
+            meActions:
+              description: Allow usage of "me actions".
+              type: boolean
+            polls:
+              description: Allow creation of polls.
+              type: boolean
+            roleID:
+              description: Permissions of this role are applied to users with the rank.
+              type: integer
+            signature:
+              description: Allow user to have a signature.
+              type: boolean
+            signatureImages:
+              description: Maximum number of images in a signature. -1 for no limit.
+              type: integer
+            signatureLength:
+              description: Maximum length of a signature.
+              type: integer
+            title:
+              description: Allow user to have a title.
+              type: boolean
+            verified:
+              description: Verified status. true is verified. false requires verification.
+              type: boolean
+          type: object
+        criteria:
+          properties:
+            manual:
+              description: Allow manually granting this rank.
+              type: boolean
+            permission:
+              description: Permission slug.
+              enum:
+              - site.manage
+              - community.moderate
+              type: string
+            points:
+              description: User points.
+              type: integer
+            posts:
+              description: Total posts created by the user.
+              type: integer
+            roleID:
+              description: ID of a role required for this rank.
+              type: integer
+            time:
+              description: Age of user account (e.g. 1 day, 3 weeks, 1 month).
+              type: string
+          type: object
+        cssClass:
+          description: Custom CSS class for users of this rank.
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        level:
+          description: Level of the rank. Determines the sort order.
+          type: integer
+        name:
+          description: Name of the rank.
+          minLength: 1
+          type: string
+        notificationBody:
+          description: Message for the users when they earn this rank.
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        userTitle:
+          description: Label that will display beside the user.
+          minLength: 1
+          type: string
+      required:
+      - name
+      - userTitle
+      - level
+      type: object
+      x-addon: ranks
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

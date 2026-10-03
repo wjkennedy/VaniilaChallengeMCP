@@ -1,0 +1,298 @@
+{
+  "item": [
+    {
+      "id": "916e4e60-ae29-4dc5-bfa4-22580589b9a8",
+      "name": "Audit Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ce48e5d0-bf7c-4ee6-9b51-fd1972db1e60",
+          "name": "List the autit logs records.",
+          "request": {
+            "name": "List the autit logs records.",
+            "description": {},
+            "url": {
+              "path": [
+                "audit-logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<integer>",
+                  "description": "The user that performed the action."
+                },
+                {
+                  "disabled": false,
+                  "key": "insertIPAddress",
+                  "value": "<string>",
+                  "description": "IP address of the user that performed the action."
+                },
+                {
+                  "disabled": false,
+                  "key": "eventType",
+                  "value": "<string>",
+                  "description": "Type of event logged."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateInserted",
+                  "value": "<date-filter>",
+                  "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of log records.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "onlySpoofedActions",
+                  "value": "false",
+                  "description": "Only fetch spoofed actions."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48d912ec-590d-4646-bba5-7c81157871ac",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insertUserID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "insertIPAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateInserted",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "onlySpoofedActions",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auditLogID\": \"string\",\n  \"eventType\": \"string\",\n  \"message\": \"string\",\n  \"requestMethod\": \"string\",\n  \"requestPath\": \"string\",\n  \"requestQuery\": \"string\",\n  \"context\": \"string\",\n  \"meta\": [\n    \"string\",\n    \"string\"\n  ],\n  \"insertUserID\": 2050,\n  \"dateInserted\": \"1967-09-11T15:46:13.210Z\",\n  \"insertIPAddress\": \"217.235.225.57\",\n  \"spoofUserID\": 51,\n  \"orcUserEmail\": \"VxVLUZp2SSxqp@ONejknvQyFioeBOokRFeHClZjdVjDdg.zh\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7675905b-2bb6-42fb-a368-16c0d8711730",
+          "name": "Get a specific autit log record.",
+          "request": {
+            "name": "Get a specific autit log record.",
+            "description": {},
+            "url": {
+              "path": [
+                "audit-logs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the audit log record."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4c9f8ab-fafb-4e6f-8f99-488a809a9bc3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-logs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the audit log record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auditLogID\": \"string\",\n  \"eventType\": \"string\",\n  \"message\": \"string\",\n  \"requestMethod\": \"string\",\n  \"requestPath\": \"string\",\n  \"requestQuery\": \"string\",\n  \"context\": \"string\",\n  \"meta\": [\n    \"string\",\n    \"string\"\n  ],\n  \"insertUserID\": 3969,\n  \"dateInserted\": \"1981-08-31T07:02:24.241Z\",\n  \"insertIPAddress\": \"121.17.27.243\",\n  \"spoofUserID\": 8711,\n  \"orcUserEmail\": \"ebBKnZhTlxYkKZD@PGvEMLGePHEtn.czl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "414df314-3213-4d20-8460-9720748380b7",
+    "name": "Vanilla Addons Audit Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

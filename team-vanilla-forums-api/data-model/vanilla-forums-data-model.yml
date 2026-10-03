@@ -1,0 +1,62 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vanilla-api-openapi-original.json (components.schemas id-reference fields; 300 schemas)
+description: >-
+  Entity-relationship graph for the Vanilla (Higher Logic Vanilla) community
+  data model, derived from id-reference fields in the platform-generated
+  OpenAPI schemas. Core content entities (Discussion, Comment) hang off
+  Category and User; moderation entities (Report, Escalation) reference
+  content polymorphically via recordType/recordID; nearly every entity carries
+  insertUserID/updateUserID audit references (insertUserID appears on 27
+  schemas).
+entities:
+  - name: User
+    id_field: userID
+    notes: Central actor; audit fields insertUserID/updateUserID on most other entities point here.
+  - name: Discussion
+    id_field: discussionID
+    notes: Also represents questions, polls, and ideas (postTypeID) with a workflow statusID.
+  - name: Comment
+    id_field: commentID
+  - name: Category
+    id_field: categoryID
+  - name: Tag
+    id_field: tagID
+  - name: Role
+    id_field: roleID
+  - name: Conversation
+    id_field: conversationID
+    notes: Private messaging; messages via /messages.
+  - name: Report
+    id_field: reportID
+    notes: Moderation report on a record (polymorphic recordID).
+  - name: Escalation
+    id_field: escalationID
+    notes: Moderation escalation workflow over reported records.
+  - name: Collection
+    id_field: collectionID
+relationships:
+  - {from: Discussion, to: Category, kind: belongs_to, via: categoryID}
+  - {from: Discussion, to: User, kind: belongs_to, via: insertUserID}
+  - {from: Discussion, to: User, kind: belongs_to, via: lastUserID}
+  - {from: Discussion, to: Status, kind: belongs_to, via: statusID}
+  - {from: Discussion, to: PostType, kind: belongs_to, via: postTypeID}
+  - {from: Comment, to: Discussion, kind: belongs_to, via: discussionID}
+  - {from: Comment, to: Comment, kind: belongs_to, via: parentCommentID}
+  - {from: Comment, to: Category, kind: belongs_to, via: categoryID}
+  - {from: Comment, to: User, kind: belongs_to, via: insertUserID}
+  - {from: User, to: Rank, kind: belongs_to, via: rankID}
+  - {from: User, to: User, kind: belongs_to, via: inviteUserID}
+  - {from: User, to: Role, kind: has_many, via: "roles[] on GET /users/{id}"}
+  - {from: Report, to: User, kind: belongs_to, via: reportedUserID}
+  - {from: Report, to: Record (Discussion/Comment), kind: belongs_to, via: recordID (polymorphic with recordType)}
+  - {from: Escalation, to: User, kind: belongs_to, via: assignedUserID}
+  - {from: Escalation, to: Record (Discussion/Comment), kind: belongs_to, via: recordID (polymorphic)}
+  - {from: Escalation, to: Comment, kind: belongs_to, via: lastCommentID}
+  - {from: Conversation, to: User, kind: belongs_to, via: insertUserID}
+  - {from: Category, to: Discussion, kind: has_many, via: categoryID}
+  - {from: Discussion, to: Comment, kind: has_many, via: discussionID}
+conventions:
+  audit_fields: insertUserID (27 schemas) and updateUserID (12 schemas) reference User on nearly every entity
+  polymorphism: recordType + recordID (20 schemas) reference content polymorphically (moderation, reactions, media attachments)
+  foreign_sso: foreignID fields (5 schemas) carry SSO identifiers; smart IDs resolve them (conventions/vanilla-forums-conventions.yml)

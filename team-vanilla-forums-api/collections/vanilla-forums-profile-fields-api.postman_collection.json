@@ -1,0 +1,1473 @@
+{
+  "item": [
+    {
+      "id": "1f691631-c946-4e05-a759-87d0c2f34619",
+      "name": "Profile Fields",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5169242c-0475-49b7-b95c-4c28b53d8846",
+          "name": "List profile fields.",
+          "request": {
+            "name": "List profile fields.",
+            "description": {},
+            "url": {
+              "path": [
+                "profile-fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataType",
+                  "value": "<string>",
+                  "description": "Filter by the dataType."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataType",
+                  "value": "<string>",
+                  "description": "Filter by the dataType."
+                },
+                {
+                  "disabled": false,
+                  "key": "formType",
+                  "value": "<string>",
+                  "description": "Filter by the formType."
+                },
+                {
+                  "disabled": false,
+                  "key": "formType",
+                  "value": "<string>",
+                  "description": "Filter by the formType."
+                },
+                {
+                  "disabled": false,
+                  "key": "visibility",
+                  "value": "<string>",
+                  "description": "Filter by the visibility."
+                },
+                {
+                  "disabled": false,
+                  "key": "mutability",
+                  "value": "<string>",
+                  "description": "Filter by the mutability."
+                },
+                {
+                  "disabled": false,
+                  "key": "registrationOptions",
+                  "value": "<string>",
+                  "description": "Filter by registrationOptions."
+                },
+                {
+                  "disabled": false,
+                  "key": "enabled",
+                  "value": "<boolean>",
+                  "description": "Filter by enabled state."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c27f7c3c-4a93-44da-bb44-8e6788fc6ba1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "visibility",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mutability",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "registrationOptions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "enabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"apiName\": \"string\",\n    \"label\": \"string\",\n    \"description\": \"string\",\n    \"dataType\": \"string[]\",\n    \"formType\": \"checkbox\",\n    \"visibility\": \"private\",\n    \"mutability\": \"none\",\n    \"displayOptions\": {\n      \"userCards\": true,\n      \"posts\": false,\n      \"search\": false\n    },\n    \"registrationOptions\": \"optional\",\n    \"dropdownOptions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"enabled\": true,\n    \"salesforceID\": \"string\"\n  },\n  {\n    \"apiName\": \"string\",\n    \"label\": \"string\",\n    \"description\": \"string\",\n    \"dataType\": \"number\",\n    \"formType\": \"text-multiline\",\n    \"visibility\": \"public\",\n    \"mutability\": \"none\",\n    \"displayOptions\": {\n      \"userCards\": true,\n      \"posts\": false,\n      \"search\": false\n    },\n    \"registrationOptions\": \"hidden\",\n    \"dropdownOptions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"enabled\": true,\n    \"salesforceID\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "326d2b23-3284-4fd4-a5f5-0a3f15eac085",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "visibility",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mutability",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "registrationOptions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "enabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e9e2b66a-60e4-4a30-abcf-4d51e5207ed2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "visibility",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mutability",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "registrationOptions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "enabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "91736ec3-bed7-4328-8206-9fe54edb25a3",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "visibility",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mutability",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "registrationOptions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "enabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21804c85-36ed-4abf-8039-c553b4e73aab",
+          "name": "Create a profile field.",
+          "request": {
+            "name": "Create a profile field.",
+            "description": {},
+            "url": {
+              "path": [
+                "profile-fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiName\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"registrationOptions\": \"<string>\",\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8e10741b-cc30-4f26-82fb-7785114f6f33",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiName\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"registrationOptions\": \"<string>\",\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiName\": \"string\",\n  \"label\": \"string\",\n  \"description\": \"string\",\n  \"dataType\": \"number\",\n  \"formType\": \"text\",\n  \"visibility\": \"public\",\n  \"mutability\": \"all\",\n  \"displayOptions\": {\n    \"userCards\": false,\n    \"posts\": true,\n    \"search\": false\n  },\n  \"registrationOptions\": \"optional\",\n  \"dropdownOptions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"enabled\": false,\n  \"salesforceID\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a11f0030-ff44-44b9-9363-0468facc844a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiName\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"registrationOptions\": \"<string>\",\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c0dc1e15-7bd7-4bf0-a87d-a17e48925ae1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiName\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"registrationOptions\": \"<string>\",\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f4007ae-d216-4302-8f2f-d4d0b2607707",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiName\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dataType\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"registrationOptions\": \"<string>\",\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e44c031-3f29-408c-9893-b71e4a404d31",
+          "name": "Update profile fields' sort values",
+          "request": {
+            "name": "Update profile fields' sort values",
+            "description": {},
+            "url": {
+              "path": [
+                "profile-fields",
+                "sorts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": \"<integer>\",\n  \"key_1\": \"<integer>\",\n  \"key_2\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4dfa0f5-9fff-4030-b9ec-3912d0f5ee7a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    "sorts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ca828e09-7e15-4e68-ac54-cfed64e09cf8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    "sorts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "191e6f72-068c-4e83-9695-7c8a6679026e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    "sorts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5964c8d-3459-4301-912b-7b0dfe1b66ce",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    "sorts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba20ffd4-2d33-4c70-ba68-e318d303c157",
+          "name": "Get a profile field by its api name.",
+          "request": {
+            "name": "Get a profile field by its api name.",
+            "description": {},
+            "url": {
+              "path": [
+                "profile-fields",
+                ":apiName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiName",
+                  "description": "(Required) The ID of the profile field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d015f37-8fb8-48c6-994d-a2d6e560c9ad",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiName\": \"string\",\n  \"label\": \"string\",\n  \"description\": \"string\",\n  \"dataType\": \"number\",\n  \"formType\": \"text\",\n  \"visibility\": \"public\",\n  \"mutability\": \"all\",\n  \"displayOptions\": {\n    \"userCards\": false,\n    \"posts\": true,\n    \"search\": false\n  },\n  \"registrationOptions\": \"optional\",\n  \"dropdownOptions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"enabled\": false,\n  \"salesforceID\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b07d418-5e68-43b6-9d87-d06940cc6fb4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fffb0d9-c428-472b-9a7c-733624646911",
+          "name": "Update a profile field.",
+          "request": {
+            "name": "Update a profile field.",
+            "description": {},
+            "url": {
+              "path": [
+                "profile-fields",
+                ":apiName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiName",
+                  "description": "(Required) The ID of the profile field"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"registrationOptions\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3b9b7550-d4e8-4add-a167-72056919e796",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"registrationOptions\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiName\": \"string\",\n  \"label\": \"string\",\n  \"description\": \"string\",\n  \"dataType\": \"number\",\n  \"formType\": \"text\",\n  \"visibility\": \"public\",\n  \"mutability\": \"all\",\n  \"displayOptions\": {\n    \"userCards\": false,\n    \"posts\": true,\n    \"search\": false\n  },\n  \"registrationOptions\": \"optional\",\n  \"dropdownOptions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"enabled\": false,\n  \"salesforceID\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6bdae2e3-3daf-40dd-91f4-9b62a84eaec5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"registrationOptions\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0fb5ff64-aaf5-4d09-a180-5c7b72ec9e72",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"registrationOptions\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c95f1453-21d3-4cf6-a023-20a607f43737",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"registrationOptions\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4012ebae-433a-43bf-917d-48ba33749f95",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"formType\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"mutability\": \"<string>\",\n  \"displayOptions\": {\n    \"userCards\": \"<boolean>\",\n    \"posts\": \"<boolean>\",\n    \"search\": \"<boolean>\"\n  },\n  \"dropdownOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"registrationOptions\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"salesforceID\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84b6c96f-86ad-48f4-b4cb-c217ff993815",
+          "name": "Delete a profile field.",
+          "request": {
+            "name": "Delete a profile field.",
+            "description": {},
+            "url": {
+              "path": [
+                "profile-fields",
+                ":apiName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiName",
+                  "description": "(Required) The ID of the profile field"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab43f11a-cb04-4df6-99d4-2f0e47eb19c4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "098758e9-6f74-430a-8e5b-929f445cb18f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9bab5ef4-8fe1-409e-a9b2-910ff518a26a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c3c6417-6d2f-41fa-9b9e-c9076ba04a91",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74d1261e-eb21-4975-8980-10d4cdc019ef",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile-fields",
+                    ":apiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiName",
+                      "description": "(Required) The ID of the profile field"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "70b159da-bcd6-43b4-8ce4-c978b33a48f1",
+    "name": "Vanilla Addons Profile Fields API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

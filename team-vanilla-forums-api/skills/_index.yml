@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Packaged Agent Skills generated from the harvested Vanilla API v2 OpenAPI
+  (openapi/vanilla-api-openapi-original.json) plus the documented conventions
+  (conventions/), auth profile (authentication/), rate limits (rate-limits/),
+  and error envelope (errors/). The platform spec declares operationIds on
+  only 6 of 371 operations, so skills reference operations as METHOD /path -
+  every one verified verbatim in the spec. No provider-published skills or
+  AGENTS.md were found.
+skills:
+  - file: vanilla-forums-pull-community-activity.md
+    name: Pull community activity from a Vanilla community
+    api: openapi/vanilla-api-openapi-original.json
+    operations: ["GET /discussions", "GET /discussions/{id}", "GET /comments", "GET /search"]
+  - file: vanilla-forums-post-discussion-and-comment.md
+    name: Post a discussion and reply with a comment
+    api: openapi/vanilla-api-openapi-original.json
+    operations: ["GET /categories", "POST /discussions", "POST /comments", "GET /comments"]
+  - file: vanilla-forums-sync-users.md
+    name: Sync community members to an external system
+    api: openapi/vanilla-api-openapi-original.json
+    operations: ["GET /users", "GET /users/{id}"]

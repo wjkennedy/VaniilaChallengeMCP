@@ -1,0 +1,64 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://success.vanillaforums.com/kb/articles/41-authenticating-apiv2-calls-with-personal-access-tokens
+  + https://success.vanillaforums.com/kb/articles/122-authenticating-api-v2-calls-with-jwt
+  + https://success.vanillaforums.com/kb/articles/436-authenticating-api-v2-calls-with-role-tokens
+  + https://success.vanillaforums.com/kb/articles/326-authenticate-api-v2-calls-as-another-user-spoofing
+docs: https://success.vanillaforums.com/kb/categories/97-api-and-webhooks
+description: >-
+  Authentication profile for the Vanilla (Higher Logic Vanilla) API v2. The
+  platform-generated OpenAPI declares no securitySchemes, so this profile is
+  documented from the provider's own authentication articles. All tokens carry
+  the permissions of the user they represent (Vanilla roles and permissions).
+summary:
+  types: [http bearer (personal access token), http bearer (JWT), apiKey in query (access_token), apiKey in query (role-token)]
+  api_key_in: [header, query]
+  oauth2_flows: []
+schemes:
+  - name: personalAccessToken
+    type: http
+    scheme: bearer
+    description: >-
+      Personal access tokens are generated from the user profile (Edit Profile
+      > Access Tokens > Generate New Token; requires the Garden > Tokens > Add
+      permission). Intended for server-to-server integrations. Preferred usage
+      is the Authorization header with the bearer scheme
+      ("Authorization: Bearer <token>"); the token may instead be passed as the
+      access_token query-string parameter when custom headers are not possible,
+      at the cost of appearing in server logs. API calls reflect the
+      permissions of the user who generated the token.
+    docs: https://success.vanillaforums.com/kb/articles/41-authenticating-apiv2-calls-with-personal-access-tokens
+  - name: jwtBearer
+    type: http
+    scheme: bearer
+    bearerFormat: JWT
+    description: >-
+      The JWT addon authenticates API v2 calls with an RFC 7519 JSON Web Token
+      passed as an RFC 6750 bearer token. Supported algorithm HS256; required
+      claims: iss, sub (the SSO UniqueID), aud, email, displayname, exp, and
+      iat or nbf; optional picture. The JWT is signed with the shared secret
+      configured in the JWT addon settings.
+    docs: https://success.vanillaforums.com/kb/articles/122-authenticating-api-v2-calls-with-jwt
+  - name: roleToken
+    type: apiKey
+    in: query
+    parameter: role-token
+    description: >-
+      Role tokens are short-lived signed JWTs (valid 1-3 minutes on a
+      two-minute expiry window with one-minute rollover) carrying claims about
+      Roles only - no user identity - so responses can be HTTP-cached and
+      shared across users with identical permissions. Issued to an
+      already-authorized user via POST /api/v2/tokens/roles and passed as the
+      role-token query parameter. Valid only on GET /api/v2/users/:userID,
+      GET /api/v2/subcommunities, and GET /api/v2/products.
+    docs: https://success.vanillaforums.com/kb/articles/436-authenticating-api-v2-calls-with-role-tokens
+notes:
+  - Guest (unauthenticated) requests are served with edge HTTP caching (2-minute TTL) and see only what guests can see.
+  - >-
+    Spoofing: an access token with admin access (Garden > Settings > Manage)
+    can make any API v2 call as another user by passing the X-Vanilla-Spoof
+    header with the target userID (or a smart ID such as $name:frank or
+    $saml:<ssoid>); the call is limited to the spoofed user's permissions.
+    Server-side only - never pass spoof headers from clients.
+  - No OAuth 2.0 authorization-server flow is published for the API; SSO products (jsConnect, SAML, OAuth SSO addons) govern web sign-in rather than API token issuance.

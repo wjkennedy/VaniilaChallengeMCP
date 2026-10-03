@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Translations API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Translations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all of the application's translation strings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/locales/translations/:locale",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "path",
+                "description": "The locale code requested."
+              },
+              {
+                "name": "etag",
+                "value": "",
+                "type": "query",
+                "description": "Whether or not output is cached.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get all of the application's translation strings."
+        },
+        {
+          "info": {
+            "name": "Get the application's translations strings as a javascrpt file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/locales/translations/:locale.js",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "path",
+                "description": "The locale code requested."
+              },
+              {
+                "name": "etag",
+                "value": "",
+                "type": "query",
+                "description": "Whether or not output is cached.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "This endpoint is intended for application optimization where translations are requested within a `<script>` tag\nrather than as an external API call.\n"
+        },
+        {
+          "info": {
+            "name": "Get translations from a specified resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/translations/:resourceUrlCode",
+            "params": [
+              {
+                "name": "resourceUrlCode",
+                "value": "",
+                "type": "path",
+                "description": "Resource to filter."
+              },
+              {
+                "name": "recordType",
+                "value": "",
+                "type": "query",
+                "description": "recordType of the translation."
+              },
+              {
+                "name": "recordIDs",
+                "value": "",
+                "type": "query",
+                "description": "array of recordIDs of the translation."
+              },
+              {
+                "name": "recordKeys",
+                "value": "",
+                "type": "query",
+                "description": "array of recordKeys of the translation."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "locale of the translation."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "desired number of items per page."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get translations from a specified resource."
+        },
+        {
+          "info": {
+            "name": "Add or update translations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/translations/:resourceUrlCode",
+            "params": [
+              {
+                "name": "resourceUrlCode",
+                "value": "",
+                "type": "path",
+                "description": "resource to add\\update in."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add or update translations."
+        },
+        {
+          "info": {
+            "name": "Delete specified translations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/translations/:resourceUrlCode/remove",
+            "params": [
+              {
+                "name": "resourceUrlCode",
+                "value": "",
+                "type": "path",
+                "description": "Delete a translation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete specified translations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,36 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.higherlogic.com/vanilla-packages/
+sources:
+- https://www.higherlogic.com/vanilla-packages/
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: negotiated
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-09-20'
+published: false
+note: No numeric price is published on the pricing page; Packages page lists three tiers with feature
+  lists but no numeric prices; only 'Book Demo' CTAs.
+plan_count: 3
+plans:
+- name: Corporate
+  price_text: Book Demo
+  period: none
+  included_quota: Unlimited API Calls, Unlimited Page Views, Unlimited Users, Two Standard SSOs, Four
+    Knowledge Bases
+- name: Enterprise
+  price_text: Book Demo
+  period: none
+  included_quota: Unlimited API Calls, Three SSO Connections, Eight Knowledge Bases, Dedicated Cluster
+- name: Enterprise Plus
+  price_text: Book Demo
+  period: none
+  included_quota: Unlimited API Calls, Custom SSO Connections, 20 Knowledge Bases, Dedicated Cluster
+rate_limit_statements:
+- Unlimited API Calls

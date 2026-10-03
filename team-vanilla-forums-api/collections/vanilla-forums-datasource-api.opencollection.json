@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons DataSource API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DataSource",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all data sources for widgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/data-sources",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by name"
+              },
+              {
+                "name": "baseUrl",
+                "value": "",
+                "type": "query",
+                "description": "Filter by base URL"
+              },
+              {
+                "name": "authenticationType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by authentication type"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort by field"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List all data sources for widgets"
+        },
+        {
+          "info": {
+            "name": "Create a new data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/data-sources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new data source"
+        },
+        {
+          "info": {
+            "name": "Make a proxy call to a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/data-sources/proxy-call",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes an HTTP request through a data source. You must provide either a `dataSourceID`\nto use an existing data source, or a `dataSource` object to define an inline data source.\nYou cannot provide both.\n"
+        },
+        {
+          "info": {
+            "name": "Get a fragment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/data-sources/:dataSourceID",
+            "params": [
+              {
+                "name": "dataSourceID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a fragment"
+        },
+        {
+          "info": {
+            "name": "Update a data source.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/data-sources/:dataSourceID",
+            "params": [
+              {
+                "name": "dataSourceID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a data source."
+        },
+        {
+          "info": {
+            "name": "Delete a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/data-sources/:dataSourceID",
+            "params": [
+              {
+                "name": "dataSourceID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a data source"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

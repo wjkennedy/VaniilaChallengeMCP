@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Site Totals API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Site Totals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of site-total counts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/site-totals",
+            "params": [
+              {
+                "name": "siteSectionID",
+                "value": "",
+                "type": "query",
+                "description": "Get the counts only for a specific site section (subcommunity)."
+              },
+              {
+                "name": "counts",
+                "value": "",
+                "type": "query",
+                "description": "Choose the site counts you want by choosing one or more valid field names. Choosing \"all\" will return all available counts."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get a list of site-total counts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2628 @@
+{
+  "item": [
+    {
+      "id": "a33bcf19-5ade-4114-8cf5-c7f9c678d298",
+      "name": "Reports & Escalations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aba7f678-4453-41f5-8013-873ef85d7aea",
+          "name": "Create an Escalation",
+          "request": {
+            "name": "Create an Escalation",
+            "description": {},
+            "url": {
+              "path": [
+                "escalations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"recordType\": \"<string>\",\n  \"recordID\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"assignedUserID\": \"<integer>\",\n  \"reportID\": \"<integer>\",\n  \"reportReasonIDs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"noteBody\": \"<string>\",\n  \"noteFormat\": \"<string>\",\n  \"recordIsLive\": \"<boolean>\",\n  \"initialCommentBody\": \"<string>\",\n  \"initialCommentFormat\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e51cc80-fbdd-410b-babc-f01044ebf73f",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "escalations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"recordType\": \"<string>\",\n  \"recordID\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"assignedUserID\": \"<integer>\",\n  \"reportID\": \"<integer>\",\n  \"reportReasonIDs\": [\n    \"spam\",\n    \"abuse\"\n  ],\n  \"noteBody\": \"<string>\",\n  \"noteFormat\": \"<string>\",\n  \"recordIsLive\": \"<boolean>\",\n  \"initialCommentBody\": \"<string>\",\n  \"initialCommentFormat\": \"markdown\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"status\": \"in-progress\",\n  \"recordType\": \"discussion\",\n  \"recordID\": 4628,\n  \"recordName\": \"string\",\n  \"recordUrl\": \"string\",\n  \"recordIsLive\": false,\n  \"recordWasEdited\": true,\n  \"placeRecordType\": \"category\",\n  \"placeRecordID\": 7835,\n  \"reportReasons\": [\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 4475,\n      \"deleted\": false,\n      \"reportID\": 3816\n    },\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 6399,\n      \"deleted\": false,\n      \"reportID\": 7404\n    }\n  ],\n  \"countReportUsers\": 2117,\n  \"countReports\": 1527,\n  \"reportUserIDs\": [\n    410,\n    6967\n  ],\n  \"reportUsers\": [\n    {\n      \"userID\": 8021,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://fmh.koi1Qv8b2+VC2AzoxMpdkTC8feowwP79Xnhe5tOS,Fz5OQFvBsu,GvF-U8ffRIOjKIvBt,P5j.,4FzsctQy\",\n      \"dateLastActive\": \"1952-06-08T17:26:07.979Z\",\n      \"url\": \"http://XEvpHsqeYofyLgmqniEomCtvZuROuNkL.uiiv9aYG4TfT0tYkXkJ\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    {\n      \"userID\": 5113,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://QLSlESxXewOqPQpn.tzsL,0wAR7OYvXQv-,KGoMGc6C47PNS\",\n      \"dateLastActive\": \"1965-11-07T23:42:43.188Z\",\n      \"url\": \"https://NvQsJNCtRzpqcavqhLUpZTIhS.dikcrh8XGlpuSpopgvmdFSXpOMQvpzs8eLXIEr+eekR4ezCR2OocecRfoX0lJAWyfH5BlwLb\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  ],\n  \"url\": \"http://LLkipT.cffqmO08yYFSseeKcOCRVM0B7kMMz\",\n  \"assignedUserID\": 6665,\n  \"assignedUser\": {\n    \"userID\": 1547,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://TtFZOiwSDVMXArfPpQk.vzxmOmLnVtknGE4GM.-BZBFUMMhL5\",\n    \"dateLastActive\": \"2008-11-16T02:29:49.015Z\",\n    \"url\": \"https://yuwOwaxdYmyuxnuWX.prroUU3fTvre8qJJ1pQdg\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"placeRecordName\": \"string\",\n  \"placeRecordUrl\": \"http://yLZ.zvkmUL5C2Aa.FSEqMcuGHbIH6U.G\",\n  \"dateLastReport\": \"2009-03-30T16:51:02.649Z\",\n  \"lastCommentID\": 6160,\n  \"dateLastComment\": \"1990-03-11T20:15:19.831Z\",\n  \"lastCommentUserID\": 1731,\n  \"lastCommentUser\": {\n    \"userID\": 5306,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://Nb.gygnL3\",\n    \"dateLastActive\": \"2022-05-18T22:39:20.915Z\",\n    \"url\": \"https://WHWOCaEnnRSBrABJjciJnMXGde.hftSkAWkxYiwRoBxeiR4.J\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"appeals\": [\n    {\n      \"appealID\": 1886,\n      \"type\": \"content-removal\",\n      \"status\": \"in-review\",\n      \"insertUserID\": 2477,\n      \"appealingUserID\": 8504,\n      \"dateInserted\": \"1953-07-04T17:14:53.967Z\",\n      \"appealText\": \"string\",\n      \"appealingUserInfo\": {\n        \"userID\": 1920,\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      \"appealEventInfo\": {\n        \"userNoteID\": 2288,\n        \"moderatorUserID\": 8791,\n        \"moderatorName\": \"string\",\n        \"reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"moderatorMessage\": \"string\",\n        \"dateOfEvent\": \"1974-03-23T22:19:31.920Z\",\n        \"recordType\": \"comment\",\n        \"recordID\": 4904,\n        \"decisionMessage\": \"string\"\n      },\n      \"assignedUserID\": 6427,\n      \"escalationID\": 4270,\n      \"escalationLogID\": 4396,\n      \"dateUpdated\": \"2008-10-06T15:48:33.398Z\"\n    },\n    {\n      \"appealID\": 9155,\n      \"type\": \"content-removal\",\n      \"status\": \"in-review\",\n      \"insertUserID\": 8636,\n      \"appealingUserID\": 9346,\n      \"dateInserted\": \"2021-12-25T05:30:32.781Z\",\n      \"appealText\": \"string\",\n      \"appealingUserInfo\": {\n        \"userID\": 5706,\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      \"appealEventInfo\": {\n        \"userNoteID\": 8745,\n        \"moderatorUserID\": 5936,\n        \"moderatorName\": \"string\",\n        \"reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"moderatorMessage\": \"string\",\n        \"dateOfEvent\": \"1970-04-16T22:51:02.104Z\",\n        \"recordType\": \"comment\",\n        \"recordID\": 6353,\n        \"decisionMessage\": \"string\"\n      },\n      \"assignedUserID\": 4230,\n      \"escalationID\": 7851,\n      \"escalationLogID\": 9838,\n      \"dateUpdated\": \"1985-06-15T09:44:25.684Z\"\n    }\n  ],\n  \"countAppeals\": 5154\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6aecbcc2-245b-44ca-ac1d-08174e01712d",
+          "name": "Get a list of escalations",
+          "request": {
+            "name": "Get a list of escalations",
+            "description": {},
+            "url": {
+              "path": [
+                "escalations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "escalationID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of discussion escalationIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "recordType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of discussion recordIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "placeRecordType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "placeRecordID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of category placeRecordIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by one or more statuses (CSV & array supported)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by one or more statuses (CSV & array supported)."
+                },
+                {
+                  "disabled": false,
+                  "key": "assignedUserID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of assigned userIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "removedUserID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of userIDs who removed the record."
+                },
+                {
+                  "disabled": false,
+                  "key": "recordUserID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of users who created the content that was escalated."
+                },
+                {
+                  "disabled": false,
+                  "key": "recordUserRoleID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of users' roles who created the content that was escalated."
+                },
+                {
+                  "disabled": false,
+                  "key": "reportReasonID",
+                  "value": "<string>",
+                  "description": "Filter by a report reason. Multiple reasonIDs can be passed in a CSV or array."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "escalationID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of escalationIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateInserted",
+                  "value": "<date-filter>",
+                  "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateRemoved",
+                  "value": "<date-filter>",
+                  "description": "Filter by removed date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordIsLive",
+                  "value": "<boolean>",
+                  "description": "Whether the record still exists."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasAssociatedAppeal",
+                  "value": "<boolean>",
+                  "description": "Whether the escalation has an associated appeal."
+                },
+                {
+                  "disabled": false,
+                  "key": "appealStatus",
+                  "value": "<string>",
+                  "description": "Filter by appeal status. Multiple statuses can be passed as CSV or array."
+                },
+                {
+                  "disabled": false,
+                  "key": "appealStatus",
+                  "value": "<string>",
+                  "description": "Filter by appeal status. Multiple statuses can be passed as CSV or array."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b1d17e0-1b6a-4a9b-89c5-7b54ea5dd4d7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "escalations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "escalationID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "recordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recordID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "placeRecordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placeRecordID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignedUserID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "removedUserID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "recordUserID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "recordUserRoleID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "reportReasonID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "escalationID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "dateInserted",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateRemoved",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "recordIsLive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasAssociatedAppeal",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "appealStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appealStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"status\": \"done\",\n    \"recordType\": \"premoderated\",\n    \"recordID\": 9017,\n    \"recordName\": \"string\",\n    \"recordUrl\": \"string\",\n    \"recordIsLive\": false,\n    \"recordWasEdited\": false,\n    \"placeRecordType\": \"category\",\n    \"placeRecordID\": 882,\n    \"reportReasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 4581,\n        \"deleted\": true,\n        \"reportID\": 8655\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 5696,\n        \"deleted\": true,\n        \"reportID\": 6743\n      }\n    ],\n    \"countReportUsers\": 7912,\n    \"countReports\": 2405,\n    \"reportUserIDs\": [\n      9358,\n      4118\n    ],\n    \"reportUsers\": [\n      {\n        \"userID\": 5076,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://kqozSVIcO.vdUzaN0k-.5TX\",\n        \"dateLastActive\": \"1973-12-12T23:49:25.894Z\",\n        \"url\": \"http://LMfDrnJFhPqflok.arshgOTMonCFuQ2.DrDx6,oEHTES.eXM2vCr8kECzRVxULgVgbod6i\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      },\n      {\n        \"userID\": 552,\n        \"name\": \"string\",\n        \"photoUrl\": \"https://vtPjJuO.zvdf6k\",\n        \"dateLastActive\": \"1966-04-05T09:59:44.855Z\",\n        \"url\": \"https://nDOjytQnUiUwsESI.xsquhOr9qU4rT.9c5-.tmkxdQcBH-mbDC\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": true\n      }\n    ],\n    \"url\": \"https://eRfAjcXxrVjHfvIsiUckI.maLpJ3qNh9UgGYowugbsWUqWUTS6WxiEQc7GE7g9x7Ra+BYgewWQOpC7DMQqjyeZteNd\",\n    \"assignedUserID\": 2441,\n    \"assignedUser\": {\n      \"userID\": 8764,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://peYjYtmwu.ptMBE,i1D0XPOhWxnUwlNHSAH5R0Z,\",\n      \"dateLastActive\": \"1952-11-06T20:19:14.817Z\",\n      \"url\": \"http://WsFJgITzfHvmMyVMhXZATIVsogNBd.utlnb31JuSD9ALFnXoc1gHPW+EEITNEx0azCi-aPp02SQE3gjpraqwCwibP4EB1\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"placeRecordName\": \"string\",\n    \"placeRecordUrl\": \"http://bitGwiJHQXASROSfPyFfDn.ydTR,CQK\",\n    \"dateLastReport\": \"1976-05-19T01:06:59.266Z\",\n    \"lastCommentID\": 9710,\n    \"dateLastComment\": \"1987-10-17T10:47:43.562Z\",\n    \"lastCommentUserID\": 5128,\n    \"lastCommentUser\": {\n      \"userID\": 6650,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://RAouApBTEytpiehBNgwaHdFfE.rlejxaH,OBMynJf1n2qQGR.O8XCBEIFpTKjZpFT9k4saMl+TvNDc\",\n      \"dateLastActive\": \"1992-10-09T04:55:41.984Z\",\n      \"url\": \"http://BZRPgRJFzJgeLeRdUBPfKiT.smpZjxidAoxBi\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"appeals\": [\n      {\n        \"appealID\": 6589,\n        \"type\": \"ban\",\n        \"status\": \"rejected\",\n        \"insertUserID\": 849,\n        \"appealingUserID\": 8853,\n        \"dateInserted\": \"1989-12-07T12:21:43.789Z\",\n        \"appealText\": \"string\",\n        \"appealingUserInfo\": {\n          \"userID\": 3347,\n          \"name\": \"string\",\n          \"email\": \"string\"\n        },\n        \"appealEventInfo\": {\n          \"userNoteID\": 3398,\n          \"moderatorUserID\": 6510,\n          \"moderatorName\": \"string\",\n          \"reasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"moderatorMessage\": \"string\",\n          \"dateOfEvent\": \"1986-09-18T03:10:55.372Z\",\n          \"recordType\": \"comment\",\n          \"recordID\": 3168,\n          \"decisionMessage\": \"string\"\n        },\n        \"assignedUserID\": 5705,\n        \"escalationID\": 127,\n        \"escalationLogID\": 2047,\n        \"dateUpdated\": \"2020-08-15T01:26:08.756Z\"\n      },\n      {\n        \"appealID\": 2581,\n        \"type\": \"content-removal\",\n        \"status\": \"pending\",\n        \"insertUserID\": 2596,\n        \"appealingUserID\": 6895,\n        \"dateInserted\": \"2019-07-16T23:31:39.057Z\",\n        \"appealText\": \"string\",\n        \"appealingUserInfo\": {\n          \"userID\": 8308,\n          \"name\": \"string\",\n          \"email\": \"string\"\n        },\n        \"appealEventInfo\": {\n          \"userNoteID\": 6048,\n          \"moderatorUserID\": 2501,\n          \"moderatorName\": \"string\",\n          \"reasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"moderatorMessage\": \"string\",\n          \"dateOfEvent\": \"2022-05-22T19:13:27.275Z\",\n          \"recordType\": \"comment\",\n          \"recordID\": 4117,\n          \"decisionMessage\": \"string\"\n        },\n        \"assignedUserID\": 3062,\n        \"escalationID\": 407,\n        \"escalationLogID\": 3088,\n        \"dateUpdated\": \"1967-04-27T00:30:03.428Z\"\n      }\n    ],\n    \"countAppeals\": 2471\n  },\n  {\n    \"name\": \"string\",\n    \"status\": \"on-hold\",\n    \"recordType\": \"premoderated\",\n    \"recordID\": 1208,\n    \"recordName\": \"string\",\n    \"recordUrl\": \"string\",\n    \"recordIsLive\": false,\n    \"recordWasEdited\": true,\n    \"placeRecordType\": \"category\",\n    \"placeRecordID\": 7882,\n    \"reportReasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 9841,\n        \"deleted\": false,\n        \"reportID\": 5880\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 9492,\n        \"deleted\": true,\n        \"reportID\": 2606\n      }\n    ],\n    \"countReportUsers\": 7373,\n    \"countReports\": 6694,\n    \"reportUserIDs\": [\n      4759,\n      602\n    ],\n    \"reportUsers\": [\n      {\n        \"userID\": 935,\n        \"name\": \"string\",\n        \"photoUrl\": \"https://DrgWCSipQGzIAoTPPmHJh.wtmOnqdxhBdhL\",\n        \"dateLastActive\": \"1956-06-13T03:48:20.203Z\",\n        \"url\": \"http://Dk.dgOFMsYrFjIhxZ5eP2AJLD\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": true\n      },\n      {\n        \"userID\": 4755,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://YhqYgmEUDMfkAngkwZWFtVOb.ywT+OmMvY+.lA\",\n        \"dateLastActive\": \"1980-08-10T23:07:27.514Z\",\n        \"url\": \"https://WmZpLbj.fbJOhv9E0mOwtQLKAb3XzIqpdyg4FTv,VjFA0PKZPcBQi1JbWof2gRr8d\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      }\n    ],\n    \"url\": \"https://BEVgkwh.eueaBDH5XZOMWbyP9AOgQB4gi8IldPv\",\n    \"assignedUserID\": 2244,\n    \"assignedUser\": {\n      \"userID\": 6443,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://nIrAtdWvHEOWPdMc.lpaeMS2oIHcxTXpnuyb\",\n      \"dateLastActive\": \"1985-03-28T01:22:12.854Z\",\n      \"url\": \"https://zapoKNuIpiYwAZNOU.wpgdLk0HRs-+6RUeyICBI7fhqrEPFAi6Y,NNx\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"placeRecordName\": \"string\",\n    \"placeRecordUrl\": \"https://leBngSkgwGYHnciAHrGzq.roRXYZqigyUraAycpI1I-bRd.wUrH,k3zo.Key\",\n    \"dateLastReport\": \"2004-02-01T13:18:59.463Z\",\n    \"lastCommentID\": 7018,\n    \"dateLastComment\": \"1955-09-17T21:17:13.864Z\",\n    \"lastCommentUserID\": 9685,\n    \"lastCommentUser\": {\n      \"userID\": 6372,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://YpNCJYDGePmLtZnJtbvTMVsbWTdFUNqz.wwpCrz-weXr3ntglDxQXDShWH.YEzfFi9HbSz5caAf7oreJ\",\n      \"dateLastActive\": \"1946-10-12T04:14:39.835Z\",\n      \"url\": \"https://hwfuMKwTgvNXHGVlTRRaNyyy.iriVKE.4Cvo45Z2BnZZomWBnldzj6MCplXbqsP.9ryoiGozuTPtIpU\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"appeals\": [\n      {\n        \"appealID\": 3783,\n        \"type\": \"ban\",\n        \"status\": \"approved\",\n        \"insertUserID\": 8686,\n        \"appealingUserID\": 133,\n        \"dateInserted\": \"2008-02-17T12:30:56.897Z\",\n        \"appealText\": \"string\",\n        \"appealingUserInfo\": {\n          \"userID\": 1761,\n          \"name\": \"string\",\n          \"email\": \"string\"\n        },\n        \"appealEventInfo\": {\n          \"userNoteID\": 9060,\n          \"moderatorUserID\": 2337,\n          \"moderatorName\": \"string\",\n          \"reasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"moderatorMessage\": \"string\",\n          \"dateOfEvent\": \"1991-10-15T21:04:46.298Z\",\n          \"recordType\": \"comment\",\n          \"recordID\": 2255,\n          \"decisionMessage\": \"string\"\n        },\n        \"assignedUserID\": 864,\n        \"escalationID\": 8821,\n        \"escalationLogID\": 726,\n        \"dateUpdated\": \"1986-08-26T13:48:08.271Z\"\n      },\n      {\n        \"appealID\": 366,\n        \"type\": \"ban\",\n        \"status\": \"pending\",\n        \"insertUserID\": 9200,\n        \"appealingUserID\": 5107,\n        \"dateInserted\": \"2017-04-23T10:34:53.932Z\",\n        \"appealText\": \"string\",\n        \"appealingUserInfo\": {\n          \"userID\": 8734,\n          \"name\": \"string\",\n          \"email\": \"string\"\n        },\n        \"appealEventInfo\": {\n          \"userNoteID\": 635,\n          \"moderatorUserID\": 6772,\n          \"moderatorName\": \"string\",\n          \"reasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"moderatorMessage\": \"string\",\n          \"dateOfEvent\": \"1962-07-26T11:09:03.451Z\",\n          \"recordType\": \"comment\",\n          \"recordID\": 5158,\n          \"decisionMessage\": \"string\"\n        },\n        \"assignedUserID\": 9814,\n        \"escalationID\": 3512,\n        \"escalationLogID\": 7318,\n        \"dateUpdated\": \"1954-03-22T18:06:09.425Z\"\n      }\n    ],\n    \"countAppeals\": 8072\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2637af5a-ebe3-422e-8e14-d0c4bca29b12",
+          "name": "Get an escalation",
+          "request": {
+            "name": "Get an escalation",
+            "description": {},
+            "url": {
+              "path": [
+                "escalations",
+                ":escalationID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "escalationID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e70982f-8653-48d5-a2db-93538a2192b6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "escalations",
+                    ":escalationID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "escalationID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"status\": \"on-hold\",\n  \"recordType\": \"comment\",\n  \"recordID\": 1902,\n  \"recordName\": \"string\",\n  \"recordUrl\": \"string\",\n  \"recordIsLive\": true,\n  \"recordWasEdited\": false,\n  \"placeRecordType\": \"category\",\n  \"placeRecordID\": 6512,\n  \"reportReasons\": [\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 5697,\n      \"deleted\": false,\n      \"reportID\": 2936\n    },\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 9258,\n      \"deleted\": true,\n      \"reportID\": 5470\n    }\n  ],\n  \"countReportUsers\": 6921,\n  \"countReports\": 40,\n  \"reportUserIDs\": [\n    8913,\n    3151\n  ],\n  \"reportUsers\": [\n    {\n      \"userID\": 4685,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://LswwGcnIjwYfmnWhMoJWkBr.mvjwdh5FVyISnUCENI1r,Y6i7qgwYK.uFDfhEVpaVqkXqqaNWk9mmF9s\",\n      \"dateLastActive\": \"1968-12-25T04:53:58.765Z\",\n      \"url\": \"https://TtszHYxVGILnaEGivdXEbbz.texaA9IozM6.X\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    {\n      \"userID\": 9436,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://JxksptQshyPBs.btfE2yoWWoBrIVEeGI8N2xGQPJ8bAkBn,ptWTrHrA\",\n      \"dateLastActive\": \"2003-05-18T20:27:31.554Z\",\n      \"url\": \"https://HrY.zhczfA.iC.Vs49dBYBz+2ZtXnoXR6DmnCw8CKmLv\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  ],\n  \"url\": \"http://LRKmyHZzwDGgBHLOgnBuptkWj.pgtPT02tXnxvORR6MQlCik,s1bVDhzdD8LfFWC6,5ckfK8mPWfmlwQJXHOTm-wn\",\n  \"assignedUserID\": 5885,\n  \"assignedUser\": {\n    \"userID\": 4527,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://VICGHaQgSUqMGPKsEE.amstAuXWMzJ7f7.akA1nl6DirrwEO,\",\n    \"dateLastActive\": \"2002-06-20T03:11:29.407Z\",\n    \"url\": \"http://JAUEygxhDhTTVDr.qhfXYhayu-EGBF0BNZEQSM4dfs,2V8LoIKSD8o\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"placeRecordName\": \"string\",\n  \"placeRecordUrl\": \"https://tAUE.drkvzz744FTnwVhKGC8QIHpOerbsx20u4zLz,QZIA6sIHamAZQEE\",\n  \"dateLastReport\": \"2019-11-15T08:53:22.903Z\",\n  \"lastCommentID\": 1869,\n  \"dateLastComment\": \"2005-04-20T14:40:23.136Z\",\n  \"lastCommentUserID\": 7490,\n  \"lastCommentUser\": {\n    \"userID\": 3004,\n    \"name\": \"stri\",\n    \"photoUrl\": \"https://hcYVcoqZk.kzcVb3H6dl52HPh3UtzNX75gCoYW\",\n    \"dateLastActive\": \"2009-05-02T14:06:45.216Z\",\n    \"url\": \"https://IjhOjhiwbMOTuzKawxUHjfkwipdLsqodH.xxfZPZUEFMRu6.JDTKLKWUY5Ef1pBzHASUwbR9WZXnCO26D3cxmQQd\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"appeals\": [\n    {\n      \"appealID\": 8962,\n      \"type\": \"ban\",\n      \"status\": \"rejected\",\n      \"insertUserID\": 3012,\n      \"appealingUserID\": 8422,\n      \"dateInserted\": \"1953-06-24T11:07:44.778Z\",\n      \"appealText\": \"string\",\n      \"appealingUserInfo\": {\n        \"userID\": 1022,\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      \"appealEventInfo\": {\n        \"userNoteID\": 8981,\n        \"moderatorUserID\": 1864,\n        \"moderatorName\": \"string\",\n        \"reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"moderatorMessage\": \"string\",\n        \"dateOfEvent\": \"1988-08-05T15:12:21.035Z\",\n        \"recordType\": \"comment\",\n        \"recordID\": 6725,\n        \"decisionMessage\": \"string\"\n      },\n      \"assignedUserID\": 2029,\n      \"escalationID\": 8349,\n      \"escalationLogID\": 6479,\n      \"dateUpdated\": \"1988-03-18T04:12:17.099Z\"\n    },\n    {\n      \"appealID\": 2239,\n      \"type\": \"content-removal\",\n      \"status\": \"rejected\",\n      \"insertUserID\": 4508,\n      \"appealingUserID\": 3505,\n      \"dateInserted\": \"1970-06-30T08:14:22.712Z\",\n      \"appealText\": \"string\",\n      \"appealingUserInfo\": {\n        \"userID\": 3972,\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      \"appealEventInfo\": {\n        \"userNoteID\": 7925,\n        \"moderatorUserID\": 9998,\n        \"moderatorName\": \"string\",\n        \"reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"moderatorMessage\": \"string\",\n        \"dateOfEvent\": \"2013-07-13T09:35:51.053Z\",\n        \"recordType\": \"discussion\",\n        \"recordID\": 7126,\n        \"decisionMessage\": \"string\"\n      },\n      \"assignedUserID\": 1706,\n      \"escalationID\": 2004,\n      \"escalationLogID\": 3468,\n      \"dateUpdated\": \"1950-12-14T23:50:02.116Z\"\n    }\n  ],\n  \"countAppeals\": 4751\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d593d09-eb51-4761-bfb3-69a263814ecb",
+          "name": "Update an escalation",
+          "request": {
+            "name": "Update an escalation",
+            "description": {},
+            "url": {
+              "path": [
+                "escalations",
+                ":escalationID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "escalationID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recordIsLive\": \"<boolean>\",\n  \"assignedUserID\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8e621ca-8eed-449f-a757-5e440d6f94d3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "escalations",
+                    ":escalationID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "escalationID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recordIsLive\": \"<boolean>\",\n  \"assignedUserID\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"status\": \"on-hold\",\n  \"recordType\": \"comment\",\n  \"recordID\": 1902,\n  \"recordName\": \"string\",\n  \"recordUrl\": \"string\",\n  \"recordIsLive\": true,\n  \"recordWasEdited\": false,\n  \"placeRecordType\": \"category\",\n  \"placeRecordID\": 6512,\n  \"reportReasons\": [\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 5697,\n      \"deleted\": false,\n      \"reportID\": 2936\n    },\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 9258,\n      \"deleted\": true,\n      \"reportID\": 5470\n    }\n  ],\n  \"countReportUsers\": 6921,\n  \"countReports\": 40,\n  \"reportUserIDs\": [\n    8913,\n    3151\n  ],\n  \"reportUsers\": [\n    {\n      \"userID\": 4685,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://LswwGcnIjwYfmnWhMoJWkBr.mvjwdh5FVyISnUCENI1r,Y6i7qgwYK.uFDfhEVpaVqkXqqaNWk9mmF9s\",\n      \"dateLastActive\": \"1968-12-25T04:53:58.765Z\",\n      \"url\": \"https://TtszHYxVGILnaEGivdXEbbz.texaA9IozM6.X\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    {\n      \"userID\": 9436,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://JxksptQshyPBs.btfE2yoWWoBrIVEeGI8N2xGQPJ8bAkBn,ptWTrHrA\",\n      \"dateLastActive\": \"2003-05-18T20:27:31.554Z\",\n      \"url\": \"https://HrY.zhczfA.iC.Vs49dBYBz+2ZtXnoXR6DmnCw8CKmLv\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  ],\n  \"url\": \"http://LRKmyHZzwDGgBHLOgnBuptkWj.pgtPT02tXnxvORR6MQlCik,s1bVDhzdD8LfFWC6,5ckfK8mPWfmlwQJXHOTm-wn\",\n  \"assignedUserID\": 5885,\n  \"assignedUser\": {\n    \"userID\": 4527,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://VICGHaQgSUqMGPKsEE.amstAuXWMzJ7f7.akA1nl6DirrwEO,\",\n    \"dateLastActive\": \"2002-06-20T03:11:29.407Z\",\n    \"url\": \"http://JAUEygxhDhTTVDr.qhfXYhayu-EGBF0BNZEQSM4dfs,2V8LoIKSD8o\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"placeRecordName\": \"string\",\n  \"placeRecordUrl\": \"https://tAUE.drkvzz744FTnwVhKGC8QIHpOerbsx20u4zLz,QZIA6sIHamAZQEE\",\n  \"dateLastReport\": \"2019-11-15T08:53:22.903Z\",\n  \"lastCommentID\": 1869,\n  \"dateLastComment\": \"2005-04-20T14:40:23.136Z\",\n  \"lastCommentUserID\": 7490,\n  \"lastCommentUser\": {\n    \"userID\": 3004,\n    \"name\": \"stri\",\n    \"photoUrl\": \"https://hcYVcoqZk.kzcVb3H6dl52HPh3UtzNX75gCoYW\",\n    \"dateLastActive\": \"2009-05-02T14:06:45.216Z\",\n    \"url\": \"https://IjhOjhiwbMOTuzKawxUHjfkwipdLsqodH.xxfZPZUEFMRu6.JDTKLKWUY5Ef1pBzHASUwbR9WZXnCO26D3cxmQQd\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"appeals\": [\n    {\n      \"appealID\": 8962,\n      \"type\": \"ban\",\n      \"status\": \"rejected\",\n      \"insertUserID\": 3012,\n      \"appealingUserID\": 8422,\n      \"dateInserted\": \"1953-06-24T11:07:44.778Z\",\n      \"appealText\": \"string\",\n      \"appealingUserInfo\": {\n        \"userID\": 1022,\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      \"appealEventInfo\": {\n        \"userNoteID\": 8981,\n        \"moderatorUserID\": 1864,\n        \"moderatorName\": \"string\",\n        \"reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"moderatorMessage\": \"string\",\n        \"dateOfEvent\": \"1988-08-05T15:12:21.035Z\",\n        \"recordType\": \"comment\",\n        \"recordID\": 6725,\n        \"decisionMessage\": \"string\"\n      },\n      \"assignedUserID\": 2029,\n      \"escalationID\": 8349,\n      \"escalationLogID\": 6479,\n      \"dateUpdated\": \"1988-03-18T04:12:17.099Z\"\n    },\n    {\n      \"appealID\": 2239,\n      \"type\": \"content-removal\",\n      \"status\": \"rejected\",\n      \"insertUserID\": 4508,\n      \"appealingUserID\": 3505,\n      \"dateInserted\": \"1970-06-30T08:14:22.712Z\",\n      \"appealText\": \"string\",\n      \"appealingUserInfo\": {\n        \"userID\": 3972,\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      \"appealEventInfo\": {\n        \"userNoteID\": 7925,\n        \"moderatorUserID\": 9998,\n        \"moderatorName\": \"string\",\n        \"reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"moderatorMessage\": \"string\",\n        \"dateOfEvent\": \"2013-07-13T09:35:51.053Z\",\n        \"recordType\": \"discussion\",\n        \"recordID\": 7126,\n        \"decisionMessage\": \"string\"\n      },\n      \"assignedUserID\": 1706,\n      \"escalationID\": 2004,\n      \"escalationLogID\": 3468,\n      \"dateUpdated\": \"1950-12-14T23:50:02.116Z\"\n    }\n  ],\n  \"countAppeals\": 4751\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc38a963-94c6-483b-a269-3a4c883f5c5c",
+          "name": "Get a list of escalation Logs",
+          "request": {
+            "name": "Get a list of escalation Logs",
+            "description": {},
+            "url": {
+              "path": [
+                "escalations",
+                "log"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "escalationID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of discussion escalationIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "recordType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of discussion recordIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "Filter by one or more action (CSV & array supported)."
+                },
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "Filter by one or more action (CSV & array supported)."
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a user performing the action"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordUserID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of users who created the content that was acted upon."
+                },
+                {
+                  "disabled": false,
+                  "key": "recordUserRoleID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of users' roles who created the content that was escalated."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "escalationID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of escalationIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateInserted",
+                  "value": "<date-filter>",
+                  "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordIsLive",
+                  "value": "<boolean>",
+                  "description": "Whether the record still exists."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b92a4b8-2e33-4d1a-a5dd-e8b8945181b7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "escalations",
+                    "log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "escalationID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "recordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recordID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "recordUserID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "recordUserRoleID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "escalationID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "dateInserted",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "recordIsLive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"action\": \"removed\",\n    \"recordType\": \"premoderated\",\n    \"recordID\": 7453,\n    \"recordUserID\": 9914,\n    \"insertUserID\": 3657,\n    \"escalationLogID\": 9211,\n    \"authorNotificationMessage\": \"string\",\n    \"dateInserted\": \"1954-11-21T17:56:29.309Z\",\n    \"reasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 766,\n        \"deleted\": true,\n        \"reportID\": 9889\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 2999,\n        \"deleted\": true,\n        \"reportID\": 4351\n      }\n    ],\n    \"insertUser\": {\n      \"userID\": 7906,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://nGwbnwpPvCEtCqXIsrIEvKNsSJq.dogKA10pFI\",\n      \"dateLastActive\": \"2026-06-10T16:20:32.619Z\",\n      \"url\": \"http://LvmJhtUMIeJeNIebLwOoTbdjnEt.xhpc8T,aEyVqDXgVW3jmxg77thrb\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"recordUser\": {\n      \"userID\": 2304,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://ilaKyBnOiC.giuRhtynVhrJFqsBexI6WwfRtZ.6470TTjkn-Qau3JPypx.Fi+I8LlS,zrANX992Y-d910OB.drU\",\n      \"dateLastActive\": \"1997-10-16T07:51:37.303Z\",\n      \"url\": \"https://tAISMBbhzBgnKpyNfFmKeDzSuzzlca.nqcGRQR12,8pvKw5BaWt6FMfv5u9m8lC4aDeb.fKjjBOS.ybf4ZSx8\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"appeal\": {\n      \"appealID\": 8985,\n      \"type\": \"content-removal\",\n      \"status\": \"pending\",\n      \"insertUserID\": 416,\n      \"appealingUserID\": 9585,\n      \"dateInserted\": \"2002-12-17T02:20:02.795Z\",\n      \"appealText\": \"string\",\n      \"appealingUserInfo\": {\n        \"userID\": 4041,\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      \"appealEventInfo\": {\n        \"userNoteID\": 7726,\n        \"moderatorUserID\": 2272,\n        \"moderatorName\": \"string\",\n        \"reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"moderatorMessage\": \"string\",\n        \"dateOfEvent\": \"1971-12-18T20:15:07.908Z\",\n        \"recordType\": \"comment\",\n        \"recordID\": 7826,\n        \"decisionMessage\": \"string\"\n      },\n      \"assignedUserID\": 5211,\n      \"escalationID\": 7360,\n      \"escalationLogID\": 4992,\n      \"dateUpdated\": \"1966-01-07T02:44:13.186Z\"\n    },\n    \"record\": {\n      \"recordName\": \"string\",\n      \"recordBody\": \"string\",\n      \"recordFormat\": \"string\",\n      \"recordUrl\": \"string\"\n    }\n  },\n  {\n    \"action\": \"restored\",\n    \"recordType\": \"comment\",\n    \"recordID\": 7348,\n    \"recordUserID\": 2916,\n    \"insertUserID\": 3026,\n    \"escalationLogID\": 6406,\n    \"authorNotificationMessage\": \"string\",\n    \"dateInserted\": \"1956-05-15T12:46:13.637Z\",\n    \"reasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 6164,\n        \"deleted\": false,\n        \"reportID\": 9492\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 5301,\n        \"deleted\": false,\n        \"reportID\": 3941\n      }\n    ],\n    \"insertUser\": {\n      \"userID\": 3840,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://XLuOqEKdzRHZ.albmbXmTBOqc4onXvTCQvRDBtgIlRqkozsKAX0xKLdj\",\n      \"dateLastActive\": \"1991-03-02T13:44:19.895Z\",\n      \"url\": \"http://fEcTrWOywyltIDsAShviGE.vdeemeRgv.UEfc3dfQqaXgXNkhIlDMb4bmB,OmSDSwU9bRh08wGHm\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"recordUser\": {\n      \"userID\": 4591,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://RovPdSCcPgruSJNuEjaSKvCKjTv.ckMUXZbBfWNY6pPmB9OhWVAH+HpVbPJ5B7BlWYp6LJKX\",\n      \"dateLastActive\": \"2009-10-07T07:13:01.489Z\",\n      \"url\": \"http://aLxWdFIolMvCLlJrl.ekfqRtgmDJhtJWSCbJdxqJMVtXXJDIN9JUaD+X-aRLNSoKZElID-,qq62JFD\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"appeal\": {\n      \"appealID\": 3115,\n      \"type\": \"ban\",\n      \"status\": \"in-review\",\n      \"insertUserID\": 9612,\n      \"appealingUserID\": 509,\n      \"dateInserted\": \"1986-06-17T04:09:47.190Z\",\n      \"appealText\": \"string\",\n      \"appealingUserInfo\": {\n        \"userID\": 9937,\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      \"appealEventInfo\": {\n        \"userNoteID\": 702,\n        \"moderatorUserID\": 7253,\n        \"moderatorName\": \"string\",\n        \"reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"moderatorMessage\": \"string\",\n        \"dateOfEvent\": \"1981-02-01T05:29:43.698Z\",\n        \"recordType\": \"discussion\",\n        \"recordID\": 905,\n        \"decisionMessage\": \"string\"\n      },\n      \"assignedUserID\": 6582,\n      \"escalationID\": 9684,\n      \"escalationLogID\": 4291,\n      \"dateUpdated\": \"1984-05-09T16:42:59.478Z\"\n    },\n    \"record\": {\n      \"recordName\": \"string\",\n      \"recordBody\": \"string\",\n      \"recordFormat\": \"string\",\n      \"recordUrl\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "414b4ef3-872a-4ed0-bfa2-18f5fe873c06",
+          "name": "Get an escalation Log",
+          "request": {
+            "name": "Get an escalation Log",
+            "description": {
+              "content": "Retrieve a specific escalation log entry. Moderators can access any log entry.\nNon-moderators can only access logs where they are the record owner (e.g., for appealing content removal).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "escalations",
+                "log",
+                ":escalationLogID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand additional data. Options are appeal (submitted appeal), record (removed content), or all."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "escalationLogID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e62733e-1750-47bf-89b9-a900df945185",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "escalations",
+                    "log",
+                    ":escalationLogID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "escalationLogID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"action\": \"removed\",\n  \"recordType\": \"premoderated\",\n  \"recordID\": 3098,\n  \"recordUserID\": 2030,\n  \"insertUserID\": 6929,\n  \"escalationLogID\": 5588,\n  \"authorNotificationMessage\": \"string\",\n  \"dateInserted\": \"1959-03-19T02:22:45.492Z\",\n  \"reasons\": [\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 3427,\n      \"deleted\": false,\n      \"reportID\": 41\n    },\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 7103,\n      \"deleted\": true,\n      \"reportID\": 2298\n    }\n  ],\n  \"insertUser\": {\n    \"userID\": 6293,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://iemSWNpvpHXeXMrQWrja.lgDPmX+K5YnQOw6jQADq9KPesgMrW.0jMhulV.F7Rl,-cCXats4cIDMPaj60eQA7u0o1OJC-JSJ+K6amJYr\",\n    \"dateLastActive\": \"1956-04-29T15:26:50.120Z\",\n    \"url\": \"https://sWPlkzVIBMzJ.itewLYPzuEUBkts3+Gfrkukxqvr\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"recordUser\": {\n    \"userID\": 5325,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://ZtblqwNUrBexkKb.mmzLfPX0GBoceSDH60rqMazLI-eITWiFsbMLRcnX\",\n    \"dateLastActive\": \"1947-04-23T00:33:17.337Z\",\n    \"url\": \"https://HTtklIoDkUliFKIR.qldz0cZhtjGWYNABTPVZfF,MR+Mt97VeRK9MpDHaZVa3C932+EL+7xVfUWXfXi4O3cxQwIo\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"appeal\": {\n    \"appealID\": 7866,\n    \"type\": \"ban\",\n    \"status\": \"rejected\",\n    \"insertUserID\": 5657,\n    \"appealingUserID\": 5517,\n    \"dateInserted\": \"1947-10-16T16:57:28.523Z\",\n    \"appealText\": \"string\",\n    \"appealingUserInfo\": {\n      \"userID\": 1901,\n      \"name\": \"string\",\n      \"email\": \"string\"\n    },\n    \"appealEventInfo\": {\n      \"userNoteID\": 7995,\n      \"moderatorUserID\": 1027,\n      \"moderatorName\": \"string\",\n      \"reasons\": [\n        \"string\",\n        \"string\"\n      ],\n      \"moderatorMessage\": \"string\",\n      \"dateOfEvent\": \"1997-07-02T07:38:06.125Z\",\n      \"recordType\": \"comment\",\n      \"recordID\": 372,\n      \"decisionMessage\": \"string\"\n    },\n    \"assignedUserID\": 4689,\n    \"escalationID\": 4848,\n    \"escalationLogID\": 4059,\n    \"dateUpdated\": \"1962-02-25T00:11:16.851Z\"\n  },\n  \"record\": {\n    \"recordName\": \"string\",\n    \"recordBody\": \"string\",\n    \"recordFormat\": \"string\",\n    \"recordUrl\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "158a8958-42e7-4ef6-bfc6-f6fbacd0f840",
+          "name": "Search for users that could be assigned to an escalation by full or partial name matching.",
+          "request": {
+            "name": "Search for users that could be assigned to an escalation by full or partial name matching.",
+            "description": {},
+            "url": {
+              "path": [
+                "escalations",
+                "lookup-assignee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "escalationID",
+                  "value": "<integer>",
+                  "description": "(Required) If passed will filter to potential assignees for this specific escalation."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Filter for username. Supports full or partial matching with appended wildcard (e.g. User*).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29243d5b-9f06-47da-a6ad-1e3285f063a0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "escalations",
+                    "lookup-assignee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "escalationID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userID\": 2439,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://ZuaydyUJTRqODZa.lmdo1NMFDWYPhFq2ozqB0g0VoR.S1hDviK4JXknEBEz.-SE\",\n    \"dateLastActive\": \"1952-12-26T19:54:11.292Z\",\n    \"url\": \"https://APmdWRVrybPobIUUdezjspsTvSCyV.oabGeLBjXXj\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  {\n    \"userID\": 8224,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://nqOiUFpEmHVikpMdMIlbDJiptTmqCQr.hgeUeAn3tGQG3BUbd6ehtf7aBvtljG1wUI2z.ng\",\n    \"dateLastActive\": \"1969-10-25T22:48:41.216Z\",\n    \"url\": \"http://TmhHPkKjZHVZXSffHWdGmnnlrpHiC.wwbXCojCN8\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b9c7aa1-0a2f-470b-868f-b8b4d6c7c219",
+          "name": "Get a list of report reasons for the current sessioned user. `community.manage` permission grants permission to all reasons.",
+          "request": {
+            "name": "Get a list of report reasons for the current sessioned user. `community.manage` permission grants permission to all reasons.",
+            "description": {},
+            "url": {
+              "path": [
+                "report-reasons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeDeleted",
+                  "value": "false",
+                  "description": "Allow selecting deleted reports. Requires `moderation.manage` permission."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b65a5af-30ed-49b5-93b5-80bbff35032c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report-reasons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDeleted",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"reportReasonID\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"dateInserted\": \"1956-07-07T03:30:41.777Z\",\n    \"insertUserID\": 9379,\n    \"sort\": 8427,\n    \"deleted\": true,\n    \"dateUpdated\": \"2003-02-02T14:39:50.797Z\",\n    \"updateUserID\": 3989,\n    \"roleIDs\": [\n      9477,\n      2242\n    ],\n    \"roles\": [\n      {\n        \"roleID\": 3082,\n        \"name\": \"string\"\n      },\n      {\n        \"roleID\": 5566,\n        \"name\": \"string\"\n      }\n    ],\n    \"countReports\": 5042\n  },\n  {\n    \"reportReasonID\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"dateInserted\": \"2014-10-20T22:34:42.523Z\",\n    \"insertUserID\": 2186,\n    \"sort\": 7555,\n    \"deleted\": false,\n    \"dateUpdated\": \"2019-06-12T03:50:49.883Z\",\n    \"updateUserID\": 1666,\n    \"roleIDs\": [\n      1791,\n      4980\n    ],\n    \"roles\": [\n      {\n        \"roleID\": 7763,\n        \"name\": \"string\"\n      },\n      {\n        \"roleID\": 9933,\n        \"name\": \"string\"\n      }\n    ],\n    \"countReports\": 8849\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f2593ba-891a-465d-965d-c491d6259489",
+          "name": "Create a report reason",
+          "request": {
+            "name": "Create a report reason",
+            "description": {},
+            "url": {
+              "path": [
+                "report-reasons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reportReasonID\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roleIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sort\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5a508b5f-26e3-46f1-b655-1edd325f608b",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report-reasons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reportReasonID\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roleIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sort\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reportReasonID\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"dateInserted\": \"2003-12-19T23:51:11.430Z\",\n  \"insertUserID\": 2959,\n  \"sort\": 5089,\n  \"deleted\": false,\n  \"dateUpdated\": \"1993-12-14T16:35:02.823Z\",\n  \"updateUserID\": 6849,\n  \"roleIDs\": [\n    9000,\n    9629\n  ],\n  \"roles\": [\n    {\n      \"roleID\": 173,\n      \"name\": \"string\"\n    },\n    {\n      \"roleID\": 5430,\n      \"name\": \"string\"\n    }\n  ],\n  \"countReports\": 8771\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d50304d-2507-4c2c-b3fb-7a49792db6e8",
+              "name": "Conflict. Returned if the reportReasonID already exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report-reasons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reportReasonID\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roleIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sort\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Report reason already exists.\",\n  \"code\": 409,\n  \"conflictingReason\": {\n    \"reportReasonID\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"dateInserted\": \"1968-01-18T18:55:13.139Z\",\n    \"insertUserID\": 4462,\n    \"sort\": 4547,\n    \"deleted\": true,\n    \"dateUpdated\": \"2004-04-11T10:31:30.681Z\",\n    \"updateUserID\": 2881,\n    \"roleIDs\": [\n      1150,\n      8313\n    ],\n    \"roles\": [\n      {\n        \"roleID\": 6778,\n        \"name\": \"string\"\n      },\n      {\n        \"roleID\": 5143,\n        \"name\": \"string\"\n      }\n    ],\n    \"countReports\": 2259\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cd9f5ad-8c2c-4a8a-bdf1-9644a376bb04",
+          "name": "Get a report reason if you have permission for it.",
+          "request": {
+            "name": "Get a report reason if you have permission for it.",
+            "description": {},
+            "url": {
+              "path": [
+                "report-reasons",
+                ":reportReasonID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeDeleted",
+                  "value": "false",
+                  "description": "Allow selecting deleted reports. Requires `moderation.manage` permission."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reportReasonID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79d51663-03b3-4d90-8dab-0439c0b2a156",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report-reasons",
+                    ":reportReasonID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDeleted",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportReasonID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reportReasonID\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"dateInserted\": \"2003-12-19T23:51:11.430Z\",\n  \"insertUserID\": 2959,\n  \"sort\": 5089,\n  \"deleted\": false,\n  \"dateUpdated\": \"1993-12-14T16:35:02.823Z\",\n  \"updateUserID\": 6849,\n  \"roleIDs\": [\n    9000,\n    9629\n  ],\n  \"roles\": [\n    {\n      \"roleID\": 173,\n      \"name\": \"string\"\n    },\n    {\n      \"roleID\": 5430,\n      \"name\": \"string\"\n    }\n  ],\n  \"countReports\": 8771\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3aef1374-cf86-426b-a8e8-5e924853d944",
+              "name": "Not Found. Also returned if there is no permission to not leak reasonIDs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report-reasons",
+                    ":reportReasonID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDeleted",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportReasonID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Report reason not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dbf9dd5-ec18-4382-a1c9-211cf5a8c19b",
+          "name": "Update a report reason",
+          "request": {
+            "name": "Update a report reason",
+            "description": {},
+            "url": {
+              "path": [
+                "report-reasons",
+                ":reportReasonID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reportReasonID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reportReasonID\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roleIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sort\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5caa735-e1a3-4811-a5fc-5bc92d847c5f",
+              "name": "Updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report-reasons",
+                    ":reportReasonID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportReasonID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reportReasonID\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roleIDs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sort\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reportReasonID\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"dateInserted\": \"2003-12-19T23:51:11.430Z\",\n  \"insertUserID\": 2959,\n  \"sort\": 5089,\n  \"deleted\": false,\n  \"dateUpdated\": \"1993-12-14T16:35:02.823Z\",\n  \"updateUserID\": 6849,\n  \"roleIDs\": [\n    9000,\n    9629\n  ],\n  \"roles\": [\n    {\n      \"roleID\": 173,\n      \"name\": \"string\"\n    },\n    {\n      \"roleID\": 5430,\n      \"name\": \"string\"\n    }\n  ],\n  \"countReports\": 8771\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64489972-6a45-44f1-9909-353995835017",
+          "name": "Delete a report reason. If the report has already been used, the reason will be marked as deleted but still exist in the underyling system for usage when viewing existing reports.",
+          "request": {
+            "name": "Delete a report reason. If the report has already been used, the reason will be marked as deleted but still exist in the underyling system for usage when viewing existing reports.",
+            "description": {},
+            "url": {
+              "path": [
+                "report-reasons",
+                ":reportReasonID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reportID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2dbb3eff-dd34-4b88-a809-03a0d7857f8c",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report-reasons",
+                    ":reportReasonID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f4ef6ee-4e25-4064-94ca-b2dcb42b26fa",
+          "name": "Update the sort order of report reasons",
+          "request": {
+            "name": "Update the sort order of report reasons",
+            "description": {},
+            "url": {
+              "path": [
+                "report-reasons",
+                "sorts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c7daa40d-1472-4008-b83a-0bb64e81c421",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report-reasons",
+                    "sorts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"spam\": 1,\n  \"abuse\": 2,\n  \"sexual-content\": 3\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3615b1ad-2508-4bbf-87c6-d6c9a326a7aa",
+          "name": "Create a report",
+          "request": {
+            "name": "Create a report",
+            "description": {},
+            "url": {
+              "path": [
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recordType\": \"<string>\",\n  \"recordID\": \"<integer>\",\n  \"reportReasonIDs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"noteBody\": \"<string>\",\n  \"noteFormat\": \"<string>\",\n  \"reporterEmail\": \"<email>\",\n  \"reporterName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84f37856-7591-4b20-afe0-331f7e0a37d7",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recordType\": \"<string>\",\n  \"recordID\": \"<integer>\",\n  \"reportReasonIDs\": [\n    \"spam\",\n    \"abuse\"\n  ],\n  \"noteBody\": \"<string>\",\n  \"noteFormat\": \"<string>\",\n  \"reporterEmail\": \"<email>\",\n  \"reporterName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reportID\": 8027,\n  \"recordType\": \"comment\",\n  \"recordID\": 3786,\n  \"recordName\": \"string\",\n  \"recordHtml\": \"string\",\n  \"recordUrl\": \"string\",\n  \"recordIsLive\": true,\n  \"recordWasEdited\": true,\n  \"recordUserID\": 766,\n  \"recordDateInserted\": \"1963-10-21T22:47:09.639Z\",\n  \"placeRecordType\": \"category\",\n  \"placeRecordID\": 9616,\n  \"insertUserID\": 229,\n  \"reportedUserID\": 6009,\n  \"updateUserID\": 4308,\n  \"dateInserted\": \"1950-08-29T04:51:33.059Z\",\n  \"dateUpdated\": \"1973-11-04T00:04:13.675Z\",\n  \"noteHtml\": \"string\",\n  \"recordExcerpt\": \"string\",\n  \"placeRecordName\": \"string\",\n  \"placeRecordUrl\": \"https://PZzVhDfjmuNNPMNaJe.nkE7MM\",\n  \"recordUser\": {\n    \"userID\": 8565,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://pujABwEWYqOAvjdC.cwsnMLq3Iw8tQVkqs1iIW5EqD\",\n    \"dateLastActive\": \"1951-12-24T18:17:22.431Z\",\n    \"url\": \"https://MpGmWVKabKojspHNBpmCn.rcghRfEEhNOotJfTdz55L5KJ8tGfBU,HoJiTJWlI\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"recordDateUpdated\": \"1968-11-03T06:29:34.677Z\",\n  \"isPending\": false,\n  \"isPendingUpdate\": true,\n  \"reportReasons\": [\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 3135,\n      \"deleted\": false,\n      \"reportID\": 238\n    },\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 8903,\n      \"deleted\": false,\n      \"reportID\": 5679\n    }\n  ],\n  \"insertUser\": {\n    \"userID\": 1941,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://YiznSMuDGq.tezpZ75u4OQpqqv7.yBxpNb7ZnuKKGBhmBhOi4KmskewMy3jtpE\",\n    \"dateLastActive\": \"2010-02-26T10:57:29.776Z\",\n    \"url\": \"http://vbDJwpCKSUQFQVHlVwfMIhCmwPEwwD.sfhoFT\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"reporterEmail\": \"string\",\n  \"reporterName\": \"string\",\n  \"reportedUser\": {\n    \"userID\": 6521,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://CwlTSYH.cpjRvIrAaa.e6Cpg5pM9ag,Gq.Vxe+Kb+pmYPub-0mc,2MKYGlb0229a7qrsy9cLYgb8lPC,5kT\",\n    \"dateLastActive\": \"1969-02-27T21:50:55.168Z\",\n    \"url\": \"https://kWITDB.aaIgxR8dM\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"updateUser\": {\n    \"userID\": 7326,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://QaNI.ibFnbhkjosyk.ruxAH5AWsocN+WL.9zbosuBmFw6EQskC0iB3lvqWvkppIDshdVn-vLMDxM2\",\n    \"dateLastActive\": \"2016-08-04T10:00:35.041Z\",\n    \"url\": \"http://ohyfbzBITAKuKiBV.bfbnlaXEZehc+3PxmgwtxBscUPxQLtoP5Kn-OndfQqoBWJWCx-PwC.x4fXx7UF8U3rNIM\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3362aa7-8231-4072-b376-4278473fe0a8",
+          "name": "Get a list of reports",
+          "request": {
+            "name": "Get a list of reports",
+            "description": {},
+            "url": {
+              "path": [
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "recordType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportReasonID",
+                  "value": "<string>",
+                  "description": "Filter by a report reason. Multiple reasonIDs can be passed in a CSV or array."
+                },
+                {
+                  "disabled": false,
+                  "key": "recordID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of discussion recordIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "placeRecordType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "placeRecordID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of category placeRecordIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of users that made the report."
+                },
+                {
+                  "disabled": false,
+                  "key": "insertUserRoleID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of users' roles that made the report."
+                },
+                {
+                  "disabled": false,
+                  "key": "removedUserID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of userIDs who removed the record."
+                },
+                {
+                  "disabled": false,
+                  "key": "recordUserID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of users who's content was reported."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "new",
+                  "description": "Filter by one or more statuses (CSV & array supported)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of recordIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateInserted",
+                  "value": "<date-filter>",
+                  "description": "Filter by insert date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateRemoved",
+                  "value": "<date-filter>",
+                  "description": "Filter by removed date. See [date filters](https://docs.vanillaforums.com/help/apiv2/date-filters/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "reporterEmail",
+                  "value": "<email>",
+                  "description": "Filter by guest reporter email address."
+                },
+                {
+                  "disabled": false,
+                  "key": "recordIsLive",
+                  "value": "<boolean>",
+                  "description": "Whether the record still exists."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a78a0841-3130-4b1b-87e4-756a56823e69",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "recordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportReasonID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recordID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "placeRecordType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placeRecordID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "insertUserID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "insertUserRoleID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "removedUserID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "recordUserID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "new"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "reportID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "dateInserted",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "dateRemoved",
+                      "value": "<date-filter>"
+                    },
+                    {
+                      "key": "reporterEmail",
+                      "value": "<email>"
+                    },
+                    {
+                      "key": "recordIsLive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"reportID\": 4968,\n    \"recordType\": \"comment\",\n    \"recordID\": 1951,\n    \"recordName\": \"string\",\n    \"recordHtml\": \"string\",\n    \"recordUrl\": \"string\",\n    \"recordIsLive\": false,\n    \"recordWasEdited\": true,\n    \"recordUserID\": 1077,\n    \"recordDateInserted\": \"1976-11-29T09:06:29.725Z\",\n    \"placeRecordType\": \"category\",\n    \"placeRecordID\": 6562,\n    \"insertUserID\": 7323,\n    \"reportedUserID\": 1992,\n    \"updateUserID\": 5403,\n    \"dateInserted\": \"2014-12-27T12:20:17.148Z\",\n    \"dateUpdated\": \"1981-10-05T10:39:03.760Z\",\n    \"noteHtml\": \"string\",\n    \"recordExcerpt\": \"string\",\n    \"placeRecordName\": \"string\",\n    \"placeRecordUrl\": \"http://iZdF.zbJvxUZbtZeuFmh6fGg1oglPRtRByQplnhj8YQI1y.Zw21+J7AsyAoCLQBBXXhdvrl-\",\n    \"recordUser\": {\n      \"userID\": 8362,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://svXEkJcZLOsGiVfdvlxJXxq.lgZbhp-X4u5hs29Eg0fCGZr,.Ko1\",\n      \"dateLastActive\": \"1998-03-28T08:36:57.909Z\",\n      \"url\": \"https://FADSitRHEIViPTuuyylOxC.fupLkgsIaa.oFd1CFlxuSSPNJnSrf.XEmf22nZJkSESLm+C\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"recordDateUpdated\": \"2015-02-01T18:28:42.251Z\",\n    \"isPending\": false,\n    \"isPendingUpdate\": false,\n    \"reportReasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 1287,\n        \"deleted\": false,\n        \"reportID\": 1416\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 151,\n        \"deleted\": true,\n        \"reportID\": 3491\n      }\n    ],\n    \"insertUser\": {\n      \"userID\": 4587,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://yAffMqNzshHMNIjIJluZ.tsE9RUbaOQdW.HOwhtj+ff9sTIeQfBvXqguXb0WvRDAyI+E0oeNddzZDOfOj\",\n      \"dateLastActive\": \"1957-08-31T00:44:09.101Z\",\n      \"url\": \"http://ZGEnuexLyfCBThJjxnniHmYXnos.wssmjulKt4a7iNS06i0zxXkgMvBjr4K\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"reporterEmail\": \"string\",\n    \"reporterName\": \"string\",\n    \"reportedUser\": {\n      \"userID\": 7420,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://duiLKBgfca.nvqdoljb50Q3WVTZmV\",\n      \"dateLastActive\": \"2010-11-19T04:51:21.897Z\",\n      \"url\": \"https://DuuTQAQXYCTqWjBoBBwHCTJXIKx.dgjhlHecTbIKVmGv,OmLEPOlfYRp\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"updateUser\": {\n      \"userID\": 3169,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://NzKsCfauM.wpeXDuFc27\",\n      \"dateLastActive\": \"1963-05-01T18:00:12.640Z\",\n      \"url\": \"http://nHuhFuEozvPpefgFI.pxhuB47d2teqNFqyHsQq+.zvC2zk,duHn-idTNjzcGA2rlICh2tju+SqiNotlm3uaI\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  },\n  {\n    \"reportID\": 9582,\n    \"recordType\": \"comment\",\n    \"recordID\": 1100,\n    \"recordName\": \"string\",\n    \"recordHtml\": \"string\",\n    \"recordUrl\": \"string\",\n    \"recordIsLive\": false,\n    \"recordWasEdited\": true,\n    \"recordUserID\": 6844,\n    \"recordDateInserted\": \"1993-11-01T18:00:53.308Z\",\n    \"placeRecordType\": \"category\",\n    \"placeRecordID\": 8706,\n    \"insertUserID\": 3815,\n    \"reportedUserID\": 8215,\n    \"updateUserID\": 3001,\n    \"dateInserted\": \"1955-08-17T23:26:01.522Z\",\n    \"dateUpdated\": \"1955-02-22T17:07:07.184Z\",\n    \"noteHtml\": \"string\",\n    \"recordExcerpt\": \"string\",\n    \"placeRecordName\": \"string\",\n    \"placeRecordUrl\": \"https://BRTzjuoaAqaoyJOAonSEs.crClAHrTRMht2gvioTohVZ7khwtxB3IxiBClir.DrIYY23qk69Pw\",\n    \"recordUser\": {\n      \"userID\": 2603,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://OUQOzzQUEotwyYIhegWisTsyEdzg.juuvoOJY1\",\n      \"dateLastActive\": \"2021-05-29T20:25:13.834Z\",\n      \"url\": \"https://kwKuZp.lncMtaEyCGMysW3ZdtqNKs-xjM,TXKab93PlrjdUW6NTYArRPGv+c4M3x9Xuo4WvFKHhaFHRO-ciyKE\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"recordDateUpdated\": \"1994-05-28T06:54:10.311Z\",\n    \"isPending\": true,\n    \"isPendingUpdate\": true,\n    \"reportReasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 2105,\n        \"deleted\": true,\n        \"reportID\": 1021\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 7824,\n        \"deleted\": false,\n        \"reportID\": 120\n      }\n    ],\n    \"insertUser\": {\n      \"userID\": 9482,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://YmNXiZwtIDayeFrPGjmFJtGJCAdPiRN.rbi-fbilHv,dkqQwJ-mcAP3cG.PqhFF.zVe9+KbKLg,XtnvVlKeBJIYrRusGnVRlPr\",\n      \"dateLastActive\": \"1950-10-21T09:41:22.571Z\",\n      \"url\": \"http://fkKfJypRtOmWMS.dudXFI5OOiwNdP7-OXPp.l0Y++hNIR\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"reporterEmail\": \"string\",\n    \"reporterName\": \"string\",\n    \"reportedUser\": {\n      \"userID\": 2210,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://xIciATDBGzegaCesXbRPdfqYXjC.wsdwskOODVRdgn5AZW3-jIDIVrBQzuhVViGWKjx4LXNRHExlMPUc4AZpwlOyitoyUFAtZn21Aa49yA\",\n      \"dateLastActive\": \"2011-11-15T04:32:04.163Z\",\n      \"url\": \"http://NzNLlofLWeoj.mtbgV2xjz9W6upHnFM\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    },\n    \"updateUser\": {\n      \"userID\": 866,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://HXWYWTSPGhOIaQOLSDOGQUwGseaO.ehmZbPHIHghNDoAg4OFFl5zHd5,Idg2eeh\",\n      \"dateLastActive\": \"1971-12-14T18:48:17.642Z\",\n      \"url\": \"http://WcrGZFyFmMVJMUQANBjegO.ewb-4mIGtN7a7oTtug,Au9PlPK-Lsj1uqHYZ\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": true\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de7f2fd5-cac6-4c06-bf10-b646dec8d38b",
+          "name": "Get a report",
+          "request": {
+            "name": "Get a report",
+            "description": {},
+            "url": {
+              "path": [
+                "reports",
+                ":reportID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reportID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b572e72e-0b7c-4a83-8cf1-8bb8f1ece457",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    ":reportID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reportID\": 8397,\n  \"recordType\": \"discussion\",\n  \"recordID\": 6866,\n  \"recordName\": \"string\",\n  \"recordHtml\": \"string\",\n  \"recordUrl\": \"string\",\n  \"recordIsLive\": false,\n  \"recordWasEdited\": false,\n  \"recordUserID\": 3368,\n  \"recordDateInserted\": \"1975-10-23T20:53:05.159Z\",\n  \"placeRecordType\": \"category\",\n  \"placeRecordID\": 812,\n  \"insertUserID\": 2180,\n  \"reportedUserID\": 3201,\n  \"updateUserID\": 174,\n  \"dateInserted\": \"1964-04-01T10:31:05.349Z\",\n  \"dateUpdated\": \"1954-02-09T04:03:22.753Z\",\n  \"noteHtml\": \"string\",\n  \"recordExcerpt\": \"string\",\n  \"placeRecordName\": \"string\",\n  \"placeRecordUrl\": \"https://tkle.fiwTXauVLl3lf5AloD0pvlNiLLM4yb4Bp+HrQUlXMDEGOhxT.uBY02e4TEV+J-3LaMb\",\n  \"recordUser\": {\n    \"userID\": 5857,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://aIgROqWuXyZmTfzbcSPeVvaHPYSADywNv.zvvI9F8ggna5\",\n    \"dateLastActive\": \"1968-03-08T14:22:45.680Z\",\n    \"url\": \"https://QRPuQyR.tjvt782BX0YCXpUcd8qTx4QXM-HzdrGJnjpfvfe.zbB6YDfn-TxdIl\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"recordDateUpdated\": \"1980-06-19T17:48:29.320Z\",\n  \"isPending\": false,\n  \"isPendingUpdate\": true,\n  \"reportReasons\": [\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 7684,\n      \"deleted\": true,\n      \"reportID\": 4113\n    },\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 4068,\n      \"deleted\": true,\n      \"reportID\": 3822\n    }\n  ],\n  \"insertUser\": {\n    \"userID\": 7799,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://TOiihCnqikMnDUFnzWFykTwhTrEQ.scpDRCHYcxyCMZwHWWTWfNhzs7zfTK2+rvXrQkfWpFjW0uu,pWKZ\",\n    \"dateLastActive\": \"2008-03-24T16:51:43.316Z\",\n    \"url\": \"https://GprBfhxVaCbaUvtrPgjcQYqcQAUnlIj.kzhpK\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"reporterEmail\": \"string\",\n  \"reporterName\": \"string\",\n  \"reportedUser\": {\n    \"userID\": 1423,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://lGEzwhHTNMiPNBkjSlV.cubylAlETcTvL+dut.nnK8P\",\n    \"dateLastActive\": \"2001-12-21T20:18:14.010Z\",\n    \"url\": \"http://icHycWmyBx.qqjszGbiZUuVaVTDiP4iqFvq\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"updateUser\": {\n    \"userID\": 6320,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://ulaOLgLDxrhStCkFUZlOWmEZAl.oauvDk8TRFNsObRRlO5fwPdBkI6x\",\n    \"dateLastActive\": \"1953-06-04T03:39:11.187Z\",\n    \"url\": \"https://jJbbr.fjxQz1KD-1zR-7vwVLrUsSAaaToLKPBVbwl9Lql1vWABlcdvdGFg8xT2oH\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba07febf-4fb3-402a-9a04-f7eec7a3479c",
+          "name": "Approve a pending or removed post that was premoderated.",
+          "request": {
+            "name": "Approve a pending or removed post that was premoderated.",
+            "description": {},
+            "url": {
+              "path": [
+                "reports",
+                ":reportID",
+                "approve-record"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reportID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verifyRecordUser\": \"<boolean>\",\n  \"premoderatedRecord\": {\n    \"body\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "afdee8d5-b54a-4486-8a22-b886e9a8dd57",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    ":reportID",
+                    "approve-record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verifyRecordUser\": \"<boolean>\",\n  \"premoderatedRecord\": {\n    \"body\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reportID\": 8397,\n  \"recordType\": \"discussion\",\n  \"recordID\": 6866,\n  \"recordName\": \"string\",\n  \"recordHtml\": \"string\",\n  \"recordUrl\": \"string\",\n  \"recordIsLive\": false,\n  \"recordWasEdited\": false,\n  \"recordUserID\": 3368,\n  \"recordDateInserted\": \"1975-10-23T20:53:05.159Z\",\n  \"placeRecordType\": \"category\",\n  \"placeRecordID\": 812,\n  \"insertUserID\": 2180,\n  \"reportedUserID\": 3201,\n  \"updateUserID\": 174,\n  \"dateInserted\": \"1964-04-01T10:31:05.349Z\",\n  \"dateUpdated\": \"1954-02-09T04:03:22.753Z\",\n  \"noteHtml\": \"string\",\n  \"recordExcerpt\": \"string\",\n  \"placeRecordName\": \"string\",\n  \"placeRecordUrl\": \"https://tkle.fiwTXauVLl3lf5AloD0pvlNiLLM4yb4Bp+HrQUlXMDEGOhxT.uBY02e4TEV+J-3LaMb\",\n  \"recordUser\": {\n    \"userID\": 5857,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://aIgROqWuXyZmTfzbcSPeVvaHPYSADywNv.zvvI9F8ggna5\",\n    \"dateLastActive\": \"1968-03-08T14:22:45.680Z\",\n    \"url\": \"https://QRPuQyR.tjvt782BX0YCXpUcd8qTx4QXM-HzdrGJnjpfvfe.zbB6YDfn-TxdIl\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"recordDateUpdated\": \"1980-06-19T17:48:29.320Z\",\n  \"isPending\": false,\n  \"isPendingUpdate\": true,\n  \"reportReasons\": [\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 7684,\n      \"deleted\": true,\n      \"reportID\": 4113\n    },\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 4068,\n      \"deleted\": true,\n      \"reportID\": 3822\n    }\n  ],\n  \"insertUser\": {\n    \"userID\": 7799,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://TOiihCnqikMnDUFnzWFykTwhTrEQ.scpDRCHYcxyCMZwHWWTWfNhzs7zfTK2+rvXrQkfWpFjW0uu,pWKZ\",\n    \"dateLastActive\": \"2008-03-24T16:51:43.316Z\",\n    \"url\": \"https://GprBfhxVaCbaUvtrPgjcQYqcQAUnlIj.kzhpK\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"reporterEmail\": \"string\",\n  \"reporterName\": \"string\",\n  \"reportedUser\": {\n    \"userID\": 1423,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://lGEzwhHTNMiPNBkjSlV.cubylAlETcTvL+dut.nnK8P\",\n    \"dateLastActive\": \"2001-12-21T20:18:14.010Z\",\n    \"url\": \"http://icHycWmyBx.qqjszGbiZUuVaVTDiP4iqFvq\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"updateUser\": {\n    \"userID\": 6320,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://ulaOLgLDxrhStCkFUZlOWmEZAl.oauvDk8TRFNsObRRlO5fwPdBkI6x\",\n    \"dateLastActive\": \"1953-06-04T03:39:11.187Z\",\n    \"url\": \"https://jJbbr.fjxQz1KD-1zR-7vwVLrUsSAaaToLKPBVbwl9Lql1vWABlcdvdGFg8xT2oH\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2945bf3c-92c1-4a00-82f1-31833743fd73",
+          "name": "Dismiss a user's report.",
+          "request": {
+            "name": "Dismiss a user's report.",
+            "description": {},
+            "url": {
+              "path": [
+                "reports",
+                ":reportID",
+                "dismiss"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reportID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94117bcc-7c07-4967-8903-9c3a64682e7b",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    ":reportID",
+                    "dismiss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8bcac6ee-3209-4c6f-bc84-b0f6ecae3796",
+          "name": "Reject a pending or live post that was premoderated and ensure it is deleted.",
+          "request": {
+            "name": "Reject a pending or live post that was premoderated and ensure it is deleted.",
+            "description": {},
+            "url": {
+              "path": [
+                "reports",
+                ":reportID",
+                "reject-record"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reportID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3bf72aa-ab84-47f9-a174-c4d8853692d4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    ":reportID",
+                    "reject-record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reportID\": 8397,\n  \"recordType\": \"discussion\",\n  \"recordID\": 6866,\n  \"recordName\": \"string\",\n  \"recordHtml\": \"string\",\n  \"recordUrl\": \"string\",\n  \"recordIsLive\": false,\n  \"recordWasEdited\": false,\n  \"recordUserID\": 3368,\n  \"recordDateInserted\": \"1975-10-23T20:53:05.159Z\",\n  \"placeRecordType\": \"category\",\n  \"placeRecordID\": 812,\n  \"insertUserID\": 2180,\n  \"reportedUserID\": 3201,\n  \"updateUserID\": 174,\n  \"dateInserted\": \"1964-04-01T10:31:05.349Z\",\n  \"dateUpdated\": \"1954-02-09T04:03:22.753Z\",\n  \"noteHtml\": \"string\",\n  \"recordExcerpt\": \"string\",\n  \"placeRecordName\": \"string\",\n  \"placeRecordUrl\": \"https://tkle.fiwTXauVLl3lf5AloD0pvlNiLLM4yb4Bp+HrQUlXMDEGOhxT.uBY02e4TEV+J-3LaMb\",\n  \"recordUser\": {\n    \"userID\": 5857,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://aIgROqWuXyZmTfzbcSPeVvaHPYSADywNv.zvvI9F8ggna5\",\n    \"dateLastActive\": \"1968-03-08T14:22:45.680Z\",\n    \"url\": \"https://QRPuQyR.tjvt782BX0YCXpUcd8qTx4QXM-HzdrGJnjpfvfe.zbB6YDfn-TxdIl\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"recordDateUpdated\": \"1980-06-19T17:48:29.320Z\",\n  \"isPending\": false,\n  \"isPendingUpdate\": true,\n  \"reportReasons\": [\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 7684,\n      \"deleted\": true,\n      \"reportID\": 4113\n    },\n    {\n      \"reportReasonID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sort\": 4068,\n      \"deleted\": true,\n      \"reportID\": 3822\n    }\n  ],\n  \"insertUser\": {\n    \"userID\": 7799,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://TOiihCnqikMnDUFnzWFykTwhTrEQ.scpDRCHYcxyCMZwHWWTWfNhzs7zfTK2+rvXrQkfWpFjW0uu,pWKZ\",\n    \"dateLastActive\": \"2008-03-24T16:51:43.316Z\",\n    \"url\": \"https://GprBfhxVaCbaUvtrPgjcQYqcQAUnlIj.kzhpK\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"reporterEmail\": \"string\",\n  \"reporterName\": \"string\",\n  \"reportedUser\": {\n    \"userID\": 1423,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://lGEzwhHTNMiPNBkjSlV.cubylAlETcTvL+dut.nnK8P\",\n    \"dateLastActive\": \"2001-12-21T20:18:14.010Z\",\n    \"url\": \"http://icHycWmyBx.qqjszGbiZUuVaVTDiP4iqFvq\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"updateUser\": {\n    \"userID\": 6320,\n    \"name\": \"string\",\n    \"photoUrl\": \"https://ulaOLgLDxrhStCkFUZlOWmEZAl.oauvDk8TRFNsObRRlO5fwPdBkI6x\",\n    \"dateLastActive\": \"1953-06-04T03:39:11.187Z\",\n    \"url\": \"https://jJbbr.fjxQz1KD-1zR-7vwVLrUsSAaaToLKPBVbwl9Lql1vWABlcdvdGFg8xT2oH\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e104d21-70c4-4cb5-b127-c09400ce2764",
+          "name": "List of Posts that where reported set number of times.",
+          "request": {
+            "name": "List of Posts that where reported set number of times.",
+            "description": {},
+            "url": {
+              "path": [
+                "reports",
+                "automation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countReports",
+                  "value": "1",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "reportReasonID",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "placeRecordID",
+                  "value": "<range-expression>",
+                  "description": "Filter by a range or CSV of category placeRecordIDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeSubcategories",
+                  "value": "false",
+                  "description": "Include reports from subcategories."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Desired number of items per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34d0f368-b1ee-4aeb-9ec4-6d0d31f84ef2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    "automation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countReports",
+                      "value": "1"
+                    },
+                    {
+                      "key": "reportReasonID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placeRecordID",
+                      "value": "<range-expression>"
+                    },
+                    {
+                      "key": "includeSubcategories",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"recordType\": \"comment\",\n    \"recordID\": 4582,\n    \"recordName\": \"string\",\n    \"recordHtml\": \"string\",\n    \"placeRecordType\": \"category\",\n    \"placeRecordID\": 9601,\n    \"placeRecordName\": \"string\",\n    \"reportReasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 110,\n        \"deleted\": false,\n        \"reportID\": 6709\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 5994,\n        \"deleted\": true,\n        \"reportID\": 3973\n      }\n    ]\n  },\n  {\n    \"recordType\": \"comment\",\n    \"recordID\": 294,\n    \"recordName\": \"string\",\n    \"recordHtml\": \"string\",\n    \"placeRecordType\": \"category\",\n    \"placeRecordID\": 624,\n    \"placeRecordName\": \"string\",\n    \"reportReasons\": [\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 4628,\n        \"deleted\": false,\n        \"reportID\": 671\n      },\n      {\n        \"reportReasonID\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort\": 4723,\n        \"deleted\": true,\n        \"reportID\": 6058\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "46ad28db-4a0d-48c8-b901-ee00b99a7afe",
+    "name": "Vanilla Addons Reports & Escalations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

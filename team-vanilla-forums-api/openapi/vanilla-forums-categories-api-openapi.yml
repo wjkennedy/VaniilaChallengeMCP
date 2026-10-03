@@ -1,0 +1,1770 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Categories API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Categories
+paths:
+  /categories:
+    get:
+      parameters:
+      - name: categoryID
+        description: Filter by a range or CSV of category IDs.
+        in: query
+        schema:
+          $ref: '#/components/schemas/RangeExpression'
+      - description: Parent category ID.
+        in: query
+        name: parentCategoryID
+        schema:
+          type: integer
+      - description: Parent category URL code.
+        in: query
+        name: parentCategoryCode
+        schema:
+          type: string
+      - description: Only list categories followed by the current user.
+        in: query
+        name: followed
+        required: false
+        schema:
+          type: boolean
+      - description: List the categories followed by the given UserID
+        in: query
+        name: followedUserID
+        schema:
+          type: integer
+      - description: The maximum tree depth to return when getting a tree structure. This parameter is incompatible with a flat structure.
+        in: query
+        name: maxDepth
+        schema:
+          type: integer
+          default: 2
+      - name: archived
+        description: 'Filter by archived status of a category. True for archived only. False for no archived categories.
+
+          '
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - description: Only list featured categories.
+        in: query
+        name: featured
+        required: false
+        schema:
+          type: boolean
+      - description: Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination). This parameter is incompatible with a tree structure.
+        in: query
+        name: page
+        schema:
+          type: integer
+          minimum: 1
+      - description: Desired number of items per page. This parameter is incompatible with a tree structure.
+        in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+      - name: sort
+        description: Sort the results.
+        in: query
+        schema:
+          type: string
+          enum:
+          - categoryID
+          - -categoryID
+          - name
+          - -name
+          - dateFollowed
+          - -dateFollowed
+      - name: expand
+        description: 'Expand associated records using one or more valid field names. A value of "all" will expand all expandable fields.
+
+          '
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - all
+            - lastPost
+            - preferences
+            - permissions
+            - defaultStatus
+            - lastPost.insertUser
+            - lastPost.insertUser.ssoID
+            - lastPost.insertUser.roles
+            - lastPost.insertUser.profileFields
+            - lastPost.insertUser.extended
+      - description: 'Filter categories by site section ID (ex. subcommunity).
+
+          The subcommunity ID or folder can be used if you use [smart IDs](https://success.vanillaforums.com/kb/articles/46-smart-ids).
+
+          The query looks like:
+
+
+          ```
+
+          siteSectionID=$subcommunityID:{id|folder}
+
+          ```
+
+          example: "$subcommunityID:en".'
+        in: query
+        name: siteSectionID
+        schema:
+          type: string
+      - description: Whether to include the parent category when used with parentCategoryID, parentCategoryCode, or siteSectionID.
+        in: query
+        name: includeParentCategory
+        required: false
+        schema:
+          type: boolean
+      - description: Format of the output as flat or tree.
+        in: query
+        name: outputFormat
+        schema:
+          type: string
+          enum:
+          - flat
+          - tree
+      - description: 'Layout View Type.
+
+          '
+        in: query
+        name: layoutViewType
+        required: false
+        schema:
+          minLength: 1
+          type: string
+      - description: Filter by allowed post type ID
+        in: query
+        name: postTypeID
+        required: false
+        schema:
+          type: string
+      - description: Allowed status for the post type ID filter.
+        in: query
+        name: postTypeStatus
+        required: false
+        schema:
+          type: string
+          enum:
+          - active
+          - inactive
+          - both
+      - description: Filter out categories that cannot be posted into
+        in: query
+        name: filterDiscussionsAdd
+        required: false
+        schema:
+          type: boolean
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    categoryID:
+                      description: The ID of the category.
+                      type: integer
+                    children:
+                      items:
+                        properties:
+                          categoryID:
+                            description: The ID of the category.
+                            type: integer
+                          children:
+                            items:
+                              type: string
+                            type: array
+                          countAllComments:
+                            description: Total of all comments in a category and its children.
+                            type: integer
+                          countAllDiscussions:
+                            description: Total of all discussions in a category and its children.
+                            type: integer
+                          countCategories:
+                            description: Total number of child categories.
+                            type: integer
+                          countComments:
+                            description: Total comments in the category.
+                            type: integer
+                          countDiscussions:
+                            description: Total discussions in the category.
+                            type: integer
+                          countFollowers:
+                            description: Total followers in the category.
+                            type: integer
+                          customPermissions:
+                            description: Are custom permissions set for this category?
+                            type: boolean
+                          depth:
+                            type: integer
+                          description:
+                            description: The description of the category.
+                            minLength: 0
+                            type:
+                            - string
+                            - 'null'
+                          displayAs:
+                            type: string
+                            default: discussions
+                            description: The display style of the category.
+                            enum:
+                            - categories
+                            - discussions
+                            - flat
+                            - heading
+                            minLength: 1
+                          followed:
+                            description: Is the category being followed by the current user?
+                            type: boolean
+                          isArchived:
+                            description: The archived state of this category.
+                            type: boolean
+                          name:
+                            description: The name of the category.
+                            minLength: 1
+                            type: string
+                          parentCategoryID:
+                            description: Parent category ID.
+                            type:
+                            - integer
+                            - 'null'
+                          url:
+                            description: The URL to the category.
+                            minLength: 1
+                            type: string
+                          urlcode:
+                            description: The URL code of the category.
+                            minLength: 1
+                            type: string
+                          allowedDiscussionTypes:
+                            description: Allowed category discussion types.
+                            items:
+                              type: string
+                            type: array
+                        required:
+                        - categoryID
+                        - name
+                        - description
+                        - parentCategoryID
+                        - customPermissions
+                        - isArchived
+                        - urlcode
+                        - url
+                        - displayAs
+                        - countCategories
+                        - countDiscussions
+                        - countComments
+                        - countFollowers
+                        - countAllDiscussions
+                        - countAllComments
+                        - depth
+                        - children
+                        type: object
+                      type: array
+                    countAllComments:
+                      description: Total of all comments in a category and its children.
+                      type: integer
+                    countAllDiscussions:
+                      description: Total of all discussions in a category and its children.
+                      type: integer
+                    countCategories:
+                      description: Total number of child categories.
+                      type: integer
+                    countComments:
+                      description: Total comments in the category.
+                      type: integer
+                    countDiscussions:
+                      description: Total discussions in the category.
+                      type: integer
+                    countFollowers:
+                      description: Total followers in the category.
+                      type: integer
+                    customPermissions:
+                      description: Are custom permissions set for this category?
+                      type: boolean
+                    depth:
+                      type: integer
+                    description:
+                      description: The description of the category.
+                      minLength: 0
+                      type:
+                      - string
+                      - 'null'
+                    displayAs:
+                      type: string
+                      default: discussions
+                      description: The display style of the category.
+                      enum:
+                      - categories
+                      - discussions
+                      - flat
+                      - heading
+                      minLength: 1
+                    followed:
+                      description: Is the category being followed by the current user?
+                      type: boolean
+                    iconUrl:
+                      description: The URL of the category's icon.
+                      type:
+                      - string
+                      - 'null'
+                    iconUrlSrcSet:
+                      $ref: '#/components/schemas/SrcSet'
+                    isArchived:
+                      description: The archived state of this category.
+                      type: boolean
+                    name:
+                      description: The name of the category.
+                      minLength: 1
+                      type: string
+                    parentCategoryID:
+                      description: Parent category ID.
+                      type:
+                      - integer
+                      - 'null'
+                    url:
+                      description: The URL to the category.
+                      minLength: 1
+                      type: string
+                    urlcode:
+                      description: The URL code of the category.
+                      minLength: 1
+                      type: string
+                    lastPost:
+                      $ref: '#/components/schemas/PostFragment'
+                    preferences:
+                      $ref: '#/components/schemas/CategoryPreferences'
+                    permissions:
+                      $ref: '#/components/schemas/DiscussionPermissions'
+                    defaultStatusID:
+                      description: The default status ID of the category.
+                      type: integer
+                  required:
+                  - categoryID
+                  - name
+                  - description
+                  - parentCategoryID
+                  - customPermissions
+                  - isArchived
+                  - urlcode
+                  - url
+                  - displayAs
+                  - countCategories
+                  - countDiscussions
+                  - countComments
+                  - countFollowers
+                  - countAllDiscussions
+                  - countAllComments
+                  - depth
+                  type: object
+                type: array
+          description: Success
+      tags:
+      - Categories
+      summary: List categories
+      x-addon: vanilla
+      operationId: getCategories
+      x-operation-id-source: derived
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categoryID:
+                    description: The ID of the category.
+                    type: integer
+                  countAllComments:
+                    description: Total of all comments in a category and its children.
+                    type: integer
+                  countAllDiscussions:
+                    description: Total of all discussions in a category and its children.
+                    type: integer
+                  countCategories:
+                    description: Total number of child categories.
+                    type: integer
+                  countComments:
+                    description: Total comments in the category.
+                    type: integer
+                  countDiscussions:
+                    description: Total discussions in the category.
+                    type: integer
+                  countFollowers:
+                    description: Total followers in the category.
+                    type: integer
+                  customPermissions:
+                    description: Are custom permissions set for this category?
+                    type: boolean
+                  description:
+                    description: The description of the category.
+                    minLength: 0
+                    type:
+                    - string
+                    - 'null'
+                  displayAs:
+                    type: string
+                    default: discussions
+                    description: The display style of the category.
+                    enum:
+                    - categories
+                    - discussions
+                    - flat
+                    - heading
+                    minLength: 1
+                  followed:
+                    description: Is the category being followed by the current user?
+                    type: boolean
+                  isArchived:
+                    description: The archived state of this category.
+                    type: boolean
+                  name:
+                    description: The name of the category.
+                    minLength: 1
+                    type: string
+                  parentCategoryID:
+                    description: Parent category ID.
+                    type:
+                    - integer
+                    - 'null'
+                  url:
+                    description: The URL to the category.
+                    minLength: 1
+                    type: string
+                  urlcode:
+                    description: The URL code of the category.
+                    minLength: 1
+                    type: string
+                  ideationType:
+                    description: Voting type used for ideation posts.
+                    enum:
+                    - up
+                    - up-down
+                    - false
+                    x-addon: ideation
+                required:
+                - categoryID
+                - name
+                - description
+                - parentCategoryID
+                - customPermissions
+                - isArchived
+                - urlcode
+                - url
+                - displayAs
+                - countCategories
+                - countDiscussions
+                - countComments
+                - countFollowers
+                - countAllDiscussions
+                - countAllComments
+                type: object
+          description: Success
+      tags:
+      - Categories
+      requestBody:
+        $ref: '#/components/requestBodies/CategoryPost'
+      summary: Add a category
+      x-addon: vanilla
+      operationId: postCategories
+      x-operation-id-source: derived
+  /categories/search:
+    get:
+      parameters:
+      - name: query
+        description: 'Category name filter.
+
+          '
+        in: query
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - name: displayAs
+        description: The display style of the category.
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Categories
+            - Discussions
+            - Flat
+            - Heading
+        style: form
+      - name: page
+        description: 'Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).
+
+          '
+        in: query
+        schema:
+          type: integer
+          default: 1
+          maximum: 100
+          minimum: 1
+      - name: limit
+        description: 'Desired number of items per page.
+
+          '
+        in: query
+        schema:
+          type: integer
+          default: 30
+          maximum: 200
+          minimum: 1
+      - name: expand
+        description: 'Expand associated records using one or more valid field names (all, parent, breadcrumbs).
+
+          A value of "all" will expand all expandable fields.
+
+          '
+        in: query
+        schema:
+          items:
+            enum:
+            - breadcrumbs
+            - parent
+            - all
+            type: string
+      - name: layoutViewType
+        description: 'Layout View Type.
+
+          '
+        in: query
+        required: false
+        schema:
+          minLength: 1
+          type: string
+      - description: Filter out categories that cannot be posted into
+        in: query
+        name: filterDiscussionsAdd
+        required: false
+        schema:
+          type: boolean
+      - description: Filter categories by site section ID (ex. subcommunity).
+        in: query
+        name: siteSectionID
+        schema:
+          type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    categoryID:
+                      description: The ID of the category.
+                      type: integer
+                    countAllComments:
+                      description: Total of all comments in a category and its children.
+                      type: integer
+                    countAllDiscussions:
+                      description: Total of all discussions in a category and its children.
+                      type: integer
+                    countCategories:
+                      description: Total number of child categories.
+                      type: integer
+                    countComments:
+                      description: Total comments in the category.
+                      type: integer
+                    countDiscussions:
+                      description: Total discussions in the category.
+                      type: integer
+                    countFollowers:
+                      description: Total followers in the category.
+                      type: integer
+                    customPermissions:
+                      description: Are custom permissions set for this category?
+                      type: boolean
+                    description:
+                      description: The description of the category.
+                      minLength: 0
+                      type:
+                      - string
+                      - 'null'
+                    displayAs:
+                      type: string
+                      default: discussions
+                      description: The display style of the category.
+                      enum:
+                      - categories
+                      - discussions
+                      - flat
+                      - heading
+                      minLength: 1
+                    followed:
+                      description: Is the category being followed by the current user?
+                      type: boolean
+                    isArchived:
+                      description: The archived state of this category.
+                      type: boolean
+                    name:
+                      description: The name of the category.
+                      minLength: 1
+                      type: string
+                    parentCategoryID:
+                      description: Parent category ID.
+                      type:
+                      - integer
+                      - 'null'
+                    url:
+                      description: The URL to the category.
+                      minLength: 1
+                      type: string
+                    urlcode:
+                      description: The URL code of the category.
+                      minLength: 1
+                      type: string
+                    breadcrumbs:
+                      items:
+                        properties:
+                          name:
+                            description: Breadcrumb element name.
+                            minLength: 1
+                            type: string
+                          url:
+                            description: Breadcrumb element url.
+                            minLength: 1
+                            type: string
+                        required:
+                        - name
+                        - url
+                        type: object
+                      type: array
+                  required:
+                  - categoryID
+                  - name
+                  - description
+                  - parentCategoryID
+                  - customPermissions
+                  - isArchived
+                  - urlcode
+                  - url
+                  - displayAs
+                  - countCategories
+                  - countDiscussions
+                  - countComments
+                  - countFollowers
+                  - countAllDiscussions
+                  - countAllComments
+                  type: object
+                type: array
+          description: Success
+      tags:
+      - Categories
+      summary: Search categories
+      x-addon: vanilla
+      operationId: getCategoriesSearch
+      x-operation-id-source: derived
+  /categories/{id}:
+    delete:
+      parameters:
+      - description: 'The category ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Success
+      tags:
+      - Categories
+      summary: Delete a category
+      x-addon: vanilla
+      operationId: deleteCategoriesById
+      x-operation-id-source: derived
+    get:
+      parameters:
+      - description: 'The category ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: expand
+        description: 'Expand associated records using one or more valid field names (all, parent, breadcrumbs).
+
+          A value of "all" will expand all expandable fields.
+
+          '
+        in: query
+        schema:
+          items:
+            enum:
+            - lastPost
+            - permissions
+            - all
+            - defaultStatus
+            - lastPost.insertUser
+            - lastPost.insertUser.ssoID
+            - lastPost.insertUser.roles
+            - lastPost.insertUser.profileFields
+            - lastPost.insertUser.extended
+            type: string
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategorySchema'
+          description: Success
+      tags:
+      - Categories
+      summary: Get a category
+      x-addon: vanilla
+      operationId: getCategoriesById
+      x-operation-id-source: derived
+    patch:
+      parameters:
+      - description: The category ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categoryID:
+                    description: The ID of the category.
+                    type: integer
+                  countAllComments:
+                    description: Total of all comments in a category and its children.
+                    type: integer
+                  countAllDiscussions:
+                    description: Total of all discussions in a category and its children.
+                    type: integer
+                  countCategories:
+                    description: Total number of child categories.
+                    type: integer
+                  countComments:
+                    description: Total comments in the category.
+                    type: integer
+                  countDiscussions:
+                    description: Total discussions in the category.
+                    type: integer
+                  countFollowers:
+                    description: Total followers in the category.
+                    type: integer
+                  customPermissions:
+                    description: Are custom permissions set for this category?
+                    type: boolean
+                  description:
+                    description: The description of the category.
+                    minLength: 0
+                    type:
+                    - string
+                    - 'null'
+                  displayAs:
+                    type: string
+                    default: discussions
+                    description: The display style of the category.
+                    enum:
+                    - categories
+                    - discussions
+                    - flat
+                    - heading
+                    minLength: 1
+                  followed:
+                    description: Is the category being followed by the current user?
+                    type: boolean
+                  isArchived:
+                    description: The archived state of this category.
+                    type: boolean
+                  name:
+                    description: The name of the category.
+                    minLength: 1
+                    type: string
+                  parentCategoryID:
+                    description: Parent category ID.
+                    type:
+                    - integer
+                    - 'null'
+                  url:
+                    description: The URL to the category.
+                    minLength: 1
+                    type: string
+                  urlcode:
+                    description: The URL code of the category.
+                    minLength: 1
+                    type: string
+                required:
+                - categoryID
+                - name
+                - description
+                - parentCategoryID
+                - customPermissions
+                - isArchived
+                - urlcode
+                - url
+                - displayAs
+                - countCategories
+                - countDiscussions
+                - countComments
+                - countFollowers
+                - countAllDiscussions
+                - countAllComments
+                type: object
+          description: Success
+      tags:
+      - Categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryPost'
+        required: true
+      summary: Update a category
+      x-addon: vanilla
+      operationId: patchCategoriesById
+      x-operation-id-source: derived
+  /categories/{id}/edit:
+    get:
+      parameters:
+      - description: 'The category ID.
+
+          '
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categoryID:
+                    description: The ID of the category.
+                    type: integer
+                  description:
+                    description: The description of the category.
+                    minLength: 0
+                    type:
+                    - string
+                    - 'null'
+                  displayAs:
+                    type: string
+                    default: discussions
+                    description: The display style of the category.
+                    enum:
+                    - categories
+                    - discussions
+                    - flat
+                    - heading
+                    minLength: 1
+                  name:
+                    description: The name of the category.
+                    minLength: 1
+                    type: string
+                  parentCategoryID:
+                    description: Parent category ID.
+                    type:
+                    - integer
+                    - 'null'
+                  urlcode:
+                    description: The URL code of the category.
+                    minLength: 1
+                    type: string
+                required:
+                - categoryID
+                - name
+                - parentCategoryID
+                - urlcode
+                - description
+                - displayAs
+                type: object
+          description: Success
+      tags:
+      - Categories
+      summary: Get a category for editing
+      x-addon: vanilla
+      operationId: getCategoriesByIdEdit
+      x-operation-id-source: derived
+  /categories/{id}/follow:
+    put:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  followed:
+                    description: The category-follow status for the current user.
+                    type: boolean
+                required:
+                - followed
+                type: object
+          description: Success
+      tags:
+      - Categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                followed:
+                  description: The category-follow status for the current user.
+                  type: boolean
+              required:
+              - followed
+              type: object
+        required: true
+      x-addon: vanilla
+      summary: Replace categories by id follow
+      x-summary-source: derived
+      operationId: putCategoriesByIdFollow
+      x-operation-id-source: derived
+  /categories/{id}/preferences/{userID}:
+    parameters:
+    - in: path
+      name: id
+      description: The category ID.
+      required: true
+      schema:
+        type: integer
+      x-addon: vanilla
+    - in: path
+      name: userID
+      required: true
+      schema:
+        type: integer
+      x-addon: vanilla
+    get:
+      tags:
+      - Categories
+      summary: List a user's category preferences
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryPreferences'
+          description: Success
+      x-addon: vanilla
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getCategoriesByIdPreferencesByUserID
+      x-operation-id-source: derived
+    patch:
+      tags:
+      - Categories
+      summary: Set a user's category preferences
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryPreferences'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryPreferences'
+          description: Success
+      x-addon: vanilla
+      operationId: patchCategoriesByIdPreferencesByUserID
+      x-operation-id-source: derived
+components:
+  schemas:
+    UserFragment:
+      oneOf:
+      - type: object
+        properties:
+          userID:
+            description: The ID of the user.
+            type: integer
+          name:
+            description: The username of the user.
+            minLength: 1
+            type: string
+          url:
+            description: The URL of the user's profile.
+            type: string
+            format: uri
+          photoUrl:
+            description: The URL of the user's avatar picture.
+            type: string
+            format: uri
+          dateLastActive:
+            description: Time the user was last active.
+            format: date-time
+            type:
+            - string
+            - 'null'
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+          label:
+            description: The label of the user as plaintext.
+            type: string
+          labelHtml:
+            description: The label of the user in HTML format.
+            type: string
+          private:
+            description: Whether the user profile is private or not.
+            type: boolean
+        required:
+        - userID
+        - name
+        - photoUrl
+        - dateLastActive
+      - type: object
+        description: A user fragment when only expanding by ssoID.
+        properties:
+          ssoID:
+            description: The unique ID of the user from the source site, if using SSO.
+            type: string
+        required:
+        - ssoID
+      x-addon: dashboard
+    DiscussionPermissions:
+      type: object
+      description: Permissions for the current user related to discussions. Applied when expanded..
+      example:
+        discussions.view: true
+        discussions.add: true
+        discussions.edit: false
+        discussions.delete: false
+        discussions.sink: false
+        comments.add: true
+        comments.edit: false
+        comments.delete: false
+      x-addon: vanilla
+    CategoryPost:
+      properties:
+        customPermissions:
+          description: Are custom permissions set for this category?
+          type: boolean
+        displayAs:
+          type: string
+          default: discussions
+          description: The display style of the category.
+          enum:
+          - categories
+          - discussions
+          - flat
+          - heading
+          minLength: 1
+        name:
+          description: The name of the category.
+          minLength: 1
+          type: string
+        parentCategoryID:
+          description: Parent category ID.
+          type:
+          - integer
+          - 'null'
+        urlcode:
+          description: The URL code of the category.
+          minLength: 1
+          type: string
+        featured:
+          description: Category is featured
+          type: boolean
+          default: false
+        ideationType:
+          description: Voting type used for ideation posts.
+          enum:
+          - up
+          - up-down
+          - false
+          x-addon: ideation
+        allowedDiscussionTypes:
+          description: Allowed discussion types in this category.
+          type: array
+          items:
+            type: string
+            example: Discussion
+        allowedPostTypeIDs:
+          description: Allowed post type IDs in this category.
+          type: array
+          items:
+            type: string
+        hasRestrictedPostTypes:
+          description: If the category has restricted post types.
+          type: boolean
+        defaultStatusID:
+          description: The default status ID of the category.
+          type: integer
+      required:
+      - name
+      - urlcode
+      type: object
+      x-addon: vanilla
+    CategoryPreferences:
+      type: object
+      properties:
+        preferences.followed:
+          type: boolean
+        preferences.popup.posts:
+          type: boolean
+        preferences.email.posts:
+          type: boolean
+        preferences.popup.comments:
+          type: boolean
+        preferences.email.comments:
+          type: boolean
+        preferences.email.digest:
+          type: boolean
+          x-feature: Digest
+      x-addon: vanilla
+    RangeExpression:
+      description: Specify a range or CSV of values.
+      type: string
+      format: range-expression
+      externalDocs:
+        url: https://success.vanillaforums.com/kb/articles/308-range-expressions
+      x-addon: dashboard
+    SrcSet:
+      description: An image's srcset for various sizes.
+      type: object
+      properties:
+        '10':
+          description: 10px large Image url.
+          type: string
+        '300':
+          description: 300px large Image url.
+          type: string
+        '800':
+          description: 800px large Image url.
+          type: string
+        '1200':
+          description: 1200px large Image url.
+          type: string
+      x-addon: dashboard
+    PostFragment:
+      properties:
+        discussionID:
+          description: The discussion ID of the post.
+          type: integer
+        commentID:
+          description: The comment ID of the post, if any.
+          type: integer
+        name:
+          description: The title of the post.
+          minLength: 1
+          type: string
+        body:
+          description: The HTML formatted body of the post.
+          type: string
+        url:
+          description: The URL of the post.
+          minLength: 1
+          type: string
+        dateInserted:
+          description: The date of the post.
+          format: date-time
+          type: string
+        insertUser:
+          $ref: '#/components/schemas/UserFragment'
+        insertUserID:
+          description: The author of the post.
+          type: integer
+      required:
+      - name
+      - url
+      - dateInserted
+      - insertUserID
+      type: object
+      x-addon: vanilla
+    CategorySchema:
+      properties:
+        categoryID:
+          description: The ID of the category.
+          type: integer
+        countAllComments:
+          description: Total of all comments in a category and its children.
+          type: integer
+        countAllDiscussions:
+          description: Total of all discussions in a category and its children.
+          type: integer
+        countCategories:
+          description: Total number of child categories.
+          type: integer
+        countComments:
+          description: Total comments in the category.
+          type: integer
+        countDiscussions:
+          description: Total discussions in the category.
+          type: integer
+        countFollowers:
+          description: Total followers in the category.
+          type: integer
+        customPermissions:
+          description: Are custom permissions set for this category?
+          type: boolean
+        description:
+          description: The description of the category.
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        displayAs:
+          type: string
+          default: discussions
+          description: The display style of the category.
+          enum:
+          - categories
+          - discussions
+          - flat
+          - heading
+          minLength: 1
+        followed:
+          description: Is the category being followed by the current user?
+          type: boolean
+        isArchived:
+          description: The archived state of this category.
+          type: boolean
+        name:
+          description: The name of the category.
+          minLength: 1
+          type: string
+        parentCategoryID:
+          description: Parent category ID.
+          type:
+          - integer
+          - 'null'
+        url:
+          description: The URL to the category.
+          minLength: 1
+          type: string
+        urlcode:
+          description: The URL code of the category.
+          minLength: 1
+          type: string
+        ideationType:
+          description: Voting type used for ideation posts.
+          enum:
+          - up
+          - up-down
+          - false
+          x-addon: ideation
+        permissions:
+          $ref: '#/components/schemas/DiscussionPermissions'
+        defaultStatusID:
+          description: The default status ID of the category.
+          type: integer
+      required:
+      - categoryID
+      - name
+      - description
+      - parentCategoryID
+      - customPermissions
+      - isArchived
+      - urlcode
+      - url
+      - displayAs
+      - countCategories
+      - countDiscussions
+      - countComments
+      - countFollowers
+      - countAllDiscussions
+      - countAllComments
+      type: object
+      x-addon: vanilla
+  requestBodies:
+    CategoryPost:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryPost'
+      required: true
+      x-addon: vanilla
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

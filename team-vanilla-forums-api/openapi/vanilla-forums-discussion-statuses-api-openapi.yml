@@ -1,0 +1,863 @@
+openapi: 3.2.0
+info:
+  description: API access to your community.
+  title: Vanilla Discussion Statuses API
+  version: '2.0'
+servers:
+- url: https://open.vanillaforums.com/api/v2
+tags:
+- name: Discussion Statuses
+paths:
+  /discussions/statuses:
+    get:
+      summary: Get known discussion statuses
+      tags:
+      - Discussion Statuses
+      parameters:
+      - $ref: '#/components/parameters/ScopeFilter'
+      - $ref: '#/components/parameters/ScopeTypeFilter'
+      - name: subType
+        in: query
+        schema:
+          type: string
+      - name: state
+        in: query
+        schema:
+          type: string
+          enum:
+          - open
+          - closed
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecordStatus'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+      x-addon: dashboard
+      operationId: getDiscussionsStatuses
+      x-operation-id-source: derived
+    post:
+      summary: Create a new discussion status
+      tags:
+      - Discussion Statuses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordStatusPost'
+        required: true
+      responses:
+        '201':
+          $ref: '#/components/responses/RecordStatusResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      operationId: postDiscussionsStatuses
+      x-operation-id-source: derived
+  /discussions/statuses/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      x-addon: dashboard
+    get:
+      summary: Get a discussion status by its ID
+      tags:
+      - Discussion Statuses
+      responses:
+        '200':
+          $ref: '#/components/responses/RecordStatusResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      parameters:
+      - name: fields
+        in: query
+        style: form
+        description: Only return fields with these keys from the output. Use dot notation for nested fields.
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: getDiscussionsStatusesById
+      x-operation-id-source: derived
+    patch:
+      summary: Update a discussion status
+      tags:
+      - Discussion Statuses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordStatusPatch'
+      responses:
+        '200':
+          $ref: '#/components/responses/RecordStatusResponse'
+        '400':
+          description: Bad Request, e.g. attempting to update a system-defined status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      operationId: patchDiscussionsStatusesById
+      x-operation-id-source: derived
+    delete:
+      summary: Delete a discussion status
+      tags:
+      - Discussion Statuses
+      responses:
+        '204':
+          description: OK
+        '400':
+          description: Bad Request, e.g. attempting to delete a system-defined status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicError'
+        '403':
+          $ref: '#/components/responses/PermissionError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-addon: dashboard
+      operationId: deleteDiscussionsStatusesById
+      x-operation-id-source: derived
+  /discussions/toggle-scoped-statuses:
+    put:
+      summary: Toggle scoped statuses on or off
+      tags:
+      - Discussion Statuses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: Scoped statuses toggle state.
+              required:
+              - enabled
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: Scoped statuses toggle state.
+                required:
+                - enabled
+          description: Success
+      x-addon: dashboard
+      operationId: putDiscussionsToggleScopedStatuses
+      x-operation-id-source: derived
+components:
+  schemas:
+    ScopeType:
+      type: string
+      description: Scope type for a record.
+      enum:
+      - global
+      - scoped
+      x-addon: dashboard
+    RecordStatus:
+      type: object
+      properties:
+        statusID:
+          description: Unique numeric ID of a status.
+          type: string
+        name:
+          description: Name of status
+          type: string
+        state:
+          description: State of the item associated with this status
+          type: string
+          enum:
+          - open
+          - closed
+        recordType:
+          description: Type of resource to which this status applies
+          type: string
+          minLength: 1
+        recordSubtype:
+          description: Subtype of resource to which this status applies
+          type:
+          - string
+          - 'null'
+        isDefault:
+          description: True if this status is to be assigned to the resource upon its creation, false otherwise
+          type: boolean
+          default: false
+        isSystem:
+          description: True if this status is defined by the application and is not accessible for modification or deletion.
+          type: boolean
+          default: false
+        isIntenral:
+          description: True if this status is internal.
+          type: boolean
+          default: false
+        scopeType:
+          $ref: '#/components/schemas/ScopeType'
+        scope:
+          $ref: '#/components/schemas/Scope'
+      x-addon: dashboard
+    Scope:
+      type: object
+      description: Scoping information for a record.
+      properties:
+        categoryIDs:
+          type: array
+          items:
+            type: integer
+        siteSectionIDs:
+          type: array
+          items:
+            type: string
+        defaults:
+          type: object
+          properties:
+            categoryIDs:
+              type: array
+              items:
+                type: integer
+            siteSectionIDs:
+              type: array
+              items:
+                type: string
+      x-addon: dashboard
+    RecordStatusPost:
+      type: object
+      properties:
+        name:
+          description: Name of status
+          type: string
+        isDefault:
+          description: True if this status is to be assigned to the resource upon its creation, false otherwise
+          type: boolean
+        state:
+          description: State of the item associated with this status
+          type: string
+          enum:
+          - open
+          - closed
+        recordSubtype:
+          description: Subtype of resource to which this status applies
+          type:
+          - string
+          - 'null'
+        isInternal:
+          description: True if the status is internal, defaults to false.
+          type:
+          - boolean
+          - 'null'
+        scopeType:
+          $ref: '#/components/schemas/ScopeType'
+        scope:
+          $ref: '#/components/schemas/Scope'
+      required:
+      - name
+      x-addon: dashboard
+    BasicError:
+      type: object
+      properties:
+        message:
+          description: Verbose description of the error.
+          type: string
+        status:
+          description: Response status code.
+          type: integer
+      required:
+      - message
+      - status
+      x-addon: dashboard
+    RecordStatusPatch:
+      type: object
+      properties:
+        name:
+          description: Name of status
+          type: string
+        isDefault:
+          description: True if this status is to be assigned to the resource upon its creation, false otherwise
+          type: boolean
+        state:
+          description: State of the item associated with this status
+          type: string
+          enum:
+          - open
+          - closed
+        recordSubtype:
+          description: Subtype of resource to which this status applies
+          type:
+          - string
+          - 'null'
+        isInternal:
+          description: True if this status is internal status, false otherwise
+          type:
+          - boolean
+          - 'null'
+        scopeType:
+          $ref: '#/components/schemas/ScopeType'
+        scope:
+          $ref: '#/components/schemas/Scope'
+      x-addon: dashboard
+  responses:
+    NotFound:
+      description: The record does not exist or was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: More information about the error.
+              status:
+                type: number
+                description: The HTTP status code for the error.
+                format: int32
+            required:
+            - message
+          example:
+            status: 404
+            message: Page Not Found
+      x-addon: dashboard
+    PermissionError:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            - status
+            - permissions
+            properties:
+              message:
+                type: string
+                description: A message that tells you the permissions you need.
+                example: Permission denied.
+              status:
+                type: integer
+                description: The HTTP status code for the error.
+                format: int32
+                example: 403
+              permissions:
+                description: The permissions the requesting user is missing.
+                type: array
+                items:
+                  type: string
+              recordIDs:
+                description: The recordIDs the user didn't have permission on.
+                type: array
+                items:
+                  type: integer
+          example:
+            status: 403
+            message: Permission Problem
+            permissions:
+            - Vanilla.Discussions.Edit
+            - Vanilla.Community.Manage
+            recordIDs:
+            - 2425
+            - 1342
+      x-addon: dashboard
+    RecordStatusResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RecordStatus'
+      x-addon: dashboard
+  parameters:
+    ScopeFilter:
+      name: scope
+      in: query
+      schema:
+        type: object
+        properties:
+          categoryIDs:
+            description: Filter by specific categoryIDs this record is scoped to.
+            type: array
+            items:
+              type: integer
+          siteSectionIDs:
+            description: Filter by specific siteSectionIDs this record is scoped to.
+            type: array
+            items:
+              type: string
+      x-addon: dashboard
+    ScopeTypeFilter:
+      name: scopeType
+      description: Filter by scope type. Can include 'global', 'scoped', or both.
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+          - global
+          - scoped
+      x-addon: dashboard
+x-resourceEvents:
+  emailTemplates:
+    x-feature: Feature.emailTemplates.Enabled
+    name: Email Template
+    type: emailTemplate
+  notification:
+    x-addon: dashboard
+    name: Notification
+    type: notification
+  reaction:
+    name: Reaction
+    type: reaction
+  user:
+    x-addon: dashboard
+    name: User
+    type: user
+  comment:
+    x-addon: vanilla
+    name: Comment
+    type: comment
+  discussion:
+    x-addon: vanilla
+    name: Discussion
+    type: discussion
+  escalation:
+    x-addon: vanilla
+    name: Escalation
+    type: cmdEscalation
+  report:
+    x-addon: vanilla
+    name: Report
+    type: report
+  userNote:
+    x-addon: warnings2
+    name: User Note
+    type: userNote
+x-aliases:
+  AssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+  StringAssetOut:
+    type:
+      description: The type of the asset.
+      type: string
+    url:
+      type: string
+      description: Absolute URL of the asset.
+    content-type:
+      description: The content-type of the asset.
+      type: string
+      example: application/json
+    data:
+      type: string
+      description: Contents of the asset. May require an expand parameter to retreive.
+    '200':
+      content:
+        application/json:
+          schema:
+            description: Contents of an asset.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: text/html
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  ThemeSlug:
+    description: Unique theme slug.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: string
+  AssetNotFound:
+    description: JavaScript could not be found.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              description: Verbose description of the error.
+              type:
+              - string
+              - 'null'
+            message:
+              description: Short description of the error.
+              type: string
+            status:
+              description: Status code of the error response.
+              type: integer
+          required:
+          - description
+          - message
+          - status
+  ThemeIDParam:
+    description: Unique themeID.
+    in: path
+    name: themeID
+    required: true
+    schema:
+      type: integer
+  StringAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        description: The type of the asset.
+        type: string
+        example: html
+        enum:
+        - html
+        - css
+        - js
+      data:
+        type: string
+        example: <header>Hello Footer<footer />
+        description: Contents of the asset. May require an expand parameter to retreive.
+  JsonAssetIn:
+    description: An asset to be inserted.
+    type: object
+    properties:
+      type:
+        type: string
+        example: json
+      data:
+        type: object
+        description: JSON content of the asset.
+        example:
+          global:
+            mainColors:
+              primary: '#5cc530'
+  JsonAssetOut:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+              content-type:
+                description: The content-type of the asset.
+                type: string
+                example: application/json
+              url:
+                type: string
+                description: Absolute URL of the resource.
+                example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+      description: Success
+  DeleteAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    responses:
+      '204':
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Delete theme asset.
+  StringPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                description: The type of the asset.
+                type: string
+                example: html
+                enum:
+                - html
+                - css
+                - js
+              data:
+                type: string
+                example: <header>Hello Footer<footer />
+                description: Contents of the asset. May require an expand parameter to retreive.
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              description: Contents of an asset.
+              type: object
+              properties:
+                type:
+                  description: The type of the asset.
+                  type: string
+                  example: html
+                  enum:
+                  - html
+                  - css
+                  - js
+                data:
+                  type: string
+                  example: <header>Hello Footer<footer />
+                  description: Contents of the asset. May require an expand parameter to retreive.
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: text/html
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  HtmlPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/html:
+          schema:
+            type: string
+            description: HTML contents.
+            example: <div>Hello HTML Asset!</div>
+    responses:
+      '200':
+        content:
+          text/html:
+            schema:
+              type: string
+              description: HTML contents.
+              example: <div>Hello HTML Asset!</div>
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/javascript:
+          schema:
+            type: string
+            description: HTML contents.
+            example: console.log('Hello Javascript')
+    responses:
+      '200':
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: HTML contents.
+              example: console.log('Hello Javascript')
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  CssPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        text/css:
+          schema:
+            type: string
+            description: HTML contents.
+            example: ".class {\n   color: orange;\n}\n"
+    responses:
+      '200':
+        content:
+          text/css:
+            schema:
+              type: string
+              description: HTML contents.
+              example: ".class {\n   color: orange;\n}\n"
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAsset:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            description: An asset to be inserted.
+            type: object
+            properties:
+              type:
+                type: string
+                example: json
+              data:
+                type: object
+                description: JSON content of the asset.
+                example:
+                  global:
+                    mainColors:
+                      primary: '#5cc530'
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: json
+                data:
+                  type: object
+                  description: JSON content of the asset.
+                  example:
+                    global:
+                      mainColors:
+                        primary: '#5cc530'
+                content-type:
+                  description: The content-type of the asset.
+                  type: string
+                  example: application/json
+                url:
+                  type: string
+                  description: Absolute URL of the resource.
+                  example: https://site.com/api/v2/themes/:themeID/assets/:assetName.ext?v=faasdf42d
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.
+  JsonPutAssetContentType:
+    parameters:
+    - description: Unique themeID.
+      in: path
+      name: themeID
+      required: true
+      schema:
+        type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: JSON contents of the asset.
+            example:
+              hello:
+                json:
+                  asset: true
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              description: JSON contents of the asset.
+              example:
+                hello:
+                  json:
+                    asset: true
+        description: Success
+    tags:
+    - Theme Assets
+    summary: Set theme asset or replace if already exists.

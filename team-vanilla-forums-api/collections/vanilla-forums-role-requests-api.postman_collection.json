@@ -1,0 +1,1208 @@
+{
+  "item": [
+    {
+      "id": "29661cc6-9b14-4e62-a2dc-ed181e1558da",
+      "name": "Role Requests",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c913cfa4-19c8-450b-94c3-781b46b92636",
+          "name": "Apply to a role.",
+          "request": {
+            "name": "Apply to a role.",
+            "description": {},
+            "url": {
+              "path": [
+                "role-requests",
+                "applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roleID\": \"<integer>\",\n  \"attributes\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83ac0e86-20ac-4440-8682-33d6f36826c0",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"roleID\": \"<integer>\",\n  \"attributes\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"attributes\": {},\n  \"dateExpires\": \"1993-09-29T04:56:02.025Z\",\n  \"dateInserted\": \"1975-08-26T03:34:39.223Z\",\n  \"insertIPAddress\": \"33.94.193.88\",\n  \"insertUserID\": 8642,\n  \"roleID\": 8002,\n  \"roleRequestID\": 9417,\n  \"status\": \"pending\",\n  \"userID\": 7827,\n  \"type\": \"invitation\",\n  \"dateOfStatus\": 8101,\n  \"statusUserID\": 4188,\n  \"dateUpdated\": \"1972-11-22T04:42:37.849Z\",\n  \"updateUserID\": 197,\n  \"updateIPAddress\": \"29.134.11.211\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "672e660a-8c9e-45e1-8459-2dd9d99563f6",
+          "name": "List role applicants.",
+          "request": {
+            "name": "List role applicants.",
+            "description": {},
+            "url": {
+              "path": [
+                "role-requests",
+                "applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roleID",
+                  "value": "<integer>",
+                  "description": "Filter by role."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by status."
+                },
+                {
+                  "disabled": false,
+                  "key": "userID",
+                  "value": "<integer>",
+                  "description": "Filter by user."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Similar to a page parameter, but specifies a specific numeric record offset starting at zero.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30",
+                  "description": "Desired number of items per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n\nNote that only community managers can view and expand the `statusUser`."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n\nNote that only community managers can view and expand the `statusUser`."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c30b9373-1f04-45a2-beea-a6f4bee1f4e5",
+              "name": "OK.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roleID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"attributes\": {},\n    \"dateExpires\": \"1965-12-20T01:05:59.688Z\",\n    \"dateInserted\": \"1976-08-22T21:25:47.968Z\",\n    \"insertIPAddress\": \"147.79.89.175\",\n    \"insertUserID\": 2511,\n    \"roleID\": 7977,\n    \"roleRequestID\": 4421,\n    \"status\": \"<string>\",\n    \"userID\": 4088,\n    \"type\": \"application\",\n    \"dateOfStatus\": 6639,\n    \"statusUserID\": 3930,\n    \"dateUpdated\": \"1954-10-05T06:56:00.227Z\",\n    \"updateUserID\": 7074,\n    \"updateIPAddress\": \"80.0.255.127\",\n    \"role\": {\n      \"roleID\": 7204,\n      \"name\": \"string\"\n    },\n    \"user\": {\n      \"userID\": 7810,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://oTGOMekgOyrEaCACjJtDvJhyEiqZ.tpvtXUa+0AkEWvz2Hlqv2kAjSTDJo4pidth,GOOs8,9l5PyU3E7VTzOJvxsYWKFW-4.4\",\n      \"dateLastActive\": \"1996-10-17T21:17:47.261Z\",\n      \"url\": \"https://lozUCE.wtTOzZC0h9Lh9YLO0dSPF7VbLEwcNK0LD6U\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"statusUser\": {\n      \"userID\": 2472,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://nrYYTyWICSHRFuoxPiTNUlr.hzfvpOo\",\n      \"dateLastActive\": \"2024-01-24T22:40:01.358Z\",\n      \"url\": \"https://GggbXa.nzcrYoV3pdwtv,M1vKYxndYtdHooxJQZzSnEthCorKZW3V6sPtoVSrfxZ60kkJdIW\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    }\n  },\n  {\n    \"attributes\": {},\n    \"dateExpires\": \"1948-06-29T03:52:18.776Z\",\n    \"dateInserted\": \"1960-10-06T01:26:05.796Z\",\n    \"insertIPAddress\": \"105.154.60.84\",\n    \"insertUserID\": 3919,\n    \"roleID\": 8623,\n    \"roleRequestID\": 6832,\n    \"status\": \"<string>\",\n    \"userID\": 2675,\n    \"type\": \"application\",\n    \"dateOfStatus\": 1985,\n    \"statusUserID\": 1804,\n    \"dateUpdated\": \"1992-08-07T21:59:16.623Z\",\n    \"updateUserID\": 5512,\n    \"updateIPAddress\": \"48.203.37.114\",\n    \"role\": {\n      \"roleID\": 5691,\n      \"name\": \"string\"\n    },\n    \"user\": {\n      \"userID\": 7856,\n      \"name\": \"string\",\n      \"photoUrl\": \"https://kshVqfeYOQPBLThxFwVjMatj.demduigjC-8z134h6+eZQWdK-WeoxVMRJMpFodWlqhD\",\n      \"dateLastActive\": \"1956-09-12T11:06:37.444Z\",\n      \"url\": \"http://JWUsXlb.mkketlac-Ojgb5MTBYwda\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    },\n    \"statusUser\": {\n      \"userID\": 447,\n      \"name\": \"string\",\n      \"photoUrl\": \"http://zqsp.lwOJyW,Ng-kdPb4uiZQ7PfmX\",\n      \"dateLastActive\": \"1962-05-30T16:12:03.110Z\",\n      \"url\": \"https://saEqgHmMAhvEeIKyP.rajLvkibod\",\n      \"ssoID\": \"string\",\n      \"label\": \"string\",\n      \"labelHtml\": \"string\",\n      \"private\": false\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17cc933c-98d8-4871-a1f3-41ced2dfdf14",
+          "name": "Get a single application.",
+          "request": {
+            "name": "Get a single application.",
+            "description": {},
+            "url": {
+              "path": [
+                "role-requests",
+                "applications",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n\nNote that only community managers can view and expand the `statusUser`."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n\nNote that only community managers can view and expand the `statusUser`."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9266989a-02df-421a-9da8-cad80fc997c5",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"attributes\": {},\n  \"dateExpires\": \"1967-06-08T07:14:01.186Z\",\n  \"dateInserted\": \"1966-06-07T19:09:10.129Z\",\n  \"insertIPAddress\": \"1.50.224.48\",\n  \"insertUserID\": 8694,\n  \"roleID\": 4117,\n  \"roleRequestID\": 8033,\n  \"status\": \"<string>\",\n  \"userID\": 3229,\n  \"type\": \"application\",\n  \"dateOfStatus\": 5438,\n  \"statusUserID\": 5472,\n  \"dateUpdated\": \"2006-02-13T06:32:15.401Z\",\n  \"updateUserID\": 8406,\n  \"updateIPAddress\": \"89.230.133.72\",\n  \"role\": {\n    \"roleID\": 4654,\n    \"name\": \"string\"\n  },\n  \"user\": {\n    \"userID\": 4173,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://nRtUmnoBIFhnmVMs.nyXmg-R+VAob\",\n    \"dateLastActive\": \"2010-12-11T10:13:51.495Z\",\n    \"url\": \"https://xpnhecHQKnxLKbziavhvWBOhBvhGyG.futpOHuiPp0vWHUTYbg3nUrziXlkUxePXLW8Sc8sQN+-pG\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  },\n  \"statusUser\": {\n    \"userID\": 1621,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://QaivGEkSbjhV.drbzoc,ZrRKkI8ieuk0gOoxNM.XZGYeij\",\n    \"dateLastActive\": \"1965-03-08T15:59:24.889Z\",\n    \"url\": \"https://KbutFeqhjAdzCHnm.lztuqJ9sRuWHCV57kHKLmM9V,DWFOMTWHE-Y1ua-5LsNh6g9d\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f6f35ad-41a9-42d6-86a8-3f90aa454c30",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "985577e9-2405-40b7-93d2-1beed8e3fd53",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bea06ae3-bb9e-4db6-983a-c7e13730172c",
+          "name": "Update a role application.",
+          "request": {
+            "name": "Update a role application.",
+            "description": {},
+            "url": {
+              "path": [
+                "role-requests",
+                "applications",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n\nNote that only community managers can view and expand the `statusUser`."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n\nNote that only community managers can view and expand the `statusUser`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "29dd9db6-c301-47b7-bece-d49e120e1415",
+              "name": "Updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"attributes\": {},\n  \"dateExpires\": \"1955-06-16T15:41:43.559Z\",\n  \"dateInserted\": \"1962-12-23T23:09:38.466Z\",\n  \"insertIPAddress\": \"152.201.207.7\",\n  \"insertUserID\": 3479,\n  \"roleID\": 6461,\n  \"roleRequestID\": 4521,\n  \"status\": \"<string>\",\n  \"userID\": 6342,\n  \"type\": \"invitation\",\n  \"dateOfStatus\": 2788,\n  \"statusUserID\": 2333,\n  \"dateUpdated\": \"1996-05-10T19:39:14.394Z\",\n  \"updateUserID\": 3933,\n  \"updateIPAddress\": \"216.152.173.112\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb6e895d-f14c-481c-927d-b80676097391",
+          "name": "Delete a role application.",
+          "request": {
+            "name": "Delete a role application.",
+            "description": {},
+            "url": {
+              "path": [
+                "role-requests",
+                "applications",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the request."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3a87afa-56a9-40c5-ae99-5a31153e81c0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "applications",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the request."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5efb907-83ea-4bb0-ba2b-0a4e386b7bd3",
+          "name": "Add or update a role request meta definition.",
+          "request": {
+            "name": "Add or update a role request meta definition.",
+            "description": {},
+            "url": {
+              "path": [
+                "role-requests",
+                "metas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roleID\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"body\": \"<string>\",\n  \"format\": \"<string>\",\n  \"attributesSchema\": {\n    \"type\": \"<string>\",\n    \"properties\": {\n      \"key_0\": {\n        \"type\": \"<string>\",\n        \"description\": \"<string>\",\n        \"x-label\": \"<string>\",\n        \"x-control\": \"<string>\",\n        \"default\": \"<string>\",\n        \"enum\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"minLength\": \"<integer>\",\n        \"maxLength\": \"<integer>\",\n        \"minimum\": \"<number>\",\n        \"maximum\": \"<number>\"\n      },\n      \"key_1\": {\n        \"type\": \"<string>\",\n        \"description\": \"<string>\",\n        \"x-label\": \"<string>\",\n        \"x-control\": \"<string>\",\n        \"default\": \"<string>\",\n        \"enum\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"minLength\": \"<integer>\",\n        \"maxLength\": \"<integer>\",\n        \"minimum\": \"<number>\",\n        \"maximum\": \"<number>\"\n      },\n      \"key_2\": {\n        \"type\": \"<string>\",\n        \"description\": \"<string>\",\n        \"x-label\": \"<string>\",\n        \"x-control\": \"<string>\",\n        \"default\": \"<string>\",\n        \"enum\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"minLength\": \"<integer>\",\n        \"maxLength\": \"<integer>\",\n        \"minimum\": \"<number>\",\n        \"maximum\": \"<number>\"\n      }\n    },\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"name\": \"<string>\",\n  \"attributes\": {\n    \"notification\": {\n      \"approved\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"<string>\",\n        \"url\": \"<uri>\"\n      },\n      \"denied\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"<string>\",\n        \"url\": \"<uri>\"\n      },\n      \"communityManager\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"<string>\",\n        \"url\": \"<uri>\"\n      }\n    },\n    \"link\": {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87198512-8a54-49a2-8c7b-3a8a40dcb1f5",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "metas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"roleID\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"body\": \"<string>\",\n  \"format\": \"markdown\",\n  \"attributesSchema\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"license\": {\n        \"type\": \"string\",\n        \"description\": \"Find your license number in the help menu.\"\n      },\n      \"notes\": {\n        \"type\": \"string\",\n        \"x-control\": \"textarea\"\n      }\n    }\n  },\n  \"name\": \"<string>\",\n  \"attributes\": {\n    \"notification\": {\n      \"approved\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"markdown\",\n        \"url\": \"<uri>\"\n      },\n      \"denied\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"markdown\",\n        \"url\": \"<uri>\"\n      },\n      \"communityManager\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"markdown\",\n        \"url\": \"<uri>\"\n      }\n    },\n    \"link\": {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roleID\": 6995,\n  \"type\": \"<string>\",\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"format\": \"markdown\",\n  \"attributesSchema\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"license\": {\n        \"type\": \"string\",\n        \"description\": \"Find your license number in the help menu.\"\n      },\n      \"notes\": {\n        \"type\": \"string\",\n        \"x-control\": \"textarea\"\n      }\n    }\n  },\n  \"attributes\": {\n    \"notification\": {\n      \"approved\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"markdown\",\n        \"url\": \"<uri>\"\n      },\n      \"denied\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"markdown\",\n        \"url\": \"<uri>\"\n      },\n      \"communityManager\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"markdown\",\n        \"url\": \"<uri>\"\n      }\n    },\n    \"link\": {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  },\n  \"url\": \"https://Xj.gfqcvs8WwynjcFAmkPdIlcvrSJeRAhZyBHkcHhiN8pdlBj9e1oyZ9PRu\",\n  \"hasRole\": true,\n  \"roleRequest\": {\n    \"status\": \"<string>\",\n    \"dateInserted\": \"2000-10-14T01:39:44.884Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "523d6ad6-d7b6-4ffa-93c7-619b94fb7181",
+          "name": "List role request meta information",
+          "request": {
+            "name": "List role request meta information",
+            "description": {},
+            "url": {
+              "path": [
+                "role-requests",
+                "metas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter on type."
+                },
+                {
+                  "disabled": false,
+                  "key": "roleID",
+                  "value": "<integer>",
+                  "description": "Filter on role."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasRole",
+                  "value": "<boolean>",
+                  "description": "Filter on roles the user already has or doesn't have."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e76966d-971b-4bf6-a7c0-2623fea0c117",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "metas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "roleID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "hasRole",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"roleID\": 8749,\n    \"type\": \"<string>\",\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"format\": \"markdown\",\n    \"attributesSchema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"license\": {\n          \"type\": \"string\",\n          \"description\": \"Find your license number in the help menu.\"\n        },\n        \"notes\": {\n          \"type\": \"string\",\n          \"x-control\": \"textarea\"\n        }\n      }\n    },\n    \"attributes\": {\n      \"notification\": {\n        \"approved\": {\n          \"name\": \"<string>\",\n          \"body\": \"<string>\",\n          \"format\": \"markdown\",\n          \"url\": \"<uri>\"\n        },\n        \"denied\": {\n          \"name\": \"<string>\",\n          \"body\": \"<string>\",\n          \"format\": \"markdown\",\n          \"url\": \"<uri>\"\n        },\n        \"communityManager\": {\n          \"name\": \"<string>\",\n          \"body\": \"<string>\",\n          \"format\": \"markdown\",\n          \"url\": \"<uri>\"\n        }\n      },\n      \"link\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\"\n      }\n    },\n    \"url\": \"https://IDpSruLWxZOYuaCxZzldjTKifayQGCPcp.gsdvb2AbrocVxzheKEffhpi8RiQHcJI8zpJbBRQbBSO2BY+hvNzvu6064W631Ah4npseMugiby\",\n    \"hasRole\": false,\n    \"roleRequest\": {\n      \"status\": \"<string>\",\n      \"dateInserted\": \"2017-05-06T06:42:38.101Z\"\n    }\n  },\n  {\n    \"roleID\": 6356,\n    \"type\": \"<string>\",\n    \"name\": \"string\",\n    \"body\": \"string\",\n    \"format\": \"markdown\",\n    \"attributesSchema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"license\": {\n          \"type\": \"string\",\n          \"description\": \"Find your license number in the help menu.\"\n        },\n        \"notes\": {\n          \"type\": \"string\",\n          \"x-control\": \"textarea\"\n        }\n      }\n    },\n    \"attributes\": {\n      \"notification\": {\n        \"approved\": {\n          \"name\": \"<string>\",\n          \"body\": \"<string>\",\n          \"format\": \"markdown\",\n          \"url\": \"<uri>\"\n        },\n        \"denied\": {\n          \"name\": \"<string>\",\n          \"body\": \"<string>\",\n          \"format\": \"markdown\",\n          \"url\": \"<uri>\"\n        },\n        \"communityManager\": {\n          \"name\": \"<string>\",\n          \"body\": \"<string>\",\n          \"format\": \"markdown\",\n          \"url\": \"<uri>\"\n        }\n      },\n      \"link\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\"\n      }\n    },\n    \"url\": \"http://hTSiKyH.onqryF4gLeU1N8jbgWOGAh.bwqufNB4GTnHhS5n+.BFGXVrQGKH7kyosAqwTfo5\",\n    \"hasRole\": true,\n    \"roleRequest\": {\n      \"status\": \"<string>\",\n      \"dateInserted\": \"1980-08-02T22:27:46.779Z\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1af40cbd-f996-45a2-8f78-795674f7e017",
+          "name": "Get a meta item.",
+          "request": {
+            "name": "Get a meta item.",
+            "description": {},
+            "url": {
+              "path": [
+                "role-requests",
+                "metas",
+                ":type",
+                ":roleID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) The type of request."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "roleID",
+                  "description": "(Required) The role ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78a92e48-50ca-473c-b422-3e619d4f055d",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "metas",
+                    ":type",
+                    ":roleID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The type of request."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "roleID",
+                      "description": "(Required) The role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roleID\": 6995,\n  \"type\": \"<string>\",\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"format\": \"markdown\",\n  \"attributesSchema\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"license\": {\n        \"type\": \"string\",\n        \"description\": \"Find your license number in the help menu.\"\n      },\n      \"notes\": {\n        \"type\": \"string\",\n        \"x-control\": \"textarea\"\n      }\n    }\n  },\n  \"attributes\": {\n    \"notification\": {\n      \"approved\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"markdown\",\n        \"url\": \"<uri>\"\n      },\n      \"denied\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"markdown\",\n        \"url\": \"<uri>\"\n      },\n      \"communityManager\": {\n        \"name\": \"<string>\",\n        \"body\": \"<string>\",\n        \"format\": \"markdown\",\n        \"url\": \"<uri>\"\n      }\n    },\n    \"link\": {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  },\n  \"url\": \"https://Xj.gfqcvs8WwynjcFAmkPdIlcvrSJeRAhZyBHkcHhiN8pdlBj9e1oyZ9PRu\",\n  \"hasRole\": true,\n  \"roleRequest\": {\n    \"status\": \"<string>\",\n    \"dateInserted\": \"2000-10-14T01:39:44.884Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fa5e232-d803-4bf1-9bcc-6509b684c633",
+          "name": "Delete a meta item.",
+          "request": {
+            "name": "Delete a meta item.",
+            "description": {},
+            "url": {
+              "path": [
+                "role-requests",
+                "metas",
+                ":type",
+                ":roleID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) The type of request."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "roleID",
+                  "description": "(Required) The role ID."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec5a8a79-25fb-4ed8-864b-da81281f41ea",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role-requests",
+                    "metas",
+                    ":type",
+                    ":roleID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The type of request."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "roleID",
+                      "description": "(Required) The role ID."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ff03e712-08f0-47ac-a8b7-14251798736e",
+    "name": "Vanilla Addons Role Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

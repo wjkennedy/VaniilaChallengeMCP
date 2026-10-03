@@ -1,0 +1,139 @@
+{
+  "item": [
+    {
+      "id": "cee828e4-4c7c-4778-9f97-f2e807a5311a",
+      "name": "email-templates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab6cfedb-1ed0-4c61-a539-41ecf1671d53",
+          "name": "Get an email Templates .",
+          "request": {
+            "name": "Get an email Templates .",
+            "description": {},
+            "url": {
+              "path": [
+                "email-templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) <p>The email Templates ID.</p>\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6bbad64-7530-4bc3-9d71-df6aeef07a77",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) <p>The email Templates ID.</p>\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"body\": \"string\",\n  \"footer\": \"string\",\n  \"subject\": \"string\",\n  \"emailLogo\": \"string\",\n  \"insertUserID\": 9421,\n  \"dateInserted\": \"1988-12-13T21:09:01.573Z\",\n  \"updateUserID\": 9674,\n  \"dateUpdated\": \"1989-02-11T12:37:19.127Z\",\n  \"status\": \"inactive\",\n  \"emailTemplatesID\": 4378,\n  \"insertUser\": {\n    \"userID\": 2619,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://ibIjQTSZGeyHYaBerHcvbMwQQLnH.reauIRJX2L64fZ\",\n    \"dateLastActive\": \"1969-10-27T09:28:05.844Z\",\n    \"url\": \"https://GDedrCPabnvGUTntwJURVNalyRaTw.zbC,F0q,ZLvFsH4q9ZcEeomos5YJTzb69kcTeVb1JiQOzmetKB0uj79rkv2S0Rnkvia-fJrEu\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  },\n  \"emailConfig\": {},\n  \"updateUser\": {\n    \"userID\": 3215,\n    \"name\": \"string\",\n    \"photoUrl\": \"http://DqxovtOfOcJLtICd.tqhpJkhHu10K.Avp6Mgxt\",\n    \"dateLastActive\": \"1965-05-24T13:39:41.764Z\",\n    \"url\": \"https://dz.dgvv-0EQuHmOtea0g+ZI+exTMONzermY9wUOLpAG,TH+-gipWI4HBUP,OFxQkRNp1Xz2ROKP.Tbox1Fvxhrb\",\n    \"ssoID\": \"string\",\n    \"label\": \"string\",\n    \"labelHtml\": \"string\",\n    \"private\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4bc5e297-41bc-40e3-96d2-7887e77d40cb",
+    "name": "Vanilla Addons email-templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

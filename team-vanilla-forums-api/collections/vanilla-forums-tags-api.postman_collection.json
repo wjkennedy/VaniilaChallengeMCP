@@ -1,0 +1,1596 @@
+{
+  "item": [
+    {
+      "id": "943f6fcc-c71a-49f3-831b-bb45a103ab7e",
+      "name": "Tags",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2770cbe0-e74c-4fc0-89fa-58597bf91fb7",
+          "name": "List tags.",
+          "request": {
+            "name": "List tags.",
+            "description": {},
+            "url": {
+              "path": [
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "The search term to find a tag."
+                },
+                {
+                  "disabled": false,
+                  "key": "tagID",
+                  "value": "<integer>",
+                  "description": "The ID of the tag to find."
+                },
+                {
+                  "disabled": false,
+                  "key": "tagID",
+                  "value": "<integer>",
+                  "description": "The ID of the tag to find."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of tags to list."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of tags to list."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentID",
+                  "value": "<integer>",
+                  "description": "ID of parent to filter results."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentID",
+                  "value": "<integer>",
+                  "description": "ID of parent to filter results."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeNoCountDiscussion",
+                  "value": "<boolean>",
+                  "description": "Filter results by tagged discussion"
+                },
+                {
+                  "disabled": false,
+                  "key": "replacingTagID",
+                  "value": "<integer>",
+                  "description": "Filter results to only show valid replacement candidates for the specified tag ID. Excludes the tag being replaced and applies scope compatibility rules."
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryIDs",
+                  "value": "[\"<integer>\",\"<integer>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "siteSectionIDs",
+                  "value": "[\"<string>\",\"<string>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeType",
+                  "value": "<string>",
+                  "description": "Filter by scope type. Can include 'global', 'scoped', or both."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeType",
+                  "value": "<string>",
+                  "description": "Filter by scope type. Can include 'global', 'scoped', or both."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number. See [Pagination](https://docs.vanillaforums.com/apiv2/#pagination).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Desired number of tags per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Expand associated records using one or more valid field names. A value of \"all\" will expand all expandable fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa75a183-3ed9-430b-a793-c174770fa2f3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tagID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "parentID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "excludeNoCountDiscussion",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "replacingTagID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "categoryIDs",
+                      "value": "<integer>,<integer>"
+                    },
+                    {
+                      "key": "siteSectionIDs",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 4218,\n    \"name\": \"string\",\n    \"parentTagID\": 5409,\n    \"tagID\": 822,\n    \"urlCode\": \"string\",\n    \"urlcode\": \"string\",\n    \"description\": \"string\",\n    \"url\": \"string\",\n    \"lastPost\": {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"dateInserted\": \"1971-04-10T04:05:37.198Z\",\n      \"insertUserID\": 568,\n      \"discussionID\": 7882,\n      \"commentID\": 8231,\n      \"body\": \"string\",\n      \"insertUser\": {\n        \"userID\": 1925,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://ppENqhzKPoECHbLfZZqcwPySo.yyveoRYiFAmppce5rNYSP7oRliUIVFCvl5DFFlIfTWx8tdJRD7Qc+fwqZZ3\",\n        \"dateLastActive\": \"2007-04-16T16:34:47.395Z\",\n        \"url\": \"https://fwlPqDzzamrZuRhXih.lmc9RD3i7jcbUMJqJekoTPr3UuCjMrLMjSNAQcCPQRH4JT\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": false\n      }\n    },\n    \"preferences\": {\n      \"preferences.followed\": true,\n      \"preferences.popup.postTag\": false,\n      \"preferences.email.postTag\": false\n    },\n    \"permissions\": {\n      \"discussions.view\": true,\n      \"discussions.add\": true,\n      \"discussions.edit\": false,\n      \"discussions.delete\": false,\n      \"discussions.sink\": false,\n      \"comments.add\": true,\n      \"comments.edit\": false,\n      \"comments.delete\": false\n    }\n  },\n  {\n    \"id\": 8444,\n    \"name\": \"string\",\n    \"parentTagID\": 6995,\n    \"tagID\": 2090,\n    \"urlCode\": \"string\",\n    \"urlcode\": \"string\",\n    \"description\": \"string\",\n    \"url\": \"string\",\n    \"lastPost\": {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"dateInserted\": \"1963-12-26T18:39:08.418Z\",\n      \"insertUserID\": 3784,\n      \"discussionID\": 2844,\n      \"commentID\": 185,\n      \"body\": \"string\",\n      \"insertUser\": {\n        \"userID\": 6471,\n        \"name\": \"string\",\n        \"photoUrl\": \"http://PdjgiThOACKUvVdOfWYMEc.mzouZqBwvjhWu.XlEPD\",\n        \"dateLastActive\": \"1974-03-01T07:43:24.072Z\",\n        \"url\": \"https://AMSidlStGuGoYjiBWfjjwPIDRIyzPl.xtgjU3YZE.ykWHAHZp2vunYSTRsLRZcmI4Qp7\",\n        \"ssoID\": \"string\",\n        \"label\": \"string\",\n        \"labelHtml\": \"string\",\n        \"private\": true\n      }\n    },\n    \"preferences\": {\n      \"preferences.followed\": false,\n      \"preferences.popup.postTag\": true,\n      \"preferences.email.postTag\": true\n    },\n    \"permissions\": {\n      \"discussions.view\": true,\n      \"discussions.add\": true,\n      \"discussions.edit\": false,\n      \"discussions.delete\": false,\n      \"discussions.sink\": false,\n      \"comments.add\": true,\n      \"comments.edit\": false,\n      \"comments.delete\": false\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89fde0fe-5040-4a61-82e3-c1f5114f5d47",
+          "name": "Add a tag.",
+          "request": {
+            "name": "Add a tag.",
+            "description": {},
+            "url": {
+              "path": [
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"parentTagID\": \"<integer>\",\n  \"type\": null,\n  \"description\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "145197bc-0f99-4ac6-bc24-f198d4a37c34",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"parentTagID\": \"<integer>\",\n  \"type\": null,\n  \"description\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dateInserted\": \"1949-05-28T06:06:51.229Z\",\n  \"insertIPAddress\": \"255.148.206.33\",\n  \"insertUserID\": 6636,\n  \"name\": \"string\",\n  \"tagID\": 6045,\n  \"urlcode\": \"string\",\n  \"description\": \"string\",\n  \"parentTagID\": 4811,\n  \"type\": null,\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d178dc1c-10cf-46c4-a95e-3c7b80def30f",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"parentTagID\": \"<integer>\",\n  \"type\": null,\n  \"description\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae3e3ad8-eed3-4b88-bbc3-259d6a7f7b23",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"parentTagID\": \"<integer>\",\n  \"type\": null,\n  \"description\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0301ec3a-68d6-44c0-a679-496470ee0862",
+          "name": "Get a single tag.",
+          "request": {
+            "name": "Get a single tag.",
+            "description": {},
+            "url": {
+              "path": [
+                "tags",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the tag."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3b50f4f-cb4e-4a60-a45f-7c82fbd94e94",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dateInserted\": \"1949-05-28T06:06:51.229Z\",\n  \"insertIPAddress\": \"255.148.206.33\",\n  \"insertUserID\": 6636,\n  \"name\": \"string\",\n  \"tagID\": 6045,\n  \"urlcode\": \"string\",\n  \"description\": \"string\",\n  \"parentTagID\": 4811,\n  \"type\": null,\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32f09333-c445-4faa-808e-c1164e4302df",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57196ca0-15d0-488a-8940-03d4344eaf45",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7682df2-9bea-4528-aeb8-d68af99431ec",
+          "name": "Update a tag.",
+          "request": {
+            "name": "Update a tag.",
+            "description": {},
+            "url": {
+              "path": [
+                "tags",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the tag."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parentTagID\": \"<integer>\",\n  \"type\": null,\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e666c1e-c7b6-4f01-b998-534e179f500d",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parentTagID\": \"<integer>\",\n  \"type\": null,\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dateInserted\": \"1949-05-28T06:06:51.229Z\",\n  \"insertIPAddress\": \"255.148.206.33\",\n  \"insertUserID\": 6636,\n  \"name\": \"string\",\n  \"tagID\": 6045,\n  \"urlcode\": \"string\",\n  \"description\": \"string\",\n  \"parentTagID\": 4811,\n  \"type\": null,\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a178921d-a7ce-47ac-86da-32b43d8c0842",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parentTagID\": \"<integer>\",\n  \"type\": null,\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa1eea2c-5c13-44e4-8f4e-86f4cc431ebd",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"urlcode\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parentTagID\": \"<integer>\",\n  \"type\": null,\n  \"scopeType\": \"<string>\",\n  \"scope\": {\n    \"categoryIDs\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"siteSectionIDs\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d37bbfcc-0b43-40f3-903a-147de4d1d4b8",
+          "name": "Delete a tag.",
+          "request": {
+            "name": "Delete a tag.",
+            "description": {
+              "content": "Delete a tag. Optionally provide a replacementTagID to reassign all discussions\nto another tag before deletion. If no replacement is provided, the tag associations\nare simply removed from all discussions.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tags",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "replacementTagID",
+                  "value": "<integer>",
+                  "description": "Optional tag ID to reassign discussions to before deletion."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the tag."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7af57668-4968-4925-b5c4-29923d89c982",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replacementTagID",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09643779-f851-4c74-b97e-8e015d399460",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replacementTagID",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a723d61-1dc3-48c2-b81e-15c47db38c38",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replacementTagID",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39cf7a24-c505-43e7-9a96-64a6fd226d41",
+              "name": "Tag is reserved and cannot be deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replacementTagID",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 1728\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0ef9a36-b195-4bdc-98b4-847b72dab3d7",
+          "name": "Get information about the impact of deleting a tag.",
+          "request": {
+            "name": "Get information about the impact of deleting a tag.",
+            "description": {
+              "content": "Returns information about what would happen if this tag is deleted,\nincluding the number of discussions using this tag and any categories\nthat would fall below minimum tag requirements.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tags",
+                ":id",
+                "delete-info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the tag."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0b267f6-59c8-4b6d-8f67-7d45614161a7",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id",
+                    "delete-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"countDiscussions\": 4414,\n  \"categoriesBelowMinimum\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "175eeb5e-69c1-4580-908c-eec481072c3e",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id",
+                    "delete-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"message\": \"Permission Problem\",\n  \"permissions\": [\n    \"Vanilla.Discussions.Edit\",\n    \"Vanilla.Community.Manage\"\n  ],\n  \"recordIDs\": [\n    2425,\n    1342\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c087714b-04d1-4b14-a1bb-b905808a9323",
+              "name": "The record does not exist or was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id",
+                    "delete-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"message\": \"Page Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47406287-00fc-45d8-8772-8359db4d4425",
+          "name": "List a user's tag preferences.",
+          "request": {
+            "name": "List a user's tag preferences.",
+            "description": {},
+            "url": {
+              "path": [
+                "tags",
+                ":id",
+                "preferences",
+                ":userID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The tag ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "userID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40517d85-d8dd-4b1e-89a3-5e783eeae4f8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id",
+                    "preferences",
+                    ":userID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The tag ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "userID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"preferences.followed\": false,\n  \"preferences.popup.postTag\": false,\n  \"preferences.email.postTag\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "650ee989-7ea8-4c69-9271-3b1537c0242d",
+          "name": "Set a user's tag preferences.",
+          "request": {
+            "name": "Set a user's tag preferences.",
+            "description": {},
+            "url": {
+              "path": [
+                "tags",
+                ":id",
+                "preferences",
+                ":userID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The tag ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "userID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"preferences.followed\": \"<boolean>\",\n  \"preferences.popup.postTag\": \"<boolean>\",\n  \"preferences.email.postTag\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bdc0dd1d-3efa-44f3-8b00-6753c692b5b7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":id",
+                    "preferences",
+                    ":userID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The tag ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "userID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferences.followed\": \"<boolean>\",\n  \"preferences.popup.postTag\": \"<boolean>\",\n  \"preferences.email.postTag\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"preferences.followed\": \"<boolean>\",\n  \"preferences.popup.postTag\": \"<boolean>\",\n  \"preferences.email.postTag\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0461e0f6-7333-48ac-bf30-874909fd68a3",
+    "name": "Vanilla Addons Tags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Job Queue API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Job Queue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Track job feedback.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/job-queue-feedback",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Track job feedback."
+        },
+        {
+          "info": {
+            "name": "Trigger a health check job.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://open.vanillaforums.com/api/v2/job-queue/health-check"
+          },
+          "docs": "Trigger a health check job."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,738 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons Theme Assets API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Theme Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the footer HTML of a theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/footer",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get the footer HTML of a theme."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/footer",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Delete theme asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/footer",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Delete theme asset."
+        },
+        {
+          "info": {
+            "name": "Get the footer HTML of a theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/footer.html",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get the footer HTML of a theme."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/footer.html",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Get the header HTML of a theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/header",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get the header HTML of a theme."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/header",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Delete theme asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/header",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Delete theme asset."
+        },
+        {
+          "info": {
+            "name": "Get the header HTML of a theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/header.html",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get the header HTML of a theme."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/header.html",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Get JavaScript to be used as part of a theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/javascript",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get JavaScript to be used as part of a theme."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/javascript",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Delete theme asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/javascript",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Delete theme asset."
+        },
+        {
+          "info": {
+            "name": "Get JavaScript to be used as part of a theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/javascript.js",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get JavaScript to be used as part of a theme."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/javascript.js",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Get additional script files of a theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/scripts",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get additional script files of a theme."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/scripts",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Delete theme asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/scripts",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Delete theme asset."
+        },
+        {
+          "info": {
+            "name": "Get additional script files of a theme.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/scripts.json",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get additional script files of a theme."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/scripts.json",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Get theme styles.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/styles",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get theme styles."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/styles",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Delete theme asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/styles",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Delete theme asset."
+        },
+        {
+          "info": {
+            "name": "Get theme styles.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/styles.css",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get theme styles."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/styles.css",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Get theme variables.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/variables",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get theme variables."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/variables",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Merge some new variables into existing ones.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/variables",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merge some new variables into existing ones."
+        },
+        {
+          "info": {
+            "name": "Delete theme asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/variables",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ]
+          },
+          "docs": "Delete theme asset."
+        },
+        {
+          "info": {
+            "name": "Get theme variables.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/variables.json",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique theme slug."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get theme variables."
+        },
+        {
+          "info": {
+            "name": "Set theme asset or replace if already exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/variables.json",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set theme asset or replace if already exists."
+        },
+        {
+          "info": {
+            "name": "Merge some new variables into existing ones.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/themes/:themeID/assets/variables.json",
+            "params": [
+              {
+                "name": "themeID",
+                "value": "",
+                "type": "path",
+                "description": "Unique themeID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merge some new variables into existing ones."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

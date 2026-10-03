@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://status.vanillaforums.com/ (probed 200, 2026-07-21) +
+  https://success.vanillaforums.com/kb release notes +
+  derived deprecated operations from openapi/vanilla-api-openapi-original.json
+description: >-
+  Lifecycle profile for the Vanilla (Higher Logic Vanilla) API v2. The API is
+  versioned in the URI path (/api/v2); the platform ships on YYYY.NNN release
+  trains with staged rollout (Staging -> Production -> Enterprise). No public
+  deprecation policy or Sunset/Deprecation header (RFC 8594) support is
+  documented; deprecations surface per-operation in the platform-generated
+  OpenAPI (deprecated: true) and in release notes.
+versioning:
+  scheme: uri-path
+  current: v2
+  docs: https://success.vanillaforums.com/kb/articles/40-api-v2-overview
+  notes: New endpoints are announced in release notes as they are completed (API-first strategy).
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No published deprecation policy; the /statuses endpoints are flagged deprecated in the OpenAPI.
+status_page: https://status.vanillaforums.com/
+sla: null
+deprecated_operations:
+  - openapi/vanilla-api-openapi-original.json#GET /statuses
+  - openapi/vanilla-api-openapi-original.json#POST /statuses
+  - openapi/vanilla-api-openapi-original.json#GET /statuses/{id}
+  - openapi/vanilla-api-openapi-original.json#PATCH /statuses/{id}
+  - openapi/vanilla-api-openapi-original.json#DELETE /statuses/{id}
+  - openapi/vanilla-api-openapi-original.json#GET /statuses/{id}/edit
+changelog: changelog/vanilla-forums-changelog.yml

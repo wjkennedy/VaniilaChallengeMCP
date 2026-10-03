@@ -1,0 +1,374 @@
+{
+  "item": [
+    {
+      "id": "d33d55f2-e61b-45ee-9662-897f4b0d4b27",
+      "name": "Addons",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "52f0c3b2-6dae-43d4-99c9-31f8bfc89360",
+          "name": "List addons.",
+          "request": {
+            "name": "List addons.",
+            "description": {},
+            "url": {
+              "path": [
+                "addons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of addon."
+                },
+                {
+                  "disabled": false,
+                  "key": "enabled",
+                  "value": "<boolean>",
+                  "description": "Filter enabled or disabled addons.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "themeType",
+                  "value": "desktop",
+                  "description": "Which theme to show the enabled status for.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55fb6ffe-ad13-4d39-8339-954c85667f40",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "enabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "themeType",
+                      "value": "desktop"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"addonID\": \"string\",\n    \"name\": \"string\",\n    \"key\": \"string\",\n    \"type\": \"locale\",\n    \"iconUrl\": \"http://QCNeLdhLcgnZrtwqWYkKYigUgzLM.dkinrU5Fg.m9sXf8I5m\",\n    \"version\": \"string\",\n    \"enabled\": false,\n    \"conflict\": [\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"addon\",\n        \"constraint\": \"string\"\n      },\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"addon\",\n        \"constraint\": \"string\"\n      }\n    ],\n    \"attributes\": {\n      \"locale\": \"string\"\n    },\n    \"description\": \"string\",\n    \"require\": [\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"addon\",\n        \"constraint\": \"string\"\n      },\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"addon\",\n        \"constraint\": \"string\"\n      }\n    ]\n  },\n  {\n    \"addonID\": \"string\",\n    \"name\": \"string\",\n    \"key\": \"string\",\n    \"type\": \"addon\",\n    \"iconUrl\": \"http://wGWKMHfWzkJNHWtutjsXJlS.mkdTUnqOvkuJbTx0+IbeocH9YE5XMZMEBiLjS0pK+D6SPUacB8ue9pkEErH7IK6qnXyvhZSAKpG5z1pWr-l\",\n    \"version\": \"string\",\n    \"enabled\": false,\n    \"conflict\": [\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"theme\",\n        \"constraint\": \"string\"\n      },\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"stri\",\n        \"type\": \"addon\",\n        \"constraint\": \"string\"\n      }\n    ],\n    \"attributes\": {\n      \"locale\": \"string\"\n    },\n    \"description\": \"string\",\n    \"require\": [\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"theme\",\n        \"constraint\": \"s\"\n      },\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"locale\",\n        \"constraint\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c9b753d-2e50-4015-a5e6-6ed0dcd21f25",
+          "name": "Get an addon.",
+          "request": {
+            "name": "Get an addon.",
+            "description": {},
+            "url": {
+              "path": [
+                "addons",
+                ":addonID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "themeType",
+                  "value": "desktop",
+                  "description": "Which theme to show the enabled status for.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "addonID",
+                  "description": "(Required) The ID of the addon.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c2f8cd4-7a0c-4b1a-9d85-46a401bac44c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addons",
+                    ":addonID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "themeType",
+                      "value": "desktop"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonID",
+                      "description": "(Required) The ID of the addon.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addonID\": \"string\",\n  \"name\": \"string\",\n  \"key\": \"string\",\n  \"type\": \"locale\",\n  \"iconUrl\": \"http://xSgrXvZnZuHNTBcnvDLXPNUarXyovKBxT.nzotZfJx6CtdCLzfzz2w-qwBKn9L1Du1b.JjPaLX1gpwJVbZUMHVDyN0q1kCqBtz2\",\n  \"version\": \"string\",\n  \"enabled\": true,\n  \"conflict\": [\n    {\n      \"addonID\": \"string\",\n      \"name\": \"string\",\n      \"key\": \"string\",\n      \"type\": \"theme\",\n      \"constraint\": \"string\"\n    },\n    {\n      \"addonID\": \"string\",\n      \"name\": \"string\",\n      \"key\": \"string\",\n      \"type\": \"locale\",\n      \"constraint\": \"string\"\n    }\n  ],\n  \"attributes\": {\n    \"locale\": \"string\"\n  },\n  \"description\": \"string\",\n  \"require\": [\n    {\n      \"addonID\": \"string\",\n      \"name\": \"string\",\n      \"key\": \"string\",\n      \"type\": \"addon\",\n      \"constraint\": \"string\"\n    },\n    {\n      \"addonID\": \"string\",\n      \"name\": \"string\",\n      \"key\": \"string\",\n      \"type\": \"locale\",\n      \"constraint\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c602d98-10a1-4a5b-b30f-c4ec54c26f5f",
+          "name": "Enable or disable an addon.",
+          "request": {
+            "name": "Enable or disable an addon.",
+            "description": {},
+            "url": {
+              "path": [
+                "addons",
+                ":addonID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "addonID",
+                  "description": "(Required) The ID of the addon."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"themeType\": \"desktop\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8a1a2aa1-29d7-44bc-ac1a-63b660ec654b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addons",
+                    ":addonID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonID",
+                      "description": "(Required) The ID of the addon."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"themeType\": \"desktop\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"addonID\": \"string\",\n    \"name\": \"strin\",\n    \"key\": \"string\",\n    \"type\": \"locale\",\n    \"iconUrl\": \"https://YLuzyEJsTdiuqaJamUQVh.hgruDs1ogQN.I+FnYYF2Le8qz3a0nQni.87\",\n    \"version\": \"string\",\n    \"enabled\": true,\n    \"conflict\": [\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"theme\",\n        \"constraint\": \"string\"\n      },\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"theme\",\n        \"constraint\": \"string\"\n      }\n    ],\n    \"attributes\": {\n      \"locale\": \"string\"\n    },\n    \"description\": \"string\",\n    \"require\": [\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"locale\",\n        \"constraint\": \"string\"\n      },\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"locale\",\n        \"constraint\": \"string\"\n      }\n    ]\n  },\n  {\n    \"addonID\": \"string\",\n    \"name\": \"string\",\n    \"key\": \"string\",\n    \"type\": \"locale\",\n    \"iconUrl\": \"https://nLDCaKeVIEyKouvIJPUYdMuXfETo.ybvAQtWbU3fT0,UN4czvScSpCkgsgBCPoDRpJPCg6RZMvOM,YQU0CUTVDmyk+s+cc\",\n    \"version\": \"string\",\n    \"enabled\": true,\n    \"conflict\": [\n      {\n        \"addonID\": \"string\",\n        \"name\": \"s\",\n        \"key\": \"string\",\n        \"type\": \"addon\",\n        \"constraint\": \"string\"\n      },\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"addon\",\n        \"constraint\": \"string\"\n      }\n    ],\n    \"attributes\": {\n      \"locale\": \"string\"\n    },\n    \"description\": \"string\",\n    \"require\": [\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"addon\",\n        \"constraint\": \"string\"\n      },\n      {\n        \"addonID\": \"string\",\n        \"name\": \"string\",\n        \"key\": \"string\",\n        \"type\": \"addon\",\n        \"constraint\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://open.vanillaforums.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "23218a4e-f2ec-487b-82a2-615f6778b941",
+    "name": "Vanilla Addons API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to your community.",
+      "type": "text/plain"
+    }
+  }
+}

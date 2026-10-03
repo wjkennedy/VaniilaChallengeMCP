@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vanilla Addons API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Addons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List addons.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/addons",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of addon."
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query",
+                "description": "Filter enabled or disabled addons.\n"
+              },
+              {
+                "name": "themeType",
+                "value": "",
+                "type": "query",
+                "description": "Which theme to show the enabled status for.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "List addons."
+        },
+        {
+          "info": {
+            "name": "Get an addon.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://open.vanillaforums.com/api/v2/addons/:addonID",
+            "params": [
+              {
+                "name": "addonID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the addon.\n"
+              },
+              {
+                "name": "themeType",
+                "value": "",
+                "type": "query",
+                "description": "Which theme to show the enabled status for.\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Only return fields with these keys from the output. Use dot notation for nested fields."
+              }
+            ]
+          },
+          "docs": "Get an addon."
+        },
+        {
+          "info": {
+            "name": "Enable or disable an addon.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://open.vanillaforums.com/api/v2/addons/:addonID",
+            "params": [
+              {
+                "name": "addonID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the addon."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable or disable an addon."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
